@@ -5,7 +5,7 @@ aanvalsoppervlakte klein houden en de bekende risico's afdekken. Dit document
 is de checklist daarvoor — per fase, met de zwaarste risico's bovenaan.*
 
 ## Huidige situatie (statisch prototype) — aanvalsoppervlakte is klein
-- Eén statisch HTML-bestand, geen backend, geen login, geen betaling, geen database.
+- Eén statisch HTML-bestand (`index.html`), geen backend, geen login, geen betaling, geen database.
 - Geen geheime sleutels in de code. Enige externe aanroep: PDOK (open overheids-API, geen sleutel).
 - Er valt dus weinig te "hacken": er is geen server om binnen te dringen en geen data om te stelen.
 
