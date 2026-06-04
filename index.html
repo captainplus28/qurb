@@ -1,835 +1,612 @@
 <!DOCTYPE html>
-<html lang="nl" data-theme="light">
+<html lang="nl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- Baseline Content-Security-Policy. De volledige set headers (incl. frame-ancestors,
-     HSTS, X-Content-Type-Options) wordt op hostingniveau gezet via _headers. -->
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://api.pdok.nl; base-uri 'self'; form-action 'self'">
-<title>Qurb — Slim parkeren begint hier</title>
-<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2048%2048'%3E%3Ccircle%20cx='22'%20cy='21'%20r='14'%20fill='none'%20stroke='%232BB24F'%20stroke-width='8'/%3E%3Cpolygon%20points='31,29%2025,32%2036,43'%20fill='%231C8F40'/%3E%3C/svg%3E">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
-<style>
-/* ─── LIGHT TOKENS ─── */
-:root, [data-theme="light"] {
-  --primary:           #199646;
-  --primary-focus:     #1ea34c;
-  --primary-on-dark:   #34c759;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Baseline Content-Security-Policy -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://api.pdok.nl; base-uri 'self'; form-action 'self'">
+  <title>Qurb — Weet wat je écht betaalt aan parkeren</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2048%2048'%3E%3Ccircle%20cx='22'%20cy='21'%20r='14'%20fill='none'%20stroke='%23E6364F'%20stroke-width='8'/%3E%3Cpolygon%20points='31,29%2025,32%2036,43'%20fill='%23C0202F'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800;900&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  --logo-green:        #2bb24f;
-  --logo-tail:         #1c8f40;
+    :root {
+      --brand:       #E6364F;
+      --brand-light: #FF6B84;
+      --brand-bg:    #FFF0F2;
+      --dark:        #0D0B12;
+      --dark2:       #18151F;
+      --body:        #3C3847;
+      --muted:       #8A869E;
+      --bg:          #FAFAF7;
+      --card:        #FFFFFF;
+      --border:      #ECEAE6;
+      --green:       #0ABF76;
+      --green-bg:    #EDF9F4;
+      --r:           22px;
+      --r-sm:        12px;
+      --r-pill:      100px;
+    }
 
-  --ink:               #1d1d1f;
-  --ink-muted-80:      #333333;
-  --ink-muted-48:      #7a7a7a;
-  --body-muted:        #6e6e73;
+    html { scroll-behavior: smooth; }
 
-  --divider-soft:      #f0f0f0;
-  --hairline:          #d2d2d7;
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--body);
+      -webkit-font-smoothing: antialiased;
+      text-wrap: pretty;
+    }
 
-  --canvas:            #ffffff;
-  --canvas-parchment:  #f5f5f7;
-  --surface-pearl:     #fafafc;
+    /* ─── NAV ─── */
+    .nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(250,250,247,0.88);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 48px;
+      height: 66px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo {
+      font-family: 'Hanken Grotesk', sans-serif;
+      font-weight: 900; font-size: 22px;
+      color: var(--dark); letter-spacing: -0.5px; text-decoration: none;
+    }
+    .nav-logo em { color: var(--brand); font-style: normal; }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a {
+      font-size: 14px; font-weight: 500; color: var(--body);
+      text-decoration: none; transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--dark); }
+    .nav-badge {
+      background: var(--brand-bg); color: var(--brand);
+      font-size: 12px; font-weight: 700; letter-spacing: .5px;
+      padding: 5px 14px; border-radius: var(--r-pill);
+      border: 1.5px solid rgba(230,54,79,0.25);
+    }
 
-  /* results section stays dark in light mode, Apple convention */
-  --results-bg:        #272729;
-  --results-text:      #ffffff;
-  --results-muted:     #aeaeb2;
-  --results-divider:   rgba(255,255,255,0.1);
-  --results-divider-2: rgba(255,255,255,0.07);
-  --results-info-bg:   #2a2a2c;
-  --best-tag-bg:       #ffffff;
-  --best-tag-ink:      #1d1d1f;
+    /* ─── HERO ─── */
+    .hero {
+      max-width: 1200px; margin: 0 auto;
+      padding: 96px 48px 80px;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 72px; align-items: center;
+    }
+    .hero-eyebrow {
+      font-size: 12px; font-weight: 700;
+      letter-spacing: 2px; text-transform: uppercase;
+      color: var(--brand); margin-bottom: 20px;
+    }
+    .hero-h1 {
+      font-family: 'Hanken Grotesk', sans-serif;
+      font-weight: 900;
+      font-size: clamp(52px, 6vw, 84px);
+      line-height: 1.0; letter-spacing: -3.5px;
+      color: var(--dark); margin-bottom: 24px;
+    }
+    .hero-h1 em { color: var(--brand); font-style: normal; }
+    .hero-sub {
+      font-size: 17px; line-height: 1.65; color: var(--muted);
+      max-width: 460px; margin-bottom: 40px;
+    }
+    .hero-actions { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
+    .btn-dark {
+      background: var(--dark); color: #fff;
+      padding: 15px 30px; border-radius: var(--r-pill);
+      font-size: 15px; font-weight: 600; font-family: 'DM Sans', sans-serif;
+      text-decoration: none; border: none; cursor: pointer;
+      transition: background .2s, transform .15s; display: inline-block;
+    }
+    .btn-dark:hover { background: var(--brand); transform: translateY(-1px); }
+    .btn-ghost {
+      color: var(--body); font-size: 15px; font-weight: 500;
+      text-decoration: none; transition: color .2s;
+    }
+    .btn-ghost:hover { color: var(--brand); }
 
-  --surface-black:     #000000;
-  --nav-bg:            #199646;
-  --nav-text:          #ffffff;
-  --subnav-bg:         rgba(245,245,247,0.88);
-  --subnav-border:     rgba(0,0,0,0.1);
-  --subnav-text:       #1d1d1f;
+    /* Hero preview card */
+    .hero-preview {
+      background: var(--dark2);
+      border-radius: 28px; padding: 28px;
+      box-shadow: 0 48px 96px rgba(13,11,18,.22), 0 8px 24px rgba(13,11,18,.1);
+    }
+    .hp-header {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 8px;
+    }
+    .hp-title {
+      font-family: 'Hanken Grotesk', sans-serif; font-weight: 800;
+      font-size: 13px; color: rgba(255,255,255,.5); letter-spacing: .3px;
+    }
+    .hp-meta { font-size: 12px; color: rgba(255,255,255,.25); }
+    .hp-sub {
+      font-size: 11px; color: rgba(255,255,255,.2);
+      margin-bottom: 20px; padding-bottom: 20px;
+      border-bottom: 1px solid rgba(255,255,255,.07);
+    }
+    .hp-row {
+      display: flex; align-items: center;
+      padding: 13px 16px; border-radius: 14px; margin-bottom: 7px;
+      background: rgba(255,255,255,.04);
+    }
+    .hp-row.best { background: rgba(10,191,118,.12); }
+    .hp-dot { width: 8px; height: 8px; border-radius: 50%; margin-right: 12px; flex-shrink: 0; }
+    .hp-name { font-size: 13px; color: rgba(255,255,255,.8); flex: 1; }
+    .hp-price {
+      font-family: 'Hanken Grotesk', sans-serif; font-weight: 800;
+      font-size: 15px; color: rgba(255,255,255,.9);
+    }
+    .hp-row.best .hp-price { color: #0ABF76; }
+    .hp-badge {
+      font-size: 10px; font-weight: 700; letter-spacing: .3px;
+      background: rgba(10,191,118,.2); color: #0ABF76;
+      padding: 2px 9px; border-radius: 100px; margin-left: 10px;
+    }
 
-  --footer-bg:         #f5f5f7;
-  --footer-text:       #7a7a7a;
-  --footer-border:     #e0e0e0;
+    /* ─── STATS ─── */
+    .stats-bar { background: var(--dark); }
+    .stats-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(3,1fr);
+      border-left: 1px solid rgba(255,255,255,.06);
+    }
+    .stat-cell {
+      padding: 44px 48px;
+      border-right: 1px solid rgba(255,255,255,.06);
+      border-top: 1px solid rgba(255,255,255,.06);
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .stat-num {
+      font-family: 'Hanken Grotesk', sans-serif; font-weight: 900;
+      font-size: 52px; line-height: 1; letter-spacing: -2px;
+      color: #fff; margin-bottom: 8px;
+    }
+    .stat-num em { color: var(--brand); font-style: normal; }
+    .stat-lbl { font-size: 14px; color: rgba(255,255,255,.38); }
 
-  --input-bg:          #ffffff;
-  --input-border:      #d2d2d7;
-  --tarief-bg:         #f5f5f7;
-  --suggest-bg:        #ffffff;
-  --suggest-hover:     #f5f5f7;
-  --suggest-border:    #e0e0e0;
-  --suggest-divider:   #f0f0f0;
-  --badge-bg:          #1d1d1f;
-  --badge-text:        #ffffff;
+    /* ─── SECTIONS SHARED ─── */
+    .section-wrap { max-width: 1200px; margin: 0 auto; padding: 100px 48px; }
+    .s-eyebrow {
+      font-size: 12px; font-weight: 700; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--brand); margin-bottom: 16px;
+    }
+    .s-title {
+      font-family: 'Hanken Grotesk', sans-serif; font-weight: 900;
+      font-size: clamp(36px, 4vw, 56px);
+      color: var(--dark); letter-spacing: -2px;
+      line-height: 1.05; margin-bottom: 16px;
+    }
+    .s-sub {
+      font-size: 17px; color: var(--muted);
+      line-height: 1.6; max-width: 500px; margin-bottom: 56px;
+    }
 
-  --error-bg:          rgba(255,69,58,0.06);
-  --error-border:      rgba(255,69,58,0.18);
-  --error-text:        #d93025;
-  --success:           #1a7f3c;
+    /* ─── COMPARE TOOL ─── */
+    .tool-card {
+      background: var(--card); border-radius: 28px;
+      border: 1px solid var(--border);
+      box-shadow: 0 4px 40px rgba(0,0,0,.05);
+      overflow: hidden;
+    }
+    .tool-form {
+      padding: 28px 32px;
+      display: grid; grid-template-columns: 2fr 1fr auto;
+      gap: 14px; align-items: end;
+      border-bottom: 1px solid var(--border);
+      background: var(--bg);
+    }
+    .fg label {
+      display: block; font-size: 11px; font-weight: 700;
+      letter-spacing: 1px; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 8px;
+    }
+    .fg input[type="text"],
+    .fg input[type="datetime-local"] {
+      width: 100%; padding: 13px 16px;
+      border: 1.5px solid var(--border); border-radius: var(--r-sm);
+      font-family: 'DM Sans', sans-serif; font-size: 15px;
+      color: var(--dark); background: var(--card); outline: none;
+      transition: border-color .2s; -webkit-appearance: none; appearance: none;
+    }
+    .fg input[type="text"]:focus,
+    .fg input[type="datetime-local"]:focus { border-color: var(--brand); }
+    .fg input[type="text"]::placeholder { color: var(--muted); }
+    .fg input[type="datetime-local"]::-webkit-calendar-picker-indicator { opacity: 0.4; cursor: pointer; }
+    .time-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .form-go {
+      background: var(--dark); color: #fff;
+      border: none; padding: 0 26px; height: 50px;
+      border-radius: var(--r-sm); font-family: 'DM Sans', sans-serif;
+      font-size: 15px; font-weight: 600; cursor: pointer;
+      transition: background .2s; white-space: nowrap; align-self: end;
+    }
+    .form-go:hover { background: var(--brand); }
 
-  --toggle-track:      #e5e5ea;
-  --toggle-thumb:      #ffffff;
-  --toggle-icon-l:     #f5c518; /* sun */
-  --toggle-icon-d:     #6e6e73; /* moon */
-}
+    /* Autocomplete suggest */
+    .fg-addr { position: relative; }
+    .suggest {
+      position: absolute; top: calc(100% + 6px); left: 0; right: 0; z-index: 50;
+      background: var(--card); border: 1.5px solid var(--border);
+      border-radius: var(--r-sm); overflow: hidden;
+      display: none; box-shadow: 0 8px 30px rgba(0,0,0,.1);
+    }
+    .suggest.open { display: block; }
+    .suggest-item {
+      padding: 11px 16px; font-size: 15px; color: var(--dark);
+      cursor: pointer; border-bottom: 1px solid var(--border);
+      transition: background .1s;
+    }
+    .suggest-item:last-child { border-bottom: none; }
+    .suggest-item:hover { background: var(--bg); }
+    .found-tag {
+      display: inline-flex; align-items: center; gap: 6px;
+      margin-top: 8px; font-size: 13px; color: var(--green); padding: 0 2px;
+    }
+    .found-tag::before {
+      content: ''; width: 6px; height: 6px;
+      background: var(--green); border-radius: 50%; flex-shrink: 0;
+    }
 
-/* ─── DARK TOKENS ─── */
-[data-theme="dark"] {
-  --primary:           #34c759;
-  --primary-focus:     #3dd069;
+    /* Results */
+    .tool-results { padding: 28px 32px; min-height: 120px; }
+    .res-header {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 18px;
+    }
+    .res-title {
+      font-family: 'Hanken Grotesk', sans-serif; font-weight: 800;
+      font-size: 17px; color: var(--dark);
+    }
+    .res-save { font-size: 13px; color: var(--muted); }
+    .res-save strong { color: var(--green); }
+    .res-row {
+      display: flex; align-items: center;
+      padding: 16px 18px; border-radius: 16px; margin-bottom: 8px;
+      border: 1.5px solid var(--border);
+      transition: border-color .2s, box-shadow .2s;
+    }
+    .res-row:hover { border-color: rgba(230,54,79,.3); box-shadow: 0 4px 16px rgba(230,54,79,.07); }
+    .res-row.winner { border-color: var(--green); background: var(--green-bg); }
+    .res-rank {
+      width: 28px; height: 28px; border-radius: 50%;
+      background: var(--border); display: flex; align-items: center;
+      justify-content: center; font-size: 12px; font-weight: 700;
+      color: var(--muted); margin-right: 14px; flex-shrink: 0;
+    }
+    .res-row.winner .res-rank { background: var(--green); color: #fff; }
+    .res-dot { width: 9px; height: 9px; border-radius: 50%; margin-right: 12px; flex-shrink: 0; }
+    .res-name { font-size: 15px; font-weight: 500; flex: 1; color: var(--dark); }
+    .res-fee { font-size: 12px; color: var(--muted); margin-right: auto; padding-left: 10px; }
+    .res-total {
+      font-family: 'Hanken Grotesk', sans-serif; font-weight: 800;
+      font-size: 18px; color: var(--dark);
+    }
+    .res-row.winner .res-total { color: var(--green); }
+    .win-badge {
+      font-size: 11px; font-weight: 700; letter-spacing: .2px;
+      background: rgba(10,191,118,.15); color: var(--green);
+      padding: 3px 10px; border-radius: 100px; margin-left: 12px;
+    }
+    .exp-delta { font-size: 12px; color: var(--muted); margin-left: 12px; }
+    .tool-empty { text-align: center; padding: 52px 24px; }
+    .tool-empty-icon { font-size: 40px; margin-bottom: 14px; }
+    .tool-empty p { font-size: 15px; color: var(--muted); }
+    .tool-empty strong { color: var(--dark); }
 
-  --ink:               #f5f5f7;
-  --ink-muted-80:      #d1d1d6;
-  --ink-muted-48:      #98989d;
-  --body-muted:        #98989d;
+    /* Garage results */
+    .garage-section { margin-top: 28px; border-top: 1px solid var(--border); padding-top: 24px; }
+    .garage-section-title {
+      font-family: 'Hanken Grotesk', sans-serif; font-weight: 800;
+      font-size: 15px; color: var(--dark); margin-bottom: 14px;
+    }
+    .avail { display: inline-flex; align-items: center; gap: 5px; font-size: 12px; color: var(--muted); }
+    .avail-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+    .avail-dot.green  { background: var(--green); }
+    .avail-dot.yellow { background: #F5C400; }
+    .avail-dot.red    { background: var(--brand); }
 
-  --divider-soft:      #2c2c2e;
-  --hairline:          #3a3a3c;
+    .tool-disclaimer {
+      padding: 14px 32px; font-size: 12px;
+      color: var(--muted); line-height: 1.5;
+      border-top: 1px solid var(--border); background: var(--bg);
+    }
+    .error-banner {
+      background: #FFF0F2; border: 1.5px solid rgba(230,54,79,.2);
+      border-radius: var(--r-sm); padding: 14px 18px;
+      font-size: 15px; color: var(--brand); margin-bottom: 16px;
+    }
 
-  --canvas:            #1c1c1e;
-  --canvas-parchment:  #161618;
-  --surface-pearl:     #2c2c2e;
+    /* ─── HOW IT WORKS ─── */
+    .hiw-bg { background: var(--dark); }
+    .hiw-bg .s-eyebrow { color: rgba(255,255,255,.35); }
+    .hiw-bg .s-title { color: #fff; }
+    .hiw-bg .s-sub { color: rgba(255,255,255,.4); }
+    .steps-grid {
+      display: grid; grid-template-columns: repeat(3,1fr); gap: 28px;
+    }
+    .step-card {
+      padding: 40px 36px; border-radius: 24px;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.07);
+    }
+    .step-n {
+      font-family: 'Hanken Grotesk', sans-serif; font-weight: 900;
+      font-size: 72px; line-height: 1; color: rgba(255,255,255,.07);
+      margin-bottom: 20px;
+    }
+    .step-t {
+      font-family: 'Hanken Grotesk', sans-serif; font-weight: 800;
+      font-size: 21px; color: #fff; margin-bottom: 12px;
+    }
+    .step-b { font-size: 15px; line-height: 1.65; color: rgba(255,255,255,.45); }
 
-  --results-bg:        #111113;
-  --results-text:      #f5f5f7;
-  --results-muted:     #98989d;
-  --results-divider:   rgba(255,255,255,0.08);
-  --results-divider-2: rgba(255,255,255,0.05);
-  --results-info-bg:   #1c1c1e;
-  --best-tag-bg:       #f5f5f7;
-  --best-tag-ink:      #111113;
+    /* ─── APPS ─── */
+    .apps-flex { display: flex; flex-wrap: wrap; gap: 10px; }
+    .app-chip {
+      display: flex; align-items: center; gap: 10px;
+      padding: 13px 22px; border-radius: var(--r-pill);
+      background: var(--card); border: 1.5px solid var(--border);
+      font-size: 14px; font-weight: 500; color: var(--dark);
+    }
+    .app-chip-dot { width: 10px; height: 10px; border-radius: 50%; }
 
-  --nav-bg:            #000000;
-  --nav-text:          #ffffff;
-  --subnav-bg:         rgba(22,22,24,0.88);
-  --subnav-border:     rgba(255,255,255,0.08);
-  --subnav-text:       #f5f5f7;
+    /* ─── CTA BAND ─── */
+    .cta-band {
+      background: var(--brand); text-align: center;
+      padding: 100px 48px;
+    }
+    .cta-band h2 {
+      font-family: 'Hanken Grotesk', sans-serif; font-weight: 900;
+      font-size: clamp(40px, 5.5vw, 68px);
+      color: #fff; letter-spacing: -2.5px; line-height: 1.02;
+      margin-bottom: 18px;
+    }
+    .cta-band p { font-size: 18px; color: rgba(255,255,255,.75); margin-bottom: 40px; }
+    .btn-white {
+      background: #fff; color: var(--brand);
+      padding: 16px 36px; border-radius: var(--r-pill);
+      font-size: 16px; font-weight: 700; text-decoration: none;
+      display: inline-block; transition: transform .15s; border: none; cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+    }
+    .btn-white:hover { transform: translateY(-2px); }
 
-  --footer-bg:         #111113;
-  --footer-text:       #636366;
-  --footer-border:     #2c2c2e;
+    /* ─── FOOTER ─── */
+    .footer {
+      background: var(--dark); padding: 44px 48px;
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 20px;
+    }
+    .footer-logo {
+      font-family: 'Hanken Grotesk', sans-serif; font-weight: 900;
+      font-size: 20px; color: #fff;
+    }
+    .footer-logo em { color: var(--brand); font-style: normal; }
+    .footer-links { display: flex; gap: 28px; list-style: none; }
+    .footer-links a {
+      font-size: 13px; color: rgba(255,255,255,.35);
+      text-decoration: none; transition: color .2s;
+    }
+    .footer-links a:hover { color: #fff; }
+    .footer-copy { font-size: 12px; color: rgba(255,255,255,.2); }
 
-  --input-bg:          #2c2c2e;
-  --input-border:      #3a3a3c;
-  --tarief-bg:         #2c2c2e;
-  --suggest-bg:        #2c2c2e;
-  --suggest-hover:     #3a3a3c;
-  --suggest-border:    #3a3a3c;
-  --suggest-divider:   #2c2c2e;
-  --badge-bg:          #3a3a3c;
-  --badge-text:        #f5f5f7;
-
-  --error-bg:          rgba(255,69,58,0.1);
-  --error-border:      rgba(255,69,58,0.25);
-  --error-text:        #ff6961;
-  --success:           #30d158;
-
-  --toggle-track:      #3a3a3c;
-  --toggle-thumb:      #ffffff;
-}
-
-/* ─── RESET ─── */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-
-body {
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  font-size: 17px;
-  font-weight: 400;
-  line-height: 1.47;
-  letter-spacing: -0.374px;
-  color: var(--ink);
-  background: var(--canvas);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  transition: background 0.25s ease, color 0.25s ease;
-}
-
-/* ─── GLOBAL NAV ─── */
-.global-nav {
-  position: sticky;
-  top: 0;
-  z-index: 200;
-  height: 44px;
-  background: var(--nav-bg);
-  display: flex;
-  align-items: center;
-  padding: 0 22px;
-  transition: background 0.25s ease;
-}
-.nav-inner {
-  width: 100%;
-  max-width: 980px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-}
-.nav-wordmark {
-  font-size: 17px;
-  font-weight: 600;
-  letter-spacing: -0.374px;
-  color: var(--nav-text);
-}
-.nav-right {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.nav-badge {
-  background: var(--badge-bg);
-  color: var(--badge-text);
-  font-size: 12px;
-  font-weight: 400;
-  letter-spacing: -0.12px;
-  padding: 5px 10px;
-  border-radius: 8px;
-  transition: background 0.25s, color 0.25s;
-}
-
-/* ─── BRAND LOCKUP ─── */
-.brand-lockup { display:flex; align-items:center; gap:9px; }
-.brand-mark { width:26px; height:26px; display:block; flex-shrink:0; }
-.brand-mark.sm { width:22px; height:22px; }
-.brand-name {
-  font-family:'Quicksand', system-ui, sans-serif;
-  font-weight:700;
-  font-size:19px;
-  letter-spacing:-0.5px;
-  line-height:1;
-}
-.global-nav .brand-name { color: var(--nav-text); }
-.footer-brand { display:flex; align-items:center; gap:8px; margin-bottom:14px; flex-wrap:wrap; }
-.footer-brand .brand-name { color: var(--ink); font-size:18px; transition:color .25s; }
-.footer-tagline {
-  font-family:'Quicksand', system-ui, sans-serif;
-  font-weight:500; font-size:13px; letter-spacing:-0.2px;
-  color: var(--body-muted); transition:color .25s;
-}
-
-/* ─── THEME TOGGLE ─── */
-.theme-toggle {
-  position: relative;
-  width: 52px;
-  height: 28px;
-  cursor: pointer;
-  flex-shrink: 0;
-}
-.theme-toggle input {
-  opacity: 0;
-  width: 0; height: 0;
-  position: absolute;
-}
-.toggle-track {
-  position: absolute;
-  inset: 0;
-  background: var(--toggle-track);
-  border-radius: 9999px;
-  transition: background 0.25s ease;
-}
-.toggle-thumb {
-  position: absolute;
-  top: 3px;
-  left: 3px;
-  width: 22px;
-  height: 22px;
-  background: var(--toggle-thumb);
-  border-radius: 50%;
-  transition: transform 0.22s cubic-bezier(0.4,0,0.2,1), background 0.25s;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.25);
-}
-.theme-toggle input:checked ~ .toggle-track { background: #3a3a3c; }
-.theme-toggle input:checked ~ .toggle-thumb { transform: translateX(24px); }
-
-/* Sun / moon icons inside thumb */
-.toggle-thumb svg {
-  width: 12px;
-  height: 12px;
-  flex-shrink: 0;
-}
-.icon-sun  { display: block; }
-.icon-moon { display: none; }
-[data-theme="dark"] .icon-sun  { display: none; }
-[data-theme="dark"] .icon-moon { display: block; }
-
-/* ─── SUB NAV ─── */
-.sub-nav {
-  position: sticky;
-  top: 44px;
-  z-index: 190;
-  height: 52px;
-  background: var(--subnav-bg);
-  backdrop-filter: saturate(180%) blur(20px);
-  -webkit-backdrop-filter: saturate(180%) blur(20px);
-  border-bottom: 1px solid var(--subnav-border);
-  display: flex;
-  align-items: center;
-  padding: 0 22px;
-  transition: background 0.25s, border-color 0.25s;
-}
-.sub-nav-inner {
-  width: 100%;
-  max-width: 980px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.sub-nav-title {
-  font-size: 21px;
-  font-weight: 600;
-  letter-spacing: 0.231px;
-  line-height: 1.19;
-  color: var(--subnav-text);
-  transition: color 0.25s;
-}
-
-/* ─── HERO TILE ─── */
-.hero-tile {
-  background: var(--canvas-parchment);
-  padding: 80px 24px;
-  text-align: center;
-  transition: background 0.25s;
-}
-.hero-inner { max-width: 680px; margin: 0 auto; }
-.hero-kicker {
-  font-size: 21px;
-  font-weight: 600;
-  letter-spacing: 0.231px;
-  color: var(--ink-muted-48);
-  margin-bottom: 8px;
-  transition: color 0.25s;
-}
-.hero-h1 {
-  font-size: clamp(34px, 5vw, 56px);
-  font-weight: 600;
-  line-height: 1.07;
-  letter-spacing: -0.28px;
-  color: var(--ink);
-  margin-bottom: 16px;
-  transition: color 0.25s;
-}
-.hero-lede {
-  font-size: 21px;
-  font-weight: 400;
-  line-height: 1.38;
-  color: var(--ink-muted-48);
-  max-width: 52ch;
-  margin: 0 auto;
-  transition: color 0.25s;
-}
-
-/* ─── FORM TILE ─── */
-.form-tile {
-  background: var(--canvas);
-  padding: 80px 24px;
-  transition: background 0.25s;
-}
-.tile-inner { max-width: 680px; margin: 0 auto; }
-
-.field { margin-bottom: 28px; position: relative; }
-.field:last-of-type { margin-bottom: 0; }
-
-label {
-  display: block;
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 1.29;
-  letter-spacing: -0.224px;
-  color: var(--ink);
-  margin-bottom: 8px;
-  transition: color 0.25s;
-}
-
-input[type="text"],
-input[type="datetime-local"] {
-  width: 100%;
-  background: var(--input-bg);
-  border: 1px solid var(--input-border);
-  border-radius: 9999px;
-  padding: 12px 20px;
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  font-size: 17px;
-  font-weight: 400;
-  line-height: 1.47;
-  letter-spacing: -0.374px;
-  color: var(--ink);
-  -webkit-appearance: none;
-  appearance: none;
-  transition: background 0.25s, border-color 0.25s, color 0.25s;
-}
-input[type="text"]::placeholder { color: var(--ink-muted-48); }
-input[type="text"]:focus,
-input[type="datetime-local"]:focus {
-  outline: 2px solid var(--primary-focus);
-  outline-offset: 0;
-  border-color: transparent;
-}
-input[type="datetime-local"]::-webkit-calendar-picker-indicator {
-  filter: var(--cal-filter, none);
-  opacity: 0.45;
-  cursor: pointer;
-}
-[data-theme="dark"] input[type="datetime-local"]::-webkit-calendar-picker-indicator {
-  filter: invert(1);
-}
-
-.two { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-@media (max-width: 480px) { .two { grid-template-columns: 1fr; } }
-
-.tarief-block {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  background: var(--tarief-bg);
-  border: 1px solid var(--input-border);
-  border-radius: 9999px;
-  padding: 12px 20px;
-  min-height: 50px;
-  transition: background 0.25s, border-color 0.25s;
-}
-.tarief-value {
-  font-size: 17px;
-  font-weight: 600;
-  letter-spacing: -0.374px;
-  color: var(--ink);
-  font-variant-numeric: tabular-nums;
-  transition: color 0.25s;
-}
-.tarief-value.empty { font-weight: 400; color: var(--ink-muted-48); }
-.tarief-bron { font-size: 14px; font-weight: 400; color: var(--ink-muted-48); transition: color 0.25s; }
-.tarief-note {
-  font-size: 12px;
-  color: var(--ink-muted-48);
-  line-height: 1.43;
-  margin-top: 10px;
-  padding: 0 4px;
-  transition: color 0.25s;
-}
-
-/* Suggest */
-.suggest {
-  position: absolute;
-  top: calc(100% + 6px);
-  left: 0; right: 0;
-  z-index: 50;
-  background: var(--suggest-bg);
-  border: 1px solid var(--suggest-border);
-  border-radius: 18px;
-  overflow: hidden;
-  display: none;
-  box-shadow: 0 8px 30px rgba(0,0,0,0.14);
-  transition: background 0.25s;
-}
-.suggest.open { display: block; }
-.suggest-item {
-  padding: 11px 20px;
-  font-size: 17px;
-  font-weight: 400;
-  letter-spacing: -0.374px;
-  color: var(--ink);
-  cursor: pointer;
-  border-bottom: 1px solid var(--suggest-divider);
-  transition: background 0.1s ease, color 0.25s;
-}
-.suggest-item:last-child { border-bottom: none; }
-.suggest-item:hover { background: var(--suggest-hover); }
-
-.found-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  margin-top: 10px;
-  font-size: 14px;
-  font-weight: 400;
-  color: var(--success);
-  padding: 0 4px;
-  transition: color 0.25s;
-}
-.found-tag::before {
-  content: '';
-  width: 6px; height: 6px;
-  background: var(--success);
-  border-radius: 50%;
-  flex-shrink: 0;
-}
-
-/* Button */
-.btn-primary {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--primary);
-  color: #fff;
-  border: none;
-  border-radius: 9999px;
-  padding: 11px 22px;
-  font-family: inherit;
-  font-size: 17px;
-  font-weight: 400;
-  line-height: 1.47;
-  letter-spacing: -0.374px;
-  cursor: pointer;
-  transition: transform 0.1s ease, background 0.25s;
-  min-height: 44px;
-}
-.btn-primary:active { transform: scale(0.95); }
-
-.cta-row { display: flex; gap: 12px; margin-top: 32px; flex-wrap: wrap; }
-
-/* ─── RESULTS TILE ─── */
-.results-tile {
-  background: var(--results-bg);
-  padding: 80px 24px;
-  transition: background 0.25s;
-}
-.results-tile .tile-inner { max-width: 680px; margin: 0 auto; }
-
-.section-label {
-  font-size: 21px;
-  font-weight: 600;
-  letter-spacing: 0.231px;
-  color: var(--results-text);
-  margin-bottom: 20px;
-}
-
-.summary-strip {
-  display: flex;
-  gap: 40px;
-  margin-bottom: 40px;
-  flex-wrap: wrap;
-}
-.summary-item .lab {
-  font-size: 14px;
-  font-weight: 400;
-  letter-spacing: -0.224px;
-  color: var(--results-muted);
-  margin-bottom: 4px;
-}
-.summary-item .val {
-  font-size: 34px;
-  font-weight: 600;
-  letter-spacing: -0.374px;
-  line-height: 1.1;
-  color: var(--results-text);
-  font-variant-numeric: tabular-nums;
-}
-.summary-item .sub {
-  font-size: 12px;
-  color: var(--results-muted);
-  margin-top: 4px;
-}
-
-.results-group { margin-bottom: 48px; }
-.results-group:last-child { margin-bottom: 0; }
-
-.results-list { border-top: 1px solid var(--results-divider); }
-.result-row {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  align-items: center;
-  gap: 16px;
-  padding: 20px 0;
-  border-bottom: 1px solid var(--results-divider-2);
-}
-.result-row:last-child { border-bottom: none; }
-
-.row-name {
-  font-size: 17px;
-  font-weight: 600;
-  letter-spacing: -0.374px;
-  color: var(--results-text);
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  flex-wrap: wrap;
-  margin-bottom: 2px;
-}
-.best-tag {
-  background: var(--best-tag-bg);
-  color: var(--best-tag-ink);
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  padding: 2px 8px;
-  border-radius: 9999px;
-  line-height: 1.6;
-}
-.row-sub {
-  font-size: 14px;
-  font-weight: 400;
-  letter-spacing: -0.224px;
-  color: var(--results-muted);
-  line-height: 1.43;
-}
-.row-right { text-align: right; flex-shrink: 0; }
-.row-total {
-  font-size: 22px;
-  font-weight: 600;
-  letter-spacing: -0.374px;
-  color: var(--results-text);
-  font-variant-numeric: tabular-nums;
-  white-space: nowrap;
-}
-.row-delta {
-  font-size: 14px;
-  font-weight: 400;
-  color: var(--results-muted);
-  white-space: nowrap;
-  font-variant-numeric: tabular-nums;
-  margin-top: 2px;
-}
-.row-delta.higher { color: #ff453a; }
-
-.avail { display: inline-flex; align-items: center; gap: 5px; font-size: 14px; color: var(--results-muted); }
-.avail-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--results-muted); flex-shrink: 0; }
-.avail-dot.green  { background: #30d158; }
-.avail-dot.yellow { background: #ffd60a; }
-.avail-dot.red    { background: #ff453a; }
-
-.info-box {
-  background: var(--results-info-bg);
-  border-radius: 18px;
-  padding: 20px 24px;
-  font-size: 14px;
-  font-weight: 400;
-  letter-spacing: -0.224px;
-  color: var(--results-muted);
-  line-height: 1.6;
-  margin-top: 16px;
-  transition: background 0.25s;
-}
-
-/* Error */
-.error-banner {
-  background: var(--error-bg);
-  border: 1px solid var(--error-border);
-  border-radius: 18px;
-  padding: 14px 20px;
-  font-size: 17px;
-  color: var(--error-text);
-  margin-top: 24px;
-  transition: background 0.25s, border-color 0.25s, color 0.25s;
-}
-
-/* Footer */
-footer {
-  background: var(--footer-bg);
-  padding: 40px 24px;
-  border-top: 1px solid var(--footer-border);
-  transition: background 0.25s, border-color 0.25s;
-}
-.footer-inner {
-  max-width: 680px;
-  margin: 0 auto;
-  font-size: 12px;
-  font-weight: 400;
-  line-height: 1.65;
-  color: var(--footer-text);
-  transition: color 0.25s;
-}
-
-/* Animations */
-@keyframes rise {
-  from { opacity: 0; transform: translateY(12px); }
-  to   { opacity: 1; transform: none; }
-}
-.anim { animation: rise 0.45s cubic-bezier(0.2,0.7,0.2,1) both; }
-
-/* Responsive */
-@media (max-width: 640px) {
-  .hero-tile, .form-tile, .results-tile { padding: 48px 20px; }
-  .hero-h1 { letter-spacing: -0.2px; }
-  .summary-strip { gap: 24px; }
-  .summary-item .val { font-size: 28px; }
-}
-</style>
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      .nav { padding: 0 24px; }
+      .nav-links { display: none; }
+      .hero { grid-template-columns: 1fr; padding: 60px 24px; gap: 40px; }
+      .stats-inner { grid-template-columns: 1fr; }
+      .stat-cell { padding: 32px 24px; }
+      .section-wrap { padding: 72px 24px; }
+      .tool-form { grid-template-columns: 1fr; }
+      .steps-grid { grid-template-columns: 1fr; }
+      .footer { flex-direction: column; align-items: flex-start; padding: 40px 24px; }
+      .footer-links { flex-wrap: wrap; gap: 16px; }
+      .cta-band { padding: 72px 24px; }
+    }
+    @media (max-width: 560px) {
+      .res-fee { display: none; }
+      .time-grid { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
 
-<!-- Global nav -->
-<nav class="global-nav">
-  <div class="nav-inner">
-    <div class="nav-right">
-      <!-- Theme toggle -->
-      <label class="theme-toggle" aria-label="Schakel thema">
-        <input type="checkbox" id="theme-checkbox">
-        <span class="toggle-track"></span>
-        <span class="toggle-thumb">
-          <!-- Sun -->
-          <svg class="icon-sun" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="7" cy="7" r="2.5" fill="#f59e0b"/>
-            <line x1="7" y1="1" x2="7" y2="2.5" stroke="#f59e0b" stroke-width="1.2" stroke-linecap="round"/>
-            <line x1="7" y1="11.5" x2="7" y2="13" stroke="#f59e0b" stroke-width="1.2" stroke-linecap="round"/>
-            <line x1="1" y1="7" x2="2.5" y2="7" stroke="#f59e0b" stroke-width="1.2" stroke-linecap="round"/>
-            <line x1="11.5" y1="7" x2="13" y2="7" stroke="#f59e0b" stroke-width="1.2" stroke-linecap="round"/>
-            <line x1="2.93" y1="2.93" x2="3.99" y2="3.99" stroke="#f59e0b" stroke-width="1.2" stroke-linecap="round"/>
-            <line x1="10.01" y1="10.01" x2="11.07" y2="11.07" stroke="#f59e0b" stroke-width="1.2" stroke-linecap="round"/>
-            <line x1="11.07" y1="2.93" x2="10.01" y2="3.99" stroke="#f59e0b" stroke-width="1.2" stroke-linecap="round"/>
-            <line x1="3.99" y1="10.01" x2="2.93" y2="11.07" stroke="#f59e0b" stroke-width="1.2" stroke-linecap="round"/>
-          </svg>
-          <!-- Moon -->
-          <svg class="icon-moon" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M11.5 8.5A5 5 0 0 1 5.5 2.5a5 5 0 1 0 6 6z" fill="#d1d1d6"/>
-          </svg>
-        </span>
-      </label>
-    </div>
-  </div>
+<!-- Nav -->
+<nav class="nav">
+  <a href="#" class="nav-logo">Qurb<em>.</em></a>
+  <ul class="nav-links">
+    <li><a href="#hoe">Hoe het werkt</a></li>
+    <li><a href="#vergelijk">Vergelijker</a></li>
+    <li><a href="#apps">Apps</a></li>
+  </ul>
+  <span class="nav-badge">Beta</span>
 </nav>
 
-<!-- Sub nav -->
-<div class="sub-nav">
-  <div class="sub-nav-inner">
-    <span class="sub-nav-title">Qurb</span>
+<!-- Hero -->
+<section class="hero">
+  <div>
+    <div class="hero-eyebrow">Parkeer­vergelijker · Nederland</div>
+    <h1 class="hero-h1">Weet wat je<br><em>écht</em> betaalt<br>aan parkeren.</h1>
+    <p class="hero-sub">
+      Zelfde plek, zelfde tijd — maar elke parkeer-app rekent zijn eigen servicekosten bovenop het gemeentetarief. Qurb maakt het verschil zichtbaar in één oogopslag.
+    </p>
+    <div class="hero-actions">
+      <a href="#vergelijk" class="btn-dark">Vergelijk nu</a>
+      <a href="#hoe" class="btn-ghost">Hoe werkt het? →</a>
+    </div>
+  </div>
+  <!-- Static preview card -->
+  <div class="hero-preview">
+    <div class="hp-header">
+      <span class="hp-title">Amsterdam · 2 uur</span>
+      <span class="hp-meta">€7.50 / uur</span>
+    </div>
+    <div class="hp-sub">Gemeentetarief: €15.00 · Servicekosten per app ↓</div>
+    <div class="hp-row best">
+      <div class="hp-dot" style="background:#FF8200"></div>
+      <span class="hp-name">ANWB Parkeren</span>
+      <span class="hp-badge">goedkoopst</span>
+      <span class="hp-price">€ 15.33</span>
+    </div>
+    <div class="hp-row">
+      <div class="hp-dot" style="background:#F5C400"></div>
+      <span class="hp-name">Yellowbrick</span>
+      <span class="hp-price">€ 15.49</span>
+    </div>
+    <div class="hp-row">
+      <div class="hp-dot" style="background:#FF4B00"></div>
+      <span class="hp-name">Parkmobile</span>
+      <span class="hp-price">€ 15.52</span>
+    </div>
+    <div class="hp-row">
+      <div class="hp-dot" style="background:#1E8AFF"></div>
+      <span class="hp-name">EasyPark</span>
+      <span class="hp-price">€ 15.70</span>
+    </div>
+    <div class="hp-row">
+      <div class="hp-dot" style="background:#8B5CF6"></div>
+      <span class="hp-name">Moov</span>
+      <span class="hp-price">€ 15.80</span>
+    </div>
+  </div>
+</section>
+
+<!-- Stats bar -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat-cell">
+      <div class="stat-num">5</div>
+      <div class="stat-lbl">parkeer-apps vergeleken</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-num">€0<em>.50</em></div>
+      <div class="stat-lbl">gemiddelde besparing per sessie</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-num">4</div>
+      <div class="stat-lbl">steden: Amsterdam · Rotterdam · Utrecht · Den Haag</div>
+    </div>
   </div>
 </div>
 
-<!-- Hero -->
-<section class="hero-tile">
-  <div class="hero-inner">
-    <div style="display:flex;justify-content:center;margin-bottom:20px;">
-      <svg width="56" height="56" viewBox="0 0 48 48" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="22" cy="21" r="14" fill="none" stroke="var(--logo-green)" stroke-width="8"/>
-        <polygon points="31,29 25,32 36,43" fill="var(--logo-tail)"/>
-      </svg>
-    </div>
-    <p class="hero-kicker">peek before you park</p>
-    <h1 class="hero-h1">Slim parkeren begint hier.</h1>
-    <p class="hero-lede">Voer een adres in, kies je tijdstip — en zie meteen waar jij het goedkoopst parkeert. Straat, garage of P+R: alles op een rij.</p>
-    <div class="cta-row" style="justify-content:center;margin-top:28px;">
-      <button class="btn-primary" onclick="document.querySelector('.form-tile').scrollIntoView({behavior:'smooth'})">Peek nu gratis →</button>
+<!-- Compare tool -->
+<section id="vergelijk">
+  <div class="section-wrap" style="padding-bottom:40px;">
+    <div class="s-eyebrow">Vergelijker</div>
+    <h2 class="s-title">Vergelijk zelf.</h2>
+    <p class="s-sub">Voer een adres in, kies je tijdstip — Qurb rekent door wat elke app je kost.</p>
+  </div>
+  <div style="max-width:1200px;margin:0 auto;padding:0 48px 100px;">
+    <div class="tool-card">
+      <div class="tool-form">
+        <div class="fg fg-addr">
+          <label>Jouw bestemming</label>
+          <input id="addr" type="text" autocomplete="off" placeholder="Bijv. Centraal Station Utrecht">
+          <div id="suggest" class="suggest"></div>
+          <div id="found"></div>
+        </div>
+        <div class="fg">
+          <label>Tijdstip</label>
+          <div class="time-grid">
+            <div>
+              <input id="van" type="datetime-local">
+            </div>
+            <div>
+              <input id="tot" type="datetime-local">
+            </div>
+          </div>
+        </div>
+        <div class="fg" style="align-self:end;">
+          <label>&nbsp;</label>
+          <button class="form-go" id="go">Peek →</button>
+        </div>
+      </div>
+
+      <div class="tool-results" id="tool-results">
+        <div class="tool-empty">
+          <div class="tool-empty-icon">🅿️</div>
+          <p>Kies een adres en klik op <strong>Peek</strong> om te starten.</p>
+        </div>
+      </div>
+
+      <div class="tool-disclaimer">
+        Indicatieve tarieven — gemeentecijfers zijn gemiddelden per stad en variëren per zone. Servicekosten zijn gebaseerd op openbaar beschikbare informatie en kunnen wijzigen. In de volledige versie worden exacte zonecijfers live opgehaald uit open RDW-parkeerdata.
+      </div>
     </div>
   </div>
 </section>
-
-<!-- Form -->
-<section class="form-tile">
-  <div class="tile-inner">
-
-    <p style="font-size:21px;font-weight:600;letter-spacing:0.231px;color:var(--ink);margin-bottom:28px;">Hoeveel bespaar jij?</p>
-
-    <div class="field">
-      <label for="addr">Jouw bestemming</label>
-      <input id="addr" type="text" autocomplete="off" placeholder="Bijv. Centraal Station Utrecht">
-      <div id="suggest" class="suggest"></div>
-      <div id="found" style="display:none"></div>
-    </div>
-
-    <div class="two">
-      <div class="field">
-        <label for="van">Van</label>
-        <input id="van" type="datetime-local">
-      </div>
-      <div class="field">
-        <label for="tot">Tot</label>
-        <input id="tot" type="datetime-local">
-      </div>
-    </div>
-
-    <div class="field">
-      <label>Gemeentelijk uurtarief</label>
-      <div class="tarief-block">
-        <span id="tarief-weergave" class="tarief-value empty">Kies eerst een adres</span>
-      </div>
-      <p class="tarief-note">Indicatief gemeentecijfer. In de volledige versie komt het exacte tarief per zone live uit de open parkeerdata van de RDW.</p>
-    </div>
-
-    <div class="cta-row">
-      <button class="btn-primary" id="go">Peek →</button>
-    </div>
-
-    <div id="out-light"></div>
-  </div>
-</section>
-
-<!-- Results injected here -->
-<div id="results-mount"></div>
 
 <!-- How it works -->
-<section style="background:var(--canvas-parchment);padding:80px 24px;transition:background .25s;">
-  <div style="max-width:680px;margin:0 auto;text-align:center;">
-    <p style="font-size:21px;font-weight:600;letter-spacing:0.231px;color:var(--ink);margin-bottom:40px;transition:color .25s;">Zo werkt het</p>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:32px;text-align:left;">
-      <div>
-        <p style="font-size:17px;font-weight:600;color:var(--ink);margin-bottom:8px;transition:color .25s;">Vul je bestemming in</p>
-        <p style="font-size:15px;color:var(--body-muted);line-height:1.5;transition:color .25s;">Waar ga je naartoe? Qurb zoekt alle parkeeropties in de buurt — van straatparkeren tot garages.</p>
+<section id="hoe" class="hiw-bg">
+  <div class="section-wrap">
+    <div class="s-eyebrow">Zo werkt het</div>
+    <h2 class="s-title">Drie stappen.<br>Één eerlijk antwoord.</h2>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-n">01</div>
+        <div class="step-t">Vul je bestemming in</div>
+        <p class="step-b">Waar ga je naartoe? Qurb zoekt alle parkeeropties in de buurt — van straatparkeren tot garages.</p>
       </div>
-      <div>
-        <p style="font-size:17px;font-weight:600;color:var(--ink);margin-bottom:8px;transition:color .25s;">Kies je tijdslot</p>
-        <p style="font-size:15px;color:var(--body-muted);line-height:1.5;transition:color .25s;">Geef aan hoe lang je parkeert. Qurb rekent alles door, inclusief servicekosten van parkeer-apps.</p>
+      <div class="step-card">
+        <div class="step-n">02</div>
+        <div class="step-t">Kies je tijdslot</div>
+        <p class="step-b">Geef aan hoe lang je parkeert. Qurb rekent alles door, inclusief servicekosten van alle parkeer-apps.</p>
       </div>
-      <div>
-        <p style="font-size:17px;font-weight:600;color:var(--ink);margin-bottom:8px;transition:color .25s;">Peek — en kies slim</p>
-        <p style="font-size:15px;color:var(--body-muted);line-height:1.5;transition:color .25s;">In één oogopslag zie je wat elke optie écht kost. Geen verrassingen achteraf.</p>
+      <div class="step-card">
+        <div class="step-n">03</div>
+        <div class="step-t">Peek — en kies slim</div>
+        <p class="step-b">In één oogopslag zie je wat elke optie écht kost. Bespaar tot €1 per bezoek. Geen verrassingen achteraf.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Trust / USP -->
-<section style="background:var(--canvas);padding:80px 24px;transition:background .25s;">
-  <div style="max-width:680px;margin:0 auto;text-align:center;">
-    <h2 style="font-size:clamp(24px,4vw,36px);font-weight:600;letter-spacing:-0.28px;color:var(--ink);margin-bottom:16px;line-height:1.1;transition:color .25s;">Parkeerkosten lopen snel op. Qurb houdt ze in de hand.</h2>
-    <p style="font-size:19px;color:var(--body-muted);line-height:1.5;max-width:52ch;margin:0 auto;transition:color .25s;">Dezelfde plek, hetzelfde tijdstip — maar de ene app rekent €0,30 meer per uur dan de andere. Qurb laat je dat zien, zodat jij de keuze maakt.</p>
+<!-- Apps -->
+<section id="apps">
+  <div class="section-wrap">
+    <div class="s-eyebrow">Gedekte apps</div>
+    <h2 class="s-title">We vergelijken<br>de grote vijf.</h2>
+    <p class="s-sub">Van marktleider tot challenger — alle grote parkeer-apps in één overzicht.</p>
+    <div class="apps-flex">
+      <div class="app-chip"><div class="app-chip-dot" style="background:#FF8200"></div>ANWB Parkeren</div>
+      <div class="app-chip"><div class="app-chip-dot" style="background:#F5C400"></div>Yellowbrick</div>
+      <div class="app-chip"><div class="app-chip-dot" style="background:#FF4B00"></div>Parkmobile</div>
+      <div class="app-chip"><div class="app-chip-dot" style="background:#1E8AFF"></div>EasyPark</div>
+      <div class="app-chip"><div class="app-chip-dot" style="background:#8B5CF6"></div>Moov</div>
+    </div>
   </div>
 </section>
 
-<!-- Closing CTA -->
-<section style="background:var(--canvas-parchment);padding:80px 24px;text-align:center;transition:background .25s;">
-  <div style="max-width:680px;margin:0 auto;">
-    <h2 style="font-size:clamp(24px,4vw,36px);font-weight:600;letter-spacing:-0.28px;color:var(--ink);margin-bottom:12px;line-height:1.1;transition:color .25s;">Hoeveel bespaar jij vandaag?</h2>
-    <p style="font-size:19px;color:var(--body-muted);margin-bottom:28px;transition:color .25s;">Probeer Qurb gratis. Geen account nodig.</p>
-    <button class="btn-primary" onclick="document.querySelector('.form-tile').scrollIntoView({behavior:'smooth'})">Peek nu →</button>
-  </div>
+<!-- CTA band -->
+<section class="cta-band">
+  <h2>Parkeer nooit meer te duur.</h2>
+  <p>Qurb is gratis. Altijd. Geen account, geen gedoe.</p>
+  <a href="#vergelijk" class="btn-white">Start vergelijking</a>
 </section>
 
 <!-- Footer -->
-<footer>
-  <div class="footer-inner">
-    <div class="footer-brand">
-      <svg class="brand-mark sm" viewBox="0 0 48 48" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="22" cy="21" r="14" fill="none" stroke="var(--logo-green)" stroke-width="8"/>
-        <polygon points="31,29 25,32 36,43" fill="var(--logo-tail)"/>
-      </svg>
-      <span class="brand-name">qurb</span>
-      <span class="footer-tagline">peek before you park</span>
-    </div>
-    Wat dit prototype nog niet doet: tijdvakken meerekenen (gratis uren, koopavond, zondag) en het exacte tarief per zone toepassen. Tarieven zijn indicatief. Garages hebben echte namen en exploitanten, maar gesimuleerde beschikbaarheid — opgenomen voor Utrecht, Amsterdam, Rotterdam en Den Haag.
-  </div>
+<footer class="footer">
+  <div class="footer-logo">Qurb<em>.</em></div>
+  <ul class="footer-links">
+    <li><a href="#">Over Qurb</a></li>
+    <li><a href="#">Privacy</a></li>
+    <li><a href="#">Contact</a></li>
+    <li><a href="#">RDW Open Data</a></li>
+  </ul>
+  <div class="footer-copy">© 2026 Qurb · Beta</div>
 </footer>
 
 <script>
-/* ── Theme toggle ── */
-const html = document.documentElement;
-const checkbox = document.getElementById('theme-checkbox');
-let stored = null;
-try { stored = localStorage.getItem('theme'); } catch(e) {}
-if (stored) {
-  html.dataset.theme = stored;
-  checkbox.checked = stored === 'dark';
-} else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-  html.dataset.theme = 'dark';
-  checkbox.checked = true;
-}
-checkbox.addEventListener('change', () => {
-  const t = checkbox.checked ? 'dark' : 'light';
-  html.dataset.theme = t;
-  try { localStorage.setItem('theme', t); } catch(e) {}
-});
-
 /* ── Utilities ── */
 const eur    = new Intl.NumberFormat('nl-NL',{style:'currency',currency:'EUR'});
 const round2 = x => Math.round((x + Number.EPSILON)*100)/100;
-/* Escape tekst uit externe bronnen (PDOK) voordat die in innerHTML belandt. */
-const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 function toInput(d){
   const p = n => String(n).padStart(2,'0');
   return `${d.getFullYear()}-${p(d.getMonth()+1)}-${p(d.getDate())}T${p(d.getHours())}:${p(d.getMinutes())}`;
@@ -877,20 +654,11 @@ function tariefVoorStad(stad){
   return TARIEVEN[key]!=null ? {tarief:TARIEVEN[key],bron:stad} : {tarief:3.00,bron:'landelijk gemiddelde'};
 }
 
-function updateTariefWeergave(){
-  const el  = document.getElementById('tarief-weergave');
-  const res = tariefVoorStad(gekozenStad);
-  if(!res){ huidigTarief=null; el.className='tarief-value empty'; el.innerHTML='Kies eerst een adres'; return; }
-  huidigTarief = res.tarief;
-  el.className = 'tarief-value';
-  el.innerHTML = `${eur.format(res.tarief)} <span class="tarief-bron">· ${esc(res.bron)}</span>`;
-}
-
 addr.addEventListener('input',()=>{
-  found.style.display='none';
+  found.innerHTML='';
   clearTimeout(tmr);
   const q=addr.value.trim();
-  if(q.length<3){sugBox.classList.remove('open');sugBox.innerHTML='';return;}
+  if(q.length<3){sugBox.classList.remove('open');sugBox.innerHTML='';huidigTarief=null;return;}
   tmr=setTimeout(()=>lookup(q),250);
 });
 
@@ -909,10 +677,10 @@ async function lookup(q){
       el.addEventListener('click',()=>{
         addr.value=d.weergavenaam;
         gekozenStad=stadUit(d.weergavenaam);
-        updateTariefWeergave();
+        const res=tariefVoorStad(gekozenStad);
+        huidigTarief=res?res.tarief:null;
         sugBox.classList.remove('open');
-        found.innerHTML=`<span class="found-tag">${esc(d.weergavenaam)}</span>`;
-        found.style.display='block';
+        found.innerHTML=`<span class="found-tag">${d.weergavenaam}${res?' · '+eur.format(res.tarief)+'/uur':''}</span>`;
       });
       sugBox.appendChild(el);
     });
@@ -924,11 +692,11 @@ document.addEventListener('click',e=>{ if(!sugBox.contains(e.target)&&e.target!=
 /* ── Apps data ── */
 function easyparkFee(t,u){ return Math.min(7.00,round2(Math.min(0.70,Math.max(0.19,0.15*t))*u)); }
 const APPS=[
-  {name:'Parkmobile',   rule:'€0,52 per parkeeractie',                   fee:()=>0.52},
-  {name:'EasyPark',     rule:'15% van tarief, €0,19–€0,70/uur, max €7', fee:(t,u)=>easyparkFee(t,u)},
-  {name:'Yellowbrick',  rule:'€0,49 per parkeeractie',                   fee:()=>0.49},
-  {name:'ANWB Parkeren',rule:'€0,33 per actie, alleen voor leden',       fee:()=>0.33},
-  {name:'Q-Park',       rule:'Geen transactiekosten op straat',           fee:()=>0.00},
+  {name:'ANWB Parkeren', rule:'€0,33 per actie', color:'#FF8200', fee:()=>0.33},
+  {name:'Yellowbrick',   rule:'€0,49 per actie', color:'#F5C400', fee:()=>0.49},
+  {name:'Parkmobile',    rule:'€0,52 per actie', color:'#FF4B00', fee:()=>0.52},
+  {name:'EasyPark',      rule:'15% van tarief, €0,19–€0,70/uur', color:'#1E8AFF', fee:(t,u)=>easyparkFee(t,u)},
+  {name:'Moov',          rule:'Geen transactiekosten', color:'#8B5CF6', fee:()=>0.00},
 ];
 
 /* ── Garages data ── */
@@ -937,33 +705,25 @@ const GARAGES={
     {naam:'Interparking Hoog Catharijne P1',exploitant:'Interparking',afstand:210,uur:4.80,dagmax:39,vrij:140,capaciteit:350},
     {naam:'Interparking Hoog Catharijne P5',exploitant:'Interparking',afstand:350,uur:5.20,dagmax:42,vrij:520,capaciteit:1174},
     {naam:'Q-Park La Vie',exploitant:'Q-Park',afstand:480,uur:5.00,dagmax:40,vrij:25,capaciteit:480},
-    {naam:'Springweg',exploitant:'Gemeente Utrecht',afstand:900,uur:5.50,dagmax:45,vrij:8,capaciteit:380},
     {naam:'ParkBee Lange Nieuwstraat',exploitant:'ParkBee',afstand:650,uur:3.50,dagmax:24,vrij:60,capaciteit:120},
-    {naam:'ParkBee Daalsesingel',exploitant:'ParkBee',afstand:400,uur:3.20,dagmax:22,vrij:0,capaciteit:90},
   ],
   'amsterdam':[
     {naam:'Q-Park Bijenkorf',exploitant:'Q-Park',afstand:220,uur:9.50,dagmax:60,vrij:30,capaciteit:457},
     {naam:'Q-Park Europarking',exploitant:'Q-Park',afstand:950,uur:6.00,dagmax:55,vrij:210,capaciteit:710},
     {naam:'Interparking The Bank',exploitant:'Interparking',afstand:600,uur:13.00,dagmax:80,vrij:15,capaciteit:110},
-    {naam:'Markenhoven',exploitant:'Gemeente Amsterdam',afstand:700,uur:7.50,dagmax:90,vrij:40,capaciteit:300},
     {naam:'ParkBee Hotel Krasnapolsky',exploitant:'ParkBee',afstand:150,uur:5.50,dagmax:50,vrij:12,capaciteit:80},
-    {naam:'ParkBee Spiegelhof',exploitant:'ParkBee',afstand:500,uur:7.56,dagmax:66,vrij:0,capaciteit:60},
   ],
   'rotterdam':[
     {naam:'Interparking Lijnbaan',exploitant:'Interparking',afstand:280,uur:3.60,dagmax:28,vrij:180,capaciteit:620},
     {naam:'Interparking Markthal',exploitant:'Interparking',afstand:520,uur:4.00,dagmax:32,vrij:430,capaciteit:1100},
     {naam:'Q-Park De Rotterdam',exploitant:'Q-Park',afstand:1400,uur:3.80,dagmax:30,vrij:90,capaciteit:700},
-    {naam:'APCOA Westblaak',exploitant:'APCOA',afstand:650,uur:3.20,dagmax:24,vrij:26,capaciteit:400},
-    {naam:'ParkBee Groot Handelsgebouw P1',exploitant:'ParkBee',afstand:350,uur:2.80,dagmax:20,vrij:70,capaciteit:150},
-    {naam:'ParkBee Witte de With',exploitant:'ParkBee',afstand:600,uur:2.50,dagmax:18,vrij:0,capaciteit:80},
+    {naam:'ParkBee Groot Handelsgebouw',exploitant:'ParkBee',afstand:350,uur:2.80,dagmax:20,vrij:70,capaciteit:150},
   ],
   'den haag':[
     {naam:'Q-Park City Parking',exploitant:'Q-Park',afstand:240,uur:4.50,dagmax:38,vrij:35,capaciteit:223},
     {naam:'Q-Park New Babylon',exploitant:'Q-Park',afstand:900,uur:3.80,dagmax:32,vrij:160,capaciteit:700},
     {naam:'Interparking Helicon',exploitant:'Interparking',afstand:600,uur:4.20,dagmax:34,vrij:20,capaciteit:350},
-    {naam:'APCOA Wijnhaven',exploitant:'APCOA',afstand:700,uur:3.40,dagmax:30,vrij:90,capaciteit:540},
     {naam:'ParkBee Wijnhaven',exploitant:'ParkBee',afstand:680,uur:2.80,dagmax:22,vrij:40,capaciteit:90},
-    {naam:'ParkBee Paviljoensgracht',exploitant:'ParkBee',afstand:550,uur:2.60,dagmax:20,vrij:0,capaciteit:70},
   ],
 };
 GARAGES["'s-gravenhage"]=GARAGES['den haag'];
@@ -979,20 +739,17 @@ function afstandTekst(m){ return m>=1000?(m/1000).toFixed(1).replace('.',',')+'&
 function duurTekst(min){ const h=Math.floor(min/60),m=min%60; return h&&m?`${h}u ${m}m`:h?`${h}u`:`${m}m`; }
 
 /* ── Calculate ── */
-const outLight = document.getElementById('out-light');
-const resMount = document.getElementById('results-mount');
+const resultsEl = document.getElementById('tool-results');
 
 function showError(msg){
-  outLight.innerHTML=`<div class="error-banner">${msg}</div>`;
-  resMount.innerHTML='';
+  resultsEl.innerHTML=`<div class="error-banner">${msg}</div>`;
 }
 
 function bereken(){
   const start=new Date(document.getElementById('van').value);
   const eind =new Date(document.getElementById('tot').value);
-  outLight.innerHTML='';
 
-  if(huidigTarief==null){showError('Kies eerst een adres uit de lijst, dan verschijnt het gemeentetarief.');return;}
+  if(huidigTarief==null){showError('Kies eerst een adres uit de lijst.');return;}
   if(isNaN(start)||isNaN(eind)){showError('Vul een begin- en eindtijd in.');return;}
   const ms=eind-start;
   if(ms<=0){showError('De eindtijd moet na de begintijd liggen.');return;}
@@ -1001,58 +758,62 @@ function bereken(){
   const rij=APPS.map(a=>({...a,fee:round2(a.fee(huidigTarief,uren)),totaal:round2(basis+round2(a.fee(huidigTarief,uren)))}))
     .sort((x,y)=>x.totaal-y.totaal);
   const goedkoopst=rij[0].totaal;
+  const duurste=rij[rij.length-1].totaal;
+  const besparing=round2(duurste-goedkoopst);
 
-  let html=`<section class="results-tile"><div class="tile-inner">
-  <div class="summary-strip anim">
-    <div class="summary-item"><div class="lab">Duur</div><div class="val">${duurTekst(min)}</div></div>
-    <div class="summary-item"><div class="lab">Basisprijs</div><div class="val">${eur.format(basis)}</div><div class="sub">Gelijk voor alle apps</div></div>
-  </div>
-  <div class="results-group">
-    <div class="section-label">Op straat</div>
-    <div class="results-list">`;
+  let html=`
+    <div class="res-header">
+      <div class="res-title">${gekozenStad} · ${duurTekst(min)}
+        <span style="font-family:'DM Sans';font-weight:400;font-size:13px;color:var(--muted);margin-left:10px;">
+          ${eur.format(huidigTarief)}/uur gemeentetarief
+        </span>
+      </div>
+      <div class="res-save">Besparing: <strong>${eur.format(besparing)}</strong></div>
+    </div>`;
 
   rij.forEach((a,i)=>{
     const best=a.totaal===goedkoopst, delta=round2(a.totaal-goedkoopst);
-    const feeTekst=a.fee===0?'geen servicekosten':`${eur.format(a.fee)} servicekosten`;
-    html+=`<div class="result-row anim" style="animation-delay:${(0.05*(i+1)).toFixed(2)}s">
-      <div><div class="row-name">${a.name}${best?'<span class="best-tag">goedkoopst</span>':''}</div><div class="row-sub">${a.rule}</div></div>
-      <div class="row-right"><div class="row-total">${eur.format(a.totaal)}</div>
-      <div class="row-delta ${!best&&delta>0?'higher':''}">${best?feeTekst:`+${eur.format(delta)}`}</div></div>
+    html+=`<div class="res-row${best?' winner':''}">
+      <div class="res-rank">${i+1}</div>
+      <div class="res-dot" style="background:${a.color}"></div>
+      <div class="res-name">${a.name}</div>
+      <div class="res-fee">${a.rule}</div>
+      <div class="res-total">${eur.format(a.totaal)}</div>
+      ${best?'<span class="win-badge">goedkoopst</span>':''}
+      ${i===rij.length-1&&delta>0?`<span class="exp-delta">+${eur.format(delta)} meer</span>`:''}
     </div>`;
   });
-  html+=`</div></div>`;
 
+  // Garages
   const stadKey=(gekozenStad||'').toLowerCase().trim();
   const garages=GARAGES[stadKey];
-  html+=`<div class="results-group"><div class="section-label">Garages${gekozenStad?' in '+esc(gekozenStad):''}</div>`;
-
-  if(!garages){
-    html+=`<div class="info-box anim" style="animation-delay:0.3s">Geen garagedata voor ${esc(gekozenStad)||'deze plaats'}. In de volledige versie komen alle garages live uit de open parkeerdata van de RDW.</div>`;
-  } else {
+  if(garages){
     const grij=garages.map(g=>({...g,kosten:garageKosten(g,uren),status:vrijStatus(g)}))
       .sort((a,b)=>(a.vrij===0)-(b.vrij===0)||a.kosten-b.kosten);
-    const beste=grij.find(g=>g.vrij>0);
-    html+=`<div class="results-list">`;
+    const besteGarage=grij.find(g=>g.vrij>0);
+    html+=`<div class="garage-section">
+      <div class="garage-section-title">Garages in ${gekozenStad}</div>`;
     grij.forEach((g,i)=>{
-      const best=g===beste, dc=dotClass(g.status);
-      const vrijTekst=g.vrij===0?'vol':`${g.status} · ${g.vrij} vrij`;
-      html+=`<div class="result-row anim" style="animation-delay:${(0.05*(i+1)).toFixed(2)}s">
-        <div><div class="row-name">${g.naam}${best?'<span class="best-tag">goedkoopst</span>':''}</div>
-        <div class="row-sub">${g.exploitant} · ${afstandTekst(g.afstand)} · ${eur.format(g.uur)}/uur, max ${eur.format(g.dagmax)}/dag</div></div>
-        <div class="row-right"><div class="row-total">${eur.format(g.kosten)}</div>
-        <div class="row-delta"><span class="avail"><span class="avail-dot ${dc}"></span>${vrijTekst}</span></div></div>
+      const best=g===besteGarage, dc=dotClass(g.status);
+      html+=`<div class="res-row${best?' winner':''}">
+        <div class="res-rank">${i+1}</div>
+        <div class="res-dot" style="background:var(--muted)"></div>
+        <div class="res-name">${g.naam}</div>
+        <div class="res-fee">${g.exploitant} · ${afstandTekst(g.afstand)}</div>
+        <div class="res-total">${eur.format(g.kosten)}</div>
+        <span class="avail"><span class="avail-dot ${dc}"></span>${g.vrij===0?'vol':g.status}</span>
+        ${best?'<span class="win-badge" style="margin-left:8px;">goedkoopst</span>':''}
       </div>`;
     });
-    html+=`</div><div class="info-box anim" style="animation-delay:0.4s">Echte garagenamen en exploitanten. Tarieven zijn indicatief en beschikbaarheid gesimuleerd. Bij een garage betaal je het exploitantstarief zonder app-servicekosten.</div>`;
+    html+=`</div>`;
   }
-  html+=`</div></div></section>`;
-  resMount.innerHTML=html;
-  resMount.scrollIntoView({behavior:'smooth',block:'start'});
+
+  resultsEl.innerHTML=html;
+  document.getElementById('vergelijk').scrollIntoView({behavior:'smooth',block:'start'});
 }
 
 document.getElementById('go').addEventListener('click',bereken);
 addr.addEventListener('keydown',e=>{ if(e.key==='Enter'&&!sugBox.classList.contains('open')) bereken(); });
-updateTariefWeergave();
 </script>
 </body>
 </html>
