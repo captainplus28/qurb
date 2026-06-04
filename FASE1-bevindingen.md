@@ -78,13 +78,17 @@ Vergeleken met de officiële bron (amsterdam.nl / 2026):
 Validatie met echte PDOK-geocodeerde adressen: Dam €8,05, Buikslotermeerplein €1,72,
 Surinameplein/Czaar Peterstraat €5,37 (Zone 3) — allemaal correct.
 
-### Dekking (open punt)
-160 betaalde zones; **78 bruikbaar** (geometrie + tarief). 82 vallen af: deels abstracte
-ouder-codes (T10/T11/T12 — gedekt door kind-zones), deels echte leaf-zones zonder
-gepubliceerde geometrie in NPR of Socrata. Gevolg: ~50–60% adresdekking; gaten o.a. in
-delen van Zuid/Oost/Nieuw-West vallen terug op het indicatieve tarief.
-**Te doen:** geometriebron voor de resterende leaf-zones vinden (ander sleutelveld of
-extra RDW-dataset), of accepteren met duidelijke "indicatief"-labeling buiten dekking.
+### Dekking — OPGELOST
+De gaten kwamen niet door ontbrekende zones maar door **onvolledig ingelezen geometrie**:
+de WKT-parser ving multi-part (MULTIPOLYGON) zones maar half. Met een robuuste parser en
+Socrata-geometrie als primaire bron (alle ringen per zone) lossen nu alle stadsdelen op:
+Dam €8,05 (Z1), Museumstraat €6,98 (Z2), Apollolaan/Javastraat €5,37 (Z3), Osdorpplein
+€3,01 (Z6), Buikslotermeerplein €1,72. Data: 78 zones, ~515 kB.
+
+### Vrij parkeren
+- In een zone maar buiten het betaalde venster → "Gratis op dit tijdstip".
+- Buiten elke betaalde zone (bv. landelijk Noord) → "Geen betaald straattarief — mogelijk
+  gratis of vergunninghouders". Geen misleidende terugval meer op een indicatief tarief.
 
 ## Status
 - [x] Echte **Amsterdam-garages** uit RDW (tarief, locatie, capaciteit, live afstand).

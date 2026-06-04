@@ -46,20 +46,17 @@ def polys_from_geojson(geom):
     return []
 
 def polys_from_wkt(wkt):
-    """WKT POLYGON/MULTIPOLYGON -> lijst van buitenringen [[lon,lat],...]."""
-    if not wkt: return []
+    """WKT POLYGON/MULTIPOLYGON -> lijst van buitenringen [[lon,lat],...]. Robuust."""
     out = []
-    if wkt.startswith("MULTIPOLYGON"):
-        # buitenring = eerste ring van elke polygoon (vóór een eventuele binnenring)
-        for poly in re.findall(r"\(\(\((.*?)\)\)", wkt) or []:
-            ring = poly.split("),(")[0]
-            out.append([r5(pt.split()) for pt in ring.split(",")])
-        if out: return out
-        # fallback losser
-    m = re.findall(r"\(\((.*?)\)\)", wkt)
-    for ring in m:
-        ring = ring.split("),(")[0]
-        out.append([r5(pt.split()) for pt in ring.split(",")])
+    if not wkt: return out
+    for ring in re.findall(r"\(\(([^()]*?)\)", wkt):   # buitenring van elk (sub)polygoon
+        pts = []
+        for pt in ring.split(","):
+            xy = pt.replace("(","").replace(")","").split()
+            if len(xy) >= 2:
+                try: pts.append([round(float(xy[0]),5), round(float(xy[1]),5)])
+                except ValueError: pass
+        if len(pts) >= 3: out.append(pts)
     return out
 
 def geometrie_socrata(areaid):
@@ -119,10 +116,10 @@ def main():
             s = get(f"{NPR_STATIC}/{uuid}")
             info = s.get("parkingFacilityInformation", {})
             specs = info.get("specifications") or []
-            geom = specs[0].get("areaGeometry") if specs else None
-            polys = polys_from_geojson(geom)
+            # Socrata-geometrie is primair: bevat álle (multi-part) ringen van de zone.
+            polys = geometrie_socrata(areaid)
             if not polys:
-                polys = geometrie_socrata(areaid)        # fallback: Socrata WKT
+                polys = polys_from_geojson(specs[0].get("areaGeometry") if specs else None)
             if not polys:
                 continue
             wins = windows_for_zone(info.get("tariffs") or [])

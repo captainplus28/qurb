@@ -1081,37 +1081,46 @@ async function bereken(){
   if(ms<=0){showError('De eindtijd moet na de begintijd liggen.');return;}
 
   // Live straattarief per zone (Amsterdam); anders het indicatieve gemeentecijfer.
-  let tarief=huidigTarief, tariefNaam=null;
+  let tarief=huidigTarief, tariefNaam=null, gratisStraat=false, dekking=true;
   const stadKey=(gekozenStad||'').toLowerCase().trim();
   if(stadKey==='amsterdam' && gekozenCoord){
     const st=await straatTariefVoor(gekozenCoord, start);
-    if(st){ tarief=st.eur; tariefNaam=(st.gratis?'Gratis nu · ':'')+st.naam; }
+    if(st && st.eur>0){ tarief=st.eur; tariefNaam=st.naam; }
+    else if(st){ tarief=0; gratisStraat=true; tariefNaam='Gratis op dit tijdstip · '+st.naam; }
+    else { tarief=0; gratisStraat=true; dekking=false; tariefNaam='Geen betaald straatparkeren gevonden'; }
   }
 
   const min=Math.round(ms/60000), uren=ms/3600000, basis=round2(tarief*uren);
   const rij=APPS.map(a=>({...a,fee:round2(a.fee(tarief,uren)),totaal:round2(basis+round2(a.fee(tarief,uren)))}))
     .sort((x,y)=>x.totaal-y.totaal);
-  const goedkoopst=rij[0].totaal;
+  const goedkoopst=rij.length?rij[0].totaal:0;
 
   let html=`<section class="results-tile"><div class="tile-inner">
   <div class="summary-strip anim">
     <div class="summary-item"><div class="lab">Duur</div><div class="val">${duurTekst(min)}</div></div>
-    <div class="summary-item"><div class="lab">Basisprijs</div><div class="val">${eur.format(basis)}</div><div class="sub">${tariefNaam?esc(tariefNaam)+' · '+eur.format(tarief)+'/uur':'Gelijk voor alle apps'}</div></div>
+    <div class="summary-item"><div class="lab">Basisprijs</div><div class="val">${gratisStraat?'Gratis':eur.format(basis)}</div><div class="sub">${tariefNaam?esc(tariefNaam)+(gratisStraat?'':' · '+eur.format(tarief)+'/uur'):'Gelijk voor alle apps'}</div></div>
   </div>
   <div class="results-group">
-    <div class="section-label">Op straat</div>
-    <div class="results-list">`;
+    <div class="section-label">Op straat</div>`;
 
-  rij.forEach((a,i)=>{
-    const best=a.totaal===goedkoopst, delta=round2(a.totaal-goedkoopst);
-    const feeTekst=a.fee===0?'geen servicekosten':`${eur.format(a.fee)} servicekosten`;
-    html+=`<div class="result-row anim" style="animation-delay:${(0.05*(i+1)).toFixed(2)}s">
-      <div><div class="row-name">${a.name}${best?'<span class="best-tag">goedkoopst</span>':''}</div><div class="row-sub">${a.rule}</div></div>
-      <div class="row-right"><div class="row-total">${eur.format(a.totaal)}</div>
-      <div class="row-delta ${!best&&delta>0?'higher':''}">${best?feeTekst:`+${eur.format(delta)}`}</div></div>
-    </div>`;
-  });
-  html+=`</div></div>`;
+  if(gratisStraat){
+    html+=`<div class="info-box anim">${dekking
+      ?'Op dit tijdstip is betaald straatparkeren hier niet van kracht — je parkeert gratis.'
+      :'Hier vonden we geen betaald straattarief in de RDW-data. Mogelijk parkeer je gratis of geldt vergunninghoudersparkeren — controleer het bord ter plekke.'}</div>`;
+  } else {
+    html+=`<div class="results-list">`;
+    rij.forEach((a,i)=>{
+      const best=a.totaal===goedkoopst, delta=round2(a.totaal-goedkoopst);
+      const feeTekst=a.fee===0?'geen servicekosten':`${eur.format(a.fee)} servicekosten`;
+      html+=`<div class="result-row anim" style="animation-delay:${(0.05*(i+1)).toFixed(2)}s">
+        <div><div class="row-name">${a.name}${best?'<span class="best-tag">goedkoopst</span>':''}</div><div class="row-sub">${a.rule}</div></div>
+        <div class="row-right"><div class="row-total">${eur.format(a.totaal)}</div>
+        <div class="row-delta ${!best&&delta>0?'higher':''}">${best?feeTekst:`+${eur.format(delta)}`}</div></div>
+      </div>`;
+    });
+    html+=`</div>`;
+  }
+  html+=`</div>`;
 
   html+=`<div class="results-group"><div class="section-label">Garages${gekozenStad?' in '+esc(gekozenStad):''}</div>`;
 
@@ -1131,8 +1140,8 @@ async function bereken(){
           uur:g.uur, dagmax, kosten: garageKosten({uur:g.uur, dagmax}, uren)
         };
       })
-      .sort((a,b)=> a.kosten-b.kosten || ((a.afstand??1e9)-(b.afstand??1e9)));
-    const goedkoopsteG = grij.length ? grij[0].kosten : null;
+      .sort((a,b)=> ((a.afstand??1e9)-(b.afstand??1e9)) || a.kosten-b.kosten);  // op afstand
+    const goedkoopsteG = grij.length ? Math.min(...grij.map(g=>g.kosten)) : null;
     html+=`<div class="results-list">`;
     grij.forEach((g,i)=>{
       const best=g.kosten===goedkoopsteG;
