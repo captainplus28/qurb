@@ -1,14 +1,12 @@
 {
  "stad": "Amsterdam",
- "areamanagerid": "363",
- "bron": "RDW Open Data Parkeren (CC-0)",
- "gegenereerd": "2026-06-04T23:01:05Z",
+ "bron": "RDW NPR Open Parkeerdata (CC-0)",
+ "gegenereerd": "2026-06-04T23:44:16Z",
  "garages": [
   {
-   "areaid": "363_DOME",
    "naam": "Dome-garage (Amsterdam)",
    "operator": "Amsterdam",
-   "adres": "Daniël Goedkoopstraat 7, Amsterdam",
+   "type": "Garage parkeren",
    "lat": 52.317081,
    "lon": 4.937702,
    "capaciteit": 550,
@@ -16,10 +14,139 @@
    "dagmax": 30.0
   },
   {
-   "areaid": "363_MARK",
+   "naam": "Garage AMC P2 (Amsterdam)",
+   "operator": "Academisch Medisch Centrum",
+   "type": "Garage parkeren",
+   "lat": 52.293063,
+   "lon": 4.955573,
+   "capaciteit": 900,
+   "uur": 1.6,
+   "dagmax": 10.0
+  },
+  {
+   "naam": "Garage Amsterdam Centrum (Amsterdam)",
+   "operator": "P1",
+   "type": "Garage parkeren",
+   "lat": 52.378466,
+   "lon": 4.897065,
+   "capaciteit": 434,
+   "uur": 5.0,
+   "dagmax": 55.0
+  },
+  {
+   "naam": "Garage Antarctica (Amsterdam)",
+   "operator": "APCOA Parking",
+   "type": "Garage parkeren",
+   "lat": 52.309404,
+   "lon": 4.946782,
+   "capaciteit": 688,
+   "uur": 2.55,
+   "dagmax": 20.0
+  },
+  {
+   "naam": "Garage De Loodsen (Amsterdam)",
+   "operator": "APCOA Parking",
+   "type": "Garage parkeren",
+   "lat": 52.3765,
+   "lon": 4.925,
+   "capaciteit": 446,
+   "uur": 4.0,
+   "dagmax": 30.0
+  },
+  {
+   "naam": "Garage Flowparking (Amsterdam)",
+   "operator": "APCOA Parking",
+   "type": "Garage parkeren",
+   "lat": 52.3401,
+   "lon": 4.893494,
+   "capaciteit": 170,
+   "uur": 4.0,
+   "dagmax": 15.0
+  },
+  {
+   "naam": "Garage Geelvinck (Amsterdam)",
+   "operator": "APCOA Parking",
+   "type": "Garage parkeren",
+   "lat": 52.366363,
+   "lon": 4.89177,
+   "capaciteit": 60,
+   "uur": 5.0,
+   "dagmax": 49.5
+  },
+  {
+   "naam": "Garage Gelderlandplein (Amsterdam)",
+   "operator": "ParkKing",
+   "type": "Garage parkeren",
+   "lat": 52.331283,
+   "lon": 4.87908,
+   "capaciteit": 820,
+   "uur": 0.0,
+   "dagmax": 50.0
+  },
+  {
+   "naam": "Garage Geuzenpoort (Amsterdam)",
+   "operator": "ParkKing",
+   "type": "Garage parkeren",
+   "lat": 52.378596,
+   "lon": 4.800725,
+   "capaciteit": 90,
+   "uur": 1.0,
+   "dagmax": 24.0
+  },
+  {
+   "naam": "Garage Heinekenplein (Amsterdam)",
+   "operator": "APCOA Parking",
+   "type": "Garage parkeren",
+   "lat": 52.357512,
+   "lon": 4.892585,
+   "capaciteit": 259,
+   "uur": 4.6,
+   "dagmax": 42.0
+  },
+  {
+   "naam": "Garage IJDock (Amsterdam)",
+   "operator": "Interparking",
+   "type": "Garage parkeren",
+   "lat": 52.384732,
+   "lon": 4.894227,
+   "capaciteit": 350,
+   "uur": 5.0,
+   "dagmax": 30.0
+  },
+  {
+   "naam": "Garage IJburg (Amsterdam)",
+   "operator": "Interparking",
+   "type": "Garage parkeren",
+   "lat": 52.358072,
+   "lon": 4.991419,
+   "capaciteit": 281,
+   "uur": 2.0,
+   "dagmax": 5.0
+  },
+  {
+   "naam": "Garage Kalverstraat (Amsterdam)",
+   "operator": "P1",
+   "type": "Garage parkeren",
+   "lat": 52.367212,
+   "lon": 4.890879,
+   "capaciteit": 122,
+   "uur": 5.0,
+   "dagmax": 95.0
+  },
+  {
+   "naam": "Garage Koopcentrum Akerpoort (Amsterdam)",
+   "operator": "Koopcentrum Akerpoort",
+   "type": "Terreinparkeren",
+   "lat": 52.359656,
+   "lon": 4.783157,
+   "capaciteit": 550,
+   "uur": 0.0,
+   "dagmax": null
+  },
+  {
    "naam": "Garage Markenhoven (Amsterdam)",
    "operator": "Amsterdam",
-   "adres": "Daniël Goedkoopstraat 7, Amsterdam",
+   "type": "Garage parkeren",
    "lat": 52.369774,
    "lon": 4.90879,
    "capaciteit": 352,
@@ -27,10 +154,39 @@
    "dagmax": 47.5
   },
   {
-   "areaid": "363_AREN",
+   "naam": "Garage Middenweg (Amsterdam)",
+   "operator": "ParkKing",
+   "type": "Garage parkeren",
+   "lat": 52.353341,
+   "lon": 4.931504,
+   "capaciteit": 90,
+   "uur": 0.0,
+   "dagmax": 30.0
+  },
+  {
+   "naam": "Garage Olympisch Stadion (Amsterdam)",
+   "operator": "P1",
+   "type": "Garage parkeren",
+   "lat": 52.344897,
+   "lon": 4.854937,
+   "capaciteit": 500,
+   "uur": 3.33,
+   "dagmax": 50.0
+  },
+  {
+   "naam": "Garage Oranjekwartier (Amsterdam)",
+   "operator": "Interparking",
+   "type": "Garage parkeren",
+   "lat": 52.353343,
+   "lon": 4.839617,
+   "capaciteit": 472,
+   "uur": 1.8,
+   "dagmax": 18.0
+  },
+  {
    "naam": "Garage P1 ArenA (Amsterdam)",
    "operator": "Amsterdam",
-   "adres": "Daniël Goedkoopstraat 7, Amsterdam",
+   "type": "Garage parkeren",
    "lat": 52.314024,
    "lon": 4.940788,
    "capaciteit": 2400,
@@ -38,10 +194,9 @@
    "dagmax": 30.0
   },
   {
-   "areaid": "363_PLAZ",
    "naam": "Garage P10 Plaza ArenA (Amsterdam)",
    "operator": "Amsterdam",
-   "adres": "Daniël Goedkoopstraat 7, Amsterdam",
+   "type": "Garage parkeren",
    "lat": 52.30627,
    "lon": 4.942695,
    "capaciteit": 814,
@@ -49,10 +204,9 @@
    "dagmax": 24.5
   },
   {
-   "areaid": "363_HES",
    "naam": "Garage P18 HES/ROC (Amsterdam)",
    "operator": "Amsterdam",
-   "adres": "Daniël Goedkoopstraat 7, Amsterdam",
+   "type": "Garage parkeren",
    "lat": 52.315131,
    "lon": 4.946282,
    "capaciteit": 291,
@@ -60,21 +214,19 @@
    "dagmax": 30.0
   },
   {
-   "areaid": "363_BOME",
    "naam": "Garage P2 Bomengarage (Amsterdam)",
    "operator": "Amsterdam",
-   "adres": "Daniël Goedkoopstraat 7, Amsterdam",
+   "type": "Garage parkeren",
    "lat": 52.399715,
    "lon": 4.938664,
    "capaciteit": 448,
    "uur": 0.47,
-   "dagmax": 14.0
+   "dagmax": null
   },
   {
-   "areaid": "363_MIKA",
    "naam": "Garage P3 Mikado (Amsterdam)",
    "operator": "Amsterdam",
-   "adres": "Daniël Goedkoopstraat 7, Amsterdam",
+   "type": "Garage parkeren",
    "lat": 52.310434,
    "lon": 4.941118,
    "capaciteit": 366,
@@ -82,10 +234,9 @@
    "dagmax": 30.0
   },
   {
-   "areaid": "363_VIL4",
    "naam": "Garage P4 Villa ArenA (Amsterdam)",
    "operator": "Amsterdam",
-   "adres": "Daniël Goedkoopstraat 7, Amsterdam",
+   "type": "Garage parkeren",
    "lat": 52.311382,
    "lon": 4.93943,
    "capaciteit": 1248,
@@ -93,10 +244,9 @@
    "dagmax": 30.0
   },
   {
-   "areaid": "363_VIL5",
    "naam": "Garage P5 Villa ArenA (Amsterdam)",
    "operator": "Amsterdam",
-   "adres": "Daniël Goedkoopstraat 7, Amsterdam",
+   "type": "Garage parkeren",
    "lat": 52.311676,
    "lon": 4.941235,
    "capaciteit": 1354,
@@ -104,10 +254,9 @@
    "dagmax": 30.0
   },
   {
-   "areaid": "363_PATH",
    "naam": "Garage P6 Pathé ArenA/Uitgaansdriehoek (Amsterdam)",
    "operator": "Amsterdam",
-   "adres": "Daniël Goedkoopstraat 7, Amsterdam",
+   "type": "Garage parkeren",
    "lat": 52.311619,
    "lon": 4.945382,
    "capaciteit": 399,
@@ -115,10 +264,29 @@
    "dagmax": 30.0
   },
   {
-   "areaid": "363_STAD",
+   "naam": "Garage Parnassusweg (Amsterdam)",
+   "operator": "ParkKing",
+   "type": "Terreinparkeren",
+   "lat": 52.339474,
+   "lon": 4.868446,
+   "capaciteit": 100,
+   "uur": 3.5,
+   "dagmax": 30.0
+  },
+  {
+   "naam": "Garage Prins & Keizer (Amsterdam)",
+   "operator": "APCOA Parking",
+   "type": "Garage parkeren",
+   "lat": 52.3624,
+   "lon": 4.8916,
+   "capaciteit": 140,
+   "uur": 6.0,
+   "dagmax": 12.0
+  },
+  {
    "naam": "Garage Stadhuis-Muziektheater (Amsterdam)",
    "operator": "Amsterdam",
-   "adres": "Daniël Goedkoopstraat 7, Amsterdam",
+   "type": "Garage parkeren",
    "lat": 52.368027,
    "lon": 4.902315,
    "capaciteit": 400,
@@ -126,10 +294,39 @@
    "dagmax": 63.0
   },
   {
-   "areaid": "363_WILL",
+   "naam": "Garage The Bank (Amsterdam)",
+   "operator": "ParkKing",
+   "type": "Garage parkeren",
+   "lat": 52.366163,
+   "lon": 4.898545,
+   "capaciteit": 110,
+   "uur": 5.0,
+   "dagmax": 50.0
+  },
+  {
+   "naam": "Garage The Edge (Amsterdam)",
+   "operator": "Interparking",
+   "type": "Garage parkeren",
+   "lat": 52.337367,
+   "lon": 4.862596,
+   "capaciteit": 370,
+   "uur": 3.33,
+   "dagmax": 27.5
+  },
+  {
+   "naam": "Garage Waterlooplein (Amsterdam)",
+   "operator": "ParkKing",
+   "type": "Garage parkeren",
+   "lat": 52.368921,
+   "lon": 4.904703,
+   "capaciteit": 180,
+   "uur": 5.0,
+   "dagmax": 35.0
+  },
+  {
    "naam": "Garage Willemspoort (Amsterdam)",
    "operator": "Amsterdam",
-   "adres": "Daniël Goedkoopstraat 7, Amsterdam",
+   "type": "Garage parkeren",
    "lat": 52.384982,
    "lon": 4.884537,
    "capaciteit": 109,
@@ -137,15 +334,104 @@
    "dagmax": 63.0
   },
   {
-   "areaid": "363_PIET",
+   "naam": "P+R ArenA (Amsterdam)",
+   "operator": "Amsterdam",
+   "type": "P+R",
+   "lat": 52.314024,
+   "lon": 4.940788,
+   "capaciteit": 500,
+   "uur": 3.0,
+   "dagmax": 11.0
+  },
+  {
+   "naam": "P+R Comeniuslaan (Amsterdam Lelylaan)",
+   "operator": "Nederlandse Spoorwegen",
+   "type": "P+R",
+   "lat": 52.35919,
+   "lon": 4.83367,
+   "capaciteit": 105,
+   "uur": 1.76,
+   "dagmax": 10.93
+  },
+  {
+   "naam": "Parkeerdek AMC P1 (Amsterdam)",
+   "operator": "Academisch Medisch Centrum",
+   "type": "Terreinparkeren",
+   "lat": 52.296086,
+   "lon": 4.957438,
+   "capaciteit": 192,
+   "uur": 1.6,
+   "dagmax": 10.0
+  },
+  {
+   "naam": "Parking de Hoofdstad (Amsterdam)",
+   "operator": "Parking de Hoofdstad",
+   "type": "Garage parkeren",
+   "lat": 52.363165,
+   "lon": 4.886929,
+   "capaciteit": null,
+   "uur": 4.8,
+   "dagmax": 48.0
+  },
+  {
    "naam": "Piet Heingarage (Amsterdam)",
    "operator": "Amsterdam",
-   "adres": "Daniël Goedkoopstraat 7, Amsterdam",
+   "type": "Garage parkeren",
    "lat": 52.377626,
    "lon": 4.91488,
    "capaciteit": 400,
    "uur": 4.29,
    "dagmax": 47.5
+  },
+  {
+   "naam": "Terrein Oostenburgereiland (Amsterdam)",
+   "operator": "Interparking",
+   "type": "Terreinparkeren",
+   "lat": 52.372638,
+   "lon": 4.930973,
+   "capaciteit": 500,
+   "uur": 2.5,
+   "dagmax": 15.0
+  },
+  {
+   "naam": "Terrein Oostenburgereiland Touringcar parking (Amsterdam)",
+   "operator": "Interparking",
+   "type": "Terreinparkeren",
+   "lat": 52.372785,
+   "lon": 4.93084,
+   "capaciteit": 15,
+   "uur": 8.0,
+   "dagmax": 55.0
+  },
+  {
+   "naam": "Terrein Spaklerweg/Daniël Goedkoopstraat (Amsterdam)",
+   "operator": "ParkKing",
+   "type": "Terreinparkeren",
+   "lat": 52.335519,
+   "lon": 4.922832,
+   "capaciteit": 470,
+   "uur": 0.0,
+   "dagmax": 35.0
+  },
+  {
+   "naam": "Terrein Zuidpark P1 (Amsterdam)",
+   "operator": "Interparking",
+   "type": "Terreinparkeren",
+   "lat": 52.332197,
+   "lon": 4.923392,
+   "capaciteit": 490,
+   "uur": 3.0,
+   "dagmax": 30.0
+  },
+  {
+   "naam": "Terrein Zuidpark P2 (Amsterdam)",
+   "operator": "Interparking",
+   "type": "Terreinparkeren",
+   "lat": 52.330801,
+   "lon": 4.919144,
+   "capaciteit": 245,
+   "uur": 3.0,
+   "dagmax": 30.0
   }
  ]
 }
