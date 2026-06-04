@@ -3,16 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Parkeren, doorgerekend</title>
+<title>Qurb — Slim parkeren begint hier</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2048%2048'%3E%3Ccircle%20cx='22'%20cy='21'%20r='14'%20fill='none'%20stroke='%232BB24F'%20stroke-width='8'/%3E%3Cpolygon%20points='31,29%2025,32%2036,43'%20fill='%231C8F40'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
 /* ─── LIGHT TOKENS ─── */
 :root, [data-theme="light"] {
-  --primary:           #25A35A;
-  --primary-focus:     #25A35A;
-  --primary-on-dark:   #2997ff;
+  --primary:           #199646;
+  --primary-focus:     #1ea34c;
+  --primary-on-dark:   #34c759;
+
+  --logo-green:        #2bb24f;
+  --logo-tail:         #1c8f40;
 
   --ink:               #1d1d1f;
   --ink-muted-80:      #333333;
@@ -26,7 +30,7 @@
   --canvas-parchment:  #f5f5f7;
   --surface-pearl:     #fafafc;
 
-  /* results section stays dark in light mode — Apple convention */
+  /* results section stays dark in light mode, Apple convention */
   --results-bg:        #272729;
   --results-text:      #ffffff;
   --results-muted:     #aeaeb2;
@@ -37,7 +41,7 @@
   --best-tag-ink:      #1d1d1f;
 
   --surface-black:     #000000;
-  --nav-bg:            #000000;
+  --nav-bg:            #199646;
   --nav-text:          #ffffff;
   --subnav-bg:         rgba(245,245,247,0.88);
   --subnav-border:     rgba(0,0,0,0.1);
@@ -70,8 +74,8 @@
 
 /* ─── DARK TOKENS ─── */
 [data-theme="dark"] {
-  --primary:           #2997ff;
-  --primary-focus:     #429cff;
+  --primary:           #34c759;
+  --primary-focus:     #3dd069;
 
   --ink:               #f5f5f7;
   --ink-muted-80:      #d1d1d6;
@@ -181,6 +185,26 @@ body {
   padding: 5px 10px;
   border-radius: 8px;
   transition: background 0.25s, color 0.25s;
+}
+
+/* ─── BRAND LOCKUP ─── */
+.brand-lockup { display:flex; align-items:center; gap:9px; }
+.brand-mark { width:26px; height:26px; display:block; flex-shrink:0; }
+.brand-mark.sm { width:22px; height:22px; }
+.brand-name {
+  font-family:'Quicksand', system-ui, sans-serif;
+  font-weight:700;
+  font-size:19px;
+  letter-spacing:-0.5px;
+  line-height:1;
+}
+.global-nav .brand-name { color: var(--nav-text); }
+.footer-brand { display:flex; align-items:center; gap:8px; margin-bottom:14px; flex-wrap:wrap; }
+.footer-brand .brand-name { color: var(--ink); font-size:18px; transition:color .25s; }
+.footer-tagline {
+  font-family:'Quicksand', system-ui, sans-serif;
+  font-weight:500; font-size:13px; letter-spacing:-0.2px;
+  color: var(--body-muted); transition:color .25s;
 }
 
 /* ─── THEME TOGGLE ─── */
@@ -630,18 +654,13 @@ footer {
 <!-- Global nav -->
 <nav class="global-nav">
   <div class="nav-inner">
-    <a class="nav-wordmark" href="#" style="display:flex;align-items:center;">
-      <svg width="80" height="35" viewBox="0 0 423 185" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M333.343 5.87415V42.0129C337.301 35.2449 345.602 31.797 354.285 31.797C370.759 31.797 384.422 43.8007 384.422 62.8279C384.422 81.7273 370.503 93.9864 354.158 93.9864C345.857 93.9864 337.301 90.2831 333.343 83.5151V87.4738C333.343 90.6662 330.789 93.3479 327.469 93.3479C324.276 93.3479 321.722 90.6662 321.722 87.4738V5.87415C321.722 2.68167 324.276 0 327.469 0C330.789 0 333.343 2.68167 333.343 5.87415ZM333.471 62.7002C333.471 75.3424 342.665 82.6212 353.264 82.6212C363.991 82.6212 372.546 74.4485 372.546 62.7002C372.546 50.8242 363.991 43.1622 353.264 43.1622C343.686 43.1622 333.471 49.9303 333.471 62.7002Z" fill="white"/>
-        <path d="M302.98 43.0346C302.087 42.9069 301.065 42.9069 300.299 42.9069C288.806 42.9069 283.953 55.166 283.953 71.0007V87.4738C283.953 90.6663 281.399 93.348 278.079 93.348C274.887 93.348 272.333 90.6663 272.333 87.4738V38.3098C272.333 35.1173 274.887 32.4356 278.079 32.4356C281.399 32.4356 283.953 35.1173 283.953 38.3098V46.4825C287.018 36.0112 292.764 31.7971 300.554 31.7971C304.896 31.7971 312.047 32.691 311.025 38.9483C310.387 42.6515 307.067 43.4177 302.98 43.0346Z" fill="white"/>
-        <path d="M242.369 87.4738V83.7705C238.794 90.9217 230.238 93.9864 223.725 93.9864C208.912 93.9864 200.739 84.2813 200.739 67.5528V38.3097C200.739 35.1172 203.293 32.4355 206.614 32.4355C209.806 32.4355 212.36 35.1172 212.36 38.3097V66.7866C212.36 76.7471 217.34 82.6212 225.513 82.6212C233.941 82.6212 242.369 77.8964 242.369 65.2542V38.3097C242.369 35.1172 244.923 32.4355 248.243 32.4355C251.436 32.4355 253.99 35.1172 253.99 38.3097V87.4738C253.99 90.6663 251.436 93.3479 248.243 93.3479C244.923 93.3479 242.369 90.6663 242.369 87.4738Z" fill="white"/>
-        <path d="M200.739 70.8302H212.417V35.0177C212.417 35.0177 209.17 32.4044 206.713 32.3615C204.257 32.3185 200.739 35.0177 200.739 35.0177V70.8302Z" fill="#5AB57A"/>
-        <path d="M171.056 63.2111C171.056 50.5689 161.99 43.1623 151.391 43.1623C140.664 43.1623 132.236 51.3351 132.236 63.2111C132.236 75.087 140.664 82.6213 151.391 82.6213C160.968 82.6213 171.056 75.9809 171.056 63.2111ZM182.677 38.3098V116.206C182.677 119.399 180.123 122.08 176.803 122.08C173.61 122.08 171.056 119.399 171.056 116.206V83.7706C167.226 90.6663 158.542 93.9865 150.242 93.9865C133.896 93.9865 120.36 81.9828 120.36 63.0834C120.36 44.1839 133.896 31.7971 150.242 31.7971C158.542 31.7971 167.226 35.6281 171.056 42.3961V38.3098C171.056 35.1173 173.61 32.4356 176.803 32.4356C180.123 32.4356 182.677 35.1173 182.677 38.3098Z" fill="white"/>
-        <path d="M125.754 163.06V163.742C126.653 162.192 128.637 161.293 130.59 161.293C134.496 161.293 137.782 164.3 137.782 168.857C137.782 173.476 134.496 176.39 130.59 176.39C128.637 176.39 126.653 175.615 125.754 174.003V181.66C125.754 182.528 125.041 183.272 124.111 183.272C123.243 183.272 122.561 182.528 122.561 181.66V163.06C122.561 162.192 123.243 161.448 124.111 161.448C125.041 161.448 125.754 162.192 125.754 163.06ZM125.785 168.919C125.785 171.771 127.986 173.321 130.187 173.321C132.605 173.321 134.527 171.585 134.527 168.919C134.527 166.222 132.605 164.393 130.187 164.393C127.831 164.393 125.785 166.098 125.785 168.919ZM143.655 167.648H152.056C151.746 165.385 150.103 164.083 147.933 164.083C145.701 164.083 143.965 165.416 143.655 167.648ZM155.187 168.516C155.187 169.353 154.505 169.973 153.73 169.973H143.655C143.965 172.205 145.763 173.6 148.088 173.6C149.607 173.6 150.475 173.073 151.529 172.205C152.056 171.771 152.924 171.554 153.575 172.081C154.164 172.546 154.195 173.507 153.637 174.096C152.18 175.615 150.072 176.39 147.933 176.39C143.81 176.39 140.493 173.383 140.493 168.795C140.493 164.207 143.81 161.293 147.933 161.293C151.963 161.293 155.063 164.083 155.187 168.516ZM160.699 167.648H169.1C168.79 165.385 167.147 164.083 164.977 164.083C162.745 164.083 161.009 165.416 160.699 167.648ZM172.231 168.516C172.231 169.353 171.549 169.973 170.774 169.973H160.699C161.009 172.205 162.807 173.6 165.132 173.6C166.651 173.6 167.519 173.073 168.573 172.205C169.1 171.771 169.968 171.554 170.619 172.081C171.208 172.546 171.239 173.507 170.681 174.096C169.224 175.615 167.116 176.39 164.977 176.39C160.854 176.39 157.537 173.383 157.537 168.795C157.537 164.207 160.854 161.293 164.977 161.293C169.007 161.293 172.107 164.083 172.231 168.516ZM181.339 167.896L186.702 173.693C187.26 174.313 187.26 175.274 186.671 175.832C186.02 176.421 185.028 176.359 184.501 175.77L178.642 169.353V174.623C178.642 175.491 177.929 176.235 176.999 176.235C176.131 176.235 175.449 175.491 175.449 174.623V155.186C175.449 154.318 176.131 153.574 176.999 153.574C177.929 153.574 178.642 154.318 178.642 155.186V166.346L182.951 161.882C183.571 161.293 184.532 161.324 185.121 161.882C185.71 162.533 185.648 163.525 185.059 164.114L181.339 167.896ZM201.075 168.795C201.075 171.616 203.152 173.29 205.508 173.29C207.926 173.29 209.879 171.461 209.879 168.795C209.879 166.129 207.926 164.393 205.508 164.393C203.338 164.393 201.075 165.943 201.075 168.795ZM201.044 155.186V163.68C201.943 162.099 203.865 161.293 205.911 161.293C209.848 161.293 213.134 164.207 213.134 168.857C213.134 173.414 209.786 176.39 205.88 176.39C203.927 176.39 201.943 175.522 201.044 173.972V174.623C201.044 175.491 200.331 176.235 199.401 176.235C198.533 176.235 197.851 175.491 197.851 174.623V155.186C197.851 154.318 198.533 153.574 199.401 153.574C200.331 153.574 201.044 154.318 201.044 155.186ZM219.005 167.648H227.406C227.096 165.385 225.453 164.083 223.283 164.083C221.051 164.083 219.315 165.416 219.005 167.648ZM230.537 168.516C230.537 169.353 229.855 169.973 229.08 169.973H219.005C219.315 172.205 221.113 173.6 223.438 173.6C224.957 173.6 225.825 173.073 226.879 172.205C227.406 171.771 228.274 171.554 228.925 172.081C229.514 172.546 229.545 173.507 228.987 174.096C227.53 175.615 225.422 176.39 223.283 176.39C219.16 176.39 215.843 173.383 215.843 168.795C215.843 164.207 219.16 161.293 223.283 161.293C227.313 161.293 230.413 164.083 230.537 168.516ZM240.144 164.238H238.067V174.623C238.067 175.491 237.385 176.235 236.517 176.235C235.587 176.235 234.874 175.491 234.874 174.623V164.238H233.262C232.549 164.238 231.929 163.68 231.929 162.967C231.929 162.192 232.549 161.603 233.262 161.603H234.874V160.27C234.874 156.302 236.672 153.729 240.64 153.729H240.888C241.725 153.729 242.438 154.38 242.438 155.217C242.438 156.116 241.725 156.798 240.888 156.798H240.64C238.532 156.798 238.067 158.441 238.067 160.27V161.603H240.144C240.857 161.603 241.477 162.192 241.477 162.967C241.477 163.68 240.857 164.238 240.144 164.238ZM250.471 173.29C252.889 173.29 254.904 171.523 254.904 168.795C254.904 166.129 252.889 164.393 250.471 164.393C248.084 164.393 246.1 166.129 246.1 168.795C246.1 171.523 248.084 173.29 250.471 173.29ZM250.471 176.39C246.379 176.39 242.938 173.383 242.938 168.795C242.938 164.207 246.379 161.293 250.471 161.293C254.594 161.293 258.066 164.207 258.066 168.795C258.066 173.383 254.594 176.39 250.471 176.39ZM268.613 164.3C265.885 164.3 264.738 167.028 264.738 170.872V174.623C264.738 175.491 264.025 176.235 263.095 176.235C262.227 176.235 261.545 175.491 261.545 174.623V163.06C261.545 162.192 262.227 161.448 263.095 161.448C264.025 161.448 264.738 162.192 264.738 163.06V164.92C265.482 162.347 266.908 161.293 268.706 161.293C269.171 161.293 269.636 161.324 270.07 161.417C270.876 161.603 271.403 162.409 271.217 163.246C270.938 164.641 269.543 164.3 268.613 164.3ZM275.586 167.648H283.987C283.677 165.385 282.034 164.083 279.864 164.083C277.632 164.083 275.896 165.416 275.586 167.648ZM287.118 168.516C287.118 169.353 286.436 169.973 285.661 169.973H275.586C275.896 172.205 277.694 173.6 280.019 173.6C281.538 173.6 282.406 173.073 283.46 172.205C283.987 171.771 284.855 171.554 285.506 172.081C286.095 172.546 286.126 173.507 285.568 174.096C284.111 175.615 282.003 176.39 279.864 176.39C275.741 176.39 272.424 173.383 272.424 168.795C272.424 164.207 275.741 161.293 279.864 161.293C283.894 161.293 286.994 164.083 287.118 168.516ZM309.57 163.525L301.82 182.187C301.479 182.993 300.673 183.427 299.836 183.21C298.999 182.993 298.534 182.001 298.844 181.195L301.2 175.398L296.271 163.525C295.93 162.719 296.426 161.727 297.263 161.51C298.1 161.293 298.906 161.727 299.247 162.533L302.905 171.523L306.594 162.533C306.935 161.727 307.741 161.293 308.578 161.51C309.415 161.727 309.911 162.719 309.57 163.525ZM319.131 173.29C321.549 173.29 323.564 171.523 323.564 168.795C323.564 166.129 321.549 164.393 319.131 164.393C316.744 164.393 314.76 166.129 314.76 168.795C314.76 171.523 316.744 173.29 319.131 173.29ZM319.131 176.39C315.039 176.39 311.598 173.383 311.598 168.795C311.598 164.207 315.039 161.293 319.131 161.293C323.254 161.293 326.726 164.207 326.726 168.795C326.726 173.383 323.254 176.39 319.131 176.39ZM343.225 163.06V174.623C343.225 175.491 342.512 176.235 341.582 176.235C340.714 176.235 340.032 175.491 340.032 174.623V173.91C339.195 175.584 337.211 176.39 335.599 176.39C332.096 176.39 330.081 174.127 330.081 170.035V163.06C330.081 162.192 330.794 161.448 331.724 161.448C332.592 161.448 333.274 162.192 333.274 163.06V169.663C333.274 171.957 334.452 173.259 336.312 173.259C338.203 173.259 340.032 172.236 340.032 169.384V163.06C340.032 162.192 340.745 161.448 341.675 161.448C342.543 161.448 343.225 162.192 343.225 163.06ZM358.617 163.06V163.742C359.516 162.192 361.5 161.293 363.453 161.293C367.359 161.293 370.645 164.3 370.645 168.857C370.645 173.476 367.359 176.39 363.453 176.39C361.5 176.39 359.516 175.615 358.617 174.003V181.66C358.617 182.528 357.904 183.272 356.974 183.272C356.106 183.272 355.424 182.528 355.424 181.66V163.06C355.424 162.192 356.106 161.448 356.974 161.448C357.904 161.448 358.617 162.192 358.617 163.06ZM358.648 168.919C358.648 171.771 360.849 173.321 363.05 173.321C365.468 173.321 367.39 171.585 367.39 168.919C367.39 166.222 365.468 164.393 363.05 164.393C360.694 164.393 358.648 166.098 358.648 168.919ZM385.57 174.623V174.003C384.609 175.584 382.501 176.39 380.703 176.39C376.797 176.39 373.356 173.445 373.356 168.826C373.356 164.207 376.797 161.293 380.703 161.293C382.439 161.293 384.578 162.006 385.57 163.649V163.06C385.57 162.192 386.252 161.448 387.12 161.448C388.05 161.448 388.763 162.192 388.763 163.06V174.623C388.763 175.491 388.05 176.235 387.12 176.235C386.252 176.235 385.57 175.491 385.57 174.623ZM376.642 168.795C376.642 171.461 378.657 173.29 381.075 173.29C383.431 173.29 385.539 171.647 385.539 168.795C385.539 165.943 383.245 164.393 381.075 164.393C378.657 164.393 376.642 166.129 376.642 168.795ZM400.121 164.3C397.393 164.3 396.246 167.028 396.246 170.872V174.623C396.246 175.491 395.533 176.235 394.603 176.235C393.735 176.235 393.053 175.491 393.053 174.623V163.06C393.053 162.192 393.735 161.448 394.603 161.448C395.533 161.448 396.246 162.192 396.246 163.06V164.92C396.99 162.347 398.416 161.293 400.214 161.293C400.679 161.293 401.144 161.324 401.578 161.417C402.384 161.603 402.911 162.409 402.725 163.246C402.446 164.641 401.051 164.3 400.121 164.3ZM411.114 167.896L416.477 173.693C417.035 174.313 417.035 175.274 416.446 175.832C415.795 176.421 414.803 176.359 414.276 175.77L408.417 169.353V174.623C408.417 175.491 407.704 176.235 406.774 176.235C405.906 176.235 405.224 175.491 405.224 174.623V155.186C405.224 154.318 405.906 153.574 406.774 153.574C407.704 153.574 408.417 154.318 408.417 155.186V166.346L412.726 161.882C413.346 161.293 414.307 161.324 414.896 161.882C415.485 162.533 415.423 163.525 414.834 164.114L411.114 167.896Z" fill="white"/>
-        <rect x="44.3311" y="33.5658" width="53.4814" height="53.4814" rx="26.7407" stroke="white" stroke-width="13.8786"/>
-        <path d="M103.869 89.9475L92.9063 85.6225L96.0145 82.6106L98.7613 79.0566L103.869 89.9475Z" fill="#5BB47A"/>
+    <span class="brand-lockup">
+      <svg class="brand-mark" viewBox="0 0 48 48" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="22" cy="21" r="14" fill="none" stroke="var(--logo-green)" stroke-width="8"/>
+        <polygon points="31,29 25,32 36,43" fill="var(--logo-tail)"/>
       </svg>
-    </a>
+      <span class="brand-name">qurb</span>
+    </span>
     <div class="nav-right">
       <span class="nav-badge">Prototype</span>
       <!-- Theme toggle -->
@@ -674,16 +693,25 @@ footer {
 <!-- Sub nav -->
 <div class="sub-nav">
   <div class="sub-nav-inner">
-    <span class="sub-nav-title">Vergelijker</span>
+    <span class="sub-nav-title">Qurb</span>
   </div>
 </div>
 
 <!-- Hero -->
 <section class="hero-tile">
   <div class="hero-inner">
+    <div style="display:flex;justify-content:center;margin-bottom:20px;">
+      <svg width="56" height="56" viewBox="0 0 48 48" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="22" cy="21" r="14" fill="none" stroke="var(--logo-green)" stroke-width="8"/>
+        <polygon points="31,29 25,32 36,43" fill="var(--logo-tail)"/>
+      </svg>
+    </div>
     <p class="hero-kicker">Straatparkeren · Nederland</p>
-    <h1 class="hero-h1">Doorgerekend.</h1>
-    <p class="hero-lede">Zelfde plek, zelfde tijd, andere app. De gemeente bepaalt het tarief — de app rekent er zijn servicekosten bovenop.</p>
+    <h1 class="hero-h1">Slim parkeren begint hier.</h1>
+    <p class="hero-lede">Voer een adres in, kies je tijdstip — en zie meteen waar jij het goedkoopst parkeert. Straat, garage of P+R: alles op een rij.</p>
+    <div class="cta-row" style="justify-content:center;margin-top:28px;">
+      <button class="btn-primary" onclick="document.querySelector('.form-tile').scrollIntoView({behavior:'smooth'})">Peek nu gratis →</button>
+    </div>
   </div>
 </section>
 
@@ -691,9 +719,11 @@ footer {
 <section class="form-tile">
   <div class="tile-inner">
 
+    <p style="font-size:21px;font-weight:600;letter-spacing:0.231px;color:var(--ink);margin-bottom:28px;">Hoeveel bespaar jij?</p>
+
     <div class="field">
-      <label for="addr">Adres in Nederland</label>
-      <input id="addr" type="text" autocomplete="off" placeholder="Begin te typen, bijv. Coolsingel 40 Rotterdam">
+      <label for="addr">Jouw bestemming</label>
+      <input id="addr" type="text" autocomplete="off" placeholder="Bijv. Centraal Station Utrecht">
       <div id="suggest" class="suggest"></div>
       <div id="found" style="display:none"></div>
     </div>
@@ -710,7 +740,7 @@ footer {
     </div>
 
     <div class="field">
-      <label>Gemeentetarief per uur</label>
+      <label>Gemeentelijk uurtarief</label>
       <div class="tarief-block">
         <span id="tarief-weergave" class="tarief-value empty">Kies eerst een adres</span>
       </div>
@@ -718,7 +748,7 @@ footer {
     </div>
 
     <div class="cta-row">
-      <button class="btn-primary" id="go">Vergelijk</button>
+      <button class="btn-primary" id="go">Peek →</button>
     </div>
 
     <div id="out-light"></div>
@@ -728,10 +758,56 @@ footer {
 <!-- Results injected here -->
 <div id="results-mount"></div>
 
+<!-- How it works -->
+<section style="background:var(--canvas-parchment);padding:80px 24px;transition:background .25s;">
+  <div style="max-width:680px;margin:0 auto;text-align:center;">
+    <p style="font-size:21px;font-weight:600;letter-spacing:0.231px;color:var(--ink);margin-bottom:40px;transition:color .25s;">Zo werkt het</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:32px;text-align:left;">
+      <div>
+        <p style="font-size:17px;font-weight:600;color:var(--ink);margin-bottom:8px;transition:color .25s;">Vul je bestemming in</p>
+        <p style="font-size:15px;color:var(--body-muted);line-height:1.5;transition:color .25s;">Waar ga je naartoe? Qurb zoekt alle parkeeropties in de buurt — van straatparkeren tot garages.</p>
+      </div>
+      <div>
+        <p style="font-size:17px;font-weight:600;color:var(--ink);margin-bottom:8px;transition:color .25s;">Kies je tijdslot</p>
+        <p style="font-size:15px;color:var(--body-muted);line-height:1.5;transition:color .25s;">Geef aan hoe lang je parkeert. Qurb rekent alles door, inclusief servicekosten van parkeer-apps.</p>
+      </div>
+      <div>
+        <p style="font-size:17px;font-weight:600;color:var(--ink);margin-bottom:8px;transition:color .25s;">Peek — en kies slim</p>
+        <p style="font-size:15px;color:var(--body-muted);line-height:1.5;transition:color .25s;">In één oogopslag zie je wat elke optie écht kost. Geen verrassingen achteraf.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Trust / USP -->
+<section style="background:var(--canvas);padding:80px 24px;transition:background .25s;">
+  <div style="max-width:680px;margin:0 auto;text-align:center;">
+    <h2 style="font-size:clamp(24px,4vw,36px);font-weight:600;letter-spacing:-0.28px;color:var(--ink);margin-bottom:16px;line-height:1.1;transition:color .25s;">Parkeerkosten lopen snel op. Qurb houdt ze in de hand.</h2>
+    <p style="font-size:19px;color:var(--body-muted);line-height:1.5;max-width:52ch;margin:0 auto;transition:color .25s;">Dezelfde plek, hetzelfde tijdstip — maar de ene app rekent €0,30 meer per uur dan de andere. Qurb laat je dat zien, zodat jij de keuze maakt.</p>
+  </div>
+</section>
+
+<!-- Closing CTA -->
+<section style="background:var(--canvas-parchment);padding:80px 24px;text-align:center;transition:background .25s;">
+  <div style="max-width:680px;margin:0 auto;">
+    <h2 style="font-size:clamp(24px,4vw,36px);font-weight:600;letter-spacing:-0.28px;color:var(--ink);margin-bottom:12px;line-height:1.1;transition:color .25s;">Hoeveel bespaar jij vandaag?</h2>
+    <p style="font-size:19px;color:var(--body-muted);margin-bottom:28px;transition:color .25s;">Probeer Qurb gratis. Geen account nodig.</p>
+    <button class="btn-primary" onclick="document.querySelector('.form-tile').scrollIntoView({behavior:'smooth'})">Peek nu →</button>
+  </div>
+</section>
+
 <!-- Footer -->
 <footer>
   <div class="footer-inner">
-    Wat dit prototype nog niet doet: tijdvakken meerekenen (gratis uren, koopavond, zondag) en het exacte tarief per zone toepassen. Het uurtarief is indicatief. De garages hebben echte namen en exploitanten, maar indicatieve tarieven en gesimuleerde beschikbaarheid — opgenomen voor Utrecht, Amsterdam, Rotterdam en Den Haag.
+    <div class="footer-brand">
+      <svg class="brand-mark sm" viewBox="0 0 48 48" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="22" cy="21" r="14" fill="none" stroke="var(--logo-green)" stroke-width="8"/>
+        <polygon points="31,29 25,32 36,43" fill="var(--logo-tail)"/>
+      </svg>
+      <span class="brand-name">qurb</span>
+      <span class="footer-tagline">peek before you park</span>
+    </div>
+    Wat dit prototype nog niet doet: tijdvakken meerekenen (gratis uren, koopavond, zondag) en het exacte tarief per zone toepassen. Tarieven zijn indicatief. Garages hebben echte namen en exploitanten, maar gesimuleerde beschikbaarheid — opgenomen voor Utrecht, Amsterdam, Rotterdam en Den Haag.
   </div>
 </footer>
 
@@ -739,7 +815,8 @@ footer {
 /* ── Theme toggle ── */
 const html = document.documentElement;
 const checkbox = document.getElementById('theme-checkbox');
-const stored = localStorage.getItem('theme');
+let stored = null;
+try { stored = localStorage.getItem('theme'); } catch(e) {}
 if (stored) {
   html.dataset.theme = stored;
   checkbox.checked = stored === 'dark';
@@ -750,7 +827,7 @@ if (stored) {
 checkbox.addEventListener('change', () => {
   const t = checkbox.checked ? 'dark' : 'light';
   html.dataset.theme = t;
-  localStorage.setItem('theme', t);
+  try { localStorage.setItem('theme', t); } catch(e) {}
 });
 
 /* ── Utilities ── */
