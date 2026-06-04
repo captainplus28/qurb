@@ -901,6 +901,48 @@ function afstandM(a,b){
   return Math.round(R*2*Math.atan2(Math.sqrt(s),Math.sqrt(1-s)));
 }
 
+/* Live straat-tariefzones (Amsterdam) uit de RDW-pijplijn, eenmalig gecachet. */
+let amsStraatCache = null;
+async function laadAmsStraat(){
+  if(amsStraatCache !== null) return amsStraatCache;
+  try{
+    const r = await fetch('data/amsterdam-straat.json');
+    amsStraatCache = r.ok ? ((await r.json()).zones || []) : [];
+  }catch(e){ amsStraatCache = []; }
+  return amsStraatCache;
+}
+/* Punt-in-polygon (ray casting). poly = [[lon,lat],...]; pt = {lon,lat}. */
+function puntInPolygon(pt, poly){
+  let inside=false;
+  for(let i=0,j=poly.length-1;i<poly.length;j=i++){
+    const xi=poly[i][0], yi=poly[i][1], xj=poly[j][0], yj=poly[j][1];
+    if(((yi>pt.lat)!==(yj>pt.lat)) && (pt.lon < (xj-xi)*(pt.lat-yi)/(yj-yi)+xi)) inside=!inside;
+  }
+  return inside;
+}
+/* Echt straattarief (€/uur) voor een punt op een tijdstip, of null buiten dekking. */
+async function straatTariefVoor(coord, start){
+  const zones = await laadAmsStraat();
+  if(!zones.length) return null;
+  const treffers = zones.filter(z => puntInPolygon(coord, z.poly));
+  if(!treffers.length) return null;
+  const wd   = start.getDay()===0 ? 7 : start.getDay();   // 1=ma .. 7=zo
+  const mins = start.getHours()*60 + start.getMinutes();
+  // Overlappende zone-varianten dragen verschillende producten (bv. dagvenster vs
+  // regulier uurtarief). Het hoogste passende tarief = het reguliere bezoekers-
+  // uurtarief; dat is wat een bezoeker per uur betaalt.
+  let eur=null, naam=null;
+  for(const z of treffers){
+    for(const w of z.vensters){
+      if(w.days.includes(wd) && mins>=w.from && mins<=w.to){
+        if(eur===null || w.eur>eur){ eur=w.eur; naam=z.naam; }
+      }
+    }
+  }
+  if(eur===null) return {eur:0, naam:treffers[0].naam, gratis:true};   // in zone, buiten betaald venster
+  return {eur, naam};
+}
+
 const TARIEVEN = {
   'amsterdam':7.50,'utrecht':5.50,'rotterdam':3.75,
   'den haag':4.00,"'s-gravenhage":4.00,'haarlem':4.40,
@@ -1038,15 +1080,23 @@ async function bereken(){
   const ms=eind-start;
   if(ms<=0){showError('De eindtijd moet na de begintijd liggen.');return;}
 
-  const min=Math.round(ms/60000), uren=ms/3600000, basis=round2(huidigTarief*uren);
-  const rij=APPS.map(a=>({...a,fee:round2(a.fee(huidigTarief,uren)),totaal:round2(basis+round2(a.fee(huidigTarief,uren)))}))
+  // Live straattarief per zone (Amsterdam); anders het indicatieve gemeentecijfer.
+  let tarief=huidigTarief, tariefNaam=null;
+  const stadKey=(gekozenStad||'').toLowerCase().trim();
+  if(stadKey==='amsterdam' && gekozenCoord){
+    const st=await straatTariefVoor(gekozenCoord, start);
+    if(st){ tarief=st.eur; tariefNaam=(st.gratis?'Gratis nu · ':'')+st.naam; }
+  }
+
+  const min=Math.round(ms/60000), uren=ms/3600000, basis=round2(tarief*uren);
+  const rij=APPS.map(a=>({...a,fee:round2(a.fee(tarief,uren)),totaal:round2(basis+round2(a.fee(tarief,uren)))}))
     .sort((x,y)=>x.totaal-y.totaal);
   const goedkoopst=rij[0].totaal;
 
   let html=`<section class="results-tile"><div class="tile-inner">
   <div class="summary-strip anim">
     <div class="summary-item"><div class="lab">Duur</div><div class="val">${duurTekst(min)}</div></div>
-    <div class="summary-item"><div class="lab">Basisprijs</div><div class="val">${eur.format(basis)}</div><div class="sub">Gelijk voor alle apps</div></div>
+    <div class="summary-item"><div class="lab">Basisprijs</div><div class="val">${eur.format(basis)}</div><div class="sub">${tariefNaam?esc(tariefNaam)+' · '+eur.format(tarief)+'/uur':'Gelijk voor alle apps'}</div></div>
   </div>
   <div class="results-group">
     <div class="section-label">Op straat</div>
@@ -1063,7 +1113,6 @@ async function bereken(){
   });
   html+=`</div></div>`;
 
-  const stadKey=(gekozenStad||'').toLowerCase().trim();
   html+=`<div class="results-group"><div class="section-label">Garages${gekozenStad?' in '+esc(gekozenStad):''}</div>`;
 
   // Amsterdam: echte live RDW-garages; overige steden: voorlopige tabel als fallback.

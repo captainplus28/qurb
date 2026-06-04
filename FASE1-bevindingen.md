@@ -47,6 +47,31 @@ Validatie (Amsterdam tariefzone 1, huidig):
 - **Serverless (Netlify Functions) verschuift naar Fase 2**, wanneer dynamische garagebeschikbaarheid en de handmatige app-servicekostentabel erbij komen — dáár ontstaat pas een reden voor een backend.
 - **Coördinaten**: PDOK `suggest` geeft alleen een id; gebruik PDOK `lookup?id=...` → `centroide_ll` (WGS84 POINT) voor de lat/lon van het gekozen adres.
 
-## Eerstvolgende concrete stap (voorstel)
-1. Echte **Amsterdam-garages** uit RDW in JSON (volledig geverifieerd pad) — vervangt de gesimuleerde garagetabel.
-2. Parallel: BP↔T-mapping kraken via de NPR-feed → live **straat**-tarief per zone.
+## OPGELOST — straat-tarief via de NPR-feed (de doorbraak)
+De flat Socrata-tabellen bleken een doodlopend spoor (BP-regelzones zonder polygon).
+De **NPR v2 static-feed** lost het op: per BETAALDP-tariefzone (uuid uit PARKEERGEBIED)
+levert `…/parkingdata/v2/static/<uuid>` in één blob:
+- `specifications[0].areaGeometry` — een **GeoJSON-polygon** (zonegrens, WGS84)
+- `tariffs[]` — per dag/tijd-venster `intervalRates {charge, chargePeriod, durationType}`
+
+**Uurtarief = `charge / (chargePeriod/60)`** (durationType 'Minutes'). Onafhankelijk
+gevalideerd tegen TARIEFDEEL (€4,83 voor TC1_D0919) → identiek. Pijplijn:
+`scripts/build_street.py` → `data/amsterdam-straat.json` (53 zones, ~128 kB).
+
+Frontend: punt-in-polygon (ray casting) → zone(s) → venster matchen op dag+tijd →
+€/uur. Dit rekent dag/avond/zondag/gratis-uren correct mee.
+
+### Open nuance (bewust gekozen heuristiek)
+Bij overlappende zone-varianten (bv. Dam valt in T11N én T11V) bestaan meerdere
+officiële producten met verschillende tarieven (€4,83 dagvenster-product vs €8,05
+regulier uurtarief). We kiezen het **hoogste passende** tarief = het reguliere
+bezoekers-uurtarief (€8,05 ≈ het echte centrumtarief). Te valideren tegen de
+officiële tarievenpagina van Amsterdam; zone-prioriteit kan later verfijnd worden.
+
+## Status
+- [x] Echte **Amsterdam-garages** uit RDW (tarief, locatie, capaciteit, live afstand).
+- [x] Live **straat-tarief per zone** uit RDW (dag/tijd-vensters), voedt de app-vergelijking.
+- [ ] Private garage-exploitanten (Q-Park/Interparking) als extra areamanagers.
+- [ ] Dynamische vrije plekken (Fase 2).
+- [ ] "Kan ik hier staan" via NDW (Fase 1b).
+- [ ] Periodieke verversing automatiseren (GitHub Action op de twee build-scripts).
