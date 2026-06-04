@@ -943,6 +943,21 @@ async function straatTariefVoor(coord, start){
   return {eur, naam};
 }
 
+/* Vergunninghouderszones (Amsterdam) — lazy geladen (groot bestand). */
+let amsVergCache = null;
+async function laadVergunning(){
+  if(amsVergCache !== null) return amsVergCache;
+  try{
+    const r = await fetch('data/amsterdam-vergunning.json');
+    amsVergCache = r.ok ? ((await r.json()).zones || []) : [];
+  }catch(e){ amsVergCache = []; }
+  return amsVergCache;
+}
+async function inVergunningZone(coord){
+  const z = await laadVergunning();
+  return z.some(x => (x.polys||[]).some(p => puntInPolygon(coord, p)));
+}
+
 const TARIEVEN = {
   'amsterdam':7.50,'utrecht':5.50,'rotterdam':3.75,
   'den haag':4.00,"'s-gravenhage":4.00,'haarlem':4.40,
@@ -1081,12 +1096,13 @@ async function bereken(){
   if(ms<=0){showError('De eindtijd moet na de begintijd liggen.');return;}
 
   // Live straattarief per zone (Amsterdam); anders het indicatieve gemeentecijfer.
-  let tarief=huidigTarief, tariefNaam=null, gratisStraat=false, dekking=true;
+  let tarief=huidigTarief, tariefNaam=null, gratisStraat=false, dekking=true, vergunning=false;
   const stadKey=(gekozenStad||'').toLowerCase().trim();
   if(stadKey==='amsterdam' && gekozenCoord){
     const st=await straatTariefVoor(gekozenCoord, start);
     if(st && st.eur>0){ tarief=st.eur; tariefNaam=st.naam; }
     else if(st){ tarief=0; gratisStraat=true; tariefNaam='Gratis op dit tijdstip · '+st.naam; }
+    else if(await inVergunningZone(gekozenCoord)){ tarief=0; vergunning=true; tariefNaam='Vergunninghoudersgebied'; }
     else { tarief=0; gratisStraat=true; dekking=false; tariefNaam='Geen betaald straatparkeren gevonden'; }
   }
 
@@ -1098,15 +1114,17 @@ async function bereken(){
   let html=`<section class="results-tile"><div class="tile-inner">
   <div class="summary-strip anim">
     <div class="summary-item"><div class="lab">Duur</div><div class="val">${duurTekst(min)}</div></div>
-    <div class="summary-item"><div class="lab">Basisprijs</div><div class="val">${gratisStraat?'Gratis':eur.format(basis)}</div><div class="sub">${tariefNaam?esc(tariefNaam)+(gratisStraat?'':' · '+eur.format(tarief)+'/uur'):'Gelijk voor alle apps'}</div></div>
+    <div class="summary-item"><div class="lab">${vergunning?'Straat':'Basisprijs'}</div><div class="val">${vergunning?'—':(gratisStraat?'Gratis':eur.format(basis))}</div><div class="sub">${tariefNaam?esc(tariefNaam)+(gratisStraat||vergunning?'':' · '+eur.format(tarief)+'/uur'):'Gelijk voor alle apps'}</div></div>
   </div>
   <div class="results-group">
     <div class="section-label">Op straat</div>`;
 
-  if(gratisStraat){
+  if(vergunning){
+    html+=`<div class="info-box anim">Hier geldt <strong>vergunninghoudersparkeren</strong>. Als bezoeker kun je op straat doorgaans niet parkeren — kies een garage hieronder, of controleer of er een bezoekersregeling geldt.</div>`;
+  } else if(gratisStraat){
     html+=`<div class="info-box anim">${dekking
       ?'Op dit tijdstip is betaald straatparkeren hier niet van kracht — je parkeert gratis.'
-      :'Hier vonden we geen betaald straattarief in de RDW-data. Mogelijk parkeer je gratis of geldt vergunninghoudersparkeren — controleer het bord ter plekke.'}</div>`;
+      :'Hier vonden we geen betaald of vergunningregime in de RDW-data. Waarschijnlijk parkeer je hier gratis — controleer het bord ter plekke.'}</div>`;
   } else {
     html+=`<div class="results-list">`;
     rij.forEach((a,i)=>{

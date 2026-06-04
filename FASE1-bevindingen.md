@@ -96,5 +96,7 @@ Dam €8,05 (Z1), Museumstraat €6,98 (Z2), Apollolaan/Javastraat €5,37 (Z3),
 - [x] Private garage-exploitanten erbij (43 garages: Interparking, APCOA, ParkKing, P1,
       AMC + gemeente, via NPR-index op bbox). Q-Park publiceert geen tarief → overgeslagen.
 - [ ] Dynamische vrije plekken (Fase 2).
-- [ ] "Kan ik hier staan" via NDW (Fase 1b).
-- [ ] Periodieke verversing automatiseren (GitHub Action op de twee build-scripts).
+- [x] "Kan ik hier staan" (MVP): classificatie betaald / gratis / **vergunninghouders** per
+      adres (231 VERGUNP-zones, lazy geladen). Bay-/bord-niveau (NDW-parkeervakken,
+      Amsterdam parkeervakken-API, parkeerverbod E1) is een latere verfijning.
+- [ ] Periodieke verversing automatiseren (GitHub Action op de build-scripts).
