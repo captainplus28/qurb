@@ -96,6 +96,8 @@ def main():
         except Exception as e:
             print(f"  ! {f.get('name','?')[:30]}: {e}", file=sys.stderr)
 
+    if len(out) < 10:
+        sys.exit(f"FOUT: slechts {len(out)} garages — RDW mogelijk onbereikbaar; bestaande data niet overschreven.")
     out.sort(key=lambda x: x["naam"])
     payload = {"stad": "Amsterdam", "bron": "RDW NPR Open Parkeerdata (CC-0)",
                "gegenereerd": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),

@@ -139,6 +139,8 @@ def main():
         except Exception as e:
             print(f"  ! {areaid} ({uuid}): {e}", file=sys.stderr)
 
+    if len(out) < 20:
+        sys.exit(f"FOUT: slechts {len(out)} zones — RDW mogelijk onbereikbaar; bestaande data niet overschreven.")
     payload = {"stad":"Amsterdam","areamanagerid":AREAMANAGER,
                "bron":"RDW NPR Open Parkeerdata (CC-0)",
                "gegenereerd": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),

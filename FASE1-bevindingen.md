@@ -99,4 +99,6 @@ Dam €8,05 (Z1), Museumstraat €6,98 (Z2), Apollolaan/Javastraat €5,37 (Z3),
 - [x] "Kan ik hier staan" (MVP): classificatie betaald / gratis / **vergunninghouders** per
       adres (231 VERGUNP-zones, lazy geladen). Bay-/bord-niveau (NDW-parkeervakken,
       Amsterdam parkeervakken-API, parkeerverbod E1) is een latere verfijning.
-- [ ] Periodieke verversing automatiseren (GitHub Action op de build-scripts).
+- [x] Periodieke verversing geautomatiseerd: GitHub Action (`.github/workflows/refresh-data.yml`)
+      draait wekelijks de drie build-scripts, commit verse data → Netlify deployt automatisch.
+      Scripts hebben een veiligheidsguard (niet schrijven bij te weinig resultaten).

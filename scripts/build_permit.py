@@ -51,6 +51,8 @@ def main():
         byid[aid]["polys"] += polys
 
     zones = list(byid.values())
+    if len(zones) < 50:
+        raise SystemExit(f"FOUT: slechts {len(zones)} vergunningzones — RDW mogelijk onbereikbaar; bestaande data niet overschreven.")
     payload = {"stad": "Amsterdam", "regime": "vergunninghouders",
                "bron": "RDW Open Data Parkeren (CC-0)",
                "gegenereerd": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),

@@ -1,0 +1,49 @@
+name: Parkeerdata verversen
+
+# Draait de RDW-datapijplijnen periodiek en commit de verse JSON.
+# Netlify deployt automatisch bij de push.
+
+on:
+  schedule:
+    - cron: "0 4 * * 1"          # elke maandag 04:00 UTC
+  workflow_dispatch:             # handmatig te starten via de Actions-tab
+
+permissions:
+  contents: write
+
+concurrency:
+  group: refresh-data
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Python beschikbaar maken
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Garages verversen
+        run: python3 scripts/build_garages.py
+
+      - name: Straat-tarieven verversen
+        run: python3 scripts/build_street.py
+
+      - name: Vergunningzones verversen
+        run: python3 scripts/build_permit.py
+
+      - name: Wijzigingen committen
+        run: |
+          git config user.name  "qurb-bot"
+          git config user.email "actions@users.noreply.github.com"
+          if [ -n "$(git status --porcelain data/)" ]; then
+            git add data/
+            git commit -m "Data: automatische verversing RDW-parkeerdata ($(date -u +%Y-%m-%d))"
+            git push
+          else
+            echo "Geen wijzigingen in de data."
+          fi
