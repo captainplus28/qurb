@@ -1,0 +1,151 @@
+{
+ "stad": "Amsterdam",
+ "areamanagerid": "363",
+ "bron": "RDW Open Data Parkeren (CC-0)",
+ "gegenereerd": "2026-06-04T23:01:05Z",
+ "garages": [
+  {
+   "areaid": "363_DOME",
+   "naam": "Dome-garage (Amsterdam)",
+   "operator": "Amsterdam",
+   "adres": "Daniël Goedkoopstraat 7, Amsterdam",
+   "lat": 52.317081,
+   "lon": 4.937702,
+   "capaciteit": 550,
+   "uur": 3.0,
+   "dagmax": 30.0
+  },
+  {
+   "areaid": "363_MARK",
+   "naam": "Garage Markenhoven (Amsterdam)",
+   "operator": "Amsterdam",
+   "adres": "Daniël Goedkoopstraat 7, Amsterdam",
+   "lat": 52.369774,
+   "lon": 4.90879,
+   "capaciteit": 352,
+   "uur": 4.29,
+   "dagmax": 47.5
+  },
+  {
+   "areaid": "363_AREN",
+   "naam": "Garage P1 ArenA (Amsterdam)",
+   "operator": "Amsterdam",
+   "adres": "Daniël Goedkoopstraat 7, Amsterdam",
+   "lat": 52.314024,
+   "lon": 4.940788,
+   "capaciteit": 2400,
+   "uur": 3.0,
+   "dagmax": 30.0
+  },
+  {
+   "areaid": "363_PLAZ",
+   "naam": "Garage P10 Plaza ArenA (Amsterdam)",
+   "operator": "Amsterdam",
+   "adres": "Daniël Goedkoopstraat 7, Amsterdam",
+   "lat": 52.30627,
+   "lon": 4.942695,
+   "capaciteit": 814,
+   "uur": 2.5,
+   "dagmax": 24.5
+  },
+  {
+   "areaid": "363_HES",
+   "naam": "Garage P18 HES/ROC (Amsterdam)",
+   "operator": "Amsterdam",
+   "adres": "Daniël Goedkoopstraat 7, Amsterdam",
+   "lat": 52.315131,
+   "lon": 4.946282,
+   "capaciteit": 291,
+   "uur": 3.0,
+   "dagmax": 30.0
+  },
+  {
+   "areaid": "363_BOME",
+   "naam": "Garage P2 Bomengarage (Amsterdam)",
+   "operator": "Amsterdam",
+   "adres": "Daniël Goedkoopstraat 7, Amsterdam",
+   "lat": 52.399715,
+   "lon": 4.938664,
+   "capaciteit": 448,
+   "uur": 0.47,
+   "dagmax": 14.0
+  },
+  {
+   "areaid": "363_MIKA",
+   "naam": "Garage P3 Mikado (Amsterdam)",
+   "operator": "Amsterdam",
+   "adres": "Daniël Goedkoopstraat 7, Amsterdam",
+   "lat": 52.310434,
+   "lon": 4.941118,
+   "capaciteit": 366,
+   "uur": 3.0,
+   "dagmax": 30.0
+  },
+  {
+   "areaid": "363_VIL4",
+   "naam": "Garage P4 Villa ArenA (Amsterdam)",
+   "operator": "Amsterdam",
+   "adres": "Daniël Goedkoopstraat 7, Amsterdam",
+   "lat": 52.311382,
+   "lon": 4.93943,
+   "capaciteit": 1248,
+   "uur": 3.0,
+   "dagmax": 30.0
+  },
+  {
+   "areaid": "363_VIL5",
+   "naam": "Garage P5 Villa ArenA (Amsterdam)",
+   "operator": "Amsterdam",
+   "adres": "Daniël Goedkoopstraat 7, Amsterdam",
+   "lat": 52.311676,
+   "lon": 4.941235,
+   "capaciteit": 1354,
+   "uur": 3.0,
+   "dagmax": 30.0
+  },
+  {
+   "areaid": "363_PATH",
+   "naam": "Garage P6 Pathé ArenA/Uitgaansdriehoek (Amsterdam)",
+   "operator": "Amsterdam",
+   "adres": "Daniël Goedkoopstraat 7, Amsterdam",
+   "lat": 52.311619,
+   "lon": 4.945382,
+   "capaciteit": 399,
+   "uur": 3.0,
+   "dagmax": 30.0
+  },
+  {
+   "areaid": "363_STAD",
+   "naam": "Garage Stadhuis-Muziektheater (Amsterdam)",
+   "operator": "Amsterdam",
+   "adres": "Daniël Goedkoopstraat 7, Amsterdam",
+   "lat": 52.368027,
+   "lon": 4.902315,
+   "capaciteit": 400,
+   "uur": 6.3,
+   "dagmax": 63.0
+  },
+  {
+   "areaid": "363_WILL",
+   "naam": "Garage Willemspoort (Amsterdam)",
+   "operator": "Amsterdam",
+   "adres": "Daniël Goedkoopstraat 7, Amsterdam",
+   "lat": 52.384982,
+   "lon": 4.884537,
+   "capaciteit": 109,
+   "uur": 6.3,
+   "dagmax": 63.0
+  },
+  {
+   "areaid": "363_PIET",
+   "naam": "Piet Heingarage (Amsterdam)",
+   "operator": "Amsterdam",
+   "adres": "Daniël Goedkoopstraat 7, Amsterdam",
+   "lat": 52.377626,
+   "lon": 4.91488,
+   "capaciteit": 400,
+   "uur": 4.29,
+   "dagmax": 47.5
+  }
+ ]
+}

@@ -657,7 +657,15 @@ footer {
 <!-- Global nav -->
 <nav class="global-nav">
   <div class="nav-inner">
+    <span class="brand-lockup">
+      <svg class="brand-mark" viewBox="0 0 48 48" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="22" cy="21" r="14" fill="none" stroke="var(--logo-green)" stroke-width="8"/>
+        <polygon points="31,29 25,32 36,43" fill="var(--logo-tail)"/>
+      </svg>
+      <span class="brand-name">qurb</span>
+    </span>
     <div class="nav-right">
+      <span class="nav-badge">Prototype</span>
       <!-- Theme toggle -->
       <label class="theme-toggle" aria-label="Schakel thema">
         <input type="checkbox" id="theme-checkbox">
@@ -701,7 +709,7 @@ footer {
         <polygon points="31,29 25,32 36,43" fill="var(--logo-tail)"/>
       </svg>
     </div>
-    <p class="hero-kicker">peek before you park</p>
+    <p class="hero-kicker">Straatparkeren · Nederland</p>
     <h1 class="hero-h1">Slim parkeren begint hier.</h1>
     <p class="hero-lede">Voer een adres in, kies je tijdstip — en zie meteen waar jij het goedkoopst parkeert. Straat, garage of P+R: alles op een rij.</p>
     <div class="cta-row" style="justify-content:center;margin-top:28px;">
@@ -854,12 +862,43 @@ syncTot();
 const addr   = document.getElementById('addr');
 const sugBox = document.getElementById('suggest');
 const found  = document.getElementById('found');
-let tmr = null, gekozenStad = '';
+let tmr = null, gekozenStad = '', gekozenCoord = null;
 
 function stadUit(naam){
   if(!naam) return '';
   const deel = naam.split(',').pop().trim();
   return deel.replace(/^\s*\d{4}\s?[A-Za-z]{2}\s*/,'').trim();
+}
+
+/* Coordinaat (WGS84) van een gekozen PDOK-adres ophalen via de lookup-service. */
+async function haalCoord(id){
+  try{
+    const r = await fetch('https://api.pdok.nl/bzk/locatieserver/search/v3_1/lookup?fl=centroide_ll&id='+encodeURIComponent(id));
+    if(!r.ok) return null;
+    const j = await r.json();
+    const doc = j.response && j.response.docs && j.response.docs[0];
+    const m = doc && doc.centroide_ll && doc.centroide_ll.match(/POINT\(([-\d.]+) ([-\d.]+)\)/);
+    return m ? {lon:parseFloat(m[1]), lat:parseFloat(m[2])} : null;
+  }catch(e){ return null; }
+}
+
+/* Live garagedata (Amsterdam) uit de RDW-pijplijn, eenmalig gecachet. */
+let amsGaragesCache = null;
+async function laadAmsGarages(){
+  if(amsGaragesCache !== null) return amsGaragesCache;
+  try{
+    const r = await fetch('data/amsterdam-garages.json');
+    amsGaragesCache = r.ok ? ((await r.json()).garages || []) : [];
+  }catch(e){ amsGaragesCache = []; }
+  return amsGaragesCache;
+}
+
+/* Hemelsbrede afstand in meters (haversine). */
+function afstandM(a,b){
+  const R=6371000, t=x=>x*Math.PI/180;
+  const dLat=t(b.lat-a.lat), dLon=t(b.lon-a.lon);
+  const s=Math.sin(dLat/2)**2 + Math.cos(t(a.lat))*Math.cos(t(b.lat))*Math.sin(dLon/2)**2;
+  return Math.round(R*2*Math.atan2(Math.sqrt(s),Math.sqrt(1-s)));
 }
 
 const TARIEVEN = {
@@ -906,13 +945,15 @@ async function lookup(q){
       const el=document.createElement('div');
       el.className='suggest-item';
       el.textContent=d.weergavenaam;
-      el.addEventListener('click',()=>{
+      el.addEventListener('click',async ()=>{
         addr.value=d.weergavenaam;
         gekozenStad=stadUit(d.weergavenaam);
+        gekozenCoord=null;
         updateTariefWeergave();
         sugBox.classList.remove('open');
         found.innerHTML=`<span class="found-tag">${esc(d.weergavenaam)}</span>`;
         found.style.display='block';
+        if(d.id) gekozenCoord = await haalCoord(d.id);
       });
       sugBox.appendChild(el);
     });
@@ -987,7 +1028,7 @@ function showError(msg){
   resMount.innerHTML='';
 }
 
-function bereken(){
+async function bereken(){
   const start=new Date(document.getElementById('van').value);
   const eind =new Date(document.getElementById('tot').value);
   outLight.innerHTML='';
@@ -1023,27 +1064,60 @@ function bereken(){
   html+=`</div></div>`;
 
   const stadKey=(gekozenStad||'').toLowerCase().trim();
-  const garages=GARAGES[stadKey];
   html+=`<div class="results-group"><div class="section-label">Garages${gekozenStad?' in '+esc(gekozenStad):''}</div>`;
 
-  if(!garages){
-    html+=`<div class="info-box anim" style="animation-delay:0.3s">Geen garagedata voor ${esc(gekozenStad)||'deze plaats'}. In de volledige versie komen alle garages live uit de open parkeerdata van de RDW.</div>`;
-  } else {
-    const grij=garages.map(g=>({...g,kosten:garageKosten(g,uren),status:vrijStatus(g)}))
-      .sort((a,b)=>(a.vrij===0)-(b.vrij===0)||a.kosten-b.kosten);
-    const beste=grij.find(g=>g.vrij>0);
+  // Amsterdam: echte live RDW-garages; overige steden: voorlopige tabel als fallback.
+  let amsGar = null;
+  if(stadKey==='amsterdam'){
+    const data = await laadAmsGarages();
+    if(data && data.length) amsGar = data;
+  }
+
+  if(amsGar){
+    const grij = amsGar.map(g=>{
+        const dagmax = (g.dagmax!=null ? g.dagmax : round2(g.uur*24));
+        return {
+          naam:g.naam, operator:g.operator||'—', capaciteit:g.capaciteit,
+          afstand: gekozenCoord ? afstandM(gekozenCoord, g) : null,
+          uur:g.uur, dagmax, kosten: garageKosten({uur:g.uur, dagmax}, uren)
+        };
+      })
+      .sort((a,b)=> a.kosten-b.kosten || ((a.afstand??1e9)-(b.afstand??1e9)));
+    const goedkoopsteG = grij.length ? grij[0].kosten : null;
     html+=`<div class="results-list">`;
     grij.forEach((g,i)=>{
-      const best=g===beste, dc=dotClass(g.status);
-      const vrijTekst=g.vrij===0?'vol':`${g.status} · ${g.vrij} vrij`;
+      const best=g.kosten===goedkoopsteG;
+      const afst = g.afstand!=null ? afstandTekst(g.afstand)+' · ' : '';
+      const cap  = g.capaciteit ? `${g.capaciteit} plaatsen` : '';
       html+=`<div class="result-row anim" style="animation-delay:${(0.05*(i+1)).toFixed(2)}s">
-        <div><div class="row-name">${g.naam}${best?'<span class="best-tag">goedkoopst</span>':''}</div>
-        <div class="row-sub">${g.exploitant} · ${afstandTekst(g.afstand)} · ${eur.format(g.uur)}/uur, max ${eur.format(g.dagmax)}/dag</div></div>
+        <div><div class="row-name">${esc(g.naam)}${best?'<span class="best-tag">goedkoopst</span>':''}</div>
+        <div class="row-sub">${esc(g.operator)} · ${afst}${eur.format(g.uur)}/uur, max ${eur.format(g.dagmax)}/dag</div></div>
         <div class="row-right"><div class="row-total">${eur.format(g.kosten)}</div>
-        <div class="row-delta"><span class="avail"><span class="avail-dot ${dc}"></span>${vrijTekst}</span></div></div>
+        <div class="row-delta">${cap}</div></div>
       </div>`;
     });
-    html+=`</div><div class="info-box anim" style="animation-delay:0.4s">Echte garagenamen en exploitanten. Tarieven zijn indicatief en beschikbaarheid gesimuleerd. Bij een garage betaal je het exploitantstarief zonder app-servicekosten.</div>`;
+    html+=`</div><div class="info-box anim" style="animation-delay:0.4s">Live tarieven en locaties uit de open parkeerdata van de RDW (CC-0). Afstand is hemelsbreed vanaf je adres. Actuele vrije plekken volgen in een volgende fase. Bij een garage betaal je het exploitantstarief zonder app-servicekosten.</div>`;
+  } else {
+    const garages=GARAGES[stadKey];
+    if(!garages){
+      html+=`<div class="info-box anim" style="animation-delay:0.3s">Geen garagedata voor ${esc(gekozenStad)||'deze plaats'}. In de volledige versie komen alle garages live uit de open parkeerdata van de RDW.</div>`;
+    } else {
+      const grij=garages.map(g=>({...g,kosten:garageKosten(g,uren),status:vrijStatus(g)}))
+        .sort((a,b)=>(a.vrij===0)-(b.vrij===0)||a.kosten-b.kosten);
+      const beste=grij.find(g=>g.vrij>0);
+      html+=`<div class="results-list">`;
+      grij.forEach((g,i)=>{
+        const best=g===beste, dc=dotClass(g.status);
+        const vrijTekst=g.vrij===0?'vol':`${g.status} · ${g.vrij} vrij`;
+        html+=`<div class="result-row anim" style="animation-delay:${(0.05*(i+1)).toFixed(2)}s">
+          <div><div class="row-name">${g.naam}${best?'<span class="best-tag">goedkoopst</span>':''}</div>
+          <div class="row-sub">${g.exploitant} · ${afstandTekst(g.afstand)} · ${eur.format(g.uur)}/uur, max ${eur.format(g.dagmax)}/dag</div></div>
+          <div class="row-right"><div class="row-total">${eur.format(g.kosten)}</div>
+          <div class="row-delta"><span class="avail"><span class="avail-dot ${dc}"></span>${vrijTekst}</span></div></div>
+        </div>`;
+      });
+      html+=`</div><div class="info-box anim" style="animation-delay:0.4s">Echte garagenamen en exploitanten. Tarieven zijn indicatief en beschikbaarheid gesimuleerd. Bij een garage betaal je het exploitantstarief zonder app-servicekosten.</div>`;
+    }
   }
   html+=`</div></div></section>`;
   resMount.innerHTML=html;
