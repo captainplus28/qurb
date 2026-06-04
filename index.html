@@ -924,7 +924,7 @@ function puntInPolygon(pt, poly){
 async function straatTariefVoor(coord, start){
   const zones = await laadAmsStraat();
   if(!zones.length) return null;
-  const treffers = zones.filter(z => puntInPolygon(coord, z.poly));
+  const treffers = zones.filter(z => (z.polys||[]).some(p => puntInPolygon(coord, p)));
   if(!treffers.length) return null;
   const wd   = start.getDay()===0 ? 7 : start.getDay();   // 1=ma .. 7=zo
   const mins = start.getHours()*60 + start.getMinutes();

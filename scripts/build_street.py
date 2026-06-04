@@ -13,7 +13,7 @@ Hiermee rekent de app dag/avond/zondag/gratis-uren correct mee.
 Uitvoer: data/amsterdam-straat.json
 Gebruik:  python3 scripts/build_street.py [--limit N]
 """
-import json, sys, time, os, urllib.parse, urllib.request
+import json, sys, time, os, re, urllib.parse, urllib.request
 
 AREAMANAGER = "363"
 SOCRATA = "https://opendata.rdw.nl/resource"
@@ -31,6 +31,45 @@ def soql(dataset, where, select=None, limit=5000):
     p = {"$where": where, "$limit": str(limit)}
     if select: p["$select"] = select
     return get(f"{SOCRATA}/{dataset}.json?" + urllib.parse.urlencode(p))
+
+def r5(c):  # rond coordinaat op ~1 m
+    return [round(float(c[0]),5), round(float(c[1]),5)]
+
+def polys_from_geojson(geom):
+    """GeoJSON Polygon/MultiPolygon -> lijst van buitenringen [[lon,lat],...]."""
+    if not geom: return []
+    t = geom.get("type"); co = geom.get("coordinates") or []
+    if t == "Polygon" and co:
+        return [[r5(p) for p in co[0]]]
+    if t == "MultiPolygon":
+        return [[r5(p) for p in poly[0]] for poly in co if poly]
+    return []
+
+def polys_from_wkt(wkt):
+    """WKT POLYGON/MULTIPOLYGON -> lijst van buitenringen [[lon,lat],...]."""
+    if not wkt: return []
+    out = []
+    if wkt.startswith("MULTIPOLYGON"):
+        # buitenring = eerste ring van elke polygoon (vóór een eventuele binnenring)
+        for poly in re.findall(r"\(\(\((.*?)\)\)", wkt) or []:
+            ring = poly.split("),(")[0]
+            out.append([r5(pt.split()) for pt in ring.split(",")])
+        if out: return out
+        # fallback losser
+    m = re.findall(r"\(\((.*?)\)\)", wkt)
+    for ring in m:
+        ring = ring.split("),(")[0]
+        out.append([r5(pt.split()) for pt in ring.split(",")])
+    return out
+
+def geometrie_socrata(areaid):
+    rows = soql("nsk3-v9n7",
+                f"areamanagerid='{AREAMANAGER}' AND areaid='{areaid}'",
+                select="areageometryastext", limit=10)
+    polys = []
+    for r in rows:
+        polys += polys_from_wkt(r.get("areageometryastext",""))
+    return polys
 
 def current_rate(interval_rates):
     """Kies de intervalRate die nu geldig is en de basis-duurband dekt."""
@@ -81,24 +120,25 @@ def main():
             info = s.get("parkingFacilityInformation", {})
             specs = info.get("specifications") or []
             geom = specs[0].get("areaGeometry") if specs else None
-            if not geom or geom.get("type") != "Polygon":
+            polys = polys_from_geojson(geom)
+            if not polys:
+                polys = geometrie_socrata(areaid)        # fallback: Socrata WKT
+            if not polys:
                 continue
-            ring = geom["coordinates"][0]  # buitenring [[lon,lat],...]
             wins = windows_for_zone(info.get("tariffs") or [])
             if not wins:
                 continue
-            # comprimeer coords tot 5 decimalen (~1 m)
-            poly = [[round(c[0],5), round(c[1],5)] for c in ring]
             out.append({
                 "areaid": areaid,
                 "naam": info.get("name") or areaid,
-                "poly": poly,
+                "polys": polys,
                 "vensters": wins,
             })
             dag = next((w["eur"] for w in wins if 1 in w["days"] and w["from"]<=720<=w["to"]), None)
-            print(f"  ✓ {areaid} {info.get('name','')[:40]}: {len(wins)} vensters"
-                  + (f", ma-middag €{dag}/uur" if dag else "") + f", {len(poly)} pt", file=sys.stderr)
-            time.sleep(0.08)
+            pts = sum(len(p) for p in polys)
+            print(f"  ✓ {areaid} {info.get('name','')[:38]}: {len(wins)} vensters"
+                  + (f", ma-middag €{dag}/uur" if dag else "") + f", {pts} pt/{len(polys)} poly", file=sys.stderr)
+            time.sleep(0.06)
         except Exception as e:
             print(f"  ! {areaid} ({uuid}): {e}", file=sys.stderr)
 

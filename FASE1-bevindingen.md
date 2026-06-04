@@ -68,6 +68,24 @@ regulier uurtarief). We kiezen het **hoogste passende** tarief = het reguliere
 bezoekers-uurtarief (€8,05 ≈ het echte centrumtarief). Te valideren tegen de
 officiële tarievenpagina van Amsterdam; zone-prioriteit kan later verfijnd worden.
 
+## Tariefvalidatie (uitgevoerd)
+Vergeleken met de officiële bron (amsterdam.nl / 2026):
+- **Centrum (Zone 1) = €8,05/uur, 24/7** → onze pijplijn geeft exact €8,05 voor Dam. ✓
+- Tiers kloppen: Zuid/West/Oost ~€4,50–6 (wij: €4,18–6,98), Noord/Zuidoost ~€1,60–3,50 (wij: €1,72–3,22). ✓
+- De 26 "€0,10"-zones bleken **"10c max 60"-kortparkeer-uitzonderingen** (U-zones) die over de
+  gewone zones liggen; onze "hoogste passende"-heuristiek negeert ze correct. ✓
+
+Validatie met echte PDOK-geocodeerde adressen: Dam €8,05, Buikslotermeerplein €1,72,
+Surinameplein/Czaar Peterstraat €5,37 (Zone 3) — allemaal correct.
+
+### Dekking (open punt)
+160 betaalde zones; **78 bruikbaar** (geometrie + tarief). 82 vallen af: deels abstracte
+ouder-codes (T10/T11/T12 — gedekt door kind-zones), deels echte leaf-zones zonder
+gepubliceerde geometrie in NPR of Socrata. Gevolg: ~50–60% adresdekking; gaten o.a. in
+delen van Zuid/Oost/Nieuw-West vallen terug op het indicatieve tarief.
+**Te doen:** geometriebron voor de resterende leaf-zones vinden (ander sleutelveld of
+extra RDW-dataset), of accepteren met duidelijke "indicatief"-labeling buiten dekking.
+
 ## Status
 - [x] Echte **Amsterdam-garages** uit RDW (tarief, locatie, capaciteit, live afstand).
 - [x] Live **straat-tarief per zone** uit RDW (dag/tijd-vensters), voedt de app-vergelijking.
