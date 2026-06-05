@@ -897,6 +897,9 @@ async function bepaalStadId(gemeente){
   const m = await laadGemeenten();
   return m[(gemeente||'').toLowerCase().trim()] || null;
 }
+/* Nettere weergavenaam voor een paar gemeenten. */
+const STAD_WEERGAVE = {"'s-gravenhage":"Den Haag"};
+function weergaveStad(s){ return STAD_WEERGAVE[(s||'').toLowerCase().trim()] || s; }
 
 /* Per-stad lazy loaders (data/<areamanagerid>/...). */
 function _stad(id){ return stadCache[id] || (stadCache[id]={straat:null,verg:null,gar:null}); }
@@ -1150,7 +1153,7 @@ async function bereken(){
   }
   html+=`</div>`;
 
-  html+=`<div class="results-group"><div class="section-label">Garages${gekozenStad?' in '+esc(gekozenStad):''}</div>`;
+  html+=`<div class="results-group"><div class="section-label">Garages${gekozenStad?' in '+esc(weergaveStad(gekozenStad)):''}</div>`;
 
   // Steden met RDW-data: echte live garages; overige: voorlopige tabel als fallback.
   let amsGar = null;

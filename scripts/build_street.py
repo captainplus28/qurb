@@ -25,8 +25,13 @@ DAYMAP = {"Mon":1,"Tue":2,"Wed":3,"Thu":4,"Fri":5,"Sat":6,"Sun":7}
 
 def get(url):
     req = urllib.request.Request(url, headers={"User-Agent":"qurb-datapijplijn/1.0"})
-    with urllib.request.urlopen(req, timeout=30) as r:
-        return json.load(r)
+    for poging in range(4):
+        try:
+            with urllib.request.urlopen(req, timeout=45) as r:
+                return json.load(r)
+        except Exception:
+            if poging == 3: raise
+            time.sleep(2 + poging)
 
 def soql(dataset, where, select=None, limit=5000):
     p = {"$where": where, "$limit": str(limit)}

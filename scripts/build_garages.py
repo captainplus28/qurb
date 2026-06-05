@@ -21,6 +21,9 @@ import json, sys, time, os, re, urllib.request
 ARGS = [a for a in sys.argv[1:] if not a.startswith("--")]
 AREAMANAGER = ARGS[0] if len(ARGS) > 0 else "363"
 GEMEENTE    = ARGS[1] if len(ARGS) > 1 else "Amsterdam"
+# Naamvarianten van de gemeente (voor opschonen namen + herkennen gemeente-exploitant).
+STAD_ALIASSEN = {"den haag": ["Den Haag", "'s-Gravenhage"], "'s-gravenhage": ["Den Haag", "'s-Gravenhage"]}
+STAD_NAMEN = STAD_ALIASSEN.get(GEMEENTE.lower(), [GEMEENTE])
 BASE = os.path.join(os.path.dirname(__file__), "..", "data", AREAMANAGER)
 NPR = "https://npropendata.rdw.nl/parkingdata/v2"
 OUT = os.path.join(BASE, "garages.json")
@@ -45,22 +48,47 @@ def bbox_uit_straat():
 
 def get(url):
     req = urllib.request.Request(url, headers={"User-Agent": "qurb-datapijplijn/1.0"})
-    with urllib.request.urlopen(req, timeout=60) as r:
-        return json.load(r)
+    for poging in range(4):
+        try:
+            with urllib.request.urlopen(req, timeout=60) as r:
+                return json.load(r)
+        except Exception:
+            if poging == 3: raise
+            time.sleep(2 + poging)
 
 def kort_operator(op):
-    """'Q-Park Nederland BV' -> 'Q-Park', 'APCOA Parking' -> 'APCOA'."""
+    """'Q-Park Nederland BV' -> 'Q-Park', 'Markthof Parkeergarage B.V.' -> 'Markthof'."""
     if not op: return op
-    return re.sub(r"\s+(Nederland\s+B\.?V\.?|B\.?V\.?|Parking)$", "", op.strip(), flags=re.I).strip()
+    o = op.strip()
+    while True:                                                  # herhaaldelijk achtervoegsels strippen
+        n = re.sub(r"\s+(Nederland\s+B\.?V\.?|B\.?V\.?|Parking|Parkeergarage|Garage)$", "", o, flags=re.I).strip()
+        if n == o: return o
+        o = n
+
+def is_gemeente_operator(merk):
+    m = (merk or "").lower().strip()
+    return m in {s.lower() for s in STAD_NAMEN} or m.startswith("gemeente")
+
+def _opschonen(s):
+    """Generieke woorden ('Parkeergarage') en herhaald woord verwijderen."""
+    s = re.sub(r"\bParkeergarage\b", "", s, flags=re.I)
+    s = re.sub(r"\s+", " ", s).strip()
+    w = s.split()
+    if len(w) >= 2 and w[-1].lower() == w[0].lower():           # 'Markthof Markthof' -> 'Markthof'
+        w = w[:-1]
+    return " ".join(w)
 
 def nette_naam(raw, merk):
     """Exploitantnaam vooraan, geen '(Gemeente)'/'GEMEENTE-'/stad-suffix."""
     n = (raw or "").strip()
-    g = re.escape(GEMEENTE)
-    n = re.sub(rf"\s*\({g}\)\s*$", "", n, flags=re.I).strip()   # stad-suffix weg
-    n = re.sub(rf"^{g}[-\s]+", "", n, flags=re.I).strip()       # exploitant-prefix (bv. ROTTERDAM-) weg
-    plaats = re.sub(r"^(Parkeergarage|Garage|Terrein)\s+", "", n, flags=re.I).strip()
-    if merk and merk.lower() not in ("amsterdam", "gemeente amsterdam"):
+    for s in STAD_NAMEN:                                         # alle naamvarianten weghalen
+        g = re.escape(s)
+        n = re.sub(rf"\s*\({g}\)\s*$", "", n, flags=re.I).strip()
+        n = re.sub(rf"^{g}[-\s]+", "", n, flags=re.I).strip()
+    if is_gemeente_operator(merk):                              # gemeentegarage: geen merk-prefix
+        return _opschonen(re.sub(r"^(Parkeergarage|Garage|Terrein)\s+(?=\w)", "", n, flags=re.I)) or n
+    plaats = _opschonen(re.sub(r"^(Parkeergarage|Garage|Terrein)\s+", "", n, flags=re.I))
+    if merk:
         return plaats if plaats.lower().startswith(merk.lower()) else f"{merk} {plaats}"
     return n  # gemeente: beschrijvende naam zonder stad
 
@@ -124,6 +152,8 @@ def main():
             # Garages zonder gepubliceerd tarief (bv. Q-Park) tonen we tóch:
             # met locatie/capaciteit en een link naar de exploitant (uur=null).
             merk = kort_operator(op)
+            if is_gemeente_operator(merk):
+                merk = GEMEENTE                      # 's-Gravenhage -> Den Haag
             out.append({
                 "naam": nette_naam(info.get("name") or f.get("name"), merk),
                 "operator": merk, "type": usage, "url": url,

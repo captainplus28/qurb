@@ -17,8 +17,13 @@ OUT = os.path.join(os.path.dirname(__file__), "..", "data", AREAMANAGER, "vergun
 
 def get(url):
     req = urllib.request.Request(url, headers={"User-Agent": "qurb-datapijplijn/1.0"})
-    with urllib.request.urlopen(req, timeout=60) as r:
-        return json.load(r)
+    for poging in range(4):
+        try:
+            with urllib.request.urlopen(req, timeout=60) as r:
+                return json.load(r)
+        except Exception:
+            if poging == 3: raise
+            time.sleep(2 + poging)
 
 def soql(ds, where, sel, lim=80000):
     return get(f"{SOCRATA}/{ds}.json?" + urllib.parse.urlencode({"$where": where, "$select": sel, "$limit": lim}))
