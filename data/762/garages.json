@@ -1,0 +1,30 @@
+{
+ "areamanagerid": "762",
+ "gemeente": "Deurne",
+ "bron": "RDW NPR Open Parkeerdata (CC-0)",
+ "gegenereerd": "2026-06-05T08:38:45Z",
+ "garages": [
+  {
+   "naam": "P+R Station Deurne",
+   "operator": "Deurne",
+   "type": "P+R",
+   "url": "www.deurne.nl",
+   "lat": 51.457704,
+   "lon": 5.785628,
+   "capaciteit": 227,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "ParkKing Wolfsberg",
+   "operator": "ParkKing",
+   "type": "Garage parkeren",
+   "url": "www.parkking.nl",
+   "lat": 51.462046,
+   "lon": 5.79532,
+   "capaciteit": 361,
+   "uur": 0.95,
+   "dagmax": 10.0
+  }
+ ]
+}

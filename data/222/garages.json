@@ -1,0 +1,52 @@
+{
+ "areamanagerid": "222",
+ "gemeente": "Doetinchem",
+ "bron": "RDW NPR Open Parkeerdata (CC-0)",
+ "gegenereerd": "2026-06-05T08:40:53Z",
+ "garages": [
+  {
+   "naam": "Amphion",
+   "operator": "Doetinchem",
+   "type": "Garage parkeren",
+   "url": "www.doetinchem.nl",
+   "lat": 51.96911,
+   "lon": 6.28848,
+   "capaciteit": 423,
+   "uur": 1.9,
+   "dagmax": 4.0
+  },
+  {
+   "naam": "Catharina",
+   "operator": "Doetinchem",
+   "type": "Garage parkeren",
+   "url": "www.doetinchem.nl",
+   "lat": 51.96707,
+   "lon": 6.28968,
+   "capaciteit": 190,
+   "uur": 2.5,
+   "dagmax": 15.0
+  },
+  {
+   "naam": "P+R Station Doetinchem",
+   "operator": "Doetinchem",
+   "type": "P+R",
+   "url": "www.doetinchem.nl",
+   "lat": 51.958962,
+   "lon": 6.292448,
+   "capaciteit": 270,
+   "uur": 0.0,
+   "dagmax": null
+  },
+  {
+   "naam": "Parking + Protection MediaMarkt",
+   "operator": "Parking + Protection",
+   "type": "Garage parkeren",
+   "url": "",
+   "lat": 51.968444,
+   "lon": 6.288562,
+   "capaciteit": 182,
+   "uur": 1.5,
+   "dagmax": 3.0
+  }
+ ]
+}

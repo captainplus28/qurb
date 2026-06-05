@@ -1,0 +1,63 @@
+{
+ "areamanagerid": "150",
+ "gemeente": "Deventer",
+ "bron": "RDW NPR Open Parkeerdata (CC-0)",
+ "gegenereerd": "2026-06-05T08:39:36Z",
+ "garages": [
+  {
+   "naam": "Centrumgarage",
+   "operator": "Centrumgarage",
+   "type": "Garage parkeren",
+   "url": "",
+   "lat": 52.254732,
+   "lon": 6.1588,
+   "capaciteit": 575,
+   "uur": 1.88,
+   "dagmax": 10.0
+  },
+  {
+   "naam": "Centrumgarage",
+   "operator": "Centrumgarage",
+   "type": "Garage parkeren",
+   "url": "",
+   "lat": 52.254732,
+   "lon": 6.1588,
+   "capaciteit": 575,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Nederlandse Spoorwegen P+R Handelskade",
+   "operator": "Nederlandse Spoorwegen",
+   "type": "P+R",
+   "url": "",
+   "lat": 52.25496,
+   "lon": 6.16647,
+   "capaciteit": 247,
+   "uur": 2.25,
+   "dagmax": 9.7
+  },
+  {
+   "naam": "Q-Park De Boreel",
+   "operator": "Q-Park",
+   "type": "Garage parkeren",
+   "url": "www.q-park.nl",
+   "lat": 52.25262,
+   "lon": 6.16564,
+   "capaciteit": 615,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Q-Park P+R Handelskade",
+   "operator": "Q-Park",
+   "type": "Parkeergarage",
+   "url": "www.q-park.nl",
+   "lat": 52.25465,
+   "lon": 6.166144,
+   "capaciteit": 247,
+   "uur": null,
+   "dagmax": null
+  }
+ ]
+}
