@@ -9,11 +9,11 @@ Levert de polygonen van vergunninghouderszones, zodat de app kan zeggen:
 Uitvoer: data/amsterdam-vergunning.json (apart bestand; frontend laadt het lazy).
 Gebruik:  python3 scripts/build_permit.py
 """
-import json, os, re, time, urllib.parse, urllib.request
+import json, os, re, sys, time, urllib.parse, urllib.request
 
-AREAMANAGER = "363"
+AREAMANAGER = next((a for a in sys.argv[1:] if not a.startswith("--")), "363")
 SOCRATA = "https://opendata.rdw.nl/resource"
-OUT = os.path.join(os.path.dirname(__file__), "..", "data", "amsterdam-vergunning.json")
+OUT = os.path.join(os.path.dirname(__file__), "..", "data", AREAMANAGER, "vergunning.json")
 
 def get(url):
     req = urllib.request.Request(url, headers={"User-Agent": "qurb-datapijplijn/1.0"})
@@ -51,9 +51,9 @@ def main():
         byid[aid]["polys"] += polys
 
     zones = list(byid.values())
-    if len(zones) < 50:
-        raise SystemExit(f"FOUT: slechts {len(zones)} vergunningzones — RDW mogelijk onbereikbaar; bestaande data niet overschreven.")
-    payload = {"stad": "Amsterdam", "regime": "vergunninghouders",
+    if permit_ids and not zones:
+        raise SystemExit(f"FOUT: {len(permit_ids)} VERGUNP-zones gevonden maar 0 met geometrie — RDW mogelijk onbereikbaar; niet overschreven.")
+    payload = {"areamanagerid": AREAMANAGER, "regime": "vergunninghouders",
                "bron": "RDW Open Data Parkeren (CC-0)",
                "gegenereerd": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
                "zones": zones}

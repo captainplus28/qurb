@@ -870,27 +870,50 @@ function stadUit(naam){
   return deel.replace(/^\s*\d{4}\s?[A-Za-z]{2}\s*/,'').trim();
 }
 
-/* Coordinaat (WGS84) van een gekozen PDOK-adres ophalen via de lookup-service. */
-async function haalCoord(id){
+/* Gekozen stad (RDW areamanager-id) + gemeente-kaart + per-stad datacache. */
+let gekozenStadId = null, gemeentenMap = null;
+const stadCache = {};
+
+async function laadGemeenten(){
+  if(gemeentenMap) return gemeentenMap;
+  try{ const r=await fetch('data/gemeenten.json'); gemeentenMap = r.ok ? ((await r.json()).gemeenten||{}) : {}; }
+  catch(e){ gemeentenMap = {}; }
+  return gemeentenMap;
+}
+
+/* Coordinaat (WGS84) + gemeente van een PDOK-adres ophalen. */
+async function haalAdres(id){
   try{
-    const r = await fetch('https://api.pdok.nl/bzk/locatieserver/search/v3_1/lookup?fl=centroide_ll&id='+encodeURIComponent(id));
+    const r = await fetch('https://api.pdok.nl/bzk/locatieserver/search/v3_1/lookup?fl=centroide_ll,gemeentenaam&id='+encodeURIComponent(id));
     if(!r.ok) return null;
     const j = await r.json();
     const doc = j.response && j.response.docs && j.response.docs[0];
     const m = doc && doc.centroide_ll && doc.centroide_ll.match(/POINT\(([-\d.]+) ([-\d.]+)\)/);
-    return m ? {lon:parseFloat(m[1]), lat:parseFloat(m[2])} : null;
+    if(!m) return null;
+    return {lon:parseFloat(m[1]), lat:parseFloat(m[2]), gemeente:(doc.gemeentenaam||'')};
   }catch(e){ return null; }
 }
+async function bepaalStadId(gemeente){
+  const m = await laadGemeenten();
+  return m[(gemeente||'').toLowerCase().trim()] || null;
+}
 
-/* Live garagedata (Amsterdam) uit de RDW-pijplijn, eenmalig gecachet. */
-let amsGaragesCache = null;
-async function laadAmsGarages(){
-  if(amsGaragesCache !== null) return amsGaragesCache;
-  try{
-    const r = await fetch('data/amsterdam-garages.json');
-    amsGaragesCache = r.ok ? ((await r.json()).garages || []) : [];
-  }catch(e){ amsGaragesCache = []; }
-  return amsGaragesCache;
+/* Per-stad lazy loaders (data/<areamanagerid>/...). */
+function _stad(id){ return stadCache[id] || (stadCache[id]={straat:null,verg:null,gar:null}); }
+async function laadStraat(id){
+  if(!id) return []; const c=_stad(id);
+  if(c.straat===null){ try{const r=await fetch(`data/${id}/straat.json`); c.straat=r.ok?((await r.json()).zones||[]):[];}catch(e){c.straat=[];} }
+  return c.straat;
+}
+async function laadGaragesStad(id){
+  if(!id) return []; const c=_stad(id);
+  if(c.gar===null){ try{const r=await fetch(`data/${id}/garages.json`); c.gar=r.ok?((await r.json()).garages||[]):[];}catch(e){c.gar=[];} }
+  return c.gar;
+}
+async function laadVergunningStad(id){
+  if(!id) return []; const c=_stad(id);
+  if(c.verg===null){ try{const r=await fetch(`data/${id}/vergunning.json`); c.verg=r.ok?((await r.json()).zones||[]):[];}catch(e){c.verg=[];} }
+  return c.verg;
 }
 
 /* Hemelsbrede afstand in meters (haversine). */
@@ -901,16 +924,6 @@ function afstandM(a,b){
   return Math.round(R*2*Math.atan2(Math.sqrt(s),Math.sqrt(1-s)));
 }
 
-/* Live straat-tariefzones (Amsterdam) uit de RDW-pijplijn, eenmalig gecachet. */
-let amsStraatCache = null;
-async function laadAmsStraat(){
-  if(amsStraatCache !== null) return amsStraatCache;
-  try{
-    const r = await fetch('data/amsterdam-straat.json');
-    amsStraatCache = r.ok ? ((await r.json()).zones || []) : [];
-  }catch(e){ amsStraatCache = []; }
-  return amsStraatCache;
-}
 /* Punt-in-polygon (ray casting). poly = [[lon,lat],...]; pt = {lon,lat}. */
 function puntInPolygon(pt, poly){
   let inside=false;
@@ -922,7 +935,7 @@ function puntInPolygon(pt, poly){
 }
 /* Echt straattarief (€/uur) voor een punt op een tijdstip, of null buiten dekking. */
 async function straatTariefVoor(coord, start){
-  const zones = await laadAmsStraat();
+  const zones = await laadStraat(gekozenStadId);
   if(!zones.length) return null;
   const treffers = zones.filter(z => (z.polys||[]).some(p => puntInPolygon(coord, p)));
   if(!treffers.length) return null;
@@ -943,18 +956,8 @@ async function straatTariefVoor(coord, start){
   return {eur, naam};
 }
 
-/* Vergunninghouderszones (Amsterdam) — lazy geladen (groot bestand). */
-let amsVergCache = null;
-async function laadVergunning(){
-  if(amsVergCache !== null) return amsVergCache;
-  try{
-    const r = await fetch('data/amsterdam-vergunning.json');
-    amsVergCache = r.ok ? ((await r.json()).zones || []) : [];
-  }catch(e){ amsVergCache = []; }
-  return amsVergCache;
-}
 async function inVergunningZone(coord){
-  const z = await laadVergunning();
+  const z = await laadVergunningStad(gekozenStadId);
   return z.some(x => (x.polys||[]).some(p => puntInPolygon(coord, p)));
 }
 
@@ -1005,12 +1008,19 @@ async function lookup(q){
       el.addEventListener('click',async ()=>{
         addr.value=d.weergavenaam;
         gekozenStad=stadUit(d.weergavenaam);
-        gekozenCoord=null;
+        gekozenCoord=null; gekozenStadId=null;
         updateTariefWeergave();
         sugBox.classList.remove('open');
         found.innerHTML=`<span class="found-tag">${esc(d.weergavenaam)}</span>`;
         found.style.display='block';
-        if(d.id) gekozenCoord = await haalCoord(d.id);
+        if(d.id){
+          const a = await haalAdres(d.id);
+          if(a){
+            gekozenCoord = {lon:a.lon, lat:a.lat};
+            gekozenStad  = a.gemeente || gekozenStad;
+            gekozenStadId = await bepaalStadId(a.gemeente);
+          }
+        }
       });
       sugBox.appendChild(el);
     });
@@ -1098,7 +1108,7 @@ async function bereken(){
   // Live straattarief per zone (Amsterdam); anders het indicatieve gemeentecijfer.
   let tarief=huidigTarief, tariefNaam=null, gratisStraat=false, dekking=true, vergunning=false;
   const stadKey=(gekozenStad||'').toLowerCase().trim();
-  if(stadKey==='amsterdam' && gekozenCoord){
+  if(gekozenStadId && gekozenCoord){
     const st=await straatTariefVoor(gekozenCoord, start);
     if(st && st.eur>0){ tarief=st.eur; tariefNaam=st.naam; }
     else if(st){ tarief=0; gratisStraat=true; tariefNaam='Gratis op dit tijdstip · '+st.naam; }
@@ -1142,10 +1152,10 @@ async function bereken(){
 
   html+=`<div class="results-group"><div class="section-label">Garages${gekozenStad?' in '+esc(gekozenStad):''}</div>`;
 
-  // Amsterdam: echte live RDW-garages; overige steden: voorlopige tabel als fallback.
+  // Steden met RDW-data: echte live garages; overige: voorlopige tabel als fallback.
   let amsGar = null;
-  if(stadKey==='amsterdam'){
-    const data = await laadAmsGarages();
+  if(gekozenStadId){
+    const data = await laadGaragesStad(gekozenStadId);
     if(data && data.length) amsGar = data;
   }
 

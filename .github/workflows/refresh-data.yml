@@ -27,14 +27,26 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Garages verversen
-        run: python3 scripts/build_garages.py
+      - name: Gemeente-kaart verversen
+        run: python3 scripts/build_gemeentenmap.py
 
-      - name: Straat-tarieven verversen
-        run: python3 scripts/build_street.py
-
-      - name: Vergunningzones verversen
-        run: python3 scripts/build_permit.py
+      - name: Steden verversen (straat + vergunning + garages)
+        run: |
+          # Te bouwen steden: "areamanagerid:Gemeentenaam". Voeg hier gemeenten toe om uit te rollen.
+          STEDEN=(
+            "363:Amsterdam"
+            "599:Rotterdam"
+            "344:Utrecht"
+            "518:Den Haag"
+          )
+          for spec in "${STEDEN[@]}"; do
+            id="${spec%%:*}"; naam="${spec##*:}"
+            echo "::group::Stad $id ($naam)"
+            python3 scripts/build_street.py  "$id"        || echo "straat $id overgeslagen"
+            python3 scripts/build_permit.py  "$id"        || echo "vergunning $id overgeslagen"
+            python3 scripts/build_garages.py "$id" "$naam" || echo "garages $id overgeslagen"
+            echo "::endgroup::"
+          done
 
       - name: Wijzigingen committen
         run: |

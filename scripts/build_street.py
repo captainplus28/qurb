@@ -15,10 +15,11 @@ Gebruik:  python3 scripts/build_street.py [--limit N]
 """
 import json, sys, time, os, re, urllib.parse, urllib.request
 
-AREAMANAGER = "363"
+# Areamanager-id als eerste argument (default Amsterdam 363). Uitvoer per gemeente: data/<id>/.
+AREAMANAGER = next((a for a in sys.argv[1:] if not a.startswith("--")), "363")
 SOCRATA = "https://opendata.rdw.nl/resource"
 NPR_STATIC = "https://npropendata.rdw.nl/parkingdata/v2/static"
-OUT = os.path.join(os.path.dirname(__file__), "..", "data", "amsterdam-straat.json")
+OUT = os.path.join(os.path.dirname(__file__), "..", "data", AREAMANAGER, "straat.json")
 NOW = time.time()
 DAYMAP = {"Mon":1,"Tue":2,"Wed":3,"Thu":4,"Fri":5,"Sat":6,"Sun":7}
 
@@ -139,9 +140,9 @@ def main():
         except Exception as e:
             print(f"  ! {areaid} ({uuid}): {e}", file=sys.stderr)
 
-    if len(out) < 20:
-        sys.exit(f"FOUT: slechts {len(out)} zones — RDW mogelijk onbereikbaar; bestaande data niet overschreven.")
-    payload = {"stad":"Amsterdam","areamanagerid":AREAMANAGER,
+    if zones and not out:
+        sys.exit(f"FOUT: {len(zones)} BETAALDP-zones gevonden maar 0 bruikbaar — RDW mogelijk onbereikbaar; niet overschreven.")
+    payload = {"areamanagerid":AREAMANAGER,
                "bron":"RDW NPR Open Parkeerdata (CC-0)",
                "gegenereerd": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
                "zones": out}

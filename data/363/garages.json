@@ -1,7 +1,8 @@
 {
- "stad": "Amsterdam",
+ "areamanagerid": "363",
+ "gemeente": "Amsterdam",
  "bron": "RDW NPR Open Parkeerdata (CC-0)",
- "gegenereerd": "2026-06-05T00:10:12Z",
+ "gegenereerd": "2026-06-05T00:20:42Z",
  "garages": [
   {
    "naam": "APCOA Antarctica",

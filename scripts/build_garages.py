@@ -17,12 +17,31 @@ Gebruik:  python3 scripts/build_garages.py
 """
 import json, sys, time, os, re, urllib.request
 
+# Argumenten: <areamanagerid> <gemeentenaam>   (default Amsterdam 363)
+ARGS = [a for a in sys.argv[1:] if not a.startswith("--")]
+AREAMANAGER = ARGS[0] if len(ARGS) > 0 else "363"
+GEMEENTE    = ARGS[1] if len(ARGS) > 1 else "Amsterdam"
+BASE = os.path.join(os.path.dirname(__file__), "..", "data", AREAMANAGER)
 NPR = "https://npropendata.rdw.nl/parkingdata/v2"
-OUT = os.path.join(os.path.dirname(__file__), "..", "data", "amsterdam-garages.json")
+OUT = os.path.join(BASE, "garages.json")
 NOW = time.time()
-# Amsterdam bounding box (WGS84)
-LAT0, LAT1, LON0, LON1 = 52.27, 52.43, 4.72, 5.05
 PARKEER_TYPES = {"Garage parkeren", "Parkeergarage", "Terreinparkeren", "P+R"}
+
+def bbox_uit_straat():
+    """Bounding box (lat0,lat1,lon0,lon1) afgeleid uit de gebouwde straatzones."""
+    try:
+        zones = json.load(open(os.path.join(BASE, "straat.json")))["zones"]
+    except Exception:
+        return None
+    lats, lons = [], []
+    for z in zones:
+        for poly in z.get("polys", []):
+            for lon, lat in poly:
+                lons.append(lon); lats.append(lat)
+    if not lons:
+        return None
+    m = 0.012  # ~1,3 km marge rond de stad
+    return (min(lats)-m, max(lats)+m, min(lons)-m, max(lons)+m)
 
 def get(url):
     req = urllib.request.Request(url, headers={"User-Agent": "qurb-datapijplijn/1.0"})
@@ -35,10 +54,11 @@ def kort_operator(op):
     return re.sub(r"\s+(Nederland\s+B\.?V\.?|B\.?V\.?|Parking)$", "", op.strip(), flags=re.I).strip()
 
 def nette_naam(raw, merk):
-    """Exploitantnaam vooraan, geen '(Amsterdam)'/'AMSTERDAM-'/stad."""
+    """Exploitantnaam vooraan, geen '(Gemeente)'/'GEMEENTE-'/stad-suffix."""
     n = (raw or "").strip()
-    n = re.sub(r"\s*\(Amsterdam\)\s*$", "", n, flags=re.I).strip()   # stad-suffix weg
-    n = re.sub(r"^AMSTERDAM[-\s]+", "", n, flags=re.I).strip()       # Q-Park-prefix weg
+    g = re.escape(GEMEENTE)
+    n = re.sub(rf"\s*\({g}\)\s*$", "", n, flags=re.I).strip()   # stad-suffix weg
+    n = re.sub(rf"^{g}[-\s]+", "", n, flags=re.I).strip()       # exploitant-prefix (bv. ROTTERDAM-) weg
     plaats = re.sub(r"^(Parkeergarage|Garage|Terrein)\s+", "", n, flags=re.I).strip()
     if merk and merk.lower() not in ("amsterdam", "gemeente amsterdam"):
         return plaats if plaats.lower().startswith(merk.lower()) else f"{merk} {plaats}"
@@ -82,9 +102,11 @@ def coords_capaciteit_operator(info):
     return lat, lon, cap, op, url, usage
 
 def main():
+    bbox = bbox_uit_straat()   # (lat0,lat1,lon0,lon1) of None
+    naamfilter = GEMEENTE.lower()
     idx = get(NPR)
-    fac = [f for f in idx.get("ParkingFacilities", []) if "amsterdam" in (f.get("name") or "").lower()]
-    print(f"Amsterdam-kandidaten in index: {len(fac)}", file=sys.stderr)
+    fac = [f for f in idx.get("ParkingFacilities", []) if naamfilter in (f.get("name") or "").lower()]
+    print(f"{GEMEENTE}-kandidaten in index: {len(fac)} | bbox uit straatzones: {'ja' if bbox else 'nee'}", file=sys.stderr)
 
     out = []
     for f in fac:
@@ -92,7 +114,9 @@ def main():
             s = get(f"{NPR}/static/{f['identifier']}")
             info = s.get("parkingFacilityInformation", {})
             lat, lon, cap, op, url, usage = coords_capaciteit_operator(info)
-            if lat is None or not (LAT0 < lat < LAT1 and LON0 < lon < LON1):
+            if lat is None:
+                continue
+            if bbox and not (bbox[0] < lat < bbox[1] and bbox[2] < lon < bbox[3]):
                 continue
             if usage not in PARKEER_TYPES:
                 continue
@@ -114,10 +138,9 @@ def main():
         except Exception as e:
             print(f"  ! {f.get('name','?')[:30]}: {e}", file=sys.stderr)
 
-    if len(out) < 10:
-        sys.exit(f"FOUT: slechts {len(out)} garages — RDW mogelijk onbereikbaar; bestaande data niet overschreven.")
     out.sort(key=lambda x: x["naam"])
-    payload = {"stad": "Amsterdam", "bron": "RDW NPR Open Parkeerdata (CC-0)",
+    payload = {"areamanagerid": AREAMANAGER, "gemeente": GEMEENTE,
+               "bron": "RDW NPR Open Parkeerdata (CC-0)",
                "gegenereerd": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
                "garages": out}
     os.makedirs(os.path.dirname(OUT), exist_ok=True)
