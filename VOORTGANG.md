@@ -36,6 +36,20 @@ Parkeervergelijker: voer adres + tijdvak in → zie waar je het voordeligst park
    bedrijfsgegevens invullen). api-partners.q-park.com.
 4. **2FA** aanzetten op GitHub/Netlify/e-mail/domein (grootste praktische beveiligingswinst).
 
+## Datastrategie (beslist)
+- **Nu = open RDW-data + eerlijke degradatie (optie C).** Sterk in grote steden.
+- **Valse "gratis" opgelost:** heeft een gemeente betaald parkeren (`data/dekking.json`) maar
+  vinden we de zone niet → "controleer de automaat", géén "gratis". (`build_dekking.py`.)
+- **Kleine gemeenten:** open data mist daar vaak geometrie én straattarieven — fundamentele
+  limiet van de open subset (geverifieerd o.a. Barneveld).
+- **De cijfercodes** op automaten/apps = NPR-zonecodes. Alle apps gebruiken dezelfde NPR;
+  zij zijn **SHPV-parkeerproviders** met volledige toegang, wij gebruiken de open subset.
+  → Echte landelijke betrouwbaarheid komt alleen via **SHPV-aansluiting** (shpv.nl) — dé
+  vervolgstap als betrouwbaarheid in kleine gemeenten prioriteit wordt. Maakt ook een
+  "typ de zonecode van de automaat"-feature mogelijk.
+- **Google Places API:** onderzocht, **voorlopig afgezien**. Geeft géén tarieven (alleen
+  booleans zoals paidStreetParking) en NL-dekking onzeker. Geen kerngat-oplossing.
+
 ## Later
 - NDW/parkeervakken: bord-/vakniveau "kan ik hier staan" (parkeerverbod E1) — verfijning.
 - Tijdvakken in de garagekosten fijner (eerste uur vs vervolg).
