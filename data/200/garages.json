@@ -1,0 +1,63 @@
+{
+ "areamanagerid": "200",
+ "gemeente": "Apeldoorn",
+ "bron": "RDW NPR Open Parkeerdata (CC-0)",
+ "gegenereerd": "2026-06-05T08:27:22Z",
+ "garages": [
+  {
+   "naam": "Nederlandse Spoorwegen P+R Laan van de Mensenrechten",
+   "operator": "Nederlandse Spoorwegen",
+   "type": "P+R",
+   "url": "",
+   "lat": 52.20862,
+   "lon": 5.9706,
+   "capaciteit": 188,
+   "uur": 2.9,
+   "dagmax": 16.02
+  },
+  {
+   "naam": "P1 Parking Kanaalstraat",
+   "operator": "P1",
+   "type": "Terreinparkeren",
+   "url": "",
+   "lat": 52.212838,
+   "lon": 5.965437,
+   "capaciteit": 120,
+   "uur": 2.0,
+   "dagmax": 10.0
+  },
+  {
+   "naam": "P1 Parking Markt",
+   "operator": "P1",
+   "type": "Terreinparkeren",
+   "url": "",
+   "lat": 52.214105,
+   "lon": 5.965716,
+   "capaciteit": 106,
+   "uur": 2.0,
+   "dagmax": 10.0
+  },
+  {
+   "naam": "Q-Park Museum Centrum",
+   "operator": "Q-Park",
+   "type": "Garage parkeren",
+   "url": "www.q-park.nl",
+   "lat": 52.215298,
+   "lon": 5.956585,
+   "capaciteit": 628,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Q-Park Oranjerie",
+   "operator": "Q-Park",
+   "type": "Garage parkeren",
+   "url": "www.q-park.nl",
+   "lat": 52.212543,
+   "lon": 5.9618,
+   "capaciteit": 519,
+   "uur": null,
+   "dagmax": null
+  }
+ ]
+}

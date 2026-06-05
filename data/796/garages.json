@@ -1,0 +1,85 @@
+{
+ "areamanagerid": "796",
+ "gemeente": "'s-Hertogenbosch",
+ "bron": "RDW NPR Open Parkeerdata (CC-0)",
+ "gegenereerd": "2026-06-05T08:18:15Z",
+ "garages": [
+  {
+   "naam": "Nederlandse Spoorwegen P+R Magistratenlaan",
+   "operator": "Nederlandse Spoorwegen",
+   "type": "P+R",
+   "url": "",
+   "lat": 51.68848,
+   "lon": 5.2943,
+   "capaciteit": 163,
+   "uur": 2.73,
+   "dagmax": 15.47
+  },
+  {
+   "naam": "Nederlandse Spoorwegen P+R Mayweg",
+   "operator": "Nederlandse Spoorwegen",
+   "type": "P+R",
+   "url": "",
+   "lat": 51.6918,
+   "lon": 5.29336,
+   "capaciteit": 813,
+   "uur": 2.73,
+   "dagmax": 7.28
+  },
+  {
+   "naam": "Nederlandse Spoorwegen P+R Parallelweg",
+   "operator": "Nederlandse Spoorwegen",
+   "type": "P+R",
+   "url": "",
+   "lat": 51.695123,
+   "lon": 5.293918,
+   "capaciteit": 74,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "P+R Parallelweg",
+   "operator": "'s-Hertogenbosch",
+   "type": "P+R",
+   "url": "",
+   "lat": 51.695123,
+   "lon": 5.293918,
+   "capaciteit": 74,
+   "uur": 0.0,
+   "dagmax": null
+  },
+  {
+   "naam": "Parking + Protection Jeroen Bosch Ziekenhuis",
+   "operator": "Parking + Protection",
+   "type": "Garage parkeren",
+   "url": "",
+   "lat": 51.685063,
+   "lon": 5.278267,
+   "capaciteit": 650,
+   "uur": 0.0,
+   "dagmax": 12.5
+  },
+  {
+   "naam": "Parking + Protection Jeroen Bosch Ziekenhuis",
+   "operator": "Parking + Protection",
+   "type": "Terreinparkeren",
+   "url": "",
+   "lat": 51.684374,
+   "lon": 5.278979,
+   "capaciteit": 350,
+   "uur": 0.0,
+   "dagmax": 12.5
+  },
+  {
+   "naam": "Q-Park P+R Magistratenlaan",
+   "operator": "Q-Park",
+   "type": "Parkeergarage",
+   "url": "www.q-park.nl",
+   "lat": 51.6903534,
+   "lon": 5.29283142,
+   "capaciteit": 163,
+   "uur": null,
+   "dagmax": null
+  }
+ ]
+}
