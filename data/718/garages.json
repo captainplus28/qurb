@@ -1,0 +1,30 @@
+{
+ "areamanagerid": "718",
+ "gemeente": "Vlissingen",
+ "bron": "RDW NPR Open Parkeerdata (CC-0)",
+ "gegenereerd": "2026-06-05T09:31:41Z",
+ "garages": [
+  {
+   "naam": "Fonteyne",
+   "operator": "Vlissingen",
+   "type": "Garage parkeren",
+   "url": "",
+   "lat": 51.443236,
+   "lon": 3.570138,
+   "capaciteit": 300,
+   "uur": 2.3,
+   "dagmax": null
+  },
+  {
+   "naam": "Scheldeplein",
+   "operator": "Vlissingen",
+   "type": "Garage parkeren",
+   "url": "",
+   "lat": 51.445493,
+   "lon": 3.574467,
+   "capaciteit": 275,
+   "uur": 2.3,
+   "dagmax": null
+  }
+ ]
+}

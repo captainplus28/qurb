@@ -1,0 +1,140 @@
+{
+ "areamanagerid": "861",
+ "gemeente": "Veldhoven",
+ "bron": "RDW NPR Open Parkeerdata (CC-0)",
+ "gegenereerd": "2026-06-05T09:30:18Z",
+ "garages": [
+  {
+   "naam": "Kerkplein Zeelst (Terrein, Veldhoven)",
+   "operator": "Veldhoven",
+   "type": "Terreinparkeren",
+   "url": "",
+   "lat": 51.42474,
+   "lon": 5.41599,
+   "capaciteit": 37,
+   "uur": 0.0,
+   "dagmax": null
+  },
+  {
+   "naam": "P1 Geer",
+   "operator": "P1",
+   "type": "Garage parkeren",
+   "url": "",
+   "lat": 51.421098,
+   "lon": 5.403629,
+   "capaciteit": 296,
+   "uur": 1.3,
+   "dagmax": 14.3
+  },
+  {
+   "naam": "PCH Geer",
+   "operator": "PCH",
+   "type": "Garage parkeren",
+   "url": "https://www.pch-dienstengroep.nl/",
+   "lat": 51.421098,
+   "lon": 5.403629,
+   "capaciteit": 292,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Parkeerterrein Braak (terrein, Veldhoven)",
+   "operator": "Veldhoven",
+   "type": "Terreinparkeren",
+   "url": "",
+   "lat": 51.41859,
+   "lon": 5.40865,
+   "capaciteit": 137,
+   "uur": 0.0,
+   "dagmax": null
+  },
+  {
+   "naam": "Parkeerterrein Djept-Zuid (terrein, Veldhoven)",
+   "operator": "Veldhoven",
+   "type": "Terreinparkeren",
+   "url": "",
+   "lat": 51.42484,
+   "lon": 5.41188,
+   "capaciteit": 82,
+   "uur": 0.0,
+   "dagmax": null
+  },
+  {
+   "naam": "Parkeerterrein Mariaplein (terrein, Veldhoven)",
+   "operator": "Veldhoven",
+   "type": "Terreinparkeren",
+   "url": "",
+   "lat": 51.41579,
+   "lon": 5.41598,
+   "capaciteit": 41,
+   "uur": 0.0,
+   "dagmax": null
+  },
+  {
+   "naam": "Parkeerterrein Noord winkels Heikant de Kelen (terrein, Veldhoven)",
+   "operator": "Veldhoven",
+   "type": "Terreinparkeren",
+   "url": "",
+   "lat": 51.42776,
+   "lon": 5.39196,
+   "capaciteit": 34,
+   "uur": 0.0,
+   "dagmax": null
+  },
+  {
+   "naam": "Parkeerterrein Oost Winkels Heikant de Kelen (terrein, Veldhoven)",
+   "operator": "Veldhoven",
+   "type": "Terreinparkeren",
+   "url": "",
+   "lat": 51.42713,
+   "lon": 5.3931,
+   "capaciteit": 47,
+   "uur": 0.0,
+   "dagmax": null
+  },
+  {
+   "naam": "Parkeerterrein Winkelcentrum Mira (terrein, Veldhoven)",
+   "operator": "Veldhoven",
+   "type": "Terreinparkeren",
+   "url": "",
+   "lat": 51.41243,
+   "lon": 5.39755,
+   "capaciteit": 150,
+   "uur": 0.0,
+   "dagmax": null
+  },
+  {
+   "naam": "Parkeerterrein winkels 't Look (terrein, Veldhoven)",
+   "operator": "Veldhoven",
+   "type": "Terreinparkeren",
+   "url": "",
+   "lat": 51.41243,
+   "lon": 5.39755,
+   "capaciteit": 85,
+   "uur": 0.0,
+   "dagmax": null
+  },
+  {
+   "naam": "Parkeerterrein winkels (terrein, Veldhoven)",
+   "operator": "Veldhoven",
+   "type": "Terreinparkeren",
+   "url": "",
+   "lat": 51.41326,
+   "lon": 5.40802,
+   "capaciteit": 97,
+   "uur": 0.0,
+   "dagmax": null
+  },
+  {
+   "naam": "Plein d'Ekker (terrein, Veldhoven)",
+   "operator": "Veldhoven",
+   "type": "Terreinparkeren",
+   "url": "",
+   "lat": 51.41453,
+   "lon": 5.40743,
+   "capaciteit": 100,
+   "uur": 0.0,
+   "dagmax": null
+  }
+ ]
+}

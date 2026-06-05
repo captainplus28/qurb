@@ -1,0 +1,30 @@
+{
+ "areamanagerid": "867",
+ "gemeente": "Waalwijk",
+ "bron": "RDW NPR Open Parkeerdata (CC-0)",
+ "gegenereerd": "2026-06-05T09:31:53Z",
+ "garages": [
+  {
+   "naam": "P1 Parkeerterrein Unnaplein",
+   "operator": "P1",
+   "type": "Terreinparkeren",
+   "url": "",
+   "lat": 51.688261,
+   "lon": 5.069066,
+   "capaciteit": 225,
+   "uur": 0.0,
+   "dagmax": 7.0
+  },
+  {
+   "naam": "P1 Taxandriaweg II",
+   "operator": "P1",
+   "type": "Terreinparkeren",
+   "url": "",
+   "lat": 51.691951,
+   "lon": 5.06375,
+   "capaciteit": null,
+   "uur": 0.0,
+   "dagmax": 4.8
+  }
+ ]
+}

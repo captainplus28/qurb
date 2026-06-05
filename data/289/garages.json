@@ -1,0 +1,52 @@
+{
+ "areamanagerid": "289",
+ "gemeente": "Wageningen",
+ "bron": "RDW NPR Open Parkeerdata (CC-0)",
+ "gegenereerd": "2026-06-05T09:32:17Z",
+ "garages": [
+  {
+   "naam": "Parkeerterrein De Arc",
+   "operator": "Wageningen",
+   "type": "Terreinparkeren",
+   "url": "www.wageningen.nl",
+   "lat": 51.964428,
+   "lon": 5.658726,
+   "capaciteit": 167,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Parkeerterrein Gevangentoren",
+   "operator": "Wageningen",
+   "type": "Terreinparkeren",
+   "url": "www.wageningen.nl",
+   "lat": 51.96773,
+   "lon": 5.663527,
+   "capaciteit": 118,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Parkeerterrein Lawickse Allee",
+   "operator": "Wageningen",
+   "type": "Terreinparkeren",
+   "url": "www.wageningen.nl",
+   "lat": 51.968728,
+   "lon": 5.664032,
+   "capaciteit": 40,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Parking + Protection Torckdael",
+   "operator": "Parking + Protection",
+   "type": "Garage parkeren",
+   "url": "",
+   "lat": 51.965074,
+   "lon": 5.667823,
+   "capaciteit": 40,
+   "uur": 0.8,
+   "dagmax": 4.0
+  }
+ ]
+}

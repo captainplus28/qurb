@@ -1,0 +1,30 @@
+{
+ "areamanagerid": "457",
+ "gemeente": "Weesp",
+ "bron": "RDW NPR Open Parkeerdata (CC-0)",
+ "gegenereerd": "2026-06-05T09:33:21Z",
+ "garages": [
+  {
+   "naam": "Nederlandse Spoorwegen P+R, Leeuwenveldseweg, Weesp",
+   "operator": "Nederlandse Spoorwegen",
+   "type": "P+R",
+   "url": "",
+   "lat": 52.313151,
+   "lon": 5.042572,
+   "capaciteit": 374,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Q-Park AMSTERDAM-Weesperplein",
+   "operator": "Q-Park",
+   "type": "Garage parkeren",
+   "url": "www.q-park.nl",
+   "lat": 52.35853,
+   "lon": 4.908315,
+   "capaciteit": 114,
+   "uur": null,
+   "dagmax": null
+  }
+ ]
+}
