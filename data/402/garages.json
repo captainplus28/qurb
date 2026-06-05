@@ -1,0 +1,85 @@
+{
+ "areamanagerid": "402",
+ "gemeente": "Hilversum",
+ "bron": "RDW NPR Open Parkeerdata (CC-0)",
+ "gegenereerd": "2026-06-05T08:58:03Z",
+ "garages": [
+  {
+   "naam": "GPK-loket - ParkeerService Gooiland",
+   "operator": "GPK-loket - ParkeerService",
+   "type": "Garage parkeren",
+   "url": "",
+   "lat": 52.220841,
+   "lon": 5.173293,
+   "capaciteit": 364,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "GPK-loket - ParkeerService Gooische Brink",
+   "operator": "GPK-loket - ParkeerService",
+   "type": "Garage parkeren",
+   "url": "",
+   "lat": 52.223132,
+   "lon": 5.169615,
+   "capaciteit": 400,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Gooiland",
+   "operator": "Hilversum",
+   "type": "Garage parkeren",
+   "url": null,
+   "lat": 52.220841,
+   "lon": 5.173293,
+   "capaciteit": 364,
+   "uur": 2.77,
+   "dagmax": 6.41
+  },
+  {
+   "naam": "Gooische Brink",
+   "operator": "Hilversum",
+   "type": "Garage parkeren",
+   "url": null,
+   "lat": 52.223132,
+   "lon": 5.169615,
+   "capaciteit": 400,
+   "uur": 2.77,
+   "dagmax": 6.41
+  },
+  {
+   "naam": "ParkKing Koornstraat",
+   "operator": "ParkKing",
+   "type": "Terreinparkeren",
+   "url": "www.parkking.nl",
+   "lat": 52.224006,
+   "lon": 5.174148,
+   "capaciteit": 40,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Q-Park Hilvertshof",
+   "operator": "Q-Park",
+   "type": "Garage parkeren",
+   "url": "www.q-park.nl",
+   "lat": 52.22383,
+   "lon": 5.177436,
+   "capaciteit": 577,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Q-Park Markt",
+   "operator": "Q-Park",
+   "type": "Garage parkeren",
+   "url": "www.q-park.nl",
+   "lat": 52.226406,
+   "lon": 5.179517,
+   "capaciteit": 320,
+   "uur": null,
+   "dagmax": null
+  }
+ ]
+}

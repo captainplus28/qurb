@@ -1,0 +1,107 @@
+{
+ "areamanagerid": "164",
+ "gemeente": "Hengelo",
+ "bron": "RDW NPR Open Parkeerdata (CC-0)",
+ "gegenereerd": "2026-06-05T08:57:11Z",
+ "garages": [
+  {
+   "naam": "De Beurs",
+   "operator": "Hengelo",
+   "type": "Garage parkeren",
+   "url": "www.hengelo.nl",
+   "lat": 52.263644,
+   "lon": 6.79544,
+   "capaciteit": 311,
+   "uur": 1.9,
+   "dagmax": 9.9
+  },
+  {
+   "naam": "Interparking ZGT Hengelo (Hengelo O)",
+   "operator": "Interparking",
+   "type": "Terreinparkeren",
+   "url": "www.interparking.nl",
+   "lat": 52.263062,
+   "lon": 6.772084,
+   "capaciteit": 876,
+   "uur": 0.0,
+   "dagmax": 4.0
+  },
+  {
+   "naam": "Nederlandse Spoorwegen P+R Industrieplein",
+   "operator": "Nederlandse Spoorwegen",
+   "type": "P+R",
+   "url": "",
+   "lat": 52.260827,
+   "lon": 6.795602,
+   "capaciteit": 270,
+   "uur": 2.05,
+   "dagmax": 10.59
+  },
+  {
+   "naam": "Parkeerterrein Drienerstraat",
+   "operator": "Hengelo",
+   "type": "Terreinparkeren",
+   "url": "www.hengelo.nl",
+   "lat": 52.264992,
+   "lon": 6.799122,
+   "capaciteit": 52,
+   "uur": 1.9,
+   "dagmax": 7.6
+  },
+  {
+   "naam": "Parkeerterrein Eikstraat",
+   "operator": "Hengelo",
+   "type": "Terreinparkeren",
+   "url": "www.hengelo.nl",
+   "lat": 52.267968,
+   "lon": 6.794409,
+   "capaciteit": 29,
+   "uur": 1.9,
+   "dagmax": 7.6
+  },
+  {
+   "naam": "Parkeerterrein Mitchamplein",
+   "operator": "Hengelo",
+   "type": "Terreinparkeren",
+   "url": "www.hengelo.nl",
+   "lat": 52.266754,
+   "lon": 6.78672,
+   "capaciteit": 44,
+   "uur": 1.9,
+   "dagmax": 7.6
+  },
+  {
+   "naam": "Parkeerterrein Sherwood Rangers",
+   "operator": "Hengelo",
+   "type": "Terreinparkeren",
+   "url": "www.hengelo.nl",
+   "lat": 52.268476,
+   "lon": 6.790658,
+   "capaciteit": 200,
+   "uur": 1.9,
+   "dagmax": 7.6
+  },
+  {
+   "naam": "Q-Park De Brink",
+   "operator": "Q-Park",
+   "type": "Garage parkeren",
+   "url": "www.q-park.nl",
+   "lat": 52.26366,
+   "lon": 6.791815,
+   "capaciteit": 375,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Thiemsbrug",
+   "operator": "Hengelo",
+   "type": "Garage parkeren",
+   "url": "www.hengelo.nl",
+   "lat": 52.267169,
+   "lon": 6.79416,
+   "capaciteit": 380,
+   "uur": 1.8,
+   "dagmax": 14.0
+  }
+ ]
+}

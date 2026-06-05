@@ -1,0 +1,52 @@
+{
+ "areamanagerid": "353",
+ "gemeente": "IJsselstein",
+ "bron": "RDW NPR Open Parkeerdata (CC-0)",
+ "gegenereerd": "2026-06-05T08:59:51Z",
+ "garages": [
+  {
+   "naam": "Eiteren",
+   "operator": "IJsselstein",
+   "type": "Garage parkeren",
+   "url": "www.ijsselstein.nl",
+   "lat": 52.022221,
+   "lon": 5.044579,
+   "capaciteit": 20,
+   "uur": 0.0,
+   "dagmax": null
+  },
+  {
+   "naam": "GPK-loket - ParkeerService Eiteren",
+   "operator": "GPK-loket - ParkeerService",
+   "type": "Garage parkeren",
+   "url": "",
+   "lat": 52.022221,
+   "lon": 5.044579,
+   "capaciteit": 20,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "GPK-loket - ParkeerService Overtoom",
+   "operator": "GPK-loket - ParkeerService",
+   "type": "Garage parkeren",
+   "url": "",
+   "lat": 52.015121,
+   "lon": 5.037982,
+   "capaciteit": 225,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Overtoom",
+   "operator": "IJsselstein",
+   "type": "Garage parkeren",
+   "url": "www.ijsselstein.nl",
+   "lat": 52.017588,
+   "lon": 5.03851,
+   "capaciteit": 225,
+   "uur": 0.0,
+   "dagmax": null
+  }
+ ]
+}

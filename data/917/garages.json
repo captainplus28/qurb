@@ -1,0 +1,195 @@
+{
+ "areamanagerid": "917",
+ "gemeente": "Heerlen",
+ "bron": "RDW NPR Open Parkeerdata (CC-0)",
+ "gegenereerd": "2026-06-05T08:54:38Z",
+ "garages": [
+  {
+   "naam": "Interparking Maankwartier Centrum",
+   "operator": "Interparking",
+   "type": "Garage parkeren",
+   "url": "www.interparking.nl",
+   "lat": 50.890172,
+   "lon": 5.974666,
+   "capaciteit": 408,
+   "uur": 2.0,
+   "dagmax": null
+  },
+  {
+   "naam": "Interparking Maanplein",
+   "operator": "Interparking",
+   "type": "Garage parkeren",
+   "url": "www.interparking.nl",
+   "lat": 50.892024,
+   "lon": 5.974572,
+   "capaciteit": 467,
+   "uur": 2.4,
+   "dagmax": null
+  },
+  {
+   "naam": "Nederlandse Spoorwegen P+R In de Cramer",
+   "operator": "Nederlandse Spoorwegen",
+   "type": "P+R",
+   "url": "",
+   "lat": 50.895842,
+   "lon": 5.953013,
+   "capaciteit": 15,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Nederlandse Spoorwegen P+R Mijnspoorweg",
+   "operator": "Nederlandse Spoorwegen",
+   "type": "P+R",
+   "url": "",
+   "lat": 50.895735,
+   "lon": 5.95347,
+   "capaciteit": 49,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Nederlandse Spoorwegen P+R Parallelweg",
+   "operator": "Nederlandse Spoorwegen",
+   "type": "P+R",
+   "url": "",
+   "lat": 50.89101,
+   "lon": 5.97021,
+   "capaciteit": 236,
+   "uur": 2.35,
+   "dagmax": 14.11
+  },
+  {
+   "naam": "P+R Heerlen Woonboulevard",
+   "operator": "Heerlen",
+   "type": "P+R",
+   "url": "www.heerlen.nl",
+   "lat": 50.895842,
+   "lon": 5.953013,
+   "capaciteit": 14,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "P+R Heerlen de Kissel",
+   "operator": "Heerlen",
+   "type": "P+R",
+   "url": "www.heerlen.nl",
+   "lat": 50.89113,
+   "lon": 5.99316,
+   "capaciteit": 38,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Q-Park 't Loon",
+   "operator": "Q-Park",
+   "type": "Garage parkeren",
+   "url": "www.q-park.nl",
+   "lat": 50.88702,
+   "lon": 5.97005,
+   "capaciteit": 383,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Q-Park Corio Center",
+   "operator": "Q-Park",
+   "type": "Garage parkeren",
+   "url": "www.q-park.nl",
+   "lat": 50.889797,
+   "lon": 5.975728,
+   "capaciteit": 524,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Q-Park De Klomp",
+   "operator": "Q-Park",
+   "type": "Garage parkeren",
+   "url": "www.q-park.nl",
+   "lat": 50.889107,
+   "lon": 5.981327,
+   "capaciteit": 364,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Q-Park Putgraaf",
+   "operator": "Q-Park",
+   "type": "Garage parkeren",
+   "url": "www.q-park.nl",
+   "lat": 50.88603,
+   "lon": 5.980663,
+   "capaciteit": 310,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Q-Park Raadhuisparking",
+   "operator": "Q-Park",
+   "type": "Garage parkeren",
+   "url": "www.q-park.nl",
+   "lat": 50.88621,
+   "lon": 5.97741,
+   "capaciteit": 380,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Q-Park Teleparking",
+   "operator": "Q-Park",
+   "type": "Garage parkeren",
+   "url": "www.q-park.nl",
+   "lat": 50.89091,
+   "lon": 5.970649,
+   "capaciteit": 454,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Q-Park Theater Heerlen Parking",
+   "operator": "Q-Park",
+   "type": "Garage parkeren",
+   "url": "www.q-park.nl",
+   "lat": 50.887047,
+   "lon": 5.972282,
+   "capaciteit": 501,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Zuydeland Medisch Centrum",
+   "operator": "Heerlen",
+   "type": "Garage parkeren",
+   "url": "www.heerlen.nl",
+   "lat": 50.86767,
+   "lon": 5.976791,
+   "capaciteit": null,
+   "uur": 0.0,
+   "dagmax": 8.5
+  },
+  {
+   "naam": "parkeerterrein Homerusplein",
+   "operator": "Heerlen",
+   "type": "Terreinparkeren",
+   "url": "www.heerlen.nl",
+   "lat": 50.886547,
+   "lon": 5.970991,
+   "capaciteit": 144,
+   "uur": 1.0,
+   "dagmax": null
+  },
+  {
+   "naam": "parkeerterrein Nieuw Eyckholt",
+   "operator": "Heerlen",
+   "type": "Terreinparkeren",
+   "url": "www.heerlen.nl",
+   "lat": 50.885501,
+   "lon": 5.966803,
+   "capaciteit": 140,
+   "uur": null,
+   "dagmax": 1.0
+  }
+ ]
+}

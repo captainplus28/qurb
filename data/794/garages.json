@@ -1,0 +1,96 @@
+{
+ "areamanagerid": "794",
+ "gemeente": "Helmond",
+ "bron": "RDW NPR Open Parkeerdata (CC-0)",
+ "gegenereerd": "2026-06-05T08:55:55Z",
+ "garages": [
+  {
+   "naam": "Boscotondo",
+   "operator": "Helmond",
+   "type": "Garage parkeren",
+   "url": "www.helmond.nl",
+   "lat": 51.478252,
+   "lon": 5.649757,
+   "capaciteit": 279,
+   "uur": 2.2,
+   "dagmax": 13.5
+  },
+  {
+   "naam": "City",
+   "operator": "Helmond",
+   "type": "Garage parkeren",
+   "url": "www.helmond.nl",
+   "lat": 51.48177,
+   "lon": 5.655958,
+   "capaciteit": 172,
+   "uur": 2.2,
+   "dagmax": null
+  },
+  {
+   "naam": "Colliers International Netherlands Elzas",
+   "operator": "Colliers International Netherlands",
+   "type": "Garage parkeren",
+   "url": "",
+   "lat": 51.480551,
+   "lon": 5.653914,
+   "capaciteit": 195,
+   "uur": 2.0,
+   "dagmax": 12.5
+  },
+  {
+   "naam": "Doorneind",
+   "operator": "Helmond",
+   "type": "Garage parkeren",
+   "url": "www.helmond.nl",
+   "lat": 51.47843,
+   "lon": 5.65842,
+   "capaciteit": 470,
+   "uur": 2.2,
+   "dagmax": 13.5
+  },
+  {
+   "naam": "Nederlandse Spoorwegen P+R Smalstraat",
+   "operator": "Nederlandse Spoorwegen",
+   "type": "P+R",
+   "url": "",
+   "lat": 51.47612,
+   "lon": 5.6637,
+   "capaciteit": 170,
+   "uur": 1.12,
+   "dagmax": 6.81
+  },
+  {
+   "naam": "PCH Boscotondo",
+   "operator": "PCH",
+   "type": "Garage parkeren",
+   "url": "https://www.pch-dienstengroep.nl/",
+   "lat": 51.478252,
+   "lon": 5.649757,
+   "capaciteit": 279,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "PCH City",
+   "operator": "PCH",
+   "type": "Garage parkeren",
+   "url": "https://www.pch-dienstengroep.nl/",
+   "lat": 51.48177,
+   "lon": 5.655958,
+   "capaciteit": 172,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "PCH Doorneind",
+   "operator": "PCH",
+   "type": "Garage parkeren",
+   "url": "https://www.pch-dienstengroep.nl/",
+   "lat": 51.47843,
+   "lon": 5.65842,
+   "capaciteit": 470,
+   "uur": 2.0,
+   "dagmax": 12.5
+  }
+ ]
+}
