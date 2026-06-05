@@ -1151,28 +1151,37 @@ async function bereken(){
 
   if(amsGar){
     const grij = amsGar.map(g=>{
-        const dagmax = (g.dagmax!=null ? g.dagmax : round2(g.uur*24));
+        const heeftTarief = g.uur!=null;
+        const dagmax = heeftTarief ? (g.dagmax!=null ? g.dagmax : round2(g.uur*24)) : null;
         return {
-          naam:g.naam, operator:g.operator||'—', capaciteit:g.capaciteit,
+          naam:g.naam, operator:g.operator||'—', capaciteit:g.capaciteit, url:g.url,
           afstand: gekozenCoord ? afstandM(gekozenCoord, g) : null,
-          uur:g.uur, dagmax, kosten: garageKosten({uur:g.uur, dagmax}, uren)
+          uur:g.uur, dagmax,
+          kosten: heeftTarief ? garageKosten({uur:g.uur, dagmax}, uren) : null
         };
       })
-      .sort((a,b)=> ((a.afstand??1e9)-(b.afstand??1e9)) || a.kosten-b.kosten);  // op afstand
-    const goedkoopsteG = grij.length ? Math.min(...grij.map(g=>g.kosten)) : null;
+      .sort((a,b)=> ((a.afstand??1e9)-(b.afstand??1e9)) || ((a.kosten??1e9)-(b.kosten??1e9)));  // op afstand
+    const toon = grij.slice(0, 18);
+    const metTarief = toon.filter(g=>g.kosten!=null);
+    const goedkoopsteG = metTarief.length ? Math.min(...metTarief.map(g=>g.kosten)) : null;
     html+=`<div class="results-list">`;
-    grij.forEach((g,i)=>{
-      const best=g.kosten===goedkoopsteG;
-      const afst = g.afstand!=null ? afstandTekst(g.afstand)+' · ' : '';
-      const cap  = g.capaciteit ? `${g.capaciteit} plaatsen` : '';
-      html+=`<div class="result-row anim" style="animation-delay:${(0.05*(i+1)).toFixed(2)}s">
+    toon.forEach((g,i)=>{
+      const heeft = g.kosten!=null;
+      const best  = heeft && g.kosten===goedkoopsteG;
+      const afst  = g.afstand!=null ? afstandTekst(g.afstand)+' · ' : '';
+      const cap   = g.capaciteit ? `${g.capaciteit} plaatsen` : '';
+      const sub   = heeft ? `${eur.format(g.uur)}/uur, max ${eur.format(g.dagmax)}/dag` : 'tarief bij exploitant';
+      const rechts= heeft ? eur.format(g.kosten)
+                   : (g.url ? `<a href="https://${esc(g.url)}" target="_blank" rel="noopener" style="font-size:15px;color:var(--primary-on-dark);text-decoration:none">tarief&nbsp;&rarr;</a>` : '—');
+      html+=`<div class="result-row anim" style="animation-delay:${(0.05*(Math.min(i,12)+1)).toFixed(2)}s">
         <div><div class="row-name">${esc(g.naam)}${best?'<span class="best-tag">goedkoopst</span>':''}</div>
-        <div class="row-sub">${esc(g.operator)} · ${afst}${eur.format(g.uur)}/uur, max ${eur.format(g.dagmax)}/dag</div></div>
-        <div class="row-right"><div class="row-total">${eur.format(g.kosten)}</div>
+        <div class="row-sub">${esc(g.operator)} · ${afst}${sub}</div></div>
+        <div class="row-right"><div class="row-total">${rechts}</div>
         <div class="row-delta">${cap}</div></div>
       </div>`;
     });
-    html+=`</div><div class="info-box anim" style="animation-delay:0.4s">Live tarieven en locaties uit de open parkeerdata van de RDW (CC-0). Afstand is hemelsbreed vanaf je adres. Actuele vrije plekken volgen in een volgende fase. Bij een garage betaal je het exploitantstarief zonder app-servicekosten.</div>`;
+    const meer = grij.length - toon.length;
+    html+=`</div><div class="info-box anim" style="animation-delay:0.4s">Dichtstbijzijnde ${toon.length} garages${meer>0?` (${meer} verder weg niet getoond)`:''}. Live locaties en tarieven uit de open parkeerdata van de RDW (CC-0). Garages zonder gepubliceerd tarief (o.a. Q-Park) tonen we met een link naar de exploitant. Vrije plekken volgen later.</div>`;
   } else {
     const garages=GARAGES[stadKey];
     if(!garages){

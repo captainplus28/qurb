@@ -54,7 +54,8 @@ def tarief_uit_npr(tariffs):
 def coords_capaciteit_operator(info):
     specs = info.get("specifications") or [{}]
     cap = specs[0].get("capacity")
-    op = (info.get("operator") or {}).get("name")
+    operator = info.get("operator") or {}
+    op, url = operator.get("name"), operator.get("url")
     lat = lon = None
     for ap in info.get("accessPoints", []):
         for l in ap.get("accessPointLocation", []):
@@ -63,7 +64,7 @@ def coords_capaciteit_operator(info):
         if lat is not None:
             break
     usage = specs[0].get("usage")
-    return lat, lon, cap, op, usage
+    return lat, lon, cap, op, url, usage
 
 def main():
     idx = get(NPR)
@@ -75,22 +76,23 @@ def main():
         try:
             s = get(f"{NPR}/static/{f['identifier']}")
             info = s.get("parkingFacilityInformation", {})
-            lat, lon, cap, op, usage = coords_capaciteit_operator(info)
+            lat, lon, cap, op, url, usage = coords_capaciteit_operator(info)
             if lat is None or not (LAT0 < lat < LAT1 and LON0 < lon < LON1):
                 continue
             if usage not in PARKEER_TYPES:
                 continue
             uur, dag = tarief_uit_npr(info.get("tariffs"))
-            if uur is None:                      # geen gepubliceerd tarief (bv. Q-Park)
-                continue
+            # Garages zonder gepubliceerd tarief (bv. Q-Park) tonen we tóch:
+            # met locatie/capaciteit en een link naar de exploitant (uur=null).
             out.append({
                 "naam": info.get("name") or f.get("name"),
-                "operator": op, "type": usage,
+                "operator": op, "type": usage, "url": url,
                 "lat": lat, "lon": lon, "capaciteit": cap,
                 "uur": uur, "dagmax": dag,
             })
-            print(f"  ✓ {info.get('name','')[:40]}: €{uur}/uur"
-                  + (f", dagmax €{dag}" if dag else "")
+            print(f"  ✓ {info.get('name','')[:40]}: "
+                  + (f"€{uur}/uur" + (f", dagmax €{dag}" if dag else "") if uur is not None
+                     else "tarief bij exploitant")
                   + f", {op}, cap {cap}", file=sys.stderr)
             time.sleep(0.04)
         except Exception as e:
