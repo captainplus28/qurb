@@ -2,85 +2,8 @@
  "areamanagerid": "518",
  "gemeente": "Den Haag",
  "bron": "RDW NPR Open Parkeerdata (CC-0)",
- "gegenereerd": "2026-06-05T00:28:28Z",
+ "gegenereerd": "2026-06-05T06:54:54Z",
  "garages": [
-  {
-   "naam": "'s-Gravenhage Helicon",
-   "operator": "'s-Gravenhage",
-   "type": "Garage parkeren",
-   "url": "www.denhaag.nl",
-   "lat": 52.079996,
-   "lon": 4.321658,
-   "capaciteit": 226,
-   "uur": 4.4,
-   "dagmax": 30.0
-  },
-  {
-   "naam": "'s-Gravenhage Markthof",
-   "operator": "'s-Gravenhage",
-   "type": "Garage parkeren",
-   "url": "www.denhaag.nl",
-   "lat": 52.076747,
-   "lon": 4.315006,
-   "capaciteit": 125,
-   "uur": 3.5,
-   "dagmax": null
-  },
-  {
-   "naam": "'s-Gravenhage P+R De Uithof",
-   "operator": "'s-Gravenhage",
-   "type": "P+R",
-   "url": "www.denhaag.nl",
-   "lat": 52.039558,
-   "lon": 4.245764,
-   "capaciteit": 300,
-   "uur": 0.0,
-   "dagmax": null
-  },
-  {
-   "naam": "'s-Gravenhage P+R Park & Beach Scheveningen",
-   "operator": "'s-Gravenhage",
-   "type": "P+R",
-   "url": "www.denhaag.nl",
-   "lat": 52.080422,
-   "lon": 4.327525,
-   "capaciteit": 960,
-   "uur": null,
-   "dagmax": 5.0
-  },
-  {
-   "naam": "'s-Gravenhage Parkstraat",
-   "operator": "'s-Gravenhage",
-   "type": "Garage parkeren",
-   "url": "www.denhaag.nl",
-   "lat": 52.0829,
-   "lon": 4.30755,
-   "capaciteit": 164,
-   "uur": 4.0,
-   "dagmax": null
-  },
-  {
-   "naam": "'s-Gravenhage Pleingarage",
-   "operator": "'s-Gravenhage",
-   "type": "Garage parkeren",
-   "url": "www.denhaag.nl",
-   "lat": 52.080416,
-   "lon": 4.316002,
-   "capaciteit": 255,
-   "uur": 4.0,
-   "dagmax": 30.0
-  },
-  {
-   "naam": "'s-Gravenhage Rijnstraat",
-   "operator": "'s-Gravenhage",
-   "type": "Garage parkeren",
-   "url": "www.denhaag.nl",
-   "lat": 52.078803,
-   "lon": 4.323617,
-   "capaciteit": 217,
-   "uur": null,
-   "dagmax": null
-  },
   {
    "naam": "APCOA Havenkwartier",
    "operator": "APCOA",
@@ -214,6 +137,17 @@
    "dagmax": 20.0
   },
   {
+   "naam": "Helicon",
+   "operator": "Den Haag",
+   "type": "Garage parkeren",
+   "url": "www.denhaag.nl",
+   "lat": 52.079996,
+   "lon": 4.321658,
+   "capaciteit": 226,
+   "uur": 4.4,
+   "dagmax": 30.0
+  },
+  {
    "naam": "Interparking Leidschenhof",
    "operator": "Interparking",
    "type": "Garage parkeren",
@@ -258,8 +192,19 @@
    "dagmax": null
   },
   {
-   "naam": "Markthof Parkeergarage Markthof",
-   "operator": "Markthof Parkeergarage",
+   "naam": "Markthof",
+   "operator": "Den Haag",
+   "type": "Garage parkeren",
+   "url": "www.denhaag.nl",
+   "lat": 52.076747,
+   "lon": 4.315006,
+   "capaciteit": 125,
+   "uur": 3.5,
+   "dagmax": null
+  },
+  {
+   "naam": "Markthof",
+   "operator": "Markthof",
    "type": "Garage parkeren",
    "url": "",
    "lat": 52.07676,
@@ -278,6 +223,28 @@
    "capaciteit": 155,
    "uur": 2.64,
    "dagmax": 16.15
+  },
+  {
+   "naam": "P+R De Uithof",
+   "operator": "Den Haag",
+   "type": "P+R",
+   "url": "www.denhaag.nl",
+   "lat": 52.039558,
+   "lon": 4.245764,
+   "capaciteit": 300,
+   "uur": 0.0,
+   "dagmax": null
+  },
+  {
+   "naam": "P+R Park & Beach Scheveningen",
+   "operator": "Den Haag",
+   "type": "P+R",
+   "url": "www.denhaag.nl",
+   "lat": 52.080422,
+   "lon": 4.327525,
+   "capaciteit": 960,
+   "uur": null,
+   "dagmax": 5.0
   },
   {
    "naam": "P1 Leyweg 1",
@@ -344,6 +311,28 @@
    "capaciteit": 188,
    "uur": 3.5,
    "dagmax": 27.5
+  },
+  {
+   "naam": "Parkstraat",
+   "operator": "Den Haag",
+   "type": "Garage parkeren",
+   "url": "www.denhaag.nl",
+   "lat": 52.0829,
+   "lon": 4.30755,
+   "capaciteit": 164,
+   "uur": 4.0,
+   "dagmax": null
+  },
+  {
+   "naam": "Pleingarage",
+   "operator": "Den Haag",
+   "type": "Garage parkeren",
+   "url": "www.denhaag.nl",
+   "lat": 52.080416,
+   "lon": 4.316002,
+   "capaciteit": 255,
+   "uur": 4.0,
+   "dagmax": 30.0
   },
   {
    "naam": "Q-Park CS New Babylon",
@@ -551,6 +540,17 @@
    "lat": 52.07611,
    "lon": 4.31355,
    "capaciteit": 35,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Rijnstraat",
+   "operator": "Den Haag",
+   "type": "Garage parkeren",
+   "url": "www.denhaag.nl",
+   "lat": 52.078803,
+   "lon": 4.323617,
+   "capaciteit": 217,
    "uur": null,
    "dagmax": null
   }
