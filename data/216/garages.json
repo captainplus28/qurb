@@ -1,0 +1,52 @@
+{
+ "areamanagerid": "216",
+ "gemeente": "Culemborg",
+ "bron": "RDW NPR Open Parkeerdata (CC-0)",
+ "gegenereerd": "2026-06-05T08:33:20Z",
+ "garages": [
+  {
+   "naam": "P+R Parallelweg Oost",
+   "operator": "Culemborg",
+   "type": "P+R",
+   "url": "www.culemborg.nl",
+   "lat": 51.946842,
+   "lon": 5.227887,
+   "capaciteit": 250,
+   "uur": 0.0,
+   "dagmax": null
+  },
+  {
+   "naam": "P+R Stationsplein",
+   "operator": "Culemborg",
+   "type": "P+R",
+   "url": "www.culemborg.nl",
+   "lat": 51.947977,
+   "lon": 5.226854,
+   "capaciteit": 47,
+   "uur": 0.0,
+   "dagmax": null
+  },
+  {
+   "naam": "Parkeer terrein Elisabethdreef",
+   "operator": "Culemborg",
+   "type": "Terreinparkeren",
+   "url": "www.culemborg.nl",
+   "lat": 51.95837,
+   "lon": 5.227476,
+   "capaciteit": 82,
+   "uur": 0.0,
+   "dagmax": null
+  },
+  {
+   "naam": "Parkeerterrein Palumbus",
+   "operator": "Culemborg",
+   "type": "Terreinparkeren",
+   "url": "www.culemborg.nl",
+   "lat": 51.960565,
+   "lon": 5.224781,
+   "capaciteit": 125,
+   "uur": 0.0,
+   "dagmax": null
+  }
+ ]
+}

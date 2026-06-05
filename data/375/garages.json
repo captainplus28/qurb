@@ -1,0 +1,30 @@
+{
+ "areamanagerid": "375",
+ "gemeente": "Beverwijk",
+ "bron": "RDW NPR Open Parkeerdata (CC-0)",
+ "gegenereerd": "2026-06-05T08:31:22Z",
+ "garages": [
+  {
+   "naam": "Nederlandse Spoorwegen P+R Wijckermolen",
+   "operator": "Nederlandse Spoorwegen",
+   "type": "P+R",
+   "url": "",
+   "lat": 52.47915,
+   "lon": 4.65656,
+   "capaciteit": 121,
+   "uur": 1.0,
+   "dagmax": 5.0
+  },
+  {
+   "naam": "Parking + Protection Rode Kruis Ziekenhuis Beverwijk",
+   "operator": "Parking + Protection",
+   "type": "Terreinparkeren",
+   "url": "",
+   "lat": 52.479111,
+   "lon": 4.650249,
+   "capaciteit": 420,
+   "uur": 0.0,
+   "dagmax": 6.0
+  }
+ ]
+}

@@ -1,0 +1,140 @@
+{
+ "areamanagerid": "758",
+ "gemeente": "Breda",
+ "bron": "RDW NPR Open Parkeerdata (CC-0)",
+ "gegenereerd": "2026-06-05T08:32:52Z",
+ "garages": [
+  {
+   "naam": "Chasséparking",
+   "operator": "Breda",
+   "type": "Garage parkeren",
+   "url": "www.breda.nl",
+   "lat": 51.58678,
+   "lon": 4.784122,
+   "capaciteit": 620,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "De Barones",
+   "operator": "Breda",
+   "type": "Garage parkeren",
+   "url": "www.breda.nl",
+   "lat": 51.58734,
+   "lon": 4.772406,
+   "capaciteit": 510,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "De Prins",
+   "operator": "Breda",
+   "type": "Garage parkeren",
+   "url": "www.breda.nl",
+   "lat": 51.590999,
+   "lon": 4.770443,
+   "capaciteit": 470,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Het Turfschip",
+   "operator": "Breda",
+   "type": "Garage parkeren",
+   "url": "www.breda.nl",
+   "lat": 51.58901,
+   "lon": 4.785656,
+   "capaciteit": 600,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Nederlandse Spoorwegen P+R Station",
+   "operator": "Nederlandse Spoorwegen",
+   "type": "P+R",
+   "url": "",
+   "lat": 51.596259,
+   "lon": 4.777855,
+   "capaciteit": 728,
+   "uur": 2.76,
+   "dagmax": 15.79
+  },
+  {
+   "naam": "Nederlandse Spoorwegen P+R Stationsweg",
+   "operator": "Nederlandse Spoorwegen",
+   "type": "P+R",
+   "url": "",
+   "lat": 51.595,
+   "lon": 4.78184,
+   "capaciteit": 94,
+   "uur": 2.76,
+   "dagmax": 15.79
+  },
+  {
+   "naam": "Oranje Zuid",
+   "operator": "Breda",
+   "type": "Garage parkeren",
+   "url": "www.breda.nl",
+   "lat": 51.584263,
+   "lon": 4.77544,
+   "capaciteit": 455,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Parking + Protection Amphia Ziekenhuis locatie Langendijk",
+   "operator": "Parking + Protection",
+   "type": "Terreinparkeren",
+   "url": "",
+   "lat": 51.575612,
+   "lon": 4.762343,
+   "capaciteit": null,
+   "uur": 0.0,
+   "dagmax": 6.0
+  },
+  {
+   "naam": "Parking + Protection Amphia Ziekenhuis locatie Molengracht",
+   "operator": "Parking + Protection",
+   "type": "Terreinparkeren",
+   "url": "",
+   "lat": 51.581302,
+   "lon": 4.798806,
+   "capaciteit": null,
+   "uur": 0.0,
+   "dagmax": 6.0
+  },
+  {
+   "naam": "Parking + Protection Oude Vest",
+   "operator": "Parking + Protection",
+   "type": "Terreinparkeren",
+   "url": "",
+   "lat": 51.586703,
+   "lon": 4.778702,
+   "capaciteit": 55,
+   "uur": 2.0,
+   "dagmax": 15.0
+  },
+  {
+   "naam": "Q-Park Centrum",
+   "operator": "Q-Park",
+   "type": "Garage parkeren",
+   "url": "www.q-park.nl",
+   "lat": 51.58571,
+   "lon": 4.772487,
+   "capaciteit": 360,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Q-Park P+R Stationsweg",
+   "operator": "Q-Park",
+   "type": "Parkeergarage",
+   "url": "www.q-park.nl",
+   "lat": 51.59507,
+   "lon": 4.781971,
+   "capaciteit": 89,
+   "uur": null,
+   "dagmax": null
+  }
+ ]
+}

@@ -1,0 +1,52 @@
+{
+ "areamanagerid": "203",
+ "gemeente": "Barneveld",
+ "bron": "RDW NPR Open Parkeerdata (CC-0)",
+ "gegenereerd": "2026-06-05T08:29:54Z",
+ "garages": [
+  {
+   "naam": "De Vetkamp",
+   "operator": "Barneveld",
+   "type": "Terreinparkeren",
+   "url": "www.barneveld.nl",
+   "lat": 52.142197,
+   "lon": 5.589045,
+   "capaciteit": 170,
+   "uur": null,
+   "dagmax": 0.0
+  },
+  {
+   "naam": "Gowthorpeplein",
+   "operator": "Barneveld",
+   "type": "Terreinparkeren",
+   "url": "www.barneveld.nl",
+   "lat": 52.137886,
+   "lon": 5.585851,
+   "capaciteit": 140,
+   "uur": 1.2,
+   "dagmax": 6.0
+  },
+  {
+   "naam": "P+R Station Barneveld",
+   "operator": "Barneveld",
+   "type": "P+R",
+   "url": "www.barneveld.nl",
+   "lat": 52.139025,
+   "lon": 5.590491,
+   "capaciteit": 50,
+   "uur": 0.0,
+   "dagmax": null
+  },
+  {
+   "naam": "Torenplein",
+   "operator": "Barneveld",
+   "type": "Terreinparkeren",
+   "url": "www.barneveld.nl",
+   "lat": 52.139383,
+   "lon": 5.583576,
+   "capaciteit": 136,
+   "uur": 1.2,
+   "dagmax": 6.0
+  }
+ ]
+}

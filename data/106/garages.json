@@ -1,0 +1,107 @@
+{
+ "areamanagerid": "106",
+ "gemeente": "Assen",
+ "bron": "RDW NPR Open Parkeerdata (CC-0)",
+ "gegenereerd": "2026-06-05T08:29:25Z",
+ "garages": [
+  {
+   "naam": "Interparking Citadel",
+   "operator": "Interparking",
+   "type": "Garage parkeren",
+   "url": "www.interparking.nl",
+   "lat": 52.997528,
+   "lon": 6.566937,
+   "capaciteit": 550,
+   "uur": 2.0,
+   "dagmax": 6.0
+  },
+  {
+   "naam": "Interparking De Nieuwe Kolk",
+   "operator": "Interparking",
+   "type": "Garage parkeren",
+   "url": "www.interparking.nl",
+   "lat": 52.995509,
+   "lon": 6.557356,
+   "capaciteit": 500,
+   "uur": 2.14,
+   "dagmax": 6.0
+  },
+  {
+   "naam": "Interparking Doevenkamp",
+   "operator": "Interparking",
+   "type": "Garage parkeren",
+   "url": "www.interparking.nl",
+   "lat": 52.994964,
+   "lon": 6.566728,
+   "capaciteit": 190,
+   "uur": 2.14,
+   "dagmax": 6.0
+  },
+  {
+   "naam": "Interparking Mercurius",
+   "operator": "Interparking",
+   "type": "Garage parkeren",
+   "url": "www.interparking.nl",
+   "lat": 52.996262,
+   "lon": 6.558864,
+   "capaciteit": 288,
+   "uur": 2.14,
+   "dagmax": 6.0
+  },
+  {
+   "naam": "Interparking Neptunusplein",
+   "operator": "Interparking",
+   "type": "Garage parkeren",
+   "url": "www.interparking.nl",
+   "lat": 52.997202,
+   "lon": 6.559156,
+   "capaciteit": 190,
+   "uur": 2.14,
+   "dagmax": 6.0
+  },
+  {
+   "naam": "Interparking Torenlaan",
+   "operator": "Interparking",
+   "type": "Garage parkeren",
+   "url": "www.interparking.nl",
+   "lat": 52.992956,
+   "lon": 6.561315,
+   "capaciteit": 246,
+   "uur": 2.14,
+   "dagmax": 6.0
+  },
+  {
+   "naam": "Interparking Triade",
+   "operator": "Interparking",
+   "type": "Garage parkeren",
+   "url": "www.interparking.nl",
+   "lat": 52.997533,
+   "lon": 6.560587,
+   "capaciteit": 560,
+   "uur": 2.14,
+   "dagmax": 6.0
+  },
+  {
+   "naam": "Nederlandse Spoorwegen P+R Stationsplein",
+   "operator": "Nederlandse Spoorwegen",
+   "type": "P+R",
+   "url": "",
+   "lat": 52.98963,
+   "lon": 6.56954,
+   "capaciteit": 266,
+   "uur": 2.42,
+   "dagmax": 13.34
+  },
+  {
+   "naam": "Q-Park P+R Stationsplein",
+   "operator": "Q-Park",
+   "type": "Parkeergarage",
+   "url": "www.q-park.nl",
+   "lat": 52.99011,
+   "lon": 6.569674,
+   "capaciteit": 266,
+   "uur": null,
+   "dagmax": null
+  }
+ ]
+}

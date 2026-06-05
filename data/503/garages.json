@@ -1,0 +1,96 @@
+{
+ "areamanagerid": "503",
+ "gemeente": "Delft",
+ "bron": "RDW NPR Open Parkeerdata (CC-0)",
+ "gegenereerd": "2026-06-05T08:33:57Z",
+ "garages": [
+  {
+   "naam": "Interparking In de Hoven",
+   "operator": "Interparking",
+   "type": "Garage parkeren",
+   "url": "www.interparking.nl",
+   "lat": 51.99858,
+   "lon": 4.354541,
+   "capaciteit": 600,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Marktgarage",
+   "operator": "Delft",
+   "type": "Garage parkeren",
+   "url": "www.delft.nl",
+   "lat": 52.014289,
+   "lon": 4.365997,
+   "capaciteit": 339,
+   "uur": 3.2,
+   "dagmax": 18.0
+  },
+  {
+   "naam": "P+R Delft-Zuid",
+   "operator": "Delft",
+   "type": "P+R",
+   "url": "www.delft.nl",
+   "lat": 51.989435,
+   "lon": 4.365975,
+   "capaciteit": 150,
+   "uur": 0.0,
+   "dagmax": null
+  },
+  {
+   "naam": "Parking Delft Markt",
+   "operator": "Parking Delft",
+   "type": "Garage parkeren",
+   "url": "",
+   "lat": 52.014289,
+   "lon": 4.365997,
+   "capaciteit": 332,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Parking Delft Phoenix",
+   "operator": "Parking Delft",
+   "type": "Garage parkeren",
+   "url": "",
+   "lat": 52.010766,
+   "lon": 4.354602,
+   "capaciteit": 202,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Parking Delft Zuidpoort",
+   "operator": "Parking Delft",
+   "type": "Garage parkeren",
+   "url": "",
+   "lat": 52.008015,
+   "lon": 4.363065,
+   "capaciteit": 810,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Phoenixgarage",
+   "operator": "Delft",
+   "type": "Garage parkeren",
+   "url": "www.delft.nl",
+   "lat": 52.010766,
+   "lon": 4.354602,
+   "capaciteit": 202,
+   "uur": 3.0,
+   "dagmax": 30.0
+  },
+  {
+   "naam": "Zuidpoortgarage",
+   "operator": "Delft",
+   "type": "Garage parkeren",
+   "url": "www.delft.nl",
+   "lat": 52.008015,
+   "lon": 4.363065,
+   "capaciteit": 810,
+   "uur": 3.2,
+   "dagmax": 18.0
+  }
+ ]
+}
