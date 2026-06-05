@@ -1,0 +1,63 @@
+{
+ "areamanagerid": "119",
+ "gemeente": "Meppel",
+ "bron": "RDW NPR Open Parkeerdata (CC-0)",
+ "gegenereerd": "2026-06-05T09:06:39Z",
+ "garages": [
+  {
+   "naam": "Keyserstroom",
+   "operator": "Meppel",
+   "type": "Garage parkeren",
+   "url": "www.meppel.nl",
+   "lat": 52.699762,
+   "lon": 6.190662,
+   "capaciteit": 205,
+   "uur": 1.7,
+   "dagmax": null
+  },
+  {
+   "naam": "Nederlandse Spoorwegen P+R Station Meppel Oostzijde",
+   "operator": "Nederlandse Spoorwegen",
+   "type": "P+R",
+   "url": "",
+   "lat": 52.691565,
+   "lon": 6.197558,
+   "capaciteit": 167,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Nederlandse Spoorwegen P+R Station Meppel Westzijde",
+   "operator": "Nederlandse Spoorwegen",
+   "type": "P+R",
+   "url": "",
+   "lat": 52.690478,
+   "lon": 6.196644,
+   "capaciteit": 199,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Parkeerterrein Bremenbergweg",
+   "operator": "Meppel",
+   "type": "Terreinparkeren",
+   "url": "www.meppel.nl",
+   "lat": 52.705419,
+   "lon": 6.180803,
+   "capaciteit": 16,
+   "uur": 0.0,
+   "dagmax": null
+  },
+  {
+   "naam": "Parkeerterrein Schouwburg Ogterop",
+   "operator": "Meppel",
+   "type": "Terreinparkeren",
+   "url": "www.meppel.nl",
+   "lat": 52.693431,
+   "lon": 6.188228,
+   "capaciteit": 107,
+   "uur": 0.0,
+   "dagmax": null
+  }
+ ]
+}

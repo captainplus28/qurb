@@ -1,0 +1,63 @@
+{
+ "areamanagerid": "995",
+ "gemeente": "Lelystad",
+ "bron": "RDW NPR Open Parkeerdata (CC-0)",
+ "gegenereerd": "2026-06-05T09:03:36Z",
+ "garages": [
+  {
+   "naam": "Agoradek",
+   "operator": "Lelystad",
+   "type": "Garage parkeren",
+   "url": "www.lelystad.nl",
+   "lat": 52.510613,
+   "lon": 5.477346,
+   "capaciteit": 263,
+   "uur": 1.8,
+   "dagmax": null
+  },
+  {
+   "naam": "De Waag",
+   "operator": "Lelystad",
+   "type": "Garage parkeren",
+   "url": "www.lelystad.nl",
+   "lat": 52.511004,
+   "lon": 5.473816,
+   "capaciteit": 664,
+   "uur": 1.8,
+   "dagmax": null
+  },
+  {
+   "naam": "MC St. Jansdal",
+   "operator": "Lelystad",
+   "type": "Terreinparkeren",
+   "url": "www.lelystad.nl",
+   "lat": 52.504947,
+   "lon": 5.478305,
+   "capaciteit": 220,
+   "uur": 1.8,
+   "dagmax": null
+  },
+  {
+   "naam": "Neringdek",
+   "operator": "Lelystad",
+   "type": "Garage parkeren",
+   "url": "www.lelystad.nl",
+   "lat": 52.506926,
+   "lon": 5.477806,
+   "capaciteit": 256,
+   "uur": 1.8,
+   "dagmax": null
+  },
+  {
+   "naam": "Zilverpark",
+   "operator": "Lelystad",
+   "type": "Garage parkeren",
+   "url": "www.lelystad.nl",
+   "lat": 52.506511,
+   "lon": 5.474625,
+   "capaciteit": 296,
+   "uur": 1.8,
+   "dagmax": null
+  }
+ ]
+}

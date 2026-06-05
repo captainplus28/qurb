@@ -1,0 +1,228 @@
+{
+ "areamanagerid": "935",
+ "gemeente": "Maastricht",
+ "bron": "RDW NPR Open Parkeerdata (CC-0)",
+ "gegenereerd": "2026-06-05T09:04:52Z",
+ "garages": [
+  {
+   "naam": "Nederlandse Spoorwegen P+R Meersenerstraat",
+   "operator": "Nederlandse Spoorwegen",
+   "type": "P+R",
+   "url": "",
+   "lat": 50.85319,
+   "lon": 5.70299,
+   "capaciteit": 66,
+   "uur": 2.17,
+   "dagmax": 14.0
+  },
+  {
+   "naam": "Nederlandse Spoorwegen P+R Parallelweg",
+   "operator": "Nederlandse Spoorwegen",
+   "type": "P+R",
+   "url": "",
+   "lat": 50.85099,
+   "lon": 5.70635,
+   "capaciteit": 340,
+   "uur": 2.17,
+   "dagmax": 14.0
+  },
+  {
+   "naam": "Noorderbrug",
+   "operator": "Maastricht",
+   "type": "Garage parkeren",
+   "url": "www.gemeentemaastricht.nl",
+   "lat": 50.860079,
+   "lon": 5.700289,
+   "capaciteit": 254,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "P+R Station Maastricht Noord I",
+   "operator": "Maastricht",
+   "type": "P+R",
+   "url": "www.gemeentemaastricht.nl",
+   "lat": 50.873017,
+   "lon": 5.718397,
+   "capaciteit": 343,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "P+R Station Maastricht Noord II",
+   "operator": "Maastricht",
+   "type": "P+R",
+   "url": "www.gemeentemaastricht.nl",
+   "lat": 50.87225,
+   "lon": 5.718426,
+   "capaciteit": 181,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "P+R Station Maastricht Randwyck Oostzijde",
+   "operator": "Maastricht",
+   "type": "P+R",
+   "url": "www.gemeentemaastricht.nl",
+   "lat": 50.837602,
+   "lon": 5.719744,
+   "capaciteit": 23,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "P+R Station Maastricht Randwyck Westzijde",
+   "operator": "Maastricht",
+   "type": "P+R",
+   "url": "www.gemeentemaastricht.nl",
+   "lat": 50.837372,
+   "lon": 5.717532,
+   "capaciteit": 14,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Q-Park Bassin",
+   "operator": "Q-Park",
+   "type": "Garage parkeren",
+   "url": "www.q-park.nl",
+   "lat": 50.85396,
+   "lon": 5.693128,
+   "capaciteit": 397,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Q-Park Bonnefantenmuseum",
+   "operator": "Q-Park",
+   "type": "Garage parkeren",
+   "url": "www.q-park.nl",
+   "lat": 50.84077,
+   "lon": 5.702516,
+   "capaciteit": 296,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Q-Park De Colonel",
+   "operator": "Q-Park",
+   "type": "Garage parkeren",
+   "url": "www.q-park.nl",
+   "lat": 50.847626,
+   "lon": 5.705981,
+   "capaciteit": 289,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Q-Park De Griend",
+   "operator": "Q-Park",
+   "type": "Garage parkeren",
+   "url": "www.q-park.nl",
+   "lat": 50.855797,
+   "lon": 5.698578,
+   "capaciteit": 346,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Q-Park Frontenpark",
+   "operator": "Q-Park",
+   "type": "Terreinparkeren",
+   "url": "www.q-park.nl",
+   "lat": 50.855804,
+   "lon": 5.685981,
+   "capaciteit": 1308,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Q-Park Mosae Forum",
+   "operator": "Q-Park",
+   "type": "Garage parkeren",
+   "url": "www.q-park.nl",
+   "lat": 50.851406,
+   "lon": 5.694072,
+   "capaciteit": 1089,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Q-Park O. L. Vrouweparking",
+   "operator": "Q-Park",
+   "type": "Garage parkeren",
+   "url": "www.q-park.nl",
+   "lat": 50.846996,
+   "lon": 5.69478,
+   "capaciteit": 354,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Q-Park Plein 1992",
+   "operator": "Q-Park",
+   "type": "Garage parkeren",
+   "url": "www.q-park.nl",
+   "lat": 50.84571,
+   "lon": 5.700772,
+   "capaciteit": 449,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Q-Park SG Entre Deux",
+   "operator": "Q-Park",
+   "type": "Garage parkeren",
+   "url": "www.q-park.nl",
+   "lat": 50.850227,
+   "lon": 5.689018,
+   "capaciteit": 199,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Q-Park Stadspark I",
+   "operator": "Q-Park",
+   "type": "Terreinparkeren",
+   "url": "www.q-park.nl",
+   "lat": 50.843445,
+   "lon": 5.697151,
+   "capaciteit": 234,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Q-Park Stadspark II",
+   "operator": "Q-Park",
+   "type": "Terreinparkeren",
+   "url": "www.q-park.nl",
+   "lat": 50.84289,
+   "lon": 5.695955,
+   "capaciteit": 84,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Q-Park Stadspark III",
+   "operator": "Q-Park",
+   "type": "Terreinparkeren",
+   "url": "www.q-park.nl",
+   "lat": 50.84142,
+   "lon": 5.696483,
+   "capaciteit": 79,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Q-Park Vrijthof",
+   "operator": "Q-Park",
+   "type": "Garage parkeren",
+   "url": "www.q-park.nl",
+   "lat": 50.849762,
+   "lon": 5.688021,
+   "capaciteit": 447,
+   "uur": null,
+   "dagmax": null
+  }
+ ]
+}

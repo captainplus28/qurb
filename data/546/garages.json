@@ -1,0 +1,107 @@
+{
+ "areamanagerid": "546",
+ "gemeente": "Leiden",
+ "bron": "RDW NPR Open Parkeerdata (CC-0)",
+ "gegenereerd": "2026-06-05T09:03:14Z",
+ "garages": [
+  {
+   "naam": "Garenmarkt",
+   "operator": "Leiden",
+   "type": "Garage parkeren",
+   "url": "www.leiden.nl",
+   "lat": 52.154574,
+   "lon": 4.493523,
+   "capaciteit": 475,
+   "uur": 2.8,
+   "dagmax": null
+  },
+  {
+   "naam": "Lammermarkt",
+   "operator": "Leiden",
+   "type": "Garage parkeren",
+   "url": "www.leiden.nl",
+   "lat": 52.163551,
+   "lon": 4.486786,
+   "capaciteit": 525,
+   "uur": 2.8,
+   "dagmax": null
+  },
+  {
+   "naam": "P+R Haagweg",
+   "operator": "Leiden",
+   "type": "P+R",
+   "url": "www.leiden.nl",
+   "lat": 52.159547,
+   "lon": 4.478473,
+   "capaciteit": 600,
+   "uur": 0.0,
+   "dagmax": 12.0
+  },
+  {
+   "naam": "P+R Station Leiden Lammenschans",
+   "operator": "Leiden",
+   "type": "P+R",
+   "url": "www.leiden.nl",
+   "lat": 52.147296,
+   "lon": 4.493303,
+   "capaciteit": 36,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "P1 Breestraat",
+   "operator": "P1",
+   "type": "Garage parkeren",
+   "url": "",
+   "lat": 52.15557,
+   "lon": 4.493981,
+   "capaciteit": 340,
+   "uur": 1.5,
+   "dagmax": 12.0
+  },
+  {
+   "naam": "ParkKing Lammenschans",
+   "operator": "ParkKing",
+   "type": "Garage parkeren",
+   "url": "www.parkking.nl",
+   "lat": 52.15968,
+   "lon": 4.497982,
+   "capaciteit": 350,
+   "uur": 1.8,
+   "dagmax": 15.0
+  },
+  {
+   "naam": "ParkKing Level",
+   "operator": "ParkKing",
+   "type": "Garage parkeren",
+   "url": "www.parkking.nl",
+   "lat": 52.166683,
+   "lon": 4.480786,
+   "capaciteit": 331,
+   "uur": 1.8,
+   "dagmax": 15.0
+  },
+  {
+   "naam": "Soestdijkkade",
+   "operator": "Leiden",
+   "type": "Garage parkeren",
+   "url": "www.leiden.nl",
+   "lat": 52.166194,
+   "lon": 4.505805,
+   "capaciteit": 140,
+   "uur": 0.0,
+   "dagmax": 10.0
+  },
+  {
+   "naam": "Transferium 't Schouw A44",
+   "operator": "Leiden",
+   "type": "P+R",
+   "url": "www.leiden.nl",
+   "lat": 52.165472,
+   "lon": 4.450314,
+   "capaciteit": 195,
+   "uur": null,
+   "dagmax": null
+  }
+ ]
+}

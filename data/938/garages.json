@@ -1,0 +1,96 @@
+{
+ "areamanagerid": "938",
+ "gemeente": "Meerssen",
+ "bron": "RDW NPR Open Parkeerdata (CC-0)",
+ "gegenereerd": "2026-06-05T09:05:06Z",
+ "garages": [
+  {
+   "naam": "Nederlandse Spoorwegen PenR Meerssen station",
+   "operator": "Nederlandse Spoorwegen",
+   "type": "P+R",
+   "url": "",
+   "lat": 50.882512,
+   "lon": 5.750901,
+   "capaciteit": 50,
+   "uur": 0.0,
+   "dagmax": null
+  },
+  {
+   "naam": "P+R Meerssen",
+   "operator": "Meerssen",
+   "type": "P+R",
+   "url": "www.meerssen.nl",
+   "lat": 50.882452,
+   "lon": 5.751464,
+   "capaciteit": 88,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "P+R Stationsstraat",
+   "operator": "Meerssen",
+   "type": "P+R",
+   "url": "www.meerssen.nl",
+   "lat": 50.897367,
+   "lon": 5.735898,
+   "capaciteit": 90,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Parkeerplaats t Bergske (Terrein",
+   "operator": "Meerssen",
+   "type": "Terreinparkeren",
+   "url": "www.meerssen.nl",
+   "lat": 50.88544,
+   "lon": 5.755613,
+   "capaciteit": 125,
+   "uur": 1.8,
+   "dagmax": null
+  },
+  {
+   "naam": "Proosdijpark",
+   "operator": "Meerssen",
+   "type": "Garage parkeren",
+   "url": "www.meerssen.nl",
+   "lat": 50.884318,
+   "lon": 5.752883,
+   "capaciteit": 90,
+   "uur": 1.2,
+   "dagmax": null
+  },
+  {
+   "naam": "Q-Park P+R Meerssenerweg",
+   "operator": "Q-Park",
+   "type": "Parkeergarage",
+   "url": "www.q-park.nl",
+   "lat": 50.85098,
+   "lon": 5.706545,
+   "capaciteit": 66,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "SV Meerssen",
+   "operator": "Meerssen",
+   "type": "Terreinparkeren",
+   "url": "www.meerssen.nl",
+   "lat": 50.882697,
+   "lon": 5.744602,
+   "capaciteit": 70,
+   "uur": 0.0,
+   "dagmax": null
+  },
+  {
+   "naam": "parkeerplaats Gasthuis (Terrein",
+   "operator": "Meerssen",
+   "type": "Terreinparkeren",
+   "url": "www.meerssen.nl",
+   "lat": 50.885757,
+   "lon": 5.753014,
+   "capaciteit": 50,
+   "uur": 1.8,
+   "dagmax": null
+  }
+ ]
+}
