@@ -1164,7 +1164,7 @@ async function bereken(){
   }
   html+=`</div>`;
 
-  html+=`<div class="results-group"><div class="section-label">Garages${gekozenStad?' in '+esc(weergaveStad(gekozenStad)):''}</div>`;
+  html+=`<div class="results-group"><div class="section-label">Garages &amp; terreinen${gekozenStad?' in '+esc(weergaveStad(gekozenStad)):''}</div>`;
 
   // Steden met RDW-data: echte live garages; overige: voorlopige tabel als fallback.
   let amsGar = null;
@@ -1174,11 +1174,12 @@ async function bereken(){
   }
 
   if(amsGar){
+    const TYPE={'Terreinparkeren':'terrein','P+R':'P+R','Carpoolparkeren':'carpool'};
     const grij = amsGar.map(g=>{
-        const heeftTarief = g.uur!=null;
+        const heeftTarief = g.uur!=null && g.uur>0;   // €0 = onbekend/gratis-venster, niet tonen als prijs
         const dagmax = heeftTarief ? (g.dagmax!=null ? g.dagmax : round2(g.uur*24)) : null;
         return {
-          naam:g.naam, operator:g.operator||'—', capaciteit:g.capaciteit, url:g.url,
+          naam:g.naam, operator:g.operator||'—', capaciteit:g.capaciteit, url:g.url, soort:TYPE[g.type]||null,
           afstand: gekozenCoord ? afstandM(gekozenCoord, g) : null,
           uur:g.uur, dagmax,
           kosten: heeftTarief ? garageKosten({uur:g.uur, dagmax}, uren) : null
@@ -1194,7 +1195,8 @@ async function bereken(){
       const best  = heeft && g.kosten===goedkoopsteG;
       const afst  = g.afstand!=null ? afstandTekst(g.afstand)+' · ' : '';
       const cap   = g.capaciteit ? `${g.capaciteit} plaatsen` : '';
-      const sub   = heeft ? `${eur.format(g.uur)}/uur, max ${eur.format(g.dagmax)}/dag` : 'tarief bij exploitant';
+      const srt   = g.soort ? g.soort+' · ' : '';
+      const sub   = srt + (heeft ? `${eur.format(g.uur)}/uur, max ${eur.format(g.dagmax)}/dag` : 'tarief bij exploitant');
       const rechts= heeft ? eur.format(g.kosten)
                    : (g.url ? `<a href="https://${esc(g.url)}" target="_blank" rel="noopener" style="font-size:15px;color:var(--primary-on-dark);text-decoration:none">tarief&nbsp;&rarr;</a>` : '—');
       html+=`<div class="result-row anim" style="animation-delay:${(0.05*(Math.min(i,12)+1)).toFixed(2)}s">

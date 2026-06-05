@@ -105,10 +105,12 @@ def tarief_uit_npr(tariffs):
             if cp <= 0 or ch is None:
                 continue
             df = ir.get("durationFrom", 0) or 0
-            if df <= 0 and cp < 1440:
+            # Alleen positieve tarieven: een charge=0-band is meestal een gratis
+            # tijdvenster of ontbrekende data, niet het echte uurtarief.
+            if df <= 0 and cp < 1440 and ch > 0:
                 if best_cp is None or cp < best_cp:
                     best_cp = cp; uur = round(ch / (cp / 60.0), 2)
-            if cp >= 1440:
+            if cp >= 1440 and ch > 0:
                 d = round(ch, 2)
                 if dag is None or d < dag:
                     dag = d

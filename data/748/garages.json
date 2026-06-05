@@ -2,7 +2,7 @@
  "areamanagerid": "748",
  "gemeente": "Bergen op Zoom",
  "bron": "RDW NPR Open Parkeerdata (CC-0)",
- "gegenereerd": "2026-06-05T08:30:54Z",
+ "gegenereerd": "2026-06-05T11:50:22Z",
  "garages": [
   {
    "naam": "Achter de Grote Markt",
@@ -12,7 +12,7 @@
    "lat": 51.492732,
    "lon": 4.285022,
    "capaciteit": 150,
-   "uur": 0.0,
+   "uur": 1.5,
    "dagmax": 10.0
   },
   {
@@ -23,7 +23,7 @@
    "lat": 51.493552,
    "lon": 4.291962,
    "capaciteit": 375,
-   "uur": 0.0,
+   "uur": 1.5,
    "dagmax": 10.0
   },
   {
@@ -45,7 +45,7 @@
    "lat": 51.496397,
    "lon": 4.29316,
    "capaciteit": 123,
-   "uur": 0.0,
+   "uur": 1.5,
    "dagmax": 10.0
   }
  ]
