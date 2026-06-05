@@ -1,0 +1,41 @@
+{
+ "areamanagerid": "981",
+ "gemeente": "Vaals",
+ "bron": "RDW NPR Open Parkeerdata (CC-0)",
+ "gegenereerd": "2026-06-05T09:26:32Z",
+ "garages": [
+  {
+   "naam": "Parkeerterrein Prof. Von Kármánstraat",
+   "operator": "Vaals",
+   "type": "Terreinparkeren",
+   "url": "www.vaals.nl",
+   "lat": 50.774455,
+   "lon": 6.019117,
+   "capaciteit": 37,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Parkeerterrein Selzerbeeklaan",
+   "operator": "Vaals",
+   "type": "Terreinparkeren",
+   "url": "www.vaals.nl",
+   "lat": 50.777173,
+   "lon": 6.015085,
+   "capaciteit": 78,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Prins Willem Alexanderplein",
+   "operator": "Vaals",
+   "type": "Garage parkeren",
+   "url": "www.vaals.nl",
+   "lat": 50.772899,
+   "lon": 6.021607,
+   "capaciteit": 190,
+   "uur": null,
+   "dagmax": null
+  }
+ ]
+}
