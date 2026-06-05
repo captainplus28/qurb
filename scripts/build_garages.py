@@ -15,7 +15,7 @@ Garages zonder gepubliceerd tarief (bv. Q-Park) worden overgeslagen.
 Uitvoer: data/amsterdam-garages.json
 Gebruik:  python3 scripts/build_garages.py
 """
-import json, sys, time, os, urllib.request
+import json, sys, time, os, re, urllib.request
 
 NPR = "https://npropendata.rdw.nl/parkingdata/v2"
 OUT = os.path.join(os.path.dirname(__file__), "..", "data", "amsterdam-garages.json")
@@ -28,6 +28,21 @@ def get(url):
     req = urllib.request.Request(url, headers={"User-Agent": "qurb-datapijplijn/1.0"})
     with urllib.request.urlopen(req, timeout=60) as r:
         return json.load(r)
+
+def kort_operator(op):
+    """'Q-Park Nederland BV' -> 'Q-Park', 'APCOA Parking' -> 'APCOA'."""
+    if not op: return op
+    return re.sub(r"\s+(Nederland\s+B\.?V\.?|B\.?V\.?|Parking)$", "", op.strip(), flags=re.I).strip()
+
+def nette_naam(raw, merk):
+    """Exploitantnaam vooraan, geen '(Amsterdam)'/'AMSTERDAM-'/stad."""
+    n = (raw or "").strip()
+    n = re.sub(r"\s*\(Amsterdam\)\s*$", "", n, flags=re.I).strip()   # stad-suffix weg
+    n = re.sub(r"^AMSTERDAM[-\s]+", "", n, flags=re.I).strip()       # Q-Park-prefix weg
+    plaats = re.sub(r"^(Parkeergarage|Garage|Terrein)\s+", "", n, flags=re.I).strip()
+    if merk and merk.lower() not in ("amsterdam", "gemeente amsterdam"):
+        return plaats if plaats.lower().startswith(merk.lower()) else f"{merk} {plaats}"
+    return n  # gemeente: beschrijvende naam zonder stad
 
 def tarief_uit_npr(tariffs):
     """uurtarief (kleinste intra-uur stap) en dagmax (24u-kaart) uit huidige rates."""
@@ -84,9 +99,10 @@ def main():
             uur, dag = tarief_uit_npr(info.get("tariffs"))
             # Garages zonder gepubliceerd tarief (bv. Q-Park) tonen we tóch:
             # met locatie/capaciteit en een link naar de exploitant (uur=null).
+            merk = kort_operator(op)
             out.append({
-                "naam": info.get("name") or f.get("name"),
-                "operator": op, "type": usage, "url": url,
+                "naam": nette_naam(info.get("name") or f.get("name"), merk),
+                "operator": merk, "type": usage, "url": url,
                 "lat": lat, "lon": lon, "capaciteit": cap,
                 "uur": uur, "dagmax": dag,
             })
