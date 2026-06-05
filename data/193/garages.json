@@ -1,0 +1,41 @@
+{
+ "areamanagerid": "193",
+ "gemeente": "Zwolle",
+ "bron": "RDW NPR Open Parkeerdata (CC-0)",
+ "gegenereerd": "2026-06-05T09:38:13Z",
+ "garages": [
+  {
+   "naam": "Emmawijk - Dek",
+   "operator": "Zwolle",
+   "type": "Garage parkeren",
+   "url": "www.zwolle.nl",
+   "lat": 52.509209,
+   "lon": 6.086367,
+   "capaciteit": 100,
+   "uur": 0.0,
+   "dagmax": null
+  },
+  {
+   "naam": "Q-Park Centrum",
+   "operator": "Q-Park",
+   "type": "Garage parkeren",
+   "url": "www.q-park.nl",
+   "lat": 52.514027,
+   "lon": 6.097661,
+   "capaciteit": 323,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Q-Park Maagjesbolwerk",
+   "operator": "Q-Park",
+   "type": "Garage parkeren",
+   "url": "www.q-park.nl",
+   "lat": 52.512115,
+   "lon": 6.088003,
+   "capaciteit": 453,
+   "uur": null,
+   "dagmax": null
+  }
+ ]
+}
