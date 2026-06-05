@@ -1,0 +1,74 @@
+{
+ "areamanagerid": "243",
+ "gemeente": "Harderwijk",
+ "bron": "RDW NPR Open Parkeerdata (CC-0)",
+ "gegenereerd": "2026-06-05T08:53:12Z",
+ "garages": [
+  {
+   "naam": "Houtwal",
+   "operator": "Harderwijk",
+   "type": "Garage parkeren",
+   "url": "www.harderwijk.nl",
+   "lat": 52.348123,
+   "lon": 5.620392,
+   "capaciteit": 450,
+   "uur": 0.0,
+   "dagmax": null
+  },
+  {
+   "naam": "P+R Harderwijk",
+   "operator": "Harderwijk",
+   "type": "P+R",
+   "url": "www.harderwijk.nl",
+   "lat": 52.337771,
+   "lon": 5.618445,
+   "capaciteit": 200,
+   "uur": 0.0,
+   "dagmax": null
+  },
+  {
+   "naam": "P11 Vuldersbrink",
+   "operator": "Harderwijk",
+   "type": "Garage parkeren",
+   "url": "www.harderwijk.nl",
+   "lat": 52.349953,
+   "lon": 5.621518,
+   "capaciteit": 85,
+   "uur": 0.0,
+   "dagmax": null
+  },
+  {
+   "naam": "P17 Kloosterplein",
+   "operator": "Harderwijk",
+   "type": "Terreinparkeren",
+   "url": "www.harderwijk.nl",
+   "lat": 52.347551,
+   "lon": 5.617635,
+   "capaciteit": 81,
+   "uur": 0.0,
+   "dagmax": null
+  },
+  {
+   "naam": "P19 Westeinde",
+   "operator": "Harderwijk",
+   "type": "Terreinparkeren",
+   "url": "www.harderwijk.nl",
+   "lat": 52.345499,
+   "lon": 5.614572,
+   "capaciteit": 50,
+   "uur": 0.0,
+   "dagmax": null
+  },
+  {
+   "naam": "P9 Scheepssingel",
+   "operator": "Harderwijk",
+   "type": "Terreinparkeren",
+   "url": "www.harderwijk.nl",
+   "lat": 52.350905,
+   "lon": 5.62334,
+   "capaciteit": 100,
+   "uur": 2.1,
+   "dagmax": null
+  }
+ ]
+}

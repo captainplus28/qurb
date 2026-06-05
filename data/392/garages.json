@@ -1,0 +1,96 @@
+{
+ "areamanagerid": "392",
+ "gemeente": "Haarlem",
+ "bron": "RDW NPR Open Parkeerdata (CC-0)",
+ "gegenereerd": "2026-06-05T08:51:51Z",
+ "garages": [
+  {
+   "naam": "Cronjé",
+   "operator": "Haarlem",
+   "type": "Garage parkeren",
+   "url": "www.haarlem.nl",
+   "lat": 52.3945,
+   "lon": 4.638407,
+   "capaciteit": 404,
+   "uur": 1.62,
+   "dagmax": 14.46
+  },
+  {
+   "naam": "De Appelaar",
+   "operator": "Haarlem",
+   "type": "Garage parkeren",
+   "url": "www.haarlem.nl",
+   "lat": 52.380269,
+   "lon": 4.639066,
+   "capaciteit": 296,
+   "uur": 4.0,
+   "dagmax": 33.0
+  },
+  {
+   "naam": "De Kamp",
+   "operator": "Haarlem",
+   "type": "Garage parkeren",
+   "url": "www.haarlem.nl",
+   "lat": 52.377478,
+   "lon": 4.636735,
+   "capaciteit": 395,
+   "uur": 3.49,
+   "dagmax": 28.81
+  },
+  {
+   "naam": "Dreef",
+   "operator": "Haarlem",
+   "type": "Garage parkeren",
+   "url": "www.haarlem.nl",
+   "lat": 52.37198,
+   "lon": 4.630349,
+   "capaciteit": 239,
+   "uur": 2.62,
+   "dagmax": 14.46
+  },
+  {
+   "naam": "Floridastraat",
+   "operator": "Haarlem",
+   "type": "Garage parkeren",
+   "url": "www.haarlem.nl",
+   "lat": 52.358885,
+   "lon": 4.655786,
+   "capaciteit": 596,
+   "uur": 1.2,
+   "dagmax": 4.8
+  },
+  {
+   "naam": "Houtplein",
+   "operator": "Haarlem",
+   "type": "Garage parkeren",
+   "url": "www.haarlem.nl",
+   "lat": 52.374715,
+   "lon": 4.631711,
+   "capaciteit": 860,
+   "uur": 3.49,
+   "dagmax": 28.81
+  },
+  {
+   "naam": "Raaks",
+   "operator": "Haarlem",
+   "type": "Garage parkeren",
+   "url": "www.haarlem.nl",
+   "lat": 52.381754,
+   "lon": 4.629215,
+   "capaciteit": 960,
+   "uur": 3.49,
+   "dagmax": 28.81
+  },
+  {
+   "naam": "Station",
+   "operator": "Haarlem",
+   "type": "Garage parkeren",
+   "url": "www.haarlem.nl",
+   "lat": 52.386569,
+   "lon": 4.638824,
+   "capaciteit": 460,
+   "uur": null,
+   "dagmax": null
+  }
+ ]
+}

@@ -1,0 +1,52 @@
+{
+ "areamanagerid": "513",
+ "gemeente": "Gouda",
+ "bron": "RDW NPR Open Parkeerdata (CC-0)",
+ "gegenereerd": "2026-06-05T08:49:57Z",
+ "garages": [
+  {
+   "naam": "Klein Amerika",
+   "operator": "Gouda",
+   "type": "Terreinparkeren",
+   "url": "www.gouda.nl",
+   "lat": 52.011828,
+   "lon": 4.716109,
+   "capaciteit": 370,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Q-Park Nieuwe Markt",
+   "operator": "Q-Park",
+   "type": "Garage parkeren",
+   "url": "www.q-park.nl",
+   "lat": 52.01438,
+   "lon": 4.711289,
+   "capaciteit": 400,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Schouwburg",
+   "operator": "Gouda",
+   "type": "Terreinparkeren",
+   "url": "www.gouda.nl",
+   "lat": 52.015727,
+   "lon": 4.711638,
+   "capaciteit": 165,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Vossenburchkade",
+   "operator": "Gouda",
+   "type": "Terreinparkeren",
+   "url": "www.gouda.nl",
+   "lat": 52.017343,
+   "lon": 4.710233,
+   "capaciteit": 150,
+   "uur": null,
+   "dagmax": null
+  }
+ ]
+}

@@ -1,0 +1,19 @@
+{
+ "areamanagerid": "397",
+ "gemeente": "Heemstede",
+ "bron": "RDW NPR Open Parkeerdata (CC-0)",
+ "gegenereerd": "2026-06-05T08:53:40Z",
+ "garages": [
+  {
+   "naam": "Nederlandse Spoorwegen P+R Roemer Visscherplein (Heemstede-Aerdenhout)",
+   "operator": "Nederlandse Spoorwegen",
+   "type": "P+R",
+   "url": "",
+   "lat": 52.35933,
+   "lon": 4.606,
+   "capaciteit": 147,
+   "uur": 2.12,
+   "dagmax": 8.61
+  }
+ ]
+}

@@ -1,0 +1,30 @@
+{
+ "areamanagerid": "74",
+ "gemeente": "Heerenveen",
+ "bron": "RDW NPR Open Parkeerdata (CC-0)",
+ "gegenereerd": "2026-06-05T08:53:51Z",
+ "garages": [
+  {
+   "naam": "InPublic Ventures Geerts Willigen",
+   "operator": "InPublic Ventures",
+   "type": "Garage parkeren",
+   "url": "https://www.inpublic-nederland.nl/",
+   "lat": 52.961025,
+   "lon": 5.924126,
+   "capaciteit": 325,
+   "uur": 1.2,
+   "dagmax": 6.0
+  },
+  {
+   "naam": "Nederlandse Spoorwegen P+R Stationsplein",
+   "operator": "Nederlandse Spoorwegen",
+   "type": "P+R",
+   "url": "",
+   "lat": 52.96257,
+   "lon": 5.91403,
+   "capaciteit": 144,
+   "uur": 1.14,
+   "dagmax": 9.02
+  }
+ ]
+}

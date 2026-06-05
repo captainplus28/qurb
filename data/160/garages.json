@@ -1,0 +1,74 @@
+{
+ "areamanagerid": "160",
+ "gemeente": "Hardenberg",
+ "bron": "RDW NPR Open Parkeerdata (CC-0)",
+ "gegenereerd": "2026-06-05T08:52:36Z",
+ "garages": [
+  {
+   "naam": "Centrum/Gemeentehuis",
+   "operator": "Hardenberg",
+   "type": "Garage parkeren",
+   "url": "www.hardenberg.nl",
+   "lat": 52.573582,
+   "lon": 6.619998,
+   "capaciteit": 459,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Centrum/Theater",
+   "operator": "Hardenberg",
+   "type": "Garage parkeren",
+   "url": "www.hardenberg.nl",
+   "lat": 52.57634,
+   "lon": 6.616041,
+   "capaciteit": 272,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Gemeentehuis",
+   "operator": "Hardenberg",
+   "type": "Garage parkeren",
+   "url": "www.hardenberg.nl",
+   "lat": 52.573673,
+   "lon": 6.618249,
+   "capaciteit": 462,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "LOC",
+   "operator": "Hardenberg",
+   "type": "Garage parkeren",
+   "url": "www.hardenberg.nl",
+   "lat": 52.576417,
+   "lon": 6.624858,
+   "capaciteit": 188,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Van Wevelinckhovenplein",
+   "operator": "Hardenberg",
+   "type": "Terreinparkeren",
+   "url": "www.hardenberg.nl",
+   "lat": 52.57648,
+   "lon": 6.619902,
+   "capaciteit": 257,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Van Wevelinckhovenplein",
+   "operator": "Hardenberg",
+   "type": "Garage parkeren",
+   "url": "www.hardenberg.nl",
+   "lat": 52.576339,
+   "lon": 6.620251,
+   "capaciteit": 257,
+   "uur": null,
+   "dagmax": null
+  }
+ ]
+}
