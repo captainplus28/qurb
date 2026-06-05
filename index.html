@@ -880,6 +880,14 @@ async function laadGemeenten(){
   catch(e){ gemeentenMap = {}; }
   return gemeentenMap;
 }
+/* Per gemeente: aantal betaalde zones (om valse 'gratis' te voorkomen). */
+let dekkingMap = null;
+async function laadDekking(){
+  if(dekkingMap) return dekkingMap;
+  try{ const r=await fetch('data/dekking.json'); dekkingMap = r.ok ? ((await r.json()).betaald_zones||{}) : {}; }
+  catch(e){ dekkingMap = {}; }
+  return dekkingMap;
+}
 
 /* Coordinaat (WGS84) + gemeente van een PDOK-adres ophalen. */
 async function haalAdres(id){
@@ -1109,13 +1117,14 @@ async function bereken(){
   if(ms<=0){showError('De eindtijd moet na de begintijd liggen.');return;}
 
   // Live straattarief per zone (Amsterdam); anders het indicatieve gemeentecijfer.
-  let tarief=huidigTarief, tariefNaam=null, gratisStraat=false, dekking=true, vergunning=false;
+  let tarief=huidigTarief, tariefNaam=null, gratisStraat=false, dekking=true, vergunning=false, onzeker=false;
   const stadKey=(gekozenStad||'').toLowerCase().trim();
   if(gekozenStadId && gekozenCoord){
     const st=await straatTariefVoor(gekozenCoord, start);
     if(st && st.eur>0){ tarief=st.eur; tariefNaam=st.naam; }
     else if(st){ tarief=0; gratisStraat=true; tariefNaam='Gratis op dit tijdstip · '+st.naam; }
     else if(await inVergunningZone(gekozenCoord)){ tarief=0; vergunning=true; tariefNaam='Vergunninghoudersgebied'; }
+    else if(((await laadDekking())[gekozenStadId]||0) > 0){ tarief=0; onzeker=true; tariefNaam='Zone niet te bepalen'; }
     else { tarief=0; gratisStraat=true; dekking=false; tariefNaam='Geen betaald straatparkeren gevonden'; }
   }
 
@@ -1127,13 +1136,15 @@ async function bereken(){
   let html=`<section class="results-tile"><div class="tile-inner">
   <div class="summary-strip anim">
     <div class="summary-item"><div class="lab">Duur</div><div class="val">${duurTekst(min)}</div></div>
-    <div class="summary-item"><div class="lab">${vergunning?'Straat':'Basisprijs'}</div><div class="val">${vergunning?'—':(gratisStraat?'Gratis':eur.format(basis))}</div><div class="sub">${tariefNaam?esc(tariefNaam)+(gratisStraat||vergunning?'':' · '+eur.format(tarief)+'/uur'):'Gelijk voor alle apps'}</div></div>
+    <div class="summary-item"><div class="lab">${vergunning||onzeker?'Straat':'Basisprijs'}</div><div class="val">${vergunning?'—':(onzeker?'?':(gratisStraat?'Gratis':eur.format(basis)))}</div><div class="sub">${tariefNaam?esc(tariefNaam)+(gratisStraat||vergunning||onzeker?'':' · '+eur.format(tarief)+'/uur'):'Gelijk voor alle apps'}</div></div>
   </div>
   <div class="results-group">
     <div class="section-label">Op straat</div>`;
 
   if(vergunning){
     html+=`<div class="info-box anim">Hier geldt <strong>vergunninghoudersparkeren</strong>. Als bezoeker kun je op straat doorgaans niet parkeren — kies een garage hieronder, of controleer of er een bezoekersregeling geldt.</div>`;
+  } else if(onzeker){
+    html+=`<div class="info-box anim">Deze gemeente kent <strong>betaald parkeren</strong>, maar we konden de zone op dit punt niet bepalen — de open parkeerdata is hier onvolledig. Controleer de <strong>automaat of je parkeerapp</strong> voor het juiste tarief en de zonecode.</div>`;
   } else if(gratisStraat){
     html+=`<div class="info-box anim">${dekking
       ?'Op dit tijdstip is betaald straatparkeren hier niet van kracht — je parkeert gratis.'
