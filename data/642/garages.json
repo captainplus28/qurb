@@ -1,0 +1,19 @@
+{
+ "areamanagerid": "642",
+ "gemeente": "Zwijndrecht",
+ "bron": "RDW NPR Open Parkeerdata (CC-0)",
+ "gegenereerd": "2026-06-05T09:37:10Z",
+ "garages": [
+  {
+   "naam": "Nederlandse Spoorwegen P+R Westelijke parallelweg",
+   "operator": "Nederlandse Spoorwegen",
+   "type": "P+R",
+   "url": "",
+   "lat": 51.81431,
+   "lon": 4.642238,
+   "capaciteit": 119,
+   "uur": 1.05,
+   "dagmax": 7.06
+  }
+ ]
+}

@@ -1,0 +1,206 @@
+{
+ "areamanagerid": "637",
+ "gemeente": "Zoetermeer",
+ "bron": "RDW NPR Open Parkeerdata (CC-0)",
+ "gegenereerd": "2026-06-05T09:36:26Z",
+ "garages": [
+  {
+   "naam": "Interparking Amsterdamstraat",
+   "operator": "Interparking",
+   "type": "Garage parkeren",
+   "url": "www.interparking.nl",
+   "lat": 52.061053,
+   "lon": 4.491309,
+   "capaciteit": 495,
+   "uur": 0.0,
+   "dagmax": 11.5
+  },
+  {
+   "naam": "Interparking Belgiëlaan",
+   "operator": "Interparking",
+   "type": "Garage parkeren",
+   "url": "www.interparking.nl",
+   "lat": 52.062394,
+   "lon": 4.488582,
+   "capaciteit": 297,
+   "uur": 0.0,
+   "dagmax": 11.5
+  },
+  {
+   "naam": "Interparking Bovenlangs",
+   "operator": "Interparking",
+   "type": "Garage parkeren",
+   "url": "www.interparking.nl",
+   "lat": 52.060808,
+   "lon": 4.487829,
+   "capaciteit": 448,
+   "uur": 0.0,
+   "dagmax": 11.5
+  },
+  {
+   "naam": "Interparking Duitslandlaan",
+   "operator": "Interparking",
+   "type": "Garage parkeren",
+   "url": "www.interparking.nl",
+   "lat": 52.062806,
+   "lon": 4.4944,
+   "capaciteit": 581,
+   "uur": 0.0,
+   "dagmax": 11.5
+  },
+  {
+   "naam": "Interparking Luxemburglaan",
+   "operator": "Interparking",
+   "type": "Garage parkeren",
+   "url": "www.interparking.nl",
+   "lat": 52.0626,
+   "lon": 4.491337,
+   "capaciteit": 456,
+   "uur": 0.0,
+   "dagmax": 11.5
+  },
+  {
+   "naam": "Interparking Nederlandlaan",
+   "operator": "Interparking",
+   "type": "Garage parkeren",
+   "url": "www.interparking.nl",
+   "lat": 52.061524,
+   "lon": 4.483849,
+   "capaciteit": 656,
+   "uur": 0.0,
+   "dagmax": 11.5
+  },
+  {
+   "naam": "Interparking Onderlangs",
+   "operator": "Interparking",
+   "type": "Garage parkeren",
+   "url": "www.interparking.nl",
+   "lat": 52.060393,
+   "lon": 4.487418,
+   "capaciteit": 307,
+   "uur": 0.0,
+   "dagmax": 11.5
+  },
+  {
+   "naam": "Nederlandse Spoorwegen P+R Station Zoetermeer",
+   "operator": "Nederlandse Spoorwegen",
+   "type": "P+R",
+   "url": "",
+   "lat": 52.04676,
+   "lon": 4.473359,
+   "capaciteit": 537,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Nederlandse Spoorwegen P+R Station Zoetermeer Voorweg",
+   "operator": "Nederlandse Spoorwegen",
+   "type": "P+R",
+   "url": "",
+   "lat": 52.062947,
+   "lon": 4.471024,
+   "capaciteit": 30,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Nederlandse Spoorwegen P+R Station Zoetermeer-Oost",
+   "operator": "Nederlandse Spoorwegen",
+   "type": "P+R",
+   "url": "",
+   "lat": 52.046797,
+   "lon": 4.492043,
+   "capaciteit": 143,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Nederlandse Spoorwegen P+R Zoetermeer",
+   "operator": "Nederlandse Spoorwegen",
+   "type": "P+R",
+   "url": "",
+   "lat": 52.04684,
+   "lon": 4.492061,
+   "capaciteit": 24,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "P+R De Lus (NS Zoetermeer)",
+   "operator": "Zoetermeer",
+   "type": "P+R",
+   "url": "www.zoetermeer.nl",
+   "lat": 52.04735,
+   "lon": 4.47355,
+   "capaciteit": 416,
+   "uur": 0.0,
+   "dagmax": null
+  },
+  {
+   "naam": "P+R Groeneweg (NS Zoetermeer Oost)",
+   "operator": "Zoetermeer",
+   "type": "P+R",
+   "url": "www.zoetermeer.nl",
+   "lat": 52.046237,
+   "lon": 4.491361,
+   "capaciteit": 250,
+   "uur": 0.0,
+   "dagmax": null
+  },
+  {
+   "naam": "P1 Engelandlaan",
+   "operator": "P1",
+   "type": "Garage parkeren",
+   "url": "",
+   "lat": 52.060383,
+   "lon": 4.492771,
+   "capaciteit": 261,
+   "uur": 0.0,
+   "dagmax": 11.5
+  },
+  {
+   "naam": "P1 Frankrijklaan",
+   "operator": "P1",
+   "type": "Garage parkeren",
+   "url": "",
+   "lat": 52.060735,
+   "lon": 4.494145,
+   "capaciteit": 117,
+   "uur": 0.0,
+   "dagmax": 11.5
+  },
+  {
+   "naam": "P1 Leidsewallen-CKC",
+   "operator": "P1",
+   "type": "Garage parkeren",
+   "url": "",
+   "lat": 52.057194,
+   "lon": 4.498572,
+   "capaciteit": 57,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "P1 Orfeoschouw",
+   "operator": "P1",
+   "type": "Garage parkeren",
+   "url": "",
+   "lat": 52.064249,
+   "lon": 4.491509,
+   "capaciteit": null,
+   "uur": 0.0,
+   "dagmax": 11.5
+  },
+  {
+   "naam": "P1 Osijlaan",
+   "operator": "P1",
+   "type": "Garage parkeren",
+   "url": "",
+   "lat": 52.057194,
+   "lon": 4.498572,
+   "capaciteit": 125,
+   "uur": null,
+   "dagmax": null
+  }
+ ]
+}
