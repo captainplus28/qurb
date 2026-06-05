@@ -1,0 +1,41 @@
+{
+ "areamanagerid": "236",
+ "gemeente": "Geldermalsen",
+ "bron": "RDW NPR Open Parkeerdata (CC-0)",
+ "gegenereerd": "2026-06-05T08:47:56Z",
+ "garages": [
+  {
+   "naam": "Nederlandse Spoorwegen P + R station Geldermalsen",
+   "operator": "Nederlandse Spoorwegen",
+   "type": "P+R",
+   "url": "",
+   "lat": 51.882779,
+   "lon": 5.270282,
+   "capaciteit": 493,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "P+R Geldermalsen-West",
+   "operator": "Geldermalsen",
+   "type": "P+R",
+   "url": "www.geldermalsen.nl",
+   "lat": 51.881708,
+   "lon": 5.270192,
+   "capaciteit": 508,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "West Betuwe P + R Geldermalsen-West",
+   "operator": "West Betuwe",
+   "type": "P+R",
+   "url": "www.westbetuwe.nl",
+   "lat": 51.881708,
+   "lon": 5.270192,
+   "capaciteit": 493,
+   "uur": null,
+   "dagmax": null
+  }
+ ]
+}

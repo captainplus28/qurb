@@ -1,0 +1,30 @@
+{
+ "areamanagerid": "153",
+ "gemeente": "Enschede",
+ "bron": "RDW NPR Open Parkeerdata (CC-0)",
+ "gegenereerd": "2026-06-05T08:46:41Z",
+ "garages": [
+  {
+   "naam": "Q-Park Enschede",
+   "operator": "Q-Park",
+   "type": "Garage parkeren",
+   "url": "www.q-park.nl",
+   "lat": 52.218834,
+   "lon": 6.89317,
+   "capaciteit": 466,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Transferium Centrum",
+   "operator": "Enschede",
+   "type": "P+R",
+   "url": "",
+   "lat": 52.204023,
+   "lon": 6.891117,
+   "capaciteit": null,
+   "uur": null,
+   "dagmax": null
+  }
+ ]
+}

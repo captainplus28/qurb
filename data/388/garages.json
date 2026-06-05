@@ -1,0 +1,19 @@
+{
+ "areamanagerid": "388",
+ "gemeente": "Enkhuizen",
+ "bron": "RDW NPR Open Parkeerdata (CC-0)",
+ "gegenereerd": "2026-06-05T08:46:01Z",
+ "garages": [
+  {
+   "naam": "P+R Station Enkhuizen",
+   "operator": "Enkhuizen",
+   "type": "P+R",
+   "url": "www.enkhuizen.nl",
+   "lat": 52.700021,
+   "lon": 5.287801,
+   "capaciteit": 375,
+   "uur": 0.0,
+   "dagmax": null
+  }
+ ]
+}
