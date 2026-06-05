@@ -1,0 +1,107 @@
+{
+ "areamanagerid": "268",
+ "gemeente": "Nijmegen",
+ "bron": "RDW NPR Open Parkeerdata (CC-0)",
+ "gegenereerd": "2026-06-05T09:08:42Z",
+ "garages": [
+  {
+   "naam": "Holland Casino",
+   "operator": "Holland Casino",
+   "type": "Garage parkeren",
+   "url": "",
+   "lat": 51.848543,
+   "lon": 5.867903,
+   "capaciteit": null,
+   "uur": 4.0,
+   "dagmax": 20.0
+  },
+  {
+   "naam": "Molenpoortdak",
+   "operator": "Nijmegen",
+   "type": "Terreinparkeren",
+   "url": "www.nijmegen.nl",
+   "lat": 51.843891,
+   "lon": 5.864618,
+   "capaciteit": 350,
+   "uur": 3.0,
+   "dagmax": null
+  },
+  {
+   "naam": "Nederlandse Spoorwegen P+R 1e Oude Heselaan",
+   "operator": "Nederlandse Spoorwegen",
+   "type": "P+R",
+   "url": "",
+   "lat": 51.84469,
+   "lon": 5.85132,
+   "capaciteit": 264,
+   "uur": 1.81,
+   "dagmax": 10.62
+  },
+  {
+   "naam": "P+R Nijmegen-West",
+   "operator": "Nijmegen",
+   "type": "P+R",
+   "url": "www.nijmegen.nl",
+   "lat": 51.836545,
+   "lon": 5.800985,
+   "capaciteit": 131,
+   "uur": 0.0,
+   "dagmax": null
+  },
+  {
+   "naam": "P+R Station Nijmegen Lent (Lent)",
+   "operator": "Nijmegen",
+   "type": "P+R",
+   "url": "www.nijmegen.nl",
+   "lat": 51.861969,
+   "lon": 5.861608,
+   "capaciteit": 30,
+   "uur": 0.0,
+   "dagmax": null
+  },
+  {
+   "naam": "P1 Dukenburg",
+   "operator": "P1",
+   "type": "Garage parkeren",
+   "url": "",
+   "lat": 51.82401,
+   "lon": 5.798478,
+   "capaciteit": 740,
+   "uur": 0.67,
+   "dagmax": 7.5
+  },
+  {
+   "naam": "ParkKing FiftyTwoDegrees",
+   "operator": "ParkKing",
+   "type": "Garage parkeren",
+   "url": "www.parkking.nl",
+   "lat": 51.824198,
+   "lon": 5.823714,
+   "capaciteit": 603,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Q-Park P+R Eerste Oude Heselaan",
+   "operator": "Q-Park",
+   "type": "Parkeergarage",
+   "url": "www.q-park.nl",
+   "lat": 51.844696,
+   "lon": 5.851244,
+   "capaciteit": 90,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Q-Park Triavium",
+   "operator": "Q-Park",
+   "type": "Terreinparkeren",
+   "url": "www.q-park.nl",
+   "lat": 51.821987,
+   "lon": 5.789065,
+   "capaciteit": null,
+   "uur": null,
+   "dagmax": null
+  }
+ ]
+}

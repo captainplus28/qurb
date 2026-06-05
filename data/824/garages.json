@@ -1,0 +1,19 @@
+{
+ "areamanagerid": "824",
+ "gemeente": "Oisterwijk",
+ "bron": "RDW NPR Open Parkeerdata (CC-0)",
+ "gegenereerd": "2026-06-05T09:09:21Z",
+ "garages": [
+  {
+   "naam": "Nederlandse Spoorwegen P+R Spoorlaan",
+   "operator": "Nederlandse Spoorwegen",
+   "type": "P+R",
+   "url": "",
+   "lat": 51.5827,
+   "lon": 5.19772,
+   "capaciteit": 137,
+   "uur": 1.06,
+   "dagmax": 6.11
+  }
+ ]
+}

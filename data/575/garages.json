@@ -1,0 +1,30 @@
+{
+ "areamanagerid": "575",
+ "gemeente": "Noordwijk",
+ "bron": "RDW NPR Open Parkeerdata (CC-0)",
+ "gegenereerd": "2026-06-05T09:09:11Z",
+ "garages": [
+  {
+   "naam": "Centrum Vomar Bomstraat",
+   "operator": "Centrum",
+   "type": "Terreinparkeren",
+   "url": "",
+   "lat": 52.243867,
+   "lon": 4.431611,
+   "capaciteit": 250,
+   "uur": 1.5,
+   "dagmax": 15.0
+  },
+  {
+   "naam": "Interparking Victoriberg (Noordwijkerhout)",
+   "operator": "Interparking",
+   "type": "Garage parkeren",
+   "url": "www.interparking.nl",
+   "lat": 52.263712,
+   "lon": 4.492139,
+   "capaciteit": 200,
+   "uur": 0.0,
+   "dagmax": 5.0
+  }
+ ]
+}

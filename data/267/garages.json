@@ -1,0 +1,52 @@
+{
+ "areamanagerid": "267",
+ "gemeente": "Nijkerk",
+ "bron": "RDW NPR Open Parkeerdata (CC-0)",
+ "gegenereerd": "2026-06-05T09:07:53Z",
+ "garages": [
+  {
+   "naam": "P+R Berkenlaan",
+   "operator": "Nijkerk",
+   "type": "P+R",
+   "url": "www.nijkerk.eu",
+   "lat": 52.221133,
+   "lon": 5.49291,
+   "capaciteit": 39,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "P+R Station Nijkerk",
+   "operator": "Nijkerk",
+   "type": "P+R",
+   "url": "www.nijkerk.eu",
+   "lat": 52.222705,
+   "lon": 5.494012,
+   "capaciteit": 84,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "P+R Station Nijkerk",
+   "operator": "Nijkerk",
+   "type": "P+R",
+   "url": "www.nijkerk.eu",
+   "lat": 52.223165,
+   "lon": 5.49797,
+   "capaciteit": 345,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "ParkKing Oosterpoort",
+   "operator": "ParkKing",
+   "type": "Garage parkeren",
+   "url": "www.parkking.nl",
+   "lat": 52.224116,
+   "lon": 5.488989,
+   "capaciteit": 327,
+   "uur": 0.7,
+   "dagmax": 7.0
+  }
+ ]
+}

@@ -1,0 +1,85 @@
+{
+ "areamanagerid": "439",
+ "gemeente": "Purmerend",
+ "bron": "RDW NPR Open Parkeerdata (CC-0)",
+ "gegenereerd": "2026-06-05T09:11:13Z",
+ "garages": [
+  {
+   "naam": "P+R Beatrixplein",
+   "operator": "Purmerend",
+   "type": "P+R",
+   "url": "www.purmerend.nl",
+   "lat": 52.502956,
+   "lon": 4.954655,
+   "capaciteit": 94,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "P+R Purmerend Overwhere",
+   "operator": "Purmerend",
+   "type": "P+R",
+   "url": "www.purmerend.nl",
+   "lat": 52.511076,
+   "lon": 4.968069,
+   "capaciteit": 54,
+   "uur": 0.0,
+   "dagmax": null
+  },
+  {
+   "naam": "P+R Wilhelminalaan",
+   "operator": "Purmerend",
+   "type": "P+R",
+   "url": "www.purmerend.nl",
+   "lat": 52.503767,
+   "lon": 4.953652,
+   "capaciteit": 64,
+   "uur": 0.0,
+   "dagmax": null
+  },
+  {
+   "naam": "P1 Claxonate",
+   "operator": "P1",
+   "type": "Garage parkeren",
+   "url": "",
+   "lat": 52.508625,
+   "lon": 4.943219,
+   "capaciteit": 200,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Parking + Protection Waterland Ziekenhuis",
+   "operator": "Parking + Protection",
+   "type": "Terreinparkeren",
+   "url": "",
+   "lat": 52.500728,
+   "lon": 4.964176,
+   "capaciteit": null,
+   "uur": 0.0,
+   "dagmax": 4.0
+  },
+  {
+   "naam": "Parking + Protection Waterland Ziekenhuis Veenweidestraat",
+   "operator": "Parking + Protection",
+   "type": "Terreinparkeren",
+   "url": "",
+   "lat": 52.49892,
+   "lon": 4.961529,
+   "capaciteit": null,
+   "uur": 0.0,
+   "dagmax": 4.0
+  },
+  {
+   "naam": "Parking + Protection Woonboulevard Wagenweg",
+   "operator": "Parking + Protection",
+   "type": "Terreinparkeren",
+   "url": "",
+   "lat": 52.509955,
+   "lon": 4.95238,
+   "capaciteit": null,
+   "uur": 0.0,
+   "dagmax": 25.0
+  }
+ ]
+}
