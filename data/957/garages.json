@@ -1,0 +1,107 @@
+{
+ "areamanagerid": "957",
+ "gemeente": "Roermond",
+ "bron": "RDW NPR Open Parkeerdata (CC-0)",
+ "gegenereerd": "2026-06-05T09:12:39Z",
+ "garages": [
+  {
+   "naam": "Arlo",
+   "operator": "Roermond",
+   "type": "Terreinparkeren",
+   "url": "www.roermond.nl",
+   "lat": 51.198342,
+   "lon": 5.983139,
+   "capaciteit": 120,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Looskade",
+   "operator": "Roermond",
+   "type": "Garage parkeren",
+   "url": "www.roermond.nl",
+   "lat": 51.197335,
+   "lon": 5.982587,
+   "capaciteit": 200,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Nederlandse Spoorwegen P+R Godsweerdersingel",
+   "operator": "Nederlandse Spoorwegen",
+   "type": "P+R",
+   "url": "",
+   "lat": 51.19466,
+   "lon": 5.99458,
+   "capaciteit": 100,
+   "uur": 1.81,
+   "dagmax": 10.93
+  },
+  {
+   "naam": "Nederlandse Spoorwegen P+R Veeladingstraat",
+   "operator": "Nederlandse Spoorwegen",
+   "type": "P+R",
+   "url": "",
+   "lat": 51.18948,
+   "lon": 5.99224,
+   "capaciteit": 151,
+   "uur": 1.81,
+   "dagmax": 10.93
+  },
+  {
+   "naam": "ParkKing Kazerneplein",
+   "operator": "ParkKing",
+   "type": "Garage parkeren",
+   "url": "www.parkking.nl",
+   "lat": 51.198618,
+   "lon": 5.985135,
+   "capaciteit": 400,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Q-Park De Oranjerie",
+   "operator": "Q-Park",
+   "type": "Garage parkeren",
+   "url": "www.q-park.nl",
+   "lat": 51.191048,
+   "lon": 5.990299,
+   "capaciteit": 585,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Q-Park P+R Godsweerdersingel",
+   "operator": "Q-Park",
+   "type": "Parkeergarage",
+   "url": "www.q-park.nl",
+   "lat": 51.19473,
+   "lon": 5.993793,
+   "capaciteit": 95,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Q-Park P+R Veeladingstraat",
+   "operator": "Q-Park",
+   "type": "Parkeergarage",
+   "url": "www.q-park.nl",
+   "lat": 51.1895866,
+   "lon": 5.992162,
+   "capaciteit": 151,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Q-Park Roercenter",
+   "operator": "Q-Park",
+   "type": "Garage parkeren",
+   "url": "www.q-park.nl",
+   "lat": 51.193626,
+   "lon": 5.98374,
+   "capaciteit": 424,
+   "uur": null,
+   "dagmax": null
+  }
+ ]
+}

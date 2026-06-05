@@ -1,0 +1,162 @@
+{
+ "areamanagerid": "612",
+ "gemeente": "Spijkenisse",
+ "bron": "RDW NPR Open Parkeerdata (CC-0)",
+ "gegenereerd": "2026-06-05T09:19:21Z",
+ "garages": [
+  {
+   "naam": "Boekenberg",
+   "operator": "Spijkenisse",
+   "type": "Garage parkeren",
+   "url": "www.spijkenisse.nl",
+   "lat": 51.848958,
+   "lon": 4.323898,
+   "capaciteit": 372,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "City Plaza",
+   "operator": "Spijkenisse",
+   "type": "Garage parkeren",
+   "url": "www.spijkenisse.nl",
+   "lat": 51.849141,
+   "lon": 4.331011,
+   "capaciteit": 430,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Kolkplein",
+   "operator": "Spijkenisse",
+   "type": "Garage parkeren",
+   "url": "www.spijkenisse.nl",
+   "lat": 51.850839,
+   "lon": 4.332393,
+   "capaciteit": 425,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Nissewaard Boekenberggarage",
+   "operator": "Nissewaard",
+   "type": "Garage parkeren",
+   "url": "www.nissewaard.nl",
+   "lat": 51.848956,
+   "lon": 4.323848,
+   "capaciteit": 375,
+   "uur": 1.0,
+   "dagmax": 9.0
+  },
+  {
+   "naam": "Nissewaard City Plazagarage",
+   "operator": "Nissewaard",
+   "type": "Garage parkeren",
+   "url": "www.nissewaard.nl",
+   "lat": 51.849143,
+   "lon": 4.331019,
+   "capaciteit": 410,
+   "uur": 1.0,
+   "dagmax": 9.0
+  },
+  {
+   "naam": "Nissewaard Kolkpleingarage",
+   "operator": "Nissewaard",
+   "type": "Garage parkeren",
+   "url": "www.nissewaard.nl",
+   "lat": 51.850815,
+   "lon": 4.332434,
+   "capaciteit": null,
+   "uur": 1.0,
+   "dagmax": 9.0
+  },
+  {
+   "naam": "Nissewaard P+R Spijkenisse Centrum",
+   "operator": "Nissewaard",
+   "type": "P+R",
+   "url": "www.nissewaard.nl",
+   "lat": 51.845863,
+   "lon": 4.332853,
+   "capaciteit": 269,
+   "uur": 0.0,
+   "dagmax": null
+  },
+  {
+   "naam": "Nissewaard P+R Spijkenisse De Akkers",
+   "operator": "Nissewaard",
+   "type": "P+R",
+   "url": "www.nissewaard.nl",
+   "lat": 51.833002,
+   "lon": 4.317735,
+   "capaciteit": 326,
+   "uur": 0.0,
+   "dagmax": null
+  },
+  {
+   "naam": "Nissewaard P+R Spijkenisse Heemraadlaan",
+   "operator": "Nissewaard",
+   "type": "P+R",
+   "url": "www.nissewaard.nl",
+   "lat": 51.837071,
+   "lon": 4.332179,
+   "capaciteit": 245,
+   "uur": 0.0,
+   "dagmax": null
+  },
+  {
+   "naam": "Nissewaard P+R Spijkenisse Heemraadlaan Noordzijde",
+   "operator": "Nissewaard",
+   "type": "P+R",
+   "url": "www.nissewaard.nl",
+   "lat": 51.840196,
+   "lon": 4.331245,
+   "capaciteit": 121,
+   "uur": 0.0,
+   "dagmax": null
+  },
+  {
+   "naam": "Nissewaard Stadhuisgarage",
+   "operator": "Nissewaard",
+   "type": "Garage parkeren",
+   "url": "www.nissewaard.nl",
+   "lat": 51.848351,
+   "lon": 4.330026,
+   "capaciteit": 410,
+   "uur": 1.0,
+   "dagmax": 9.0
+  },
+  {
+   "naam": "Nissewaard Theatergarage",
+   "operator": "Nissewaard",
+   "type": "Garage parkeren",
+   "url": "www.nissewaard.nl",
+   "lat": 51.850601,
+   "lon": 4.33049,
+   "capaciteit": 650,
+   "uur": 1.0,
+   "dagmax": 9.0
+  },
+  {
+   "naam": "Stadhuis",
+   "operator": "Spijkenisse",
+   "type": "Garage parkeren",
+   "url": "www.spijkenisse.nl",
+   "lat": 51.848309,
+   "lon": 4.329946,
+   "capaciteit": 410,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Theater",
+   "operator": "Spijkenisse",
+   "type": "Garage parkeren",
+   "url": "www.spijkenisse.nl",
+   "lat": 51.850645,
+   "lon": 4.33048,
+   "capaciteit": 700,
+   "uur": null,
+   "dagmax": null
+  }
+ ]
+}
