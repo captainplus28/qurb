@@ -8,13 +8,13 @@
   <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2048%2048'%3E%3Ccircle%20cx='22'%20cy='21'%20r='14'%20fill='none'%20stroke='%23ff385c'%20stroke-width='8'/%3E%3Cpolygon%20points='31,29%2025,32%2036,43'%20fill='%23e00b41'/%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     /* ─── AIRBNB DESIGN TOKENS ─── */
     :root {
-      --primary:            #ff385c;
-      --primary-active:     #e00b41;
-      --primary-disabled:   #ffd1da;
+      --primary:            #199646;
+      --primary-active:     #157a38;
+      --primary-disabled:   #a8d8b8;
       --ink:                #222222;
       --body:               #3f3f3f;
       --muted:              #6a6a6a;
@@ -39,7 +39,7 @@
 
       --shadow: rgba(0,0,0,0.02) 0 0 0 1px, rgba(0,0,0,0.04) 0 2px 6px, rgba(0,0,0,0.1) 0 4px 8px;
 
-      --font: 'Inter', -apple-system, system-ui, Roboto, 'Helvetica Neue', sans-serif;
+      --font: 'Poppins', -apple-system, system-ui, sans-serif;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -53,6 +53,42 @@
       color: var(--body);
       background: var(--canvas);
       -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── USP TICKER BAR ─── */
+    .usp-bar {
+      background: var(--primary);
+      color: #fff;
+      height: 40px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+    }
+    .usp-track {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      animation: ticker 28s linear infinite;
+      white-space: nowrap;
+      will-change: transform;
+    }
+    .usp-bar:hover .usp-track { animation-play-state: paused; }
+    .usp-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 0 48px;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.1px;
+    }
+    .usp-dot {
+      width: 4px; height: 4px; border-radius: 50%;
+      background: rgba(255,255,255,0.5); flex-shrink: 0;
+    }
+    @keyframes ticker {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
     }
 
     /* ─── TOP NAV ─── */
@@ -451,6 +487,34 @@
 </head>
 <body>
 
+<!-- USP ticker bar -->
+<div class="usp-bar" aria-label="Voordelen van Qurb">
+  <div class="usp-track">
+    <!-- repeat twice for seamless loop -->
+    <span class="usp-item">🅿️ 5 parkeer-apps vergeleken</span>
+    <span class="usp-dot"></span>
+    <span class="usp-item">💰 Gemiddeld €0,50 besparing per sessie</span>
+    <span class="usp-dot"></span>
+    <span class="usp-item">📍 Amsterdam · Rotterdam · Utrecht · Den Haag</span>
+    <span class="usp-dot"></span>
+    <span class="usp-item">✅ Gratis · Geen account nodig</span>
+    <span class="usp-dot"></span>
+    <span class="usp-item">⚡ Vergelijk in één klik</span>
+    <span class="usp-dot"></span>
+    <!-- duplicate for seamless loop -->
+    <span class="usp-item">🅿️ 5 parkeer-apps vergeleken</span>
+    <span class="usp-dot"></span>
+    <span class="usp-item">💰 Gemiddeld €0,50 besparing per sessie</span>
+    <span class="usp-dot"></span>
+    <span class="usp-item">📍 Amsterdam · Rotterdam · Utrecht · Den Haag</span>
+    <span class="usp-dot"></span>
+    <span class="usp-item">✅ Gratis · Geen account nodig</span>
+    <span class="usp-dot"></span>
+    <span class="usp-item">⚡ Vergelijk in één klik</span>
+    <span class="usp-dot"></span>
+  </div>
+</div>
+
 <!-- Top nav -->
 <nav class="top-nav">
   <div class="nav-inner">
@@ -516,22 +580,6 @@
 </div>
 
 <!-- Stats -->
-<div class="stats-strip">
-  <div class="stats-inner">
-    <div class="stat-cell">
-      <div class="stat-num">5</div>
-      <div class="stat-lbl">parkeer-apps vergeleken</div>
-    </div>
-    <div class="stat-cell">
-      <div class="stat-num">€0<em>.50</em></div>
-      <div class="stat-lbl">gemiddelde besparing per sessie</div>
-    </div>
-    <div class="stat-cell">
-      <div class="stat-num">4</div>
-      <div class="stat-lbl">steden: Amsterdam · Rotterdam · Utrecht · Den Haag</div>
-    </div>
-  </div>
-</div>
 
 <!-- How it works -->
 <section id="hoe" class="hiw-bg">
