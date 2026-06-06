@@ -315,6 +315,17 @@
     .avail__dot--red    { background: #ff453a; }
     .info { background: var(--results-info-bg); border-radius: var(--radius-md); padding: 18px 22px; font-size: 14px; color: var(--results-muted); line-height: 1.6; margin-block-start: 14px; }
     .info strong { color: var(--results-text); }
+    .report { margin-block-start: 16px; }
+    .report__btn {
+      display: inline-flex; align-items: center; gap: 7px;
+      font-size: 13px; color: var(--results-muted); text-decoration: none;
+      background: transparent; border: 1px solid var(--results-divider);
+      border-radius: var(--radius-pill); padding: 7px 14px;
+      transition: color .15s, border-color .15s;
+    }
+    .report__btn:hover { color: var(--results-text); border-color: var(--results-muted); }
+    .report__btn svg { flex: none; }
+    .report__done { font-size: 13px; color: var(--results-link); }
 
     @keyframes rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
     .anim { animation: rise .4s cubic-bezier(.2,.7,.2,1) both; }
@@ -545,6 +556,7 @@
     requestMs:    8000,   // per-request timeout
     maxGarages:   18,
     fallbackRate: 3.00,   // €/uur — landelijk gemiddelde wanneer geen stadcijfer bekend is
+    reportEmail:  'meldingen@qurb.nl',   // TODO: definitief meld-adres instellen
   });
 
   // Indicatief gemeentetarief (€/uur) tot het zone-exacte cijfer uit de RDW-data komt.
@@ -1034,7 +1046,29 @@
       <p class="info anim" style="animation-delay:.4s">Dichtstbijzijnde ${shown.length} garages${hidden > 0 ? ` (${hidden} verder weg niet getoond)` : ''}. Live locaties en tarieven uit de open parkeerdata van de RDW (CC-0). Garages zonder gepubliceerd tarief (o.a. Q-Park) tonen we met een link naar de exploitant.</p>`;
   }
 
-  function renderResults({ street, durationMin, base, hours, garages }) {
+  /** Prefilled mailto report — opens the visitor's mail app with full context.
+   *  CONFIG.reportEmail is the (later configurable) destination address. */
+  function reportHref(street, start, end) {
+    const p = state.place;
+    const body = [
+      'Ik denk dat deze parkeerdata niet klopt.',
+      '',
+      `Adres: ${p?.label ?? '-'}`,
+      `Gemeente: ${p?.municipality ?? '-'}`,
+      `Straat-status: ${street.label ?? street.kind}`,
+      `Gedetecteerd tarief: ${street.rate ? `${eur.format(street.rate)}/uur` : 'geen'}`,
+      `Betrouwbaarheid: ${street.tier ?? 'n.v.t.'}`,
+      `Tijdvak: ${start.toLocaleString('nl-NL')} – ${end.toLocaleString('nl-NL')}`,
+      '',
+      'Wat klopt er volgens jou niet?',
+      '',
+    ].join('\n');
+    return `mailto:${CONFIG.reportEmail}?subject=${encodeURIComponent(`Qurb datamelding — ${p?.municipality ?? 'onbekend'}`)}&body=${encodeURIComponent(body)}`;
+  }
+
+  const FLAG = raw('<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>');
+
+  function renderResults({ street, durationMin, base, hours, garages, start, end }) {
     const summaryRight = street.kind === 'permit' ? '—'
       : street.kind === 'uncertain' || street.kind === 'unsupported' ? '?'
       : (street.kind === 'free' || street.kind === 'nodata') ? 'Gratis'
@@ -1058,6 +1092,7 @@
           <div class="group">
             <h2 class="group__label">Op straat</h2>
             ${raw(renderStreet(street, base, hours))}
+            <p class="report"><a class="report__btn" href="${reportHref(street, start, end)}">${FLAG} Deze data klopt niet</a></p>
           </div>
           <div class="group">
             <h2 class="group__label">Garages &amp; terreinen${cityLabel}</h2>
@@ -1091,7 +1126,7 @@
         const list = await loadGarages(state.place.areaId);
         if (list.length) garages = { ranked: rankGarages(list, state.place.coord, hours), total: list.length };
       }
-      renderResults({ street, durationMin: Math.round(ms / 60000), base, hours, garages });
+      renderResults({ street, durationMin: Math.round(ms / 60000), base, hours, garages, start, end });
     } catch {
       showError('Er ging iets mis bij het ophalen van de parkeerdata. Probeer het zo nog eens.');
     } finally {
@@ -1102,6 +1137,12 @@
   /* ════════════════════════════ Boot ════════════════════════════ */
   initTimeInputs();
   el.form.addEventListener('submit', (e) => { e.preventDefault(); compare(); });
+  // After a report-click the mailto opens; confirm inline (delegated, results re-render safe).
+  el.results.addEventListener('click', (e) => {
+    const btn = e.target.closest('.report__btn');
+    if (!btn) return;
+    btn.closest('.report').innerHTML = html`<span class="report__done">Bedankt — je mailprogramma opent met je melding.</span>`;
+  });
   </script>
 </body>
 </html>

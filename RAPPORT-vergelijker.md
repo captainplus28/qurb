@@ -126,6 +126,11 @@ wordt automatisch opnieuw bepaald telkens als de data wordt ververst, dus hij bl
 detail: gemeenten die zijn samengevoegd (zoals Spijkenisse, nu deel van Nissewaard) worden via de
 plaatsnaam in het adres alsnog correct herkend.
 
+**Klopt er iets niet?** Onder het straattarief staat een knop *"Deze data klopt niet"*. Daarmee
+open je een kant-en-klaar e-mailtje (met het adres, het gevonden tarief en het tijdstip al ingevuld)
+naar het meldadres, zodat we fouten snel kunnen verbeteren. Het meldadres is een instelling die nog
+definitief wordt gezet.
+
 ---
 
 ## Bekende beperkingen en aannames
