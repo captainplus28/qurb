@@ -55,5 +55,8 @@ jobs:
             [ $((n % 10)) -eq 0 ] && commit_push
           done < /tmp/steden.tsv
 
+          # Herc-classificeer betrouwbaarheid op basis van de zojuist gebouwde data.
+          python3 scripts/build_dekking.py        || echo "dekking overgeslagen"
+          python3 scripts/build_betrouwbaarheid.py
           commit_push
           echo "Klaar: $n gemeenten verwerkt."

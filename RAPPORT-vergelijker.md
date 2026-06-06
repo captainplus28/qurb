@@ -106,6 +106,28 @@ dat concreet:
 
 ---
 
+## Hoe Qurb omgaat met onbetrouwbare data
+
+Niet elke gemeente levert even complete open data. Sommige steden hebben wél keurige
+zonegegevens, andere bijna niets. Qurb beoordeelt daarom **per gemeente** hoe betrouwbaar het
+straattarief is, in drie niveaus:
+
+1. **Geverifieerd** (Amsterdam, Rotterdam, Utrecht, Den Haag) — het tarief is door ons handmatig
+   vergeleken met de officiële gemeentebron. Hierop kun je het meest vertrouwen.
+2. **Compleet** (~88 steden) — de open data is structureel volledig (alle zones hebben geometrie
+   én tarieven). Qurb toont het tarief, maar met een eerlijk label *"indicatief — niet handmatig
+   geverifieerd"*.
+3. **Onvoldoende** (~29 steden) — te weinig of te onvolledige zonegegevens. Hier toont Qurb
+   **bewust geen straatprijs**, maar de melding *"controleer de automaat of je parkeerapp"*. De
+   garages in die plaats worden wél gewoon getoond.
+
+Zo voorkomt Qurb dat je een prijs ziet die er betrouwbaar uitziet maar dat niet is. De indeling
+wordt automatisch opnieuw bepaald telkens als de data wordt ververst, dus hij blijft kloppen. Een
+detail: gemeenten die zijn samengevoegd (zoals Spijkenisse, nu deel van Nissewaard) worden via de
+plaatsnaam in het adres alsnog correct herkend.
+
+---
+
 ## Bekende beperkingen en aannames
 
 Qurb is eerlijk over wat het (nog) niet kan — dat is een bewuste keuze:

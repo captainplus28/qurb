@@ -157,11 +157,37 @@ domeinlogica los testbaar en de render-laag dom.
 |---|---|
 | `data/gemeenten.json` | `{ gemeenten: { "<naam>": "<areaId>" } }` |
 | `data/dekking.json` | `{ betaald_zones: { "<areaId>": <aantal> } }` |
+| `data/betrouwbaarheid.json` | `{ gegenereerd, criteria, tiers: { "<areaId>": "geverifieerd"\|"compleet"\|"onvoldoende" } }` — door `scripts/build_betrouwbaarheid.py` |
 | `data/<areaId>/straat.json` | `{ zones: [{ areaid, naam, polys: [[[lon,lat]…]], vensters: [{ days:[1-7], from, to, eur }] }] }` |
 | `data/<areaId>/vergunning.json` | `{ zones: [{ polys: [[[lon,lat]…]] }] }` |
 | `data/<areaId>/garages.json` | `{ garages: [{ naam, operator, type, url, lat, lon, capaciteit, uur, dagmax }] }` |
 
 **Code-dependencies:** geen. Geen runtime-bibliotheken; alleen browser-API's en Google Fonts (CSS).
+
+### Betrouwbaarheidsmodel (data-gating)
+
+Niet alle open RDW-data is even compleet. `scripts/build_betrouwbaarheid.py` classificeert elke
+gemeente in drie tiers en schrijft `data/betrouwbaarheid.json`:
+
+- **geverifieerd** — handmatig gevalideerd (Amsterdam 363, Rotterdam 599, Utrecht 344, Den Haag 518).
+- **compleet** — structureel volledig: `≥3` zones, `≥95%` met geometrie, `≥90%` met tariefvenster.
+- **onvoldoende** — alles eronder (lege/dunne data of zones zonder tarief).
+
+`resolveStreet()` raadpleegt de tier vóór het zone-tariefpad:
+
+```
+tier === 'onvoldoende'  → kind:'unsupported'  (géén straatprijs; eerlijke melding + garages)
+tier in {geverifieerd, compleet} → live zone-resolutie (streetRateAt / permit / coverage)
+render: tier === 'compleet' → extra "indicatief, niet geverifieerd"-notitie
+```
+
+De classificatie wordt **automatisch herbouwd** in de data-refresh workflow
+(`.github/workflows/refresh-data.yml`), dus hij volgt de data.
+
+**Herindeling-resolutie:** PDOK levert de *huidige* gemeentenaam (bv. "Nissewaard"), terwijl de
+RDW-areamap op de *historische* plaatsnaam keyt (bv. "Spijkenisse"). `choose()` probeert daarom
+eerst de PDOK-gemeentenaam en valt terug op de plaatsnaam uit het adreslabel, zodat samengevoegde
+gemeenten alsnog hun area-id én tier krijgen.
 
 ---
 
