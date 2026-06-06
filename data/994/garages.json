@@ -1,0 +1,19 @@
+{
+ "areamanagerid": "994",
+ "gemeente": "Valkenburg aan de Geul",
+ "bron": "RDW NPR Open Parkeerdata (CC-0)",
+ "gegenereerd": "2026-06-05T09:27:06Z",
+ "garages": [
+  {
+   "naam": "Q-Park P+R Spoorlaan",
+   "operator": "Q-Park",
+   "type": "Parkeergarage",
+   "url": "www.q-park.nl",
+   "lat": 50.8694458,
+   "lon": 5.83194447,
+   "capaciteit": 203,
+   "uur": null,
+   "dagmax": null
+  }
+ ]
+}

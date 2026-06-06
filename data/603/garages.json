@@ -1,0 +1,52 @@
+{
+ "areamanagerid": "603",
+ "gemeente": "Rijswijk",
+ "bron": "RDW NPR Open Parkeerdata (CC-0)",
+ "gegenereerd": "2026-06-05T09:12:06Z",
+ "garages": [
+  {
+   "naam": "P+R Station Rijswijk",
+   "operator": "Rijswijk",
+   "type": "P+R",
+   "url": "www.rijswijk.nl",
+   "lat": 52.039261,
+   "lon": 4.320236,
+   "capaciteit": 48,
+   "uur": 0.0,
+   "dagmax": null
+  },
+  {
+   "naam": "Q-Park Bogaardplein",
+   "operator": "Q-Park",
+   "type": "Garage parkeren",
+   "url": "www.q-park.nl",
+   "lat": 52.03501,
+   "lon": 4.315535,
+   "capaciteit": 832,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Q-Park In de Bogaard P2",
+   "operator": "Q-Park",
+   "type": "Terreinparkeren",
+   "url": "www.q-park.nl",
+   "lat": 52.03501,
+   "lon": 4.315535,
+   "capaciteit": 668,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Q-Park In de Bogaard P7",
+   "operator": "Q-Park",
+   "type": "Terreinparkeren",
+   "url": "www.q-park.nl",
+   "lat": 52.046803,
+   "lon": 4.327427,
+   "capaciteit": 47,
+   "uur": null,
+   "dagmax": null
+  }
+ ]
+}

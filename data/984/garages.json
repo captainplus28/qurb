@@ -1,0 +1,118 @@
+{
+ "areamanagerid": "984",
+ "gemeente": "Venray",
+ "bron": "RDW NPR Open Parkeerdata (CC-0)",
+ "gegenereerd": "2026-06-05T09:31:15Z",
+ "garages": [
+  {
+   "naam": "Centrumgarage",
+   "operator": "Venray",
+   "type": "Garage parkeren",
+   "url": null,
+   "lat": 51.522464,
+   "lon": 5.971724,
+   "capaciteit": 370,
+   "uur": 1.0,
+   "dagmax": null
+  },
+  {
+   "naam": "P1 Blekersveld",
+   "operator": "P1",
+   "type": "Terreinparkeren",
+   "url": "",
+   "lat": 51.526579,
+   "lon": 5.972684,
+   "capaciteit": 186,
+   "uur": 0.0,
+   "dagmax": 3.0
+  },
+  {
+   "naam": "P1 Gouden Leeuw",
+   "operator": "P1",
+   "type": "Garage parkeren",
+   "url": "",
+   "lat": 51.522486,
+   "lon": 5.971675,
+   "capaciteit": 376,
+   "uur": 1.0,
+   "dagmax": 3.0
+  },
+  {
+   "naam": "P1 Raadhuisplein",
+   "operator": "P1",
+   "type": "Terreinparkeren",
+   "url": "",
+   "lat": 51.528088,
+   "lon": 5.976948,
+   "capaciteit": 165,
+   "uur": 0.0,
+   "dagmax": 3.0
+  },
+  {
+   "naam": "Parkeerterrein Hoenderstraat",
+   "operator": "Venray",
+   "type": "Terreinparkeren",
+   "url": null,
+   "lat": 51.527708,
+   "lon": 5.972121,
+   "capaciteit": 92,
+   "uur": 0.0,
+   "dagmax": null
+  },
+  {
+   "naam": "Parkeerterrein Jerusalem",
+   "operator": "Venray",
+   "type": "Terreinparkeren",
+   "url": null,
+   "lat": 51.53018,
+   "lon": 5.977516,
+   "capaciteit": 127,
+   "uur": 0.0,
+   "dagmax": null
+  },
+  {
+   "naam": "Parkeerterrein Kennedyplein",
+   "operator": "Venray",
+   "type": "Terreinparkeren",
+   "url": null,
+   "lat": 51.522267,
+   "lon": 5.970802,
+   "capaciteit": 51,
+   "uur": 0.0,
+   "dagmax": null
+  },
+  {
+   "naam": "Parkeerterrein Raadhuisstraat",
+   "operator": "Venray",
+   "type": "Terreinparkeren",
+   "url": null,
+   "lat": 51.52822,
+   "lon": 5.976938,
+   "capaciteit": 164,
+   "uur": 1.0,
+   "dagmax": null
+  },
+  {
+   "naam": "Parkeerterrein St Jozefweg",
+   "operator": "Venray",
+   "type": "Terreinparkeren",
+   "url": null,
+   "lat": 51.529534,
+   "lon": 5.972733,
+   "capaciteit": 101,
+   "uur": 0.0,
+   "dagmax": null
+  },
+  {
+   "naam": "Parkeerterrein St. Jozefklooster",
+   "operator": "Venray",
+   "type": "Terreinparkeren",
+   "url": null,
+   "lat": 51.52931,
+   "lon": 5.973994,
+   "capaciteit": 81,
+   "uur": 0.0,
+   "dagmax": null
+  }
+ ]
+}

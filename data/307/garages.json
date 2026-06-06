@@ -1,0 +1,206 @@
+{
+ "areamanagerid": "307",
+ "gemeente": "Amersfoort",
+ "bron": "RDW NPR Open Parkeerdata (CC-0)",
+ "gegenereerd": "2026-06-05T08:21:28Z",
+ "garages": [
+  {
+   "naam": "GPK-loket - ParkeerService Oliemolenkwartier",
+   "operator": "GPK-loket - ParkeerService",
+   "type": "Terreinparkeren",
+   "url": "",
+   "lat": 52.159629,
+   "lon": 5.381021,
+   "capaciteit": 38,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "GPK-loket - ParkeerService Sportfondsenbad",
+   "operator": "GPK-loket - ParkeerService",
+   "type": "Terreinparkeren",
+   "url": "",
+   "lat": 52.151398,
+   "lon": 5.394513,
+   "capaciteit": null,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Het Boegbeeld",
+   "operator": "Amersfoort",
+   "type": "Garage parkeren",
+   "url": null,
+   "lat": 52.162517,
+   "lon": 5.397951,
+   "capaciteit": 84,
+   "uur": 0.0,
+   "dagmax": 5.0
+  },
+  {
+   "naam": "Interparking Oppidium",
+   "operator": "Interparking",
+   "type": "Garage parkeren",
+   "url": "www.interparking.nl",
+   "lat": 52.158694,
+   "lon": 5.377225,
+   "capaciteit": 600,
+   "uur": 2.0,
+   "dagmax": 10.0
+  },
+  {
+   "naam": "Meander Medisch Centrum",
+   "operator": "Meander Medisch Centrum",
+   "type": "Garage parkeren",
+   "url": "",
+   "lat": 52.171647,
+   "lon": 5.370672,
+   "capaciteit": 1070,
+   "uur": 0.0,
+   "dagmax": 8.0
+  },
+  {
+   "naam": "Nederlandse Spoorwegen P+R Barchman Wuijtierslaan",
+   "operator": "Nederlandse Spoorwegen",
+   "type": "P+R",
+   "url": "",
+   "lat": 52.1529,
+   "lon": 5.36837,
+   "capaciteit": 260,
+   "uur": 2.94,
+   "dagmax": 15.99
+  },
+  {
+   "naam": "Nederlandse Spoorwegen P+R Piet Mondriaanplein",
+   "operator": "Nederlandse Spoorwegen",
+   "type": "P+R",
+   "url": "",
+   "lat": 52.15498,
+   "lon": 5.37218,
+   "capaciteit": 491,
+   "uur": 2.64,
+   "dagmax": 14.76
+  },
+  {
+   "naam": "P+R Station Schothorst",
+   "operator": "Amersfoort",
+   "type": "P+R",
+   "url": null,
+   "lat": 52.174266,
+   "lon": 5.404785,
+   "capaciteit": 236,
+   "uur": 0.0,
+   "dagmax": null
+  },
+  {
+   "naam": "P+R Station Vathorst",
+   "operator": "Amersfoort",
+   "type": "P+R",
+   "url": null,
+   "lat": 52.1921,
+   "lon": 5.434704,
+   "capaciteit": 95,
+   "uur": 0.0,
+   "dagmax": null
+  },
+  {
+   "naam": "P1 Asch van Wijckstraat",
+   "operator": "P1",
+   "type": "Garage parkeren",
+   "url": "",
+   "lat": 52.155651,
+   "lon": 5.38037,
+   "capaciteit": 440,
+   "uur": 1.5,
+   "dagmax": 15.0
+  },
+  {
+   "naam": "ParkKing Eemplein",
+   "operator": "ParkKing",
+   "type": "Garage parkeren",
+   "url": "www.parkking.nl",
+   "lat": 52.159974,
+   "lon": 5.381713,
+   "capaciteit": 625,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "ParkKing Soeverein",
+   "operator": "ParkKing",
+   "type": "Garage parkeren",
+   "url": "www.parkking.nl",
+   "lat": 52.152219,
+   "lon": 5.387834,
+   "capaciteit": 575,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Parkeer terrein Oliemolenkwartier",
+   "operator": "Amersfoort",
+   "type": "Terreinparkeren",
+   "url": null,
+   "lat": 52.159629,
+   "lon": 5.381021,
+   "capaciteit": 38,
+   "uur": 1.88,
+   "dagmax": 8.0
+  },
+  {
+   "naam": "Parkeer terrein Sportfondsenbad",
+   "operator": "Amersfoort",
+   "type": "Terreinparkeren",
+   "url": null,
+   "lat": 52.151398,
+   "lon": 5.394513,
+   "capaciteit": null,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Q-Park Beestenmarkt",
+   "operator": "Q-Park",
+   "type": "Garage parkeren",
+   "url": "www.q-park.nl",
+   "lat": 52.15594,
+   "lon": 5.39436,
+   "capaciteit": 360,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Q-Park Centrum Mondriaan",
+   "operator": "Q-Park",
+   "type": "Garage parkeren",
+   "url": "www.q-park.nl",
+   "lat": 52.152184,
+   "lon": 5.387238,
+   "capaciteit": 575,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Q-Park P+R Piet Mondriaanplein",
+   "operator": "Q-Park",
+   "type": "Parkeergarage",
+   "url": "www.q-park.nl",
+   "lat": 52.154583,
+   "lon": 5.371542,
+   "capaciteit": 491,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Q-Park St. Jorisplein",
+   "operator": "Q-Park",
+   "type": "Garage parkeren",
+   "url": "www.q-park.nl",
+   "lat": 52.155678,
+   "lon": 5.385361,
+   "capaciteit": 444,
+   "uur": null,
+   "dagmax": null
+  }
+ ]
+}

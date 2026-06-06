@@ -1,0 +1,52 @@
+{
+ "areamanagerid": "299",
+ "gemeente": "Zevenaar",
+ "bron": "RDW NPR Open Parkeerdata (CC-0)",
+ "gegenereerd": "2026-06-05T09:36:06Z",
+ "garages": [
+  {
+   "naam": "Masisplein",
+   "operator": "Zevenaar",
+   "type": "Garage parkeren",
+   "url": "www.zevenaar.nl",
+   "lat": 51.926899,
+   "lon": 6.073425,
+   "capaciteit": 340,
+   "uur": 0.7,
+   "dagmax": null
+  },
+  {
+   "naam": "Masiusplein",
+   "operator": "Zevenaar",
+   "type": "Garage parkeren",
+   "url": "www.zevenaar.nl",
+   "lat": 51.927285,
+   "lon": 6.074023,
+   "capaciteit": 340,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Nederlandse Spoorwegen P + R Station Zevenaar",
+   "operator": "Nederlandse Spoorwegen",
+   "type": "P+R",
+   "url": "",
+   "lat": 51.92355,
+   "lon": 6.069546,
+   "capaciteit": 147,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "PCH Masiusplein",
+   "operator": "PCH",
+   "type": "Garage parkeren",
+   "url": "https://www.pch-dienstengroep.nl/",
+   "lat": 51.926904,
+   "lon": 6.073399,
+   "capaciteit": 340,
+   "uur": null,
+   "dagmax": null
+  }
+ ]
+}

@@ -1,0 +1,63 @@
+{
+ "areamanagerid": "177",
+ "gemeente": "Raalte",
+ "bron": "RDW NPR Open Parkeerdata (CC-0)",
+ "gegenereerd": "2026-06-05T09:11:24Z",
+ "garages": [
+  {
+   "naam": "Domineeskamp ZZ Rabo",
+   "operator": "Raalte",
+   "type": "Terreinparkeren",
+   "url": "www.raalte.nl",
+   "lat": 52.384067,
+   "lon": 6.273306,
+   "capaciteit": 317,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Het Schip",
+   "operator": "Raalte",
+   "type": "Garage parkeren",
+   "url": "www.raalte.nl",
+   "lat": 52.385246,
+   "lon": 6.277013,
+   "capaciteit": 154,
+   "uur": 0.75,
+   "dagmax": null
+  },
+  {
+   "naam": "Klompenmakershof",
+   "operator": "Raalte",
+   "type": "Terreinparkeren",
+   "url": "www.raalte.nl",
+   "lat": 52.386539,
+   "lon": 6.279078,
+   "capaciteit": 102,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Parkeerplaats Marktstraat Kuiperstraat",
+   "operator": "Raalte",
+   "type": "Terreinparkeren",
+   "url": "www.raalte.nl",
+   "lat": 52.385011,
+   "lon": 6.277997,
+   "capaciteit": 80,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Varkensmarkt",
+   "operator": "Raalte",
+   "type": "Terreinparkeren",
+   "url": "www.raalte.nl",
+   "lat": 52.388033,
+   "lon": 6.277331,
+   "capaciteit": 68,
+   "uur": null,
+   "dagmax": null
+  }
+ ]
+}

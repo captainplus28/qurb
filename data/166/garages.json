@@ -1,0 +1,19 @@
+{
+ "areamanagerid": "166",
+ "gemeente": "Kampen",
+ "bron": "RDW NPR Open Parkeerdata (CC-0)",
+ "gegenereerd": "2026-06-05T09:00:47Z",
+ "garages": [
+  {
+   "naam": "P+R Station Kampen",
+   "operator": "Kampen",
+   "type": "P+R",
+   "url": "www.kampen.nl",
+   "lat": 52.560452,
+   "lon": 5.922623,
+   "capaciteit": 170,
+   "uur": 0.0,
+   "dagmax": null
+  }
+ ]
+}

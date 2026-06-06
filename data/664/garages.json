@@ -1,0 +1,107 @@
+{
+ "areamanagerid": "664",
+ "gemeente": "Goes",
+ "bron": "RDW NPR Open Parkeerdata (CC-0)",
+ "gegenereerd": "2026-06-05T08:49:25Z",
+ "garages": [
+  {
+   "naam": "Centrum",
+   "operator": "Goes",
+   "type": "Garage parkeren",
+   "url": "www.goes.nl",
+   "lat": 51.503407,
+   "lon": 3.886782,
+   "capaciteit": 511,
+   "uur": 2.0,
+   "dagmax": null
+  },
+  {
+   "naam": "P+R Station Goes",
+   "operator": "Goes",
+   "type": "P+R",
+   "url": "www.goes.nl",
+   "lat": 51.498768,
+   "lon": 3.888127,
+   "capaciteit": 135,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "P+R Stationspark",
+   "operator": "Goes",
+   "type": "P+R",
+   "url": "www.goes.nl",
+   "lat": 51.496286,
+   "lon": 3.894052,
+   "capaciteit": 445,
+   "uur": 0.0,
+   "dagmax": null
+  },
+  {
+   "naam": "P+R Zeelandhallen",
+   "operator": "Goes",
+   "type": "P+R",
+   "url": "www.goes.nl",
+   "lat": 51.490112,
+   "lon": 3.872187,
+   "capaciteit": 1500,
+   "uur": 0.0,
+   "dagmax": null
+  },
+  {
+   "naam": "Parkeerterrein Sportpark Het Schenge - noord",
+   "operator": "Goes",
+   "type": "Terreinparkeren",
+   "url": "www.goes.nl",
+   "lat": 51.518904,
+   "lon": 3.891515,
+   "capaciteit": 171,
+   "uur": 0.0,
+   "dagmax": null
+  },
+  {
+   "naam": "Parkeerterrein Sportpark Het Schenge - zuid",
+   "operator": "Goes",
+   "type": "Terreinparkeren",
+   "url": "www.goes.nl",
+   "lat": 51.512291,
+   "lon": 3.888473,
+   "capaciteit": 112,
+   "uur": 0.0,
+   "dagmax": null
+  },
+  {
+   "naam": "Parkeerterrein Stoomtrein Goes Borssele",
+   "operator": "Goes",
+   "type": "Terreinparkeren",
+   "url": "www.goes.nl",
+   "lat": 51.496463,
+   "lon": 3.879364,
+   "capaciteit": 141,
+   "uur": 0.0,
+   "dagmax": null
+  },
+  {
+   "naam": "Parking + Protection Admiraal de Ruyter Ziekenhuis",
+   "operator": "Parking + Protection",
+   "type": "Terreinparkeren",
+   "url": "",
+   "lat": 51.484857,
+   "lon": 3.904136,
+   "capaciteit": null,
+   "uur": 0.0,
+   "dagmax": 4.0
+  },
+  {
+   "naam": "Stadspoort",
+   "operator": "Goes",
+   "type": "Garage parkeren",
+   "url": "www.goes.nl",
+   "lat": 51.500607,
+   "lon": 3.889162,
+   "capaciteit": 176,
+   "uur": 1.58,
+   "dagmax": null
+  }
+ ]
+}

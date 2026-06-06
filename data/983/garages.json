@@ -1,0 +1,162 @@
+{
+ "areamanagerid": "983",
+ "gemeente": "Venlo",
+ "bron": "RDW NPR Open Parkeerdata (CC-0)",
+ "gegenereerd": "2026-06-05T09:30:43Z",
+ "garages": [
+  {
+   "naam": "Arsenaal",
+   "operator": "Venlo",
+   "type": "Terreinparkeren",
+   "url": "www.venlo.nl",
+   "lat": 51.368701,
+   "lon": 6.172077,
+   "capaciteit": 99,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Maaskade Hoog",
+   "operator": "Venlo",
+   "type": "Terreinparkeren",
+   "url": "www.venlo.nl",
+   "lat": 51.372657,
+   "lon": 6.1681,
+   "capaciteit": 80,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Maaskade Laag",
+   "operator": "Venlo",
+   "type": "Terreinparkeren",
+   "url": "www.venlo.nl",
+   "lat": 51.371658,
+   "lon": 6.167479,
+   "capaciteit": 200,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Nederlandse Spoorwegen P+R Kaldenkerkerweg",
+   "operator": "Nederlandse Spoorwegen",
+   "type": "P+R",
+   "url": "",
+   "lat": 51.36437,
+   "lon": 6.1734,
+   "capaciteit": 110,
+   "uur": 1.89,
+   "dagmax": 9.58
+  },
+  {
+   "naam": "Nolensplein",
+   "operator": "Venlo",
+   "type": "Garage parkeren",
+   "url": "www.venlo.nl",
+   "lat": 51.372916,
+   "lon": 6.171269,
+   "capaciteit": 745,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Nolensplein",
+   "operator": "Venlo",
+   "type": "Garage parkeren",
+   "url": "www.venlo.nl",
+   "lat": 51.372852,
+   "lon": 6.171088,
+   "capaciteit": null,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Q-Park Arsenaal",
+   "operator": "Q-Park",
+   "type": "Garage parkeren",
+   "url": "www.q-park.nl",
+   "lat": 51.36927,
+   "lon": 6.17215,
+   "capaciteit": 260,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Q-Park Blok van Gendt",
+   "operator": "Q-Park",
+   "type": "Garage parkeren",
+   "url": "www.q-park.nl",
+   "lat": 51.373596,
+   "lon": 6.171565,
+   "capaciteit": 200,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Q-Park Centrum Maasboulevard",
+   "operator": "Q-Park",
+   "type": "Garage parkeren",
+   "url": "www.q-park.nl",
+   "lat": 51.36902,
+   "lon": 6.164649,
+   "capaciteit": 535,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Q-Park Maaswaard",
+   "operator": "Q-Park",
+   "type": "Garage parkeren",
+   "url": "www.q-park.nl",
+   "lat": 51.367996,
+   "lon": 6.162443,
+   "capaciteit": 394,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Q-Park Nolensplein",
+   "operator": "Q-Park",
+   "type": "Garage parkeren",
+   "url": "www.q-park.nl",
+   "lat": 51.372833,
+   "lon": 6.1711,
+   "capaciteit": 745,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Q-Park Roermondsepoort",
+   "operator": "Q-Park",
+   "type": "Garage parkeren",
+   "url": "www.q-park.nl",
+   "lat": 51.368423,
+   "lon": 6.165186,
+   "capaciteit": 528,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Q-Park Roermondsepoort",
+   "operator": "Q-Park",
+   "type": "Garage parkeren",
+   "url": "www.q-park.nl",
+   "lat": 51.368423,
+   "lon": 6.165186,
+   "capaciteit": 528,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Roermondsepoort",
+   "operator": "Venlo",
+   "type": "Garage parkeren",
+   "url": "www.venlo.nl",
+   "lat": 51.368458,
+   "lon": 6.165143,
+   "capaciteit": 528,
+   "uur": null,
+   "dagmax": null
+  }
+ ]
+}

@@ -1,0 +1,19 @@
+{
+ "areamanagerid": "757",
+ "gemeente": "Boxtel",
+ "bron": "RDW NPR Open Parkeerdata (CC-0)",
+ "gegenereerd": "2026-06-05T08:31:31Z",
+ "garages": [
+  {
+   "naam": "Nederlandse Spoorwegen P+R Van Salmstraat",
+   "operator": "Nederlandse Spoorwegen",
+   "type": "P+R",
+   "url": "",
+   "lat": 51.58316,
+   "lon": 5.31807,
+   "capaciteit": 193,
+   "uur": 0.77,
+   "dagmax": 5.41
+  }
+ ]
+}

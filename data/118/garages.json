@@ -1,0 +1,30 @@
+{
+ "areamanagerid": "118",
+ "gemeente": "Hoogeveen",
+ "bron": "RDW NPR Open Parkeerdata (CC-0)",
+ "gegenereerd": "2026-06-05T08:58:30Z",
+ "garages": [
+  {
+   "naam": "Markt Noord",
+   "operator": "Hoogeveen",
+   "type": "Terreinparkeren",
+   "url": "www.hoogeveen.nl",
+   "lat": 52.728219,
+   "lon": 6.479616,
+   "capaciteit": 182,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Markt Zuid",
+   "operator": "Hoogeveen",
+   "type": "Terreinparkeren",
+   "url": "www.hoogeveen.nl",
+   "lat": 52.727914,
+   "lon": 6.480265,
+   "capaciteit": 70,
+   "uur": 1.9,
+   "dagmax": null
+  }
+ ]
+}

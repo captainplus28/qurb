@@ -1,0 +1,250 @@
+{
+ "areamanagerid": "713",
+ "gemeente": "Sluis",
+ "bron": "RDW NPR Open Parkeerdata (CC-0)",
+ "gegenereerd": "2026-06-05T09:18:22Z",
+ "garages": [
+  {
+   "naam": "Parkeerterrein 't Gemaal",
+   "operator": "Sluis",
+   "type": "Terreinparkeren",
+   "url": "www.gemeentesluis.nl",
+   "lat": 51.383223,
+   "lon": 3.43503,
+   "capaciteit": 37,
+   "uur": 1.0,
+   "dagmax": 4.0
+  },
+  {
+   "naam": "Parkeerterrein Beestenmarkt",
+   "operator": "Sluis",
+   "type": "Terreinparkeren",
+   "url": "www.gemeentesluis.nl",
+   "lat": 51.307306,
+   "lon": 3.387334,
+   "capaciteit": 18,
+   "uur": 1.5,
+   "dagmax": null
+  },
+  {
+   "naam": "Parkeerterrein De parkeeronthaalkamer",
+   "operator": "Sluis",
+   "type": "Terreinparkeren",
+   "url": "www.gemeentesluis.nl",
+   "lat": 51.391792,
+   "lon": 3.455251,
+   "capaciteit": 400,
+   "uur": 1.0,
+   "dagmax": 4.0
+  },
+  {
+   "naam": "Parkeerterrein Garenmarkt",
+   "operator": "Sluis",
+   "type": "Terreinparkeren",
+   "url": "www.gemeentesluis.nl",
+   "lat": 51.307811,
+   "lon": 3.384995,
+   "capaciteit": 98,
+   "uur": 1.5,
+   "dagmax": null
+  },
+  {
+   "naam": "Parkeerterrein Groedse Duintje",
+   "operator": "Sluis",
+   "type": "Terreinparkeren",
+   "url": "www.gemeentesluis.nl",
+   "lat": 51.396597,
+   "lon": 3.486258,
+   "capaciteit": 20,
+   "uur": 1.0,
+   "dagmax": 4.0
+  },
+  {
+   "naam": "Parkeerterrein Groote Markt",
+   "operator": "Sluis",
+   "type": "Terreinparkeren",
+   "url": "www.gemeentesluis.nl",
+   "lat": 51.309092,
+   "lon": 3.386095,
+   "capaciteit": 65,
+   "uur": 1.5,
+   "dagmax": null
+  },
+  {
+   "naam": "Parkeerterrein Klokstraat parking 1",
+   "operator": "Sluis",
+   "type": "Terreinparkeren",
+   "url": "www.gemeentesluis.nl",
+   "lat": 51.307087,
+   "lon": 3.385977,
+   "capaciteit": 32,
+   "uur": 1.5,
+   "dagmax": 3.0
+  },
+  {
+   "naam": "Parkeerterrein Maria- en Havenpolder",
+   "operator": "Sluis",
+   "type": "Terreinparkeren",
+   "url": "www.gemeentesluis.nl",
+   "lat": 51.310818,
+   "lon": 3.381853,
+   "capaciteit": 353,
+   "uur": 1.0,
+   "dagmax": 3.0
+  },
+  {
+   "naam": "Parkeerterrein Matour",
+   "operator": "Sluis",
+   "type": "Terreinparkeren",
+   "url": "www.gemeentesluis.nl",
+   "lat": 51.393595,
+   "lon": 3.470336,
+   "capaciteit": 112,
+   "uur": 1.0,
+   "dagmax": 4.0
+  },
+  {
+   "naam": "Parkeerterrein P1 Sint Annastraat",
+   "operator": "Sluis",
+   "type": "Terreinparkeren",
+   "url": "www.gemeentesluis.nl",
+   "lat": 51.309522,
+   "lon": 3.381657,
+   "capaciteit": null,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Parkeerterrein P2 Maria- en Havenpolder",
+   "operator": "Sluis",
+   "type": "Terreinparkeren",
+   "url": "www.gemeentesluis.nl",
+   "lat": 51.310339,
+   "lon": 3.383017,
+   "capaciteit": null,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Parkeerterrein P3 Nieuwstraat",
+   "operator": "Sluis",
+   "type": "Terreinparkeren",
+   "url": "www.gemeentesluis.nl",
+   "lat": 51.301931,
+   "lon": 3.39462,
+   "capaciteit": null,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Parkeerterrein Radartoren",
+   "operator": "Sluis",
+   "type": "Terreinparkeren",
+   "url": "www.gemeentesluis.nl",
+   "lat": 51.388904,
+   "lon": 3.425172,
+   "capaciteit": 160,
+   "uur": 1.5,
+   "dagmax": null
+  },
+  {
+   "naam": "Parkeerterrein Sint Annaparking",
+   "operator": "Sluis",
+   "type": "Terreinparkeren",
+   "url": "www.gemeentesluis.nl",
+   "lat": 51.30998,
+   "lon": 3.382044,
+   "capaciteit": 332,
+   "uur": 1.2,
+   "dagmax": 3.5
+  },
+  {
+   "naam": "Parkeerterrein Slikkenburg",
+   "operator": "Sluis",
+   "type": "Terreinparkeren",
+   "url": "www.gemeentesluis.nl",
+   "lat": 51.404166,
+   "lon": 3.526501,
+   "capaciteit": 250,
+   "uur": 1.0,
+   "dagmax": 4.0
+  },
+  {
+   "naam": "Parkeerterrein Toversluis",
+   "operator": "Sluis",
+   "type": "Terreinparkeren",
+   "url": "www.gemeentesluis.nl",
+   "lat": 51.301609,
+   "lon": 3.394552,
+   "capaciteit": 625,
+   "uur": 1.0,
+   "dagmax": 3.0
+  },
+  {
+   "naam": "Parkeerterrein Vlamingpolder",
+   "operator": "Sluis",
+   "type": "Terreinparkeren",
+   "url": "www.gemeentesluis.nl",
+   "lat": 51.382492,
+   "lon": 3.405619,
+   "capaciteit": 56,
+   "uur": 1.5,
+   "dagmax": null
+  },
+  {
+   "naam": "Parkeerterrein Walendijk",
+   "operator": "Sluis",
+   "type": "Terreinparkeren",
+   "url": "www.gemeentesluis.nl",
+   "lat": 51.398685,
+   "lon": 3.49423,
+   "capaciteit": 900,
+   "uur": 1.0,
+   "dagmax": 4.0
+  },
+  {
+   "naam": "Parkeerterrein Walplein",
+   "operator": "Sluis",
+   "type": "Terreinparkeren",
+   "url": "www.gemeentesluis.nl",
+   "lat": 51.309964,
+   "lon": 3.383752,
+   "capaciteit": 20,
+   "uur": 1.5,
+   "dagmax": 3.0
+  },
+  {
+   "naam": "Parkeerterrein Zwinparking Noordijk",
+   "operator": "Sluis",
+   "type": "Terreinparkeren",
+   "url": "www.gemeentesluis.nl",
+   "lat": 51.371812,
+   "lon": 3.377949,
+   "capaciteit": 300,
+   "uur": 1.0,
+   "dagmax": 4.0
+  },
+  {
+   "naam": "Parkeerterrein aan de Duinweg",
+   "operator": "Sluis",
+   "type": "Terreinparkeren",
+   "url": "www.gemeentesluis.nl",
+   "lat": 51.365877,
+   "lon": 3.371655,
+   "capaciteit": 160,
+   "uur": 1.0,
+   "dagmax": 4.0
+  },
+  {
+   "naam": "Parkeerterrein van Grol",
+   "operator": "Sluis",
+   "type": "Terreinparkeren",
+   "url": "www.gemeentesluis.nl",
+   "lat": 51.385737,
+   "lon": 3.416833,
+   "capaciteit": 100,
+   "uur": 1.5,
+   "dagmax": null
+  }
+ ]
+}

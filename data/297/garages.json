@@ -1,0 +1,41 @@
+{
+ "areamanagerid": "297",
+ "gemeente": "Zaltbommel",
+ "bron": "RDW NPR Open Parkeerdata (CC-0)",
+ "gegenereerd": "2026-06-05T09:34:48Z",
+ "garages": [
+  {
+   "naam": "Nederlandse Spoorwegen P+R Station Zaltbommel - noordzijde station",
+   "operator": "Nederlandse Spoorwegen",
+   "type": "P+R",
+   "url": "",
+   "lat": 51.80936,
+   "lon": 5.26259,
+   "capaciteit": 127,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Nederlandse Spoorwegen P+R Station Zaltbommel - westzijde fietsenstalling - noordzijde station",
+   "operator": "Nederlandse Spoorwegen",
+   "type": "P+R",
+   "url": "",
+   "lat": 51.80928,
+   "lon": 5.26195,
+   "capaciteit": 180,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Nederlandse Spoorwegen P+R Station Zaltbommel - zuidzijde station",
+   "operator": "Nederlandse Spoorwegen",
+   "type": "P+R",
+   "url": "",
+   "lat": 51.80622,
+   "lon": 5.26324,
+   "capaciteit": 221,
+   "uur": null,
+   "dagmax": null
+  }
+ ]
+}

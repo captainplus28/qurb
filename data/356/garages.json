@@ -1,0 +1,74 @@
+{
+ "areamanagerid": "356",
+ "gemeente": "Nieuwegein",
+ "bron": "RDW NPR Open Parkeerdata (CC-0)",
+ "gegenereerd": "2026-06-05T09:07:36Z",
+ "garages": [
+  {
+   "naam": "Cityplaza",
+   "operator": "Nieuwegein",
+   "type": "Garage parkeren",
+   "url": "www.nieuwegein.nl",
+   "lat": 52.027749,
+   "lon": 5.083125,
+   "capaciteit": 770,
+   "uur": 3.3,
+   "dagmax": 18.8
+  },
+  {
+   "naam": "GPK-loket - ParkeerService Cityplaza",
+   "operator": "GPK-loket - ParkeerService",
+   "type": "Garage parkeren",
+   "url": "",
+   "lat": 52.028052,
+   "lon": 5.080837,
+   "capaciteit": 770,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "GPK-loket - ParkeerService Het Theater",
+   "operator": "GPK-loket - ParkeerService",
+   "type": "Garage parkeren",
+   "url": "",
+   "lat": 52.025959,
+   "lon": 5.075129,
+   "capaciteit": 592,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "GPK-loket - ParkeerService Stadhuis",
+   "operator": "GPK-loket - ParkeerService",
+   "type": "Garage parkeren",
+   "url": "",
+   "lat": 52.026908,
+   "lon": 5.083265,
+   "capaciteit": 538,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Het Theater",
+   "operator": "Nieuwegein",
+   "type": "Garage parkeren",
+   "url": "www.nieuwegein.nl",
+   "lat": 52.025959,
+   "lon": 5.075129,
+   "capaciteit": null,
+   "uur": 3.3,
+   "dagmax": 18.8
+  },
+  {
+   "naam": "Stadhuis",
+   "operator": "Nieuwegein",
+   "type": "Garage parkeren",
+   "url": "www.nieuwegein.nl",
+   "lat": 52.026908,
+   "lon": 5.083265,
+   "capaciteit": 538,
+   "uur": 3.3,
+   "dagmax": 18.8
+  }
+ ]
+}

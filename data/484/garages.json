@@ -1,0 +1,30 @@
+{
+ "areamanagerid": "484",
+ "gemeente": "Alphen aan den Rijn",
+ "bron": "RDW NPR Open Parkeerdata (CC-0)",
+ "gegenereerd": "2026-06-05T08:20:03Z",
+ "garages": [
+  {
+   "naam": "ParkKing Baronie",
+   "operator": "ParkKing",
+   "type": "Garage parkeren",
+   "url": "www.parkking.nl",
+   "lat": 52.135437,
+   "lon": 4.651256,
+   "capaciteit": 450,
+   "uur": 0.0,
+   "dagmax": 8.0
+  },
+  {
+   "naam": "Q-Park P+R Sacharovlaan",
+   "operator": "Q-Park",
+   "type": "Parkeergarage",
+   "url": "www.q-park.nl",
+   "lat": 52.12726,
+   "lon": 4.655757,
+   "capaciteit": 205,
+   "uur": null,
+   "dagmax": null
+  }
+ ]
+}

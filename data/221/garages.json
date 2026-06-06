@@ -1,0 +1,19 @@
+{
+ "areamanagerid": "221",
+ "gemeente": "Doesburg",
+ "bron": "RDW NPR Open Parkeerdata (CC-0)",
+ "gegenereerd": "2026-06-05T08:40:13Z",
+ "garages": [
+  {
+   "naam": "Parkeerterrein Kloostertuin",
+   "operator": "Doesburg",
+   "type": "Terreinparkeren",
+   "url": null,
+   "lat": 52.01208,
+   "lon": 6.135215,
+   "capaciteit": 174,
+   "uur": 1.35,
+   "dagmax": null
+  }
+ ]
+}

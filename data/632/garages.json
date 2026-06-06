@@ -1,0 +1,52 @@
+{
+ "areamanagerid": "632",
+ "gemeente": "Woerden",
+ "bron": "RDW NPR Open Parkeerdata (CC-0)",
+ "gegenereerd": "2026-06-05T09:34:00Z",
+ "garages": [
+  {
+   "naam": "GPK-loket - ParkeerService Castellum",
+   "operator": "GPK-loket - ParkeerService",
+   "type": "Garage parkeren",
+   "url": "",
+   "lat": 52.086018,
+   "lon": 4.879744,
+   "capaciteit": 520,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Nederlandse Spoorwegen P + R staton Woerden",
+   "operator": "Nederlandse Spoorwegen",
+   "type": "P+R",
+   "url": "",
+   "lat": 52.085667,
+   "lon": 4.89279,
+   "capaciteit": 172,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Nederlandse Spoorwegen P+R Houttuinlaan 3 parking",
+   "operator": "Nederlandse Spoorwegen",
+   "type": "P+R",
+   "url": "",
+   "lat": 52.082613,
+   "lon": 4.890934,
+   "capaciteit": 275,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Nederlandse Spoorwegen P+R Spoorlaan",
+   "operator": "Nederlandse Spoorwegen",
+   "type": "P+R",
+   "url": "",
+   "lat": 52.08568,
+   "lon": 4.89278,
+   "capaciteit": 172,
+   "uur": 1.71,
+   "dagmax": 9.1
+  }
+ ]
+}

@@ -1,0 +1,41 @@
+{
+ "areamanagerid": "777",
+ "gemeente": "Etten-Leur",
+ "bron": "RDW NPR Open Parkeerdata (CC-0)",
+ "gegenereerd": "2026-06-05T08:47:05Z",
+ "garages": [
+  {
+   "naam": "Centrum Ingang Oost, Ingang West",
+   "operator": "Etten-Leur",
+   "type": "Garage parkeren",
+   "url": "www.etten-leur.nl",
+   "lat": 51.5689,
+   "lon": 4.63991,
+   "capaciteit": 1000,
+   "uur": 2.1,
+   "dagmax": 6.0
+  },
+  {
+   "naam": "P+R Station Noordzijde",
+   "operator": "Etten-Leur",
+   "type": "P+R",
+   "url": "www.etten-leur.nl",
+   "lat": 51.575606,
+   "lon": 4.635922,
+   "capaciteit": 66,
+   "uur": 0.0,
+   "dagmax": null
+  },
+  {
+   "naam": "P+R Station Zuidzijde",
+   "operator": "Etten-Leur",
+   "type": "P+R",
+   "url": "www.etten-leur.nl",
+   "lat": 51.575059,
+   "lon": 4.637611,
+   "capaciteit": 96,
+   "uur": 0.0,
+   "dagmax": null
+  }
+ ]
+}

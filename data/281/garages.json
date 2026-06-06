@@ -1,0 +1,19 @@
+{
+ "areamanagerid": "281",
+ "gemeente": "Tiel",
+ "bron": "RDW NPR Open Parkeerdata (CC-0)",
+ "gegenereerd": "2026-06-05T09:22:47Z",
+ "garages": [
+  {
+   "naam": "P+R Station Tiel",
+   "operator": "Tiel",
+   "type": "P+R",
+   "url": "",
+   "lat": 51.890006,
+   "lon": 5.421919,
+   "capaciteit": 174,
+   "uur": 0.0,
+   "dagmax": null
+  }
+ ]
+}

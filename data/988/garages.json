@@ -1,0 +1,96 @@
+{
+ "areamanagerid": "988",
+ "gemeente": "Weert",
+ "bron": "RDW NPR Open Parkeerdata (CC-0)",
+ "gegenereerd": "2026-06-05T09:33:00Z",
+ "garages": [
+  {
+   "naam": "Centrum",
+   "operator": "Weert",
+   "type": "Garage parkeren",
+   "url": "www.weert.nl",
+   "lat": 51.251024,
+   "lon": 5.7039,
+   "capaciteit": 276,
+   "uur": 1.5,
+   "dagmax": null
+  },
+  {
+   "naam": "Kromstraat",
+   "operator": "Weert",
+   "type": "Garage parkeren",
+   "url": "www.weert.nl",
+   "lat": 51.252438,
+   "lon": 5.707135,
+   "capaciteit": 128,
+   "uur": 1.5,
+   "dagmax": null
+  },
+  {
+   "naam": "Muntgarage",
+   "operator": "Weert",
+   "type": "Garage parkeren",
+   "url": "www.weert.nl",
+   "lat": 51.256047,
+   "lon": 5.705645,
+   "capaciteit": 290,
+   "uur": 1.5,
+   "dagmax": null
+  },
+  {
+   "naam": "Nederlandse Spoorwegen P+R Parallelweg",
+   "operator": "Nederlandse Spoorwegen",
+   "type": "P+R",
+   "url": "",
+   "lat": 51.24941,
+   "lon": 5.69808,
+   "capaciteit": 477,
+   "uur": 1.36,
+   "dagmax": 6.4
+  },
+  {
+   "naam": "Parkeerterrein Walburgpassage",
+   "operator": "Weert",
+   "type": "Terreinparkeren",
+   "url": "www.weert.nl",
+   "lat": 51.252098,
+   "lon": 5.707907,
+   "capaciteit": 128,
+   "uur": 1.5,
+   "dagmax": 6.0
+  },
+  {
+   "naam": "Poort van Limburg",
+   "operator": "Weert",
+   "type": "Garage parkeren",
+   "url": "www.weert.nl",
+   "lat": 51.256492,
+   "lon": 5.703246,
+   "capaciteit": 76,
+   "uur": 1.5,
+   "dagmax": null
+  },
+  {
+   "naam": "Stationsplein",
+   "operator": "Weert",
+   "type": "Garage parkeren",
+   "url": "www.weert.nl",
+   "lat": 51.249253,
+   "lon": 5.705307,
+   "capaciteit": 97,
+   "uur": 1.5,
+   "dagmax": null
+  },
+  {
+   "naam": "Ursulinengarage",
+   "operator": "Weert",
+   "type": "Garage parkeren",
+   "url": "www.weert.nl",
+   "lat": 51.252738,
+   "lon": 5.704487,
+   "capaciteit": 228,
+   "uur": 1.5,
+   "dagmax": null
+  }
+ ]
+}

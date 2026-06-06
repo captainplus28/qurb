@@ -1,0 +1,118 @@
+{
+ "areamanagerid": "202",
+ "gemeente": "Arnhem",
+ "bron": "RDW NPR Open Parkeerdata (CC-0)",
+ "gegenereerd": "2026-06-05T08:28:18Z",
+ "garages": [
+  {
+   "naam": "Centraal",
+   "operator": "Arnhem",
+   "type": "Garage parkeren",
+   "url": "www.arnhem.nl",
+   "lat": 51.984411,
+   "lon": 5.899326,
+   "capaciteit": 1050,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Interparking Ziekenhuis Rijnstate P1",
+   "operator": "Interparking",
+   "type": "Garage parkeren",
+   "url": "www.interparking.nl",
+   "lat": 52.000677,
+   "lon": 5.907528,
+   "capaciteit": 1592,
+   "uur": 0.0,
+   "dagmax": 7.0
+  },
+  {
+   "naam": "Interparking Ziekenhuis Rijnstate P2",
+   "operator": "Interparking",
+   "type": "Terreinparkeren",
+   "url": "www.interparking.nl",
+   "lat": 52.000106,
+   "lon": 5.9078,
+   "capaciteit": null,
+   "uur": 0.0,
+   "dagmax": 7.0
+  },
+  {
+   "naam": "Musis",
+   "operator": "Arnhem",
+   "type": "Garage parkeren",
+   "url": "www.arnhem.nl",
+   "lat": 51.981698,
+   "lon": 5.913364,
+   "capaciteit": 690,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "P+R Transferium Gelredome",
+   "operator": "Arnhem",
+   "type": "P+R",
+   "url": "www.arnhem.nl",
+   "lat": 51.964614,
+   "lon": 5.892177,
+   "capaciteit": 645,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Q-Park Broerenstraat",
+   "operator": "Q-Park",
+   "type": "Garage parkeren",
+   "url": "www.q-park.nl",
+   "lat": 51.979675,
+   "lon": 5.911528,
+   "capaciteit": 412,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Rozet",
+   "operator": "Arnhem",
+   "type": "Garage parkeren",
+   "url": "www.arnhem.nl",
+   "lat": 51.979481,
+   "lon": 5.906031,
+   "capaciteit": 450,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Velperplein",
+   "operator": "Arnhem",
+   "type": "Garage parkeren",
+   "url": "www.arnhem.nl",
+   "lat": 51.984368,
+   "lon": 5.912586,
+   "capaciteit": 129,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Velperpoort",
+   "operator": "Arnhem",
+   "type": "Garage parkeren",
+   "url": "www.arnhem.nl",
+   "lat": 51.985234,
+   "lon": 5.91878,
+   "capaciteit": 125,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Velperpoort",
+   "operator": "Velperpoort",
+   "type": "Garage parkeren",
+   "url": "",
+   "lat": 51.985234,
+   "lon": 5.91878,
+   "capaciteit": 125,
+   "uur": 1.9,
+   "dagmax": null
+  }
+ ]
+}

@@ -1,0 +1,19 @@
+{
+ "areamanagerid": "1783",
+ "gemeente": "Westland",
+ "bron": "RDW NPR Open Parkeerdata (CC-0)",
+ "gegenereerd": "2026-06-05T09:33:43Z",
+ "garages": [
+  {
+   "naam": "Foodmarkt Westland (Naaldwijk)",
+   "operator": "Westland",
+   "type": "Garage parkeren",
+   "url": null,
+   "lat": 51.993037,
+   "lon": 4.203803,
+   "capaciteit": 181,
+   "uur": 0.0,
+   "dagmax": null
+  }
+ ]
+}

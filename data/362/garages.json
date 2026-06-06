@@ -1,0 +1,63 @@
+{
+ "areamanagerid": "362",
+ "gemeente": "Amstelveen",
+ "bron": "RDW NPR Open Parkeerdata (CC-0)",
+ "gegenereerd": "2026-06-05T08:21:57Z",
+ "garages": [
+  {
+   "naam": "P+R Spinnerij",
+   "operator": "Amstelveen",
+   "type": "P+R",
+   "url": "www.amstelveen.nl",
+   "lat": 52.283932,
+   "lon": 4.838286,
+   "capaciteit": 125,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "P1 V&D Centre",
+   "operator": "P1",
+   "type": "Garage parkeren",
+   "url": "",
+   "lat": 52.300947,
+   "lon": 4.865126,
+   "capaciteit": 473,
+   "uur": 1.67,
+   "dagmax": 9.5
+  },
+  {
+   "naam": "Q-Park Buitenplein",
+   "operator": "Q-Park",
+   "type": "Garage parkeren",
+   "url": "www.q-park.nl",
+   "lat": 52.300957,
+   "lon": 4.864999,
+   "capaciteit": 550,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Q-Park Handelsplein",
+   "operator": "Q-Park",
+   "type": "Garage parkeren",
+   "url": "www.q-park.nl",
+   "lat": 52.301632,
+   "lon": 4.866134,
+   "capaciteit": 573,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Q-Park Stadsplein",
+   "operator": "Q-Park",
+   "type": "Parkeergarage",
+   "url": "www.q-park.nl",
+   "lat": 52.3030472,
+   "lon": 4.857867,
+   "capaciteit": 927,
+   "uur": null,
+   "dagmax": null
+  }
+ ]
+}

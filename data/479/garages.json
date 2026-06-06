@@ -1,0 +1,19 @@
+{
+ "areamanagerid": "479",
+ "gemeente": "Zaanstad",
+ "bron": "RDW NPR Open Parkeerdata (CC-0)",
+ "gegenereerd": "2026-06-05T09:34:38Z",
+ "garages": [
+  {
+   "naam": "Parkeerterrein de Burcht",
+   "operator": "Zaanstad",
+   "type": "Terreinparkeren",
+   "url": "",
+   "lat": 52.43872,
+   "lon": 4.828007,
+   "capaciteit": 236,
+   "uur": 2.17,
+   "dagmax": null
+  }
+ ]
+}

@@ -1,0 +1,140 @@
+{
+ "areamanagerid": "355",
+ "gemeente": "Zeist",
+ "bron": "RDW NPR Open Parkeerdata (CC-0)",
+ "gegenereerd": "2026-06-05T09:35:39Z",
+ "garages": [
+  {
+   "naam": "1e Hogeweg",
+   "operator": "Zeist",
+   "type": "Garage parkeren",
+   "url": "www.zeist.nl",
+   "lat": 52.08598,
+   "lon": 5.240248,
+   "capaciteit": 400,
+   "uur": 2.5,
+   "dagmax": 6.0
+  },
+  {
+   "naam": "Emmaplein",
+   "operator": "Zeist",
+   "type": "Garage parkeren",
+   "url": "www.zeist.nl",
+   "lat": 52.086147,
+   "lon": 5.241908,
+   "capaciteit": 220,
+   "uur": 2.5,
+   "dagmax": 6.0
+  },
+  {
+   "naam": "Gemeentehuis",
+   "operator": "Zeist",
+   "type": "Garage parkeren",
+   "url": "www.zeist.nl",
+   "lat": 52.08255,
+   "lon": 5.239449,
+   "capaciteit": 200,
+   "uur": 2.5,
+   "dagmax": 6.0
+  },
+  {
+   "naam": "Nederlandse Spoorwegen P+R station Driebergen-Zeist",
+   "operator": "Nederlandse Spoorwegen",
+   "type": "P+R",
+   "url": "",
+   "lat": 52.064487,
+   "lon": 5.258174,
+   "capaciteit": 582,
+   "uur": 1.06,
+   "dagmax": 6.37
+  },
+  {
+   "naam": "Parkeerterrein Kerkweg",
+   "operator": "Zeist",
+   "type": "Terreinparkeren",
+   "url": "www.zeist.nl",
+   "lat": 52.084701,
+   "lon": 5.240798,
+   "capaciteit": 65,
+   "uur": 2.5,
+   "dagmax": null
+  },
+  {
+   "naam": "Parkeerterrein Luifel",
+   "operator": "Zeist",
+   "type": "Terreinparkeren",
+   "url": "www.zeist.nl",
+   "lat": 52.088732,
+   "lon": 5.246727,
+   "capaciteit": 139,
+   "uur": 2.5,
+   "dagmax": null
+  },
+  {
+   "naam": "Parkeerterrein Perron",
+   "operator": "Zeist",
+   "type": "Terreinparkeren",
+   "url": "www.zeist.nl",
+   "lat": 52.089789,
+   "lon": 5.248183,
+   "capaciteit": 50,
+   "uur": 2.5,
+   "dagmax": null
+  },
+  {
+   "naam": "Parkeerterrein Slotlaan 1",
+   "operator": "Zeist",
+   "type": "Terreinparkeren",
+   "url": "www.zeist.nl",
+   "lat": 52.087011,
+   "lon": 5.244776,
+   "capaciteit": 32,
+   "uur": 2.5,
+   "dagmax": null
+  },
+  {
+   "naam": "Parkeerterrein Slotlaan 2",
+   "operator": "Zeist",
+   "type": "Terreinparkeren",
+   "url": "www.zeist.nl",
+   "lat": 52.087046,
+   "lon": 5.244881,
+   "capaciteit": 102,
+   "uur": 2.5,
+   "dagmax": null
+  },
+  {
+   "naam": "Parkeerterrein Slotlaan 3",
+   "operator": "Zeist",
+   "type": "Terreinparkeren",
+   "url": "www.zeist.nl",
+   "lat": 52.08792,
+   "lon": 5.24609,
+   "capaciteit": 128,
+   "uur": 2.5,
+   "dagmax": null
+  },
+  {
+   "naam": "Parkeerterrein Voorheuvel",
+   "operator": "Zeist",
+   "type": "Terreinparkeren",
+   "url": "www.zeist.nl",
+   "lat": 52.088823,
+   "lon": 5.24242,
+   "capaciteit": 149,
+   "uur": 2.5,
+   "dagmax": null
+  },
+  {
+   "naam": "Steynlaan",
+   "operator": "Zeist",
+   "type": "Garage parkeren",
+   "url": "www.zeist.nl",
+   "lat": 52.089953,
+   "lon": 5.248788,
+   "capaciteit": 140,
+   "uur": 2.5,
+   "dagmax": 6.0
+  }
+ ]
+}

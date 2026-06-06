@@ -1,0 +1,85 @@
+{
+ "areamanagerid": "394",
+ "gemeente": "Haarlemmermeer",
+ "bron": "RDW NPR Open Parkeerdata (CC-0)",
+ "gegenereerd": "2026-06-05T08:52:20Z",
+ "garages": [
+  {
+   "naam": "Interparking Vier Meren",
+   "operator": "Interparking",
+   "type": "Garage parkeren",
+   "url": "www.interparking.nl",
+   "lat": 52.302113,
+   "lon": 4.691206,
+   "capaciteit": 1154,
+   "uur": 0.8,
+   "dagmax": 17.5
+  },
+  {
+   "naam": "P1 P+R Hoofddorp",
+   "operator": "P1",
+   "type": "P+R",
+   "url": "",
+   "lat": 52.292153,
+   "lon": 4.702187,
+   "capaciteit": 408,
+   "uur": 2.0,
+   "dagmax": 17.5
+  },
+  {
+   "naam": "PCH Schiphol Excellence Parking",
+   "operator": "PCH",
+   "type": "Garage parkeren",
+   "url": "https://www.pch-dienstengroep.nl/",
+   "lat": 52.310219,
+   "lon": 4.758193,
+   "capaciteit": null,
+   "uur": 9.0,
+   "dagmax": 50.0
+  },
+  {
+   "naam": "PCH Schiphol Terminal Parking P1",
+   "operator": "PCH",
+   "type": "Garage parkeren",
+   "url": "https://www.pch-dienstengroep.nl/",
+   "lat": 52.306928,
+   "lon": 4.759109,
+   "capaciteit": null,
+   "uur": 5.0,
+   "dagmax": 33.5
+  },
+  {
+   "naam": "PCH Schiphol Terminal Parking P2",
+   "operator": "PCH",
+   "type": "Garage parkeren",
+   "url": "https://www.pch-dienstengroep.nl/",
+   "lat": 52.305845,
+   "lon": 4.75917,
+   "capaciteit": null,
+   "uur": 5.0,
+   "dagmax": 33.5
+  },
+  {
+   "naam": "PCH Schiphol Valet Parking P6",
+   "operator": "PCH",
+   "type": "Garage parkeren",
+   "url": "https://www.pch-dienstengroep.nl/",
+   "lat": 52.30943,
+   "lon": 4.759506,
+   "capaciteit": null,
+   "uur": 0.0,
+   "dagmax": 50.0
+  },
+  {
+   "naam": "ParkKing Primark",
+   "operator": "ParkKing",
+   "type": "Garage parkeren",
+   "url": "www.parkking.nl",
+   "lat": 52.304083,
+   "lon": 4.695326,
+   "capaciteit": 200,
+   "uur": null,
+   "dagmax": null
+  }
+ ]
+}

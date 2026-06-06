@@ -1,0 +1,52 @@
+{
+ "areamanagerid": "537",
+ "gemeente": "Katwijk",
+ "bron": "RDW NPR Open Parkeerdata (CC-0)",
+ "gegenereerd": "2026-06-05T09:01:12Z",
+ "garages": [
+  {
+   "naam": "Boulevard-Zeezijde",
+   "operator": "Katwijk",
+   "type": "Garage parkeren",
+   "url": "www.katwijk.nl",
+   "lat": 52.204732,
+   "lon": 4.393646,
+   "capaciteit": 670,
+   "uur": 1.8,
+   "dagmax": 10.0
+  },
+  {
+   "naam": "P1 Zeehos",
+   "operator": "P1",
+   "type": "Garage parkeren",
+   "url": "",
+   "lat": 52.197042,
+   "lon": 4.391182,
+   "capaciteit": 198,
+   "uur": 1.6,
+   "dagmax": 8.0
+  },
+  {
+   "naam": "Princehaven",
+   "operator": "Katwijk",
+   "type": "Garage parkeren",
+   "url": "www.katwijk.nl",
+   "lat": 52.204271,
+   "lon": 4.399896,
+   "capaciteit": 250,
+   "uur": 1.8,
+   "dagmax": 10.0
+  },
+  {
+   "naam": "Tramstraat",
+   "operator": "Katwijk",
+   "type": "Garage parkeren",
+   "url": "www.katwijk.nl",
+   "lat": 52.204364,
+   "lon": 4.398114,
+   "capaciteit": 125,
+   "uur": 1.8,
+   "dagmax": 10.0
+  }
+ ]
+}

@@ -1,0 +1,250 @@
+{
+ "areamanagerid": "34",
+ "gemeente": "Almere",
+ "bron": "RDW NPR Open Parkeerdata (CC-0)",
+ "gegenereerd": "2026-06-05T08:19:48Z",
+ "garages": [
+  {
+   "naam": "Allround Parking Services WTC",
+   "operator": "Allround Parking Services",
+   "type": "Garage parkeren",
+   "url": "",
+   "lat": 52.376181,
+   "lon": 5.216001,
+   "capaciteit": 1500,
+   "uur": 3.0,
+   "dagmax": null
+  },
+  {
+   "naam": "P+R-terrein 't Oortje",
+   "operator": "Almere",
+   "type": "P+R",
+   "url": "www.almere.nl",
+   "lat": 52.355843,
+   "lon": 5.221213,
+   "capaciteit": 100,
+   "uur": 0.0,
+   "dagmax": null
+  },
+  {
+   "naam": "P+R-terrein Almere Buiten",
+   "operator": "Almere",
+   "type": "P+R",
+   "url": "www.almere.nl",
+   "lat": 52.393759,
+   "lon": 5.281583,
+   "capaciteit": 500,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "P+R-terrein Almere Parkwijk",
+   "operator": "Almere",
+   "type": "P+R",
+   "url": "www.almere.nl",
+   "lat": 52.377029,
+   "lon": 5.242844,
+   "capaciteit": 265,
+   "uur": 0.0,
+   "dagmax": null
+  },
+  {
+   "naam": "P1 Brooklyngarage (Almere Buiten)",
+   "operator": "P1",
+   "type": "Garage parkeren",
+   "url": "",
+   "lat": 52.395308,
+   "lon": 5.274068,
+   "capaciteit": 416,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "P1 Cubagarage (Almere Buiten)",
+   "operator": "P1",
+   "type": "Garage parkeren",
+   "url": "",
+   "lat": 52.393533,
+   "lon": 5.276429,
+   "capaciteit": 209,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "P1 Flevogarage (Almere Stad)",
+   "operator": "P1",
+   "type": "Garage parkeren",
+   "url": "",
+   "lat": 52.369085,
+   "lon": 5.216658,
+   "capaciteit": 353,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "P1 Floridagarage (Almere Buiten)",
+   "operator": "P1",
+   "type": "Garage parkeren",
+   "url": "",
+   "lat": 52.393521,
+   "lon": 5.276422,
+   "capaciteit": 415,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "P1 Hennepveld (Almere Stad)",
+   "operator": "P1",
+   "type": "Terreinparkeren",
+   "url": "",
+   "lat": 52.37023,
+   "lon": 5.224442,
+   "capaciteit": 230,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "P1 Hospitaalgarage (Almere Stad)",
+   "operator": "P1",
+   "type": "Garage parkeren",
+   "url": "",
+   "lat": 52.369583,
+   "lon": 5.221598,
+   "capaciteit": 950,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "P1 Koolzaadveld (Almere Stad)",
+   "operator": "P1",
+   "type": "Terreinparkeren",
+   "url": "",
+   "lat": 52.374826,
+   "lon": 5.222056,
+   "capaciteit": 400,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "P1 Krakelinggarage (Almere Stad)",
+   "operator": "P1",
+   "type": "Garage parkeren",
+   "url": "",
+   "lat": 52.370069,
+   "lon": 5.217302,
+   "capaciteit": 230,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "P1 Leerlinggarage (Almere Stad)",
+   "operator": "P1",
+   "type": "Garage parkeren",
+   "url": "",
+   "lat": 52.371219,
+   "lon": 5.215332,
+   "capaciteit": 95,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "P1 Metropolegarage (Almere Stad)",
+   "operator": "P1",
+   "type": "Garage parkeren",
+   "url": "",
+   "lat": 52.374163,
+   "lon": 5.22064,
+   "capaciteit": 414,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "P1 Muntgarage (Almere Stad)",
+   "operator": "P1",
+   "type": "Garage parkeren",
+   "url": "",
+   "lat": 52.371682,
+   "lon": 5.216821,
+   "capaciteit": 300,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "P1 Regisseurgarage (Almere Stad)",
+   "operator": "P1",
+   "type": "Garage parkeren",
+   "url": "",
+   "lat": 52.37349,
+   "lon": 5.220955,
+   "capaciteit": 445,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "P1 Santiagogarage (Almere Buiten)",
+   "operator": "P1",
+   "type": "Garage parkeren",
+   "url": "",
+   "lat": 52.394629,
+   "lon": 5.279243,
+   "capaciteit": 334,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "P1 Schippergarage (Almere Stad)",
+   "operator": "P1",
+   "type": "Garage parkeren",
+   "url": "",
+   "lat": 52.368791,
+   "lon": 5.217735,
+   "capaciteit": 408,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "P1 Schoutgarage (Almere Stad)",
+   "operator": "P1",
+   "type": "Garage parkeren",
+   "url": "",
+   "lat": 52.374033,
+   "lon": 5.216738,
+   "capaciteit": 350,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "P1 Stadhuisgarage (Almere Stad)",
+   "operator": "P1",
+   "type": "Garage parkeren",
+   "url": "",
+   "lat": 52.371504,
+   "lon": 5.223646,
+   "capaciteit": 232,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "P1 Tegelzetterdek (Almere Stad)",
+   "operator": "P1",
+   "type": "Terreinparkeren",
+   "url": "",
+   "lat": 52.370193,
+   "lon": 5.217248,
+   "capaciteit": 108,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "P1 Urcagarage (Almere Buiten)",
+   "operator": "P1",
+   "type": "Garage parkeren",
+   "url": "",
+   "lat": 52.394855,
+   "lon": 5.280122,
+   "capaciteit": 301,
+   "uur": null,
+   "dagmax": null
+  }
+ ]
+}

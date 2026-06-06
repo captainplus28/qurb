@@ -1,0 +1,19 @@
+{
+ "areamanagerid": "373",
+ "gemeente": "Bergen",
+ "bron": "RDW NPR Open Parkeerdata (CC-0)",
+ "gegenereerd": "2026-06-05T08:30:32Z",
+ "garages": [
+  {
+   "naam": "Bergen (NH) Parkeerterrein Hargen aan Zee",
+   "operator": "Bergen (NH)",
+   "type": "Terreinparkeren",
+   "url": "",
+   "lat": 52.712339,
+   "lon": 4.640456,
+   "capaciteit": 1200,
+   "uur": null,
+   "dagmax": null
+  }
+ ]
+}

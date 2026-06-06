@@ -1,0 +1,140 @@
+{
+ "areamanagerid": "606",
+ "gemeente": "Schiedam",
+ "bron": "RDW NPR Open Parkeerdata (CC-0)",
+ "gegenereerd": "2026-06-05T09:16:28Z",
+ "garages": [
+  {
+   "naam": "Centrummanagement Nieuwe Passage",
+   "operator": "Centrummanagement",
+   "type": "Garage parkeren",
+   "url": "",
+   "lat": 51.914491,
+   "lon": 4.401779,
+   "capaciteit": 280,
+   "uur": 0.0,
+   "dagmax": 15.0
+  },
+  {
+   "naam": "Euroscoop Noorderweg",
+   "operator": "Schiedam",
+   "type": "Garage parkeren",
+   "url": "www.schiedam.nl",
+   "lat": 51.922263,
+   "lon": 4.409554,
+   "capaciteit": 450,
+   "uur": 0.3,
+   "dagmax": null
+  },
+  {
+   "naam": "Interparking ABC",
+   "operator": "Interparking",
+   "type": "Garage parkeren",
+   "url": "www.interparking.nl",
+   "lat": 51.918733,
+   "lon": 4.401101,
+   "capaciteit": 325,
+   "uur": 0.0,
+   "dagmax": 15.0
+  },
+  {
+   "naam": "Interparking Vlieland Ziekenhuis zuid",
+   "operator": "Interparking",
+   "type": "Terreinparkeren",
+   "url": "www.interparking.nl",
+   "lat": 51.923242,
+   "lon": 4.377785,
+   "capaciteit": 356,
+   "uur": 1.67,
+   "dagmax": 12.0
+  },
+  {
+   "naam": "Interparking Vlietland Ziekenhuis noord",
+   "operator": "Interparking",
+   "type": "Terreinparkeren",
+   "url": "www.interparking.nl",
+   "lat": 51.923321,
+   "lon": 4.377816,
+   "capaciteit": 730,
+   "uur": 0.0,
+   "dagmax": 12.0
+  },
+  {
+   "naam": "Nederlandse Spoorwegen P+R Horvathweg (Schiedam Centrum)",
+   "operator": "Nederlandse Spoorwegen",
+   "type": "P+R",
+   "url": "",
+   "lat": 51.92158,
+   "lon": 4.40896,
+   "capaciteit": 64,
+   "uur": 2.06,
+   "dagmax": 7.22
+  },
+  {
+   "naam": "Nederlandse Spoorwegen P+R Parallelweg (Schiedam Centrum)",
+   "operator": "Nederlandse Spoorwegen",
+   "type": "P+R",
+   "url": "",
+   "lat": 51.92229,
+   "lon": 4.40951,
+   "capaciteit": 212,
+   "uur": 2.06,
+   "dagmax": 7.22
+  },
+  {
+   "naam": "P+R Schiedam Vijfsluizen",
+   "operator": "Schiedam",
+   "type": "P+R",
+   "url": "www.schiedam.nl",
+   "lat": 51.908207,
+   "lon": 4.372793,
+   "capaciteit": 88,
+   "uur": 0.0,
+   "dagmax": null
+  },
+  {
+   "naam": "P+R Station Schiedam Nieuwland",
+   "operator": "Schiedam",
+   "type": "P+R",
+   "url": "www.schiedam.nl",
+   "lat": 51.922263,
+   "lon": 4.381607,
+   "capaciteit": 120,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "ParkingYou P+R Schiedam Centrum",
+   "operator": "ParkingYou",
+   "type": "P+R",
+   "url": "",
+   "lat": 51.9242,
+   "lon": 4.40576,
+   "capaciteit": 759,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Q-Park P+R Horvathweg",
+   "operator": "Q-Park",
+   "type": "Parkeergarage",
+   "url": "www.q-park.nl",
+   "lat": 51.9212,
+   "lon": 4.410228,
+   "capaciteit": 64,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Stadserf",
+   "operator": "Schiedam",
+   "type": "Garage parkeren",
+   "url": "www.schiedam.nl",
+   "lat": 51.919141,
+   "lon": 4.403978,
+   "capaciteit": 89,
+   "uur": 1.2,
+   "dagmax": null
+  }
+ ]
+}

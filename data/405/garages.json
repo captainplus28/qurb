@@ -1,0 +1,96 @@
+{
+ "areamanagerid": "405",
+ "gemeente": "Hoorn",
+ "bron": "RDW NPR Open Parkeerdata (CC-0)",
+ "gegenereerd": "2026-06-05T08:59:27Z",
+ "garages": [
+  {
+   "naam": "InPublic Ventures 't Jeudje",
+   "operator": "InPublic Ventures",
+   "type": "Garage parkeren",
+   "url": "https://www.inpublic-nederland.nl/",
+   "lat": 52.642706,
+   "lon": 5.063568,
+   "capaciteit": 220,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "InPublic Ventures Jeudje",
+   "operator": "InPublic Ventures",
+   "type": "Garage parkeren",
+   "url": "https://www.inpublic-nederland.nl/",
+   "lat": 52.642706,
+   "lon": 5.063568,
+   "capaciteit": 220,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "InPublic Ventures Schouwburg het Park",
+   "operator": "InPublic Ventures",
+   "type": "Garage parkeren",
+   "url": "https://www.inpublic-nederland.nl/",
+   "lat": 52.642,
+   "lon": 5.04937,
+   "capaciteit": 120,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "InPublic Ventures Schouwburg het Park",
+   "operator": "InPublic Ventures",
+   "type": "Garage parkeren",
+   "url": "https://www.inpublic-nederland.nl/",
+   "lat": 52.642,
+   "lon": 5.04937,
+   "capaciteit": 120,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Parkeerterrein Johan Messchaertstraat RAC locatie",
+   "operator": "Hoorn",
+   "type": "Terreinparkeren",
+   "url": "",
+   "lat": 52.644103,
+   "lon": 5.065308,
+   "capaciteit": 100,
+   "uur": null,
+   "dagmax": 2.7
+  },
+  {
+   "naam": "Parkeerterrein Pelmolenpad",
+   "operator": "Hoorn",
+   "type": "Terreinparkeren",
+   "url": "",
+   "lat": 52.64426,
+   "lon": 5.049902,
+   "capaciteit": 200,
+   "uur": null,
+   "dagmax": 2.7
+  },
+  {
+   "naam": "Parkeerterrein Transferium",
+   "operator": "Hoorn",
+   "type": "Terreinparkeren",
+   "url": "",
+   "lat": 52.646131,
+   "lon": 5.0544,
+   "capaciteit": 653,
+   "uur": null,
+   "dagmax": 2.7
+  },
+  {
+   "naam": "Parkeerterrein Visserseiland",
+   "operator": "Hoorn",
+   "type": "Terreinparkeren",
+   "url": "",
+   "lat": 52.635583,
+   "lon": 5.056917,
+   "capaciteit": 28,
+   "uur": null,
+   "dagmax": 2.7
+  }
+ ]
+}

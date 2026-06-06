@@ -1,0 +1,41 @@
+{
+ "areamanagerid": "385",
+ "gemeente": "Edam-Volendam",
+ "bron": "RDW NPR Open Parkeerdata (CC-0)",
+ "gegenereerd": "2026-06-05T08:42:04Z",
+ "garages": [
+  {
+   "naam": "Parkeerterrein Haven",
+   "operator": "Edam-Volendam",
+   "type": "Terreinparkeren",
+   "url": null,
+   "lat": 52.491272,
+   "lon": 5.069943,
+   "capaciteit": 91,
+   "uur": 0.0,
+   "dagmax": null
+  },
+  {
+   "naam": "Parkeerterrein Haven Zuid",
+   "operator": "Edam-Volendam",
+   "type": "Terreinparkeren",
+   "url": null,
+   "lat": 52.490661,
+   "lon": 5.06243,
+   "capaciteit": 238,
+   "uur": 0.0,
+   "dagmax": null
+  },
+  {
+   "naam": "Parkeerterrein RVAV",
+   "operator": "Edam-Volendam",
+   "type": "Terreinparkeren",
+   "url": null,
+   "lat": 52.492764,
+   "lon": 5.064062,
+   "capaciteit": 100,
+   "uur": 0.0,
+   "dagmax": null
+  }
+ ]
+}

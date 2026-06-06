@@ -1,0 +1,74 @@
+{
+ "areamanagerid": "114",
+ "gemeente": "Emmen",
+ "bron": "RDW NPR Open Parkeerdata (CC-0)",
+ "gegenereerd": "2026-06-05T08:45:41Z",
+ "garages": [
+  {
+   "naam": "P+R Emmen",
+   "operator": "Emmen",
+   "type": "P+R",
+   "url": "www.emmen.nl",
+   "lat": 52.789701,
+   "lon": 6.899127,
+   "capaciteit": 32,
+   "uur": 0.0,
+   "dagmax": null
+  },
+  {
+   "naam": "P1 Noord",
+   "operator": "P1",
+   "type": "Terreinparkeren",
+   "url": "",
+   "lat": 52.787927,
+   "lon": 6.888615,
+   "capaciteit": 759,
+   "uur": 1.76,
+   "dagmax": 5.0
+  },
+  {
+   "naam": "Parkeerterrein P-Noord",
+   "operator": "Emmen",
+   "type": "Garage parkeren",
+   "url": "www.emmen.nl",
+   "lat": 52.787903,
+   "lon": 6.888596,
+   "capaciteit": 754,
+   "uur": 2.04,
+   "dagmax": 10.6
+  },
+  {
+   "naam": "Parkeerterrein Willinkplein Zuid",
+   "operator": "Emmen",
+   "type": "Garage parkeren",
+   "url": "www.emmen.nl",
+   "lat": 52.781976,
+   "lon": 6.892571,
+   "capaciteit": 139,
+   "uur": 2.04,
+   "dagmax": 10.6
+  },
+  {
+   "naam": "Q-Park Wildlands",
+   "operator": "Q-Park",
+   "type": "Terreinparkeren",
+   "url": "www.q-park.nl",
+   "lat": 52.779064,
+   "lon": 6.889927,
+   "capaciteit": 1600,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Westerstraat",
+   "operator": "Emmen",
+   "type": "Garage parkeren",
+   "url": "www.emmen.nl",
+   "lat": 52.78635,
+   "lon": 6.892353,
+   "capaciteit": 453,
+   "uur": 2.04,
+   "dagmax": 10.6
+  }
+ ]
+}

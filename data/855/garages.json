@@ -1,0 +1,129 @@
+{
+ "areamanagerid": "855",
+ "gemeente": "Tilburg",
+ "bron": "RDW NPR Open Parkeerdata (CC-0)",
+ "gegenereerd": "2026-06-05T09:24:09Z",
+ "garages": [
+  {
+   "naam": "013-Tivoli",
+   "operator": "Tilburg",
+   "type": "Garage parkeren",
+   "url": "www.tilburg.nl",
+   "lat": 51.558915,
+   "lon": 5.093035,
+   "capaciteit": 775,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Emmapassage",
+   "operator": "Tilburg",
+   "type": "Garage parkeren",
+   "url": "www.tilburg.nl",
+   "lat": 51.555054,
+   "lon": 5.088723,
+   "capaciteit": 297,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Jumbo Foodmarkt Tilburg",
+   "operator": "Tilburg",
+   "type": "Garage parkeren",
+   "url": "www.tilburg.nl",
+   "lat": 51.541046,
+   "lon": 5.076524,
+   "capaciteit": 200,
+   "uur": 2.5,
+   "dagmax": 30.0
+  },
+  {
+   "naam": "Knegtel",
+   "operator": "Tilburg",
+   "type": "Garage parkeren",
+   "url": "www.tilburg.nl",
+   "lat": 51.560868,
+   "lon": 5.077499,
+   "capaciteit": 560,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "P+R Station Tilburg Universiteit",
+   "operator": "Tilburg",
+   "type": "P+R",
+   "url": "www.tilburg.nl",
+   "lat": 51.565338,
+   "lon": 5.05196,
+   "capaciteit": 230,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "P1 Koningsplein",
+   "operator": "P1",
+   "type": "Garage parkeren",
+   "url": "",
+   "lat": 51.554087,
+   "lon": 5.090273,
+   "capaciteit": 450,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "P1 Stappegoor",
+   "operator": "P1",
+   "type": "Garage parkeren",
+   "url": "",
+   "lat": 51.539492,
+   "lon": 5.076497,
+   "capaciteit": 860,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Parkeergarge Koningsplein",
+   "operator": "Tilburg",
+   "type": "Garage parkeren",
+   "url": "www.tilburg.nl",
+   "lat": 51.553886,
+   "lon": 5.090045,
+   "capaciteit": 450,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Pieter Vreedeplein",
+   "operator": "Tilburg",
+   "type": "Garage parkeren",
+   "url": "www.tilburg.nl",
+   "lat": 51.558404,
+   "lon": 5.08898,
+   "capaciteit": 780,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Schouwburg",
+   "operator": "Tilburg",
+   "type": "Garage parkeren",
+   "url": "www.tilburg.nl",
+   "lat": 51.554213,
+   "lon": 5.081408,
+   "capaciteit": 540,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Stappegoor",
+   "operator": "Tilburg",
+   "type": "Garage parkeren",
+   "url": "www.tilburg.nl",
+   "lat": 51.539492,
+   "lon": 5.076497,
+   "capaciteit": 860,
+   "uur": null,
+   "dagmax": null
+  }
+ ]
+}

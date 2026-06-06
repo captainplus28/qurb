@@ -1,0 +1,52 @@
+{
+ "areamanagerid": "72",
+ "gemeente": "Harlingen",
+ "bron": "RDW NPR Open Parkeerdata (CC-0)",
+ "gegenereerd": "2026-06-05T08:53:32Z",
+ "garages": [
+  {
+   "naam": "Parkeerterrein Parkeerlocatie P1",
+   "operator": "Harlingen",
+   "type": "Terreinparkeren",
+   "url": null,
+   "lat": 53.181028,
+   "lon": 5.424883,
+   "capaciteit": 1850,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Parkeerterrein Parkeerlocatie P2",
+   "operator": "Harlingen",
+   "type": "Terreinparkeren",
+   "url": null,
+   "lat": 53.181028,
+   "lon": 5.424883,
+   "capaciteit": 1100,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Parkeerterrein Parkeerlocatie P3",
+   "operator": "Harlingen",
+   "type": "Terreinparkeren",
+   "url": null,
+   "lat": 53.181309,
+   "lon": 5.429473,
+   "capaciteit": 1800,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Parkeerterrein Westerzeedijk",
+   "operator": "Harlingen",
+   "type": "Terreinparkeren",
+   "url": null,
+   "lat": 53.16998,
+   "lon": 5.416158,
+   "capaciteit": 110,
+   "uur": null,
+   "dagmax": null
+  }
+ ]
+}

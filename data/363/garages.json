@@ -2,7 +2,7 @@
  "areamanagerid": "363",
  "gemeente": "Amsterdam",
  "bron": "RDW NPR Open Parkeerdata (CC-0)",
- "gegenereerd": "2026-06-05T00:20:42Z",
+ "gegenereerd": "2026-06-05T08:25:13Z",
  "garages": [
   {
    "naam": "APCOA Antarctica",
@@ -113,127 +113,6 @@
    "capaciteit": 550,
    "uur": 3.0,
    "dagmax": 30.0
-  },
-  {
-   "naam": "Garage Markenhoven",
-   "operator": "Amsterdam",
-   "type": "Garage parkeren",
-   "url": "www.amsterdam.nl",
-   "lat": 52.369774,
-   "lon": 4.90879,
-   "capaciteit": 352,
-   "uur": 4.29,
-   "dagmax": 47.5
-  },
-  {
-   "naam": "Garage P1 ArenA",
-   "operator": "Amsterdam",
-   "type": "Garage parkeren",
-   "url": "www.amsterdam.nl",
-   "lat": 52.314024,
-   "lon": 4.940788,
-   "capaciteit": 2400,
-   "uur": 3.0,
-   "dagmax": 30.0
-  },
-  {
-   "naam": "Garage P10 Plaza ArenA",
-   "operator": "Amsterdam",
-   "type": "Garage parkeren",
-   "url": "www.amsterdam.nl",
-   "lat": 52.30627,
-   "lon": 4.942695,
-   "capaciteit": 814,
-   "uur": 2.5,
-   "dagmax": 24.5
-  },
-  {
-   "naam": "Garage P18 HES/ROC",
-   "operator": "Amsterdam",
-   "type": "Garage parkeren",
-   "url": "www.amsterdam.nl",
-   "lat": 52.315131,
-   "lon": 4.946282,
-   "capaciteit": 291,
-   "uur": 3.0,
-   "dagmax": 30.0
-  },
-  {
-   "naam": "Garage P2 Bomengarage",
-   "operator": "Amsterdam",
-   "type": "Garage parkeren",
-   "url": "www.amsterdam.nl",
-   "lat": 52.399715,
-   "lon": 4.938664,
-   "capaciteit": 448,
-   "uur": 0.47,
-   "dagmax": null
-  },
-  {
-   "naam": "Garage P3 Mikado",
-   "operator": "Amsterdam",
-   "type": "Garage parkeren",
-   "url": "www.amsterdam.nl",
-   "lat": 52.310434,
-   "lon": 4.941118,
-   "capaciteit": 366,
-   "uur": 3.0,
-   "dagmax": 30.0
-  },
-  {
-   "naam": "Garage P4 Villa ArenA",
-   "operator": "Amsterdam",
-   "type": "Garage parkeren",
-   "url": "www.amsterdam.nl",
-   "lat": 52.311382,
-   "lon": 4.93943,
-   "capaciteit": 1248,
-   "uur": 3.0,
-   "dagmax": 30.0
-  },
-  {
-   "naam": "Garage P5 Villa ArenA",
-   "operator": "Amsterdam",
-   "type": "Garage parkeren",
-   "url": "www.amsterdam.nl",
-   "lat": 52.311676,
-   "lon": 4.941235,
-   "capaciteit": 1354,
-   "uur": 3.0,
-   "dagmax": 30.0
-  },
-  {
-   "naam": "Garage P6 Pathé ArenA/Uitgaansdriehoek",
-   "operator": "Amsterdam",
-   "type": "Garage parkeren",
-   "url": "www.amsterdam.nl",
-   "lat": 52.311619,
-   "lon": 4.945382,
-   "capaciteit": 399,
-   "uur": 3.0,
-   "dagmax": 30.0
-  },
-  {
-   "naam": "Garage Stadhuis-Muziektheater",
-   "operator": "Amsterdam",
-   "type": "Garage parkeren",
-   "url": "www.amsterdam.nl",
-   "lat": 52.368027,
-   "lon": 4.902315,
-   "capaciteit": 400,
-   "uur": 6.3,
-   "dagmax": 63.0
-  },
-  {
-   "naam": "Garage Willemspoort",
-   "operator": "Amsterdam",
-   "type": "Garage parkeren",
-   "url": "www.amsterdam.nl",
-   "lat": 52.384982,
-   "lon": 4.884537,
-   "capaciteit": 109,
-   "uur": 6.3,
-   "dagmax": 63.0
   },
   {
    "naam": "Interparking IJDock",
@@ -357,6 +236,28 @@
    "dagmax": null
   },
   {
+   "naam": "Markenhoven",
+   "operator": "Amsterdam",
+   "type": "Garage parkeren",
+   "url": "www.amsterdam.nl",
+   "lat": 52.369774,
+   "lon": 4.90879,
+   "capaciteit": 352,
+   "uur": 4.29,
+   "dagmax": 47.5
+  },
+  {
+   "naam": "Museumplein Touringcars",
+   "operator": "Amsterdam",
+   "type": "Garage parkeren",
+   "url": "www.amsterdam.nl",
+   "lat": 52.359184,
+   "lon": 4.882648,
+   "capaciteit": 25,
+   "uur": null,
+   "dagmax": null
+  },
+  {
    "naam": "Nederlandse Spoorwegen P+R Comeniuslaan (Amsterdam Lelylaan)",
    "operator": "Nederlandse Spoorwegen",
    "type": "P+R",
@@ -366,6 +267,17 @@
    "capaciteit": 105,
    "uur": 1.76,
    "dagmax": 10.93
+  },
+  {
+   "naam": "Oosterdok",
+   "operator": "Amsterdam",
+   "type": "Garage parkeren",
+   "url": "www.amsterdam.nl",
+   "lat": 52.376483,
+   "lon": 4.908907,
+   "capaciteit": 1100,
+   "uur": null,
+   "dagmax": null
   },
   {
    "naam": "P+R ArenA",
@@ -467,6 +379,17 @@
    "dagmax": 55.0
   },
   {
+   "naam": "P1 ArenA",
+   "operator": "Amsterdam",
+   "type": "Garage parkeren",
+   "url": "www.amsterdam.nl",
+   "lat": 52.314024,
+   "lon": 4.940788,
+   "capaciteit": 2400,
+   "uur": 3.0,
+   "dagmax": 30.0
+  },
+  {
    "naam": "P1 Kalverstraat",
    "operator": "P1",
    "type": "Garage parkeren",
@@ -498,6 +421,138 @@
    "capaciteit": 350,
    "uur": null,
    "dagmax": 1.0
+  },
+  {
+   "naam": "P1 VUmc Westflank",
+   "operator": "Amsterdam",
+   "type": "Garage parkeren",
+   "url": "www.amsterdam.nl",
+   "lat": 52.333576,
+   "lon": 4.857956,
+   "capaciteit": 415,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "P10 Plaza ArenA",
+   "operator": "Amsterdam",
+   "type": "Garage parkeren",
+   "url": "www.amsterdam.nl",
+   "lat": 52.30627,
+   "lon": 4.942695,
+   "capaciteit": 814,
+   "uur": 2.5,
+   "dagmax": 24.5
+  },
+  {
+   "naam": "P18 HES/ROC",
+   "operator": "Amsterdam",
+   "type": "Garage parkeren",
+   "url": "www.amsterdam.nl",
+   "lat": 52.315131,
+   "lon": 4.946282,
+   "capaciteit": 291,
+   "uur": 3.0,
+   "dagmax": 30.0
+  },
+  {
+   "naam": "P2 Bomengarage",
+   "operator": "Amsterdam",
+   "type": "Garage parkeren",
+   "url": "www.amsterdam.nl",
+   "lat": 52.399715,
+   "lon": 4.938664,
+   "capaciteit": 448,
+   "uur": 0.47,
+   "dagmax": null
+  },
+  {
+   "naam": "P2 Borchlandweg",
+   "operator": "Amsterdam",
+   "type": "Terreinparkeren",
+   "url": "www.amsterdam.nl",
+   "lat": 52.316676,
+   "lon": 4.931664,
+   "capaciteit": 2200,
+   "uur": null,
+   "dagmax": 12.0
+  },
+  {
+   "naam": "P2 VUmc ACTA",
+   "operator": "Amsterdam",
+   "type": "Garage parkeren",
+   "url": "www.amsterdam.nl",
+   "lat": 52.336628,
+   "lon": 4.860764,
+   "capaciteit": 455,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "P3 Mikado",
+   "operator": "Amsterdam",
+   "type": "Garage parkeren",
+   "url": "www.amsterdam.nl",
+   "lat": 52.310434,
+   "lon": 4.941118,
+   "capaciteit": 366,
+   "uur": 3.0,
+   "dagmax": 30.0
+  },
+  {
+   "naam": "P3 VU Campus",
+   "operator": "Amsterdam",
+   "type": "Garage parkeren",
+   "url": "www.amsterdam.nl",
+   "lat": 52.333791,
+   "lon": 4.863144,
+   "capaciteit": 615,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "P4 Villa ArenA",
+   "operator": "Amsterdam",
+   "type": "Garage parkeren",
+   "url": "www.amsterdam.nl",
+   "lat": 52.311382,
+   "lon": 4.93943,
+   "capaciteit": 1248,
+   "uur": 3.0,
+   "dagmax": 30.0
+  },
+  {
+   "naam": "P5 Villa ArenA",
+   "operator": "Amsterdam",
+   "type": "Garage parkeren",
+   "url": "www.amsterdam.nl",
+   "lat": 52.311676,
+   "lon": 4.941235,
+   "capaciteit": 1354,
+   "uur": 3.0,
+   "dagmax": 30.0
+  },
+  {
+   "naam": "P6 Pathé ArenA/Uitgaansdriehoek",
+   "operator": "Amsterdam",
+   "type": "Garage parkeren",
+   "url": "www.amsterdam.nl",
+   "lat": 52.311619,
+   "lon": 4.945382,
+   "capaciteit": 399,
+   "uur": 3.0,
+   "dagmax": 30.0
+  },
+  {
+   "naam": "PTA/TTA Touringcars",
+   "operator": "Amsterdam",
+   "type": "Garage parkeren",
+   "url": "www.amsterdam.nl",
+   "lat": 52.377647,
+   "lon": 4.916547,
+   "capaciteit": 41,
+   "uur": null,
+   "dagmax": null
   },
   {
    "naam": "ParkKing Gelderlandplein",
@@ -608,72 +663,6 @@
    "capaciteit": 180,
    "uur": 5.0,
    "dagmax": 35.0
-  },
-  {
-   "naam": "Parkeergarage Museumplein Touringcars",
-   "operator": "Amsterdam",
-   "type": "Garage parkeren",
-   "url": "www.amsterdam.nl",
-   "lat": 52.359184,
-   "lon": 4.882648,
-   "capaciteit": 25,
-   "uur": null,
-   "dagmax": null
-  },
-  {
-   "naam": "Parkeergarage Oosterdok",
-   "operator": "Amsterdam",
-   "type": "Garage parkeren",
-   "url": "www.amsterdam.nl",
-   "lat": 52.376483,
-   "lon": 4.908907,
-   "capaciteit": 1100,
-   "uur": null,
-   "dagmax": null
-  },
-  {
-   "naam": "Parkeergarage P1 VUmc Westflank",
-   "operator": "Amsterdam",
-   "type": "Garage parkeren",
-   "url": "www.amsterdam.nl",
-   "lat": 52.333576,
-   "lon": 4.857956,
-   "capaciteit": 415,
-   "uur": null,
-   "dagmax": null
-  },
-  {
-   "naam": "Parkeergarage P2 VUmc ACTA",
-   "operator": "Amsterdam",
-   "type": "Garage parkeren",
-   "url": "www.amsterdam.nl",
-   "lat": 52.336628,
-   "lon": 4.860764,
-   "capaciteit": 455,
-   "uur": null,
-   "dagmax": null
-  },
-  {
-   "naam": "Parkeergarage P3 VU Campus",
-   "operator": "Amsterdam",
-   "type": "Garage parkeren",
-   "url": "www.amsterdam.nl",
-   "lat": 52.333791,
-   "lon": 4.863144,
-   "capaciteit": 615,
-   "uur": null,
-   "dagmax": null
-  },
-  {
-   "naam": "Parkeergarage PTA/TTA Touringcars",
-   "operator": "Amsterdam",
-   "type": "Garage parkeren",
-   "url": "www.amsterdam.nl",
-   "lat": 52.377647,
-   "lon": 4.916547,
-   "capaciteit": 41,
-   "uur": null,
-   "dagmax": null
   },
   {
    "naam": "Parkeerterrein Artis",
@@ -973,15 +962,26 @@
    "dagmax": null
   },
   {
-   "naam": "Terrein P2 Borchlandweg",
+   "naam": "Stadhuis-Muziektheater",
    "operator": "Amsterdam",
-   "type": "Terreinparkeren",
+   "type": "Garage parkeren",
    "url": "www.amsterdam.nl",
-   "lat": 52.316676,
-   "lon": 4.931664,
-   "capaciteit": 2200,
-   "uur": null,
-   "dagmax": 12.0
+   "lat": 52.368027,
+   "lon": 4.902315,
+   "capaciteit": 400,
+   "uur": 6.3,
+   "dagmax": 63.0
+  },
+  {
+   "naam": "Willemspoort",
+   "operator": "Amsterdam",
+   "type": "Garage parkeren",
+   "url": "www.amsterdam.nl",
+   "lat": 52.384982,
+   "lon": 4.884537,
+   "capaciteit": 109,
+   "uur": 6.3,
+   "dagmax": 63.0
   }
  ]
 }

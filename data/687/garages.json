@@ -1,0 +1,74 @@
+{
+ "areamanagerid": "687",
+ "gemeente": "Middelburg",
+ "bron": "RDW NPR Open Parkeerdata (CC-0)",
+ "gegenereerd": "2026-06-05T09:06:55Z",
+ "garages": [
+  {
+   "naam": "Achter de Houttuinen",
+   "operator": "Middelburg",
+   "type": "Garage parkeren",
+   "url": "www.middelburg.nl",
+   "lat": 51.498054,
+   "lon": 3.60608,
+   "capaciteit": 80,
+   "uur": 2.1,
+   "dagmax": null
+  },
+  {
+   "naam": "De Geere",
+   "operator": "Middelburg",
+   "type": "Garage parkeren",
+   "url": "www.middelburg.nl",
+   "lat": 51.496461,
+   "lon": 3.609894,
+   "capaciteit": 302,
+   "uur": 2.1,
+   "dagmax": null
+  },
+  {
+   "naam": "Kanaalweg",
+   "operator": "Middelburg",
+   "type": "Garage parkeren",
+   "url": "www.middelburg.nl",
+   "lat": 51.496588,
+   "lon": 3.621894,
+   "capaciteit": 342,
+   "uur": 2.1,
+   "dagmax": null
+  },
+  {
+   "naam": "Kousteensedijk",
+   "operator": "Middelburg",
+   "type": "Garage parkeren",
+   "url": "www.middelburg.nl",
+   "lat": 51.495676,
+   "lon": 3.614647,
+   "capaciteit": 257,
+   "uur": 2.1,
+   "dagmax": null
+  },
+  {
+   "naam": "Nederlandse Spoorwegen P+R Segeersingel",
+   "operator": "Nederlandse Spoorwegen",
+   "type": "P+R",
+   "url": "",
+   "lat": 51.49375,
+   "lon": 3.61519,
+   "capaciteit": 182,
+   "uur": 1.81,
+   "dagmax": 5.82
+  },
+  {
+   "naam": "Q-Park P+R Segeersingel",
+   "operator": "Q-Park",
+   "type": "Parkeergarage",
+   "url": "www.q-park.nl",
+   "lat": 51.49389,
+   "lon": 3.615232,
+   "capaciteit": 240,
+   "uur": null,
+   "dagmax": null
+  }
+ ]
+}

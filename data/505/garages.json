@@ -1,0 +1,140 @@
+{
+ "areamanagerid": "505",
+ "gemeente": "Dordrecht",
+ "bron": "RDW NPR Open Parkeerdata (CC-0)",
+ "gegenereerd": "2026-06-05T08:41:54Z",
+ "garages": [
+  {
+   "naam": "APCOA Maasplaza",
+   "operator": "APCOA",
+   "type": "Terreinparkeren",
+   "url": "www.apcoa.nl",
+   "lat": 51.809915,
+   "lon": 4.655349,
+   "capaciteit": 400,
+   "uur": 0.0,
+   "dagmax": null
+  },
+  {
+   "naam": "APCOA Visstraat",
+   "operator": "APCOA",
+   "type": "Garage parkeren",
+   "url": "www.apcoa.nl",
+   "lat": 51.813806,
+   "lon": 4.665772,
+   "capaciteit": 172,
+   "uur": 1.5,
+   "dagmax": 16.0
+  },
+  {
+   "naam": "Energiehuis",
+   "operator": "Dordrecht",
+   "type": "Garage parkeren",
+   "url": "",
+   "lat": 51.815974,
+   "lon": 4.679577,
+   "capaciteit": 326,
+   "uur": 1.65,
+   "dagmax": 16.48
+  },
+  {
+   "naam": "Gezondheidspark",
+   "operator": "Dordrecht",
+   "type": "Terreinparkeren",
+   "url": "",
+   "lat": 51.793831,
+   "lon": 4.681937,
+   "capaciteit": 572,
+   "uur": 1.7,
+   "dagmax": 13.0
+  },
+  {
+   "naam": "Nederlandse Spoorwegen P+R Markettenweg",
+   "operator": "Nederlandse Spoorwegen",
+   "type": "P+R",
+   "url": "",
+   "lat": 51.80662,
+   "lon": 4.66915,
+   "capaciteit": 148,
+   "uur": 1.51,
+   "dagmax": 7.4
+  },
+  {
+   "naam": "P1 Drievriendenhof / Dordrecht Centre",
+   "operator": "P1",
+   "type": "Garage parkeren",
+   "url": "",
+   "lat": 51.813209,
+   "lon": 4.670556,
+   "capaciteit": 440,
+   "uur": 2.14,
+   "dagmax": 20.0
+  },
+  {
+   "naam": "Q-Park Drievriendenhof",
+   "operator": "Q-Park",
+   "type": "Garage parkeren",
+   "url": "www.q-park.nl",
+   "lat": 51.81317,
+   "lon": 4.67059,
+   "capaciteit": 400,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Q-Park P+R Markettenweg",
+   "operator": "Q-Park",
+   "type": "Parkeergarage",
+   "url": "www.q-park.nl",
+   "lat": 51.80625,
+   "lon": 4.671507,
+   "capaciteit": 138,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Riedijkshaven",
+   "operator": "Dordrecht",
+   "type": "Garage parkeren",
+   "url": "",
+   "lat": 51.817199,
+   "lon": 4.676626,
+   "capaciteit": 46,
+   "uur": 1.89,
+   "dagmax": 18.89
+  },
+  {
+   "naam": "Sportboulevard",
+   "operator": "Dordrecht",
+   "type": "Garage parkeren",
+   "url": "",
+   "lat": 51.792787,
+   "lon": 4.677981,
+   "capaciteit": 626,
+   "uur": 1.7,
+   "dagmax": 3.0
+  },
+  {
+   "naam": "Spuihaven",
+   "operator": "Dordrecht",
+   "type": "Garage parkeren",
+   "url": "",
+   "lat": 51.811689,
+   "lon": 4.662503,
+   "capaciteit": 514,
+   "uur": 1.89,
+   "dagmax": 18.89
+  },
+  {
+   "naam": "Veemarkt",
+   "operator": "Dordrecht",
+   "type": "Garage parkeren",
+   "url": "",
+   "lat": 51.811779,
+   "lon": 4.66003,
+   "capaciteit": 560,
+   "uur": null,
+   "dagmax": null
+  }
+ ]
+}

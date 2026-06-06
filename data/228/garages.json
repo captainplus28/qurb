@@ -1,0 +1,74 @@
+{
+ "areamanagerid": "228",
+ "gemeente": "Ede",
+ "bron": "RDW NPR Open Parkeerdata (CC-0)",
+ "gegenereerd": "2026-06-05T08:43:49Z",
+ "garages": [
+  {
+   "naam": "P+R Doctor Hartogsweg",
+   "operator": "Ede",
+   "type": "P+R",
+   "url": "www.ede.nl",
+   "lat": 52.026912,
+   "lon": 5.673491,
+   "capaciteit": 400,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "P+R Ede",
+   "operator": "Ede",
+   "type": "P+R",
+   "url": "www.ede.nl",
+   "lat": 52.043595,
+   "lon": 5.667937,
+   "capaciteit": 26,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "P+R Stationsplein",
+   "operator": "Ede",
+   "type": "P+R",
+   "url": "www.ede.nl",
+   "lat": 52.029131,
+   "lon": 5.671353,
+   "capaciteit": 250,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Parking + Protection Ziekenhuis Gelderse Vallei",
+   "operator": "Parking + Protection",
+   "type": "Garage parkeren",
+   "url": "",
+   "lat": 52.020719,
+   "lon": 5.647623,
+   "capaciteit": 1350,
+   "uur": 2.0,
+   "dagmax": null
+  },
+  {
+   "naam": "Q-Park Achterdoelen",
+   "operator": "Q-Park",
+   "type": "Garage parkeren",
+   "url": "www.q-park.nl",
+   "lat": 52.043324,
+   "lon": 5.671262,
+   "capaciteit": 460,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Q-Park Markt",
+   "operator": "Q-Park",
+   "type": "Garage parkeren",
+   "url": "www.q-park.nl",
+   "lat": 52.047367,
+   "lon": 5.671685,
+   "capaciteit": 443,
+   "uur": null,
+   "dagmax": null
+  }
+ ]
+}

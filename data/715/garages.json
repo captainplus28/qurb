@@ -1,0 +1,52 @@
+{
+ "areamanagerid": "715",
+ "gemeente": "Terneuzen",
+ "bron": "RDW NPR Open Parkeerdata (CC-0)",
+ "gegenereerd": "2026-06-05T09:21:13Z",
+ "garages": [
+  {
+   "naam": "Axelsedam/ Schuttershofweg",
+   "operator": "Terneuzen",
+   "type": "Terreinparkeren",
+   "url": "www.terneuzen.nl",
+   "lat": 51.334305,
+   "lon": 3.827864,
+   "capaciteit": 150,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Oostkolk",
+   "operator": "Terneuzen",
+   "type": "Garage parkeren",
+   "url": "www.terneuzen.nl",
+   "lat": 51.337382,
+   "lon": 3.829942,
+   "capaciteit": 289,
+   "uur": 1.4,
+   "dagmax": 4.0
+  },
+  {
+   "naam": "Schuttershof",
+   "operator": "Terneuzen",
+   "type": "Garage parkeren",
+   "url": "www.terneuzen.nl",
+   "lat": 51.333056,
+   "lon": 3.827468,
+   "capaciteit": 220,
+   "uur": 1.4,
+   "dagmax": 4.0
+  },
+  {
+   "naam": "Theaterplein",
+   "operator": "Terneuzen",
+   "type": "Garage parkeren",
+   "url": "www.terneuzen.nl",
+   "lat": 51.339426,
+   "lon": 3.823349,
+   "capaciteit": 228,
+   "uur": 1.4,
+   "dagmax": 4.0
+  }
+ ]
+}

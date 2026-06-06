@@ -1,0 +1,52 @@
+{
+ "areamanagerid": "80",
+ "gemeente": "Leeuwarden",
+ "bron": "RDW NPR Open Parkeerdata (CC-0)",
+ "gegenereerd": "2026-06-05T09:02:21Z",
+ "garages": [
+  {
+   "naam": "Holland Casino B1",
+   "operator": "Holland Casino",
+   "type": "Terreinparkeren",
+   "url": "",
+   "lat": 53.199057,
+   "lon": 5.773079,
+   "capaciteit": 150,
+   "uur": null,
+   "dagmax": 0.0
+  },
+  {
+   "naam": "Holland Casino B2",
+   "operator": "Holland Casino",
+   "type": "Terreinparkeren",
+   "url": "",
+   "lat": 53.198313,
+   "lon": 5.772478,
+   "capaciteit": 84,
+   "uur": null,
+   "dagmax": 0.0
+  },
+  {
+   "naam": "Nederlandse Spoorwegen P+R Wijnhornsterstraat",
+   "operator": "Nederlandse Spoorwegen",
+   "type": "P+R",
+   "url": "",
+   "lat": 53.19531,
+   "lon": 5.79078,
+   "capaciteit": 253,
+   "uur": 1.0,
+   "dagmax": 5.76
+  },
+  {
+   "naam": "Oosterstraat",
+   "operator": "Leeuwarden",
+   "type": "Garage parkeren",
+   "url": "",
+   "lat": 53.201489,
+   "lon": 5.80145,
+   "capaciteit": null,
+   "uur": null,
+   "dagmax": null
+  }
+ ]
+}

@@ -1,0 +1,107 @@
+{
+ "areamanagerid": "141",
+ "gemeente": "Almelo",
+ "bron": "RDW NPR Open Parkeerdata (CC-0)",
+ "gegenereerd": "2026-06-05T08:19:16Z",
+ "garages": [
+  {
+   "naam": "Havenpassage Kelder P13",
+   "operator": "Almelo",
+   "type": "Garage parkeren",
+   "url": "www.almelo.nl",
+   "lat": 52.356099,
+   "lon": 6.661776,
+   "capaciteit": 125,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "P&R De Riet",
+   "operator": "Almelo",
+   "type": "P+R",
+   "url": "www.almelo.nl",
+   "lat": 52.342229,
+   "lon": 6.666896,
+   "capaciteit": 8,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "P&R Javapark P12",
+   "operator": "Almelo",
+   "type": "P+R",
+   "url": "www.almelo.nl",
+   "lat": 52.358534,
+   "lon": 6.655751,
+   "capaciteit": 345,
+   "uur": 2.0,
+   "dagmax": 6.0
+  },
+  {
+   "naam": "P1 StadsErf",
+   "operator": "Almelo",
+   "type": "Garage parkeren",
+   "url": "www.almelo.nl",
+   "lat": 52.355474,
+   "lon": 6.668698,
+   "capaciteit": 88,
+   "uur": 2.0,
+   "dagmax": 6.0
+  },
+  {
+   "naam": "P14 StadsHaven",
+   "operator": "Almelo",
+   "type": "Garage parkeren",
+   "url": "www.almelo.nl",
+   "lat": 52.356285,
+   "lon": 6.661363,
+   "capaciteit": 307,
+   "uur": 2.0,
+   "dagmax": 6.0
+  },
+  {
+   "naam": "P2 StadsErf",
+   "operator": "Almelo",
+   "type": "Garage parkeren",
+   "url": "www.almelo.nl",
+   "lat": 52.355135,
+   "lon": 6.668487,
+   "capaciteit": 70,
+   "uur": 2.0,
+   "dagmax": 6.0
+  },
+  {
+   "naam": "P3 StadsErf",
+   "operator": "Almelo",
+   "type": "Garage parkeren",
+   "url": "www.almelo.nl",
+   "lat": 52.355102,
+   "lon": 6.668476,
+   "capaciteit": 255,
+   "uur": 2.0,
+   "dagmax": 6.0
+  },
+  {
+   "naam": "P5 Oosterborgh",
+   "operator": "Almelo",
+   "type": "Garage parkeren",
+   "url": "www.almelo.nl",
+   "lat": 52.361423,
+   "lon": 6.670643,
+   "capaciteit": 102,
+   "uur": 2.0,
+   "dagmax": 6.0
+  },
+  {
+   "naam": "P9 StadsBaken",
+   "operator": "Almelo",
+   "type": "Garage parkeren",
+   "url": "www.almelo.nl",
+   "lat": 52.357549,
+   "lon": 6.662599,
+   "capaciteit": 403,
+   "uur": 2.0,
+   "dagmax": 6.0
+  }
+ ]
+}

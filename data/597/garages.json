@@ -1,0 +1,74 @@
+{
+ "areamanagerid": "597",
+ "gemeente": "Ridderkerk",
+ "bron": "RDW NPR Open Parkeerdata (CC-0)",
+ "gegenereerd": "2026-06-05T09:11:38Z",
+ "garages": [
+  {
+   "naam": "Interparking Jorishof",
+   "operator": "Interparking",
+   "type": "Garage parkeren",
+   "url": "www.interparking.nl",
+   "lat": 51.870136,
+   "lon": 4.601408,
+   "capaciteit": 147,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Interparking Koningsplein",
+   "operator": "Interparking",
+   "type": "Garage parkeren",
+   "url": "www.interparking.nl",
+   "lat": 51.8721,
+   "lon": 4.599336,
+   "capaciteit": 228,
+   "uur": 1.0,
+   "dagmax": 5.0
+  },
+  {
+   "naam": "P+R Ridderkerk Fast Ferry",
+   "operator": "Ridderkerk",
+   "type": "P+R",
+   "url": "www.ridderkerk.nl",
+   "lat": 51.886139,
+   "lon": 4.617814,
+   "capaciteit": 151,
+   "uur": 0.0,
+   "dagmax": null
+  },
+  {
+   "naam": "P+R Ridderkerk Oostendam",
+   "operator": "Ridderkerk",
+   "type": "P+R",
+   "url": "www.ridderkerk.nl",
+   "lat": 51.859792,
+   "lon": 4.627853,
+   "capaciteit": 40,
+   "uur": 0.0,
+   "dagmax": null
+  },
+  {
+   "naam": "Q-Park Jorishof",
+   "operator": "Q-Park",
+   "type": "Garage parkeren",
+   "url": "www.q-park.nl",
+   "lat": 51.870197,
+   "lon": 4.601328,
+   "capaciteit": 141,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Q-Park Ridderhof",
+   "operator": "Q-Park",
+   "type": "Garage parkeren",
+   "url": "www.q-park.nl",
+   "lat": 51.868347,
+   "lon": 4.601469,
+   "capaciteit": 242,
+   "uur": null,
+   "dagmax": null
+  }
+ ]
+}

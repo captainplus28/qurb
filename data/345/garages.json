@@ -1,0 +1,107 @@
+{
+ "areamanagerid": "345",
+ "gemeente": "Veenendaal",
+ "bron": "RDW NPR Open Parkeerdata (CC-0)",
+ "gegenereerd": "2026-06-05T09:27:36Z",
+ "garages": [
+  {
+   "naam": "Nederlandse Spoorwegen P+R Station Veenendaal-Centrum",
+   "operator": "Nederlandse Spoorwegen",
+   "type": "P+R",
+   "url": "",
+   "lat": 52.019891,
+   "lon": 5.54854,
+   "capaciteit": 94,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "P1 Arie van Hensbergen",
+   "operator": "P1",
+   "type": "Garage parkeren",
+   "url": "",
+   "lat": 52.028331,
+   "lon": 5.559966,
+   "capaciteit": 356,
+   "uur": 2.09,
+   "dagmax": 6.0
+  },
+  {
+   "naam": "P1 Duivenweide",
+   "operator": "P1",
+   "type": "Terreinparkeren",
+   "url": "",
+   "lat": 52.024715,
+   "lon": 5.553624,
+   "capaciteit": 445,
+   "uur": 2.09,
+   "dagmax": 6.0
+  },
+  {
+   "naam": "P1 Gemeentehuis",
+   "operator": "P1",
+   "type": "Garage parkeren",
+   "url": "",
+   "lat": 52.023543,
+   "lon": 5.556489,
+   "capaciteit": 75,
+   "uur": 2.09,
+   "dagmax": 6.0
+  },
+  {
+   "naam": "P1 Tricotage",
+   "operator": "P1",
+   "type": "Garage parkeren",
+   "url": "",
+   "lat": 52.02675,
+   "lon": 5.554839,
+   "capaciteit": 500,
+   "uur": 2.09,
+   "dagmax": 6.0
+  },
+  {
+   "naam": "Parking Veenendaal",
+   "operator": "Veenendaal",
+   "type": "Terreinparkeren",
+   "url": "www.veenendaal.nl",
+   "lat": 52.02828,
+   "lon": 5.55532,
+   "capaciteit": 50,
+   "uur": 2.77,
+   "dagmax": null
+  },
+  {
+   "naam": "Q-Park Corridor",
+   "operator": "Q-Park",
+   "type": "Garage parkeren",
+   "url": "www.q-park.nl",
+   "lat": 52.02421,
+   "lon": 5.555896,
+   "capaciteit": 302,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Q-Park Passage",
+   "operator": "Q-Park",
+   "type": "Garage parkeren",
+   "url": "www.q-park.nl",
+   "lat": 52.025127,
+   "lon": 5.557059,
+   "capaciteit": 550,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Scheepjeshof",
+   "operator": "Veenendaal",
+   "type": "Garage parkeren",
+   "url": "www.veenendaal.nl",
+   "lat": 52.029452,
+   "lon": 5.554909,
+   "capaciteit": 470,
+   "uur": 2.0,
+   "dagmax": 6.0
+  }
+ ]
+}

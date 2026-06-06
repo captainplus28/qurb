@@ -1,0 +1,19 @@
+{
+ "areamanagerid": "301",
+ "gemeente": "Zutphen",
+ "bron": "RDW NPR Open Parkeerdata (CC-0)",
+ "gegenereerd": "2026-06-05T09:36:52Z",
+ "garages": [
+  {
+   "naam": "Nederlandse Spoorwegen P+R Lijmerij",
+   "operator": "Nederlandse Spoorwegen",
+   "type": "P+R",
+   "url": "",
+   "lat": 52.145233,
+   "lon": 6.192855,
+   "capaciteit": 375,
+   "uur": 1.62,
+   "dagmax": 8.11
+  }
+ ]
+}

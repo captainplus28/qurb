@@ -1,0 +1,52 @@
+{
+ "areamanagerid": "828",
+ "gemeente": "Oss",
+ "bron": "RDW NPR Open Parkeerdata (CC-0)",
+ "gegenereerd": "2026-06-05T09:10:47Z",
+ "garages": [
+  {
+   "naam": "Bergoss",
+   "operator": "Oss",
+   "type": "Garage parkeren",
+   "url": "www.oss.nl",
+   "lat": 51.768502,
+   "lon": 5.528414,
+   "capaciteit": 270,
+   "uur": 2.0,
+   "dagmax": 144.0
+  },
+  {
+   "naam": "Nederlandse Spoorwegen P+R Gasstraat",
+   "operator": "Nederlandse Spoorwegen",
+   "type": "P+R",
+   "url": "",
+   "lat": 51.76499,
+   "lon": 5.531281,
+   "capaciteit": 246,
+   "uur": 1.71,
+   "dagmax": 7.59
+  },
+  {
+   "naam": "Nederlandse Spoorwegen P+R Station Oss-West",
+   "operator": "Nederlandse Spoorwegen",
+   "type": "P+R",
+   "url": "",
+   "lat": 51.758273,
+   "lon": 5.507226,
+   "capaciteit": 62,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Parkeerterrein Jurgensplein",
+   "operator": "Oss",
+   "type": "Terreinparkeren",
+   "url": "www.oss.nl",
+   "lat": 51.766276,
+   "lon": 5.522658,
+   "capaciteit": 206,
+   "uur": 2.0,
+   "dagmax": null
+  }
+ ]
+}

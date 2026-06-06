@@ -1,0 +1,63 @@
+{
+ "areamanagerid": "361",
+ "gemeente": "Alkmaar",
+ "bron": "RDW NPR Open Parkeerdata (CC-0)",
+ "gegenereerd": "2026-06-05T08:18:43Z",
+ "garages": [
+  {
+   "naam": "APCOA Grote Kerk",
+   "operator": "APCOA",
+   "type": "Garage parkeren",
+   "url": "www.apcoa.nl",
+   "lat": 52.63226,
+   "lon": 4.742638,
+   "capaciteit": 86,
+   "uur": 2.0,
+   "dagmax": 5.3
+  },
+  {
+   "naam": "APCOA Klercq",
+   "operator": "APCOA",
+   "type": "Terreinparkeren",
+   "url": "www.apcoa.nl",
+   "lat": 52.63598,
+   "lon": 4.749414,
+   "capaciteit": 200,
+   "uur": 1.0,
+   "dagmax": 10.0
+  },
+  {
+   "naam": "Nederlandse Spoorwegen P+R Kruseman van Eltenweg",
+   "operator": "Nederlandse Spoorwegen",
+   "type": "P+R",
+   "url": "",
+   "lat": 52.63905,
+   "lon": 4.74079,
+   "capaciteit": 228,
+   "uur": 2.06,
+   "dagmax": 9.39
+  },
+  {
+   "naam": "ParkKing Noorder Arcade",
+   "operator": "ParkKing",
+   "type": "Garage parkeren",
+   "url": "www.parkking.nl",
+   "lat": 52.633558,
+   "lon": 4.751716,
+   "capaciteit": 540,
+   "uur": 2.0,
+   "dagmax": 7.5
+  },
+  {
+   "naam": "Q-Park P+R Kruseman van Eltenweg",
+   "operator": "Q-Park",
+   "type": "Parkeergarage",
+   "url": "www.q-park.nl",
+   "lat": 52.6390648,
+   "lon": 4.740048,
+   "capaciteit": 228,
+   "uur": null,
+   "dagmax": null
+  }
+ ]
+}

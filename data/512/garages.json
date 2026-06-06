@@ -1,0 +1,19 @@
+{
+ "areamanagerid": "512",
+ "gemeente": "Gorinchem",
+ "bron": "RDW NPR Open Parkeerdata (CC-0)",
+ "gegenereerd": "2026-06-05T08:49:41Z",
+ "garages": [
+  {
+   "naam": "Nederlandse Spoorwegen P+R Stationsweg",
+   "operator": "Nederlandse Spoorwegen",
+   "type": "P+R",
+   "url": "",
+   "lat": 51.83421,
+   "lon": 4.96932,
+   "capaciteit": 127,
+   "uur": 1.46,
+   "dagmax": 6.69
+  }
+ ]
+}

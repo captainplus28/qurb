@@ -1,0 +1,41 @@
+{
+ "areamanagerid": "473",
+ "gemeente": "Zandvoort",
+ "bron": "RDW NPR Open Parkeerdata (CC-0)",
+ "gegenereerd": "2026-06-05T09:35:13Z",
+ "garages": [
+  {
+   "naam": "Centrum (LDC) (Zandvoort) 812501",
+   "operator": "Zandvoort",
+   "type": "Garage parkeren",
+   "url": "",
+   "lat": 52.371388,
+   "lon": 4.532458,
+   "capaciteit": 465,
+   "uur": 3.0,
+   "dagmax": 20.0
+  },
+  {
+   "naam": "De Zuid (Zandvoort) 812502",
+   "operator": "Zandvoort",
+   "type": "Garage parkeren",
+   "url": "",
+   "lat": 52.365792,
+   "lon": 4.520998,
+   "capaciteit": 1750,
+   "uur": 2.5,
+   "dagmax": 15.0
+  },
+  {
+   "naam": "Holland Casino",
+   "operator": "Holland Casino",
+   "type": "Garage parkeren",
+   "url": "",
+   "lat": 52.371989,
+   "lon": 4.525832,
+   "capaciteit": null,
+   "uur": 6.0,
+   "dagmax": null
+  }
+ ]
+}
