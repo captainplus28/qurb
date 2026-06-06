@@ -1,0 +1,184 @@
+{
+ "areamanagerid": "344",
+ "gemeente": "Utrecht",
+ "bron": "RDW NPR Open Parkeerdata (CC-0)",
+ "gegenereerd": "2026-06-05T00:24:57Z",
+ "garages": [
+  {
+   "naam": "APCOA The Wall",
+   "operator": "APCOA",
+   "type": "Garage parkeren",
+   "url": "www.apcoa.nl",
+   "lat": 52.106808,
+   "lon": 5.055063,
+   "capaciteit": 1200,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Interparking Hoog Catharijne P1",
+   "operator": "Interparking",
+   "type": "Garage parkeren",
+   "url": "www.interparking.nl",
+   "lat": 52.089612,
+   "lon": 5.113428,
+   "capaciteit": 359,
+   "uur": 2.73,
+   "dagmax": 30.0
+  },
+  {
+   "naam": "Interparking Hoog Catharijne P2",
+   "operator": "Interparking",
+   "type": "Garage parkeren",
+   "url": "www.interparking.nl",
+   "lat": 52.089612,
+   "lon": 5.113428,
+   "capaciteit": 318,
+   "uur": 3.33,
+   "dagmax": 30.0
+  },
+  {
+   "naam": "Interparking P3 Radboud",
+   "operator": "Interparking",
+   "type": "Garage parkeren",
+   "url": "www.interparking.nl",
+   "lat": 52.089804,
+   "lon": 5.113256,
+   "capaciteit": 451,
+   "uur": 3.33,
+   "dagmax": 30.0
+  },
+  {
+   "naam": "Interparking P4 Stationsstraat",
+   "operator": "Interparking",
+   "type": "Garage parkeren",
+   "url": "www.interparking.nl",
+   "lat": 52.0913,
+   "lon": 5.11184,
+   "capaciteit": 391,
+   "uur": 3.33,
+   "dagmax": 30.0
+  },
+  {
+   "naam": "Interparking P5 Vredenburg",
+   "operator": "Interparking",
+   "type": "Garage parkeren",
+   "url": "www.interparking.nl",
+   "lat": 52.091459,
+   "lon": 5.113454,
+   "capaciteit": 1184,
+   "uur": 4.8,
+   "dagmax": 36.0
+  },
+  {
+   "naam": "Interparking P6 Rijnkade",
+   "operator": "Interparking",
+   "type": "Garage parkeren",
+   "url": "www.interparking.nl",
+   "lat": 52.090173,
+   "lon": 5.11464,
+   "capaciteit": 368,
+   "uur": 4.29,
+   "dagmax": 36.0
+  },
+  {
+   "naam": "Interparking Springweg",
+   "operator": "Interparking",
+   "type": "Garage parkeren",
+   "url": "www.interparking.nl",
+   "lat": 52.088933,
+   "lon": 5.120147,
+   "capaciteit": 409,
+   "uur": 4.8,
+   "dagmax": 36.0
+  },
+  {
+   "naam": "P1 De Grifthoek",
+   "operator": "P1",
+   "type": "Garage parkeren",
+   "url": "",
+   "lat": 52.09805,
+   "lon": 5.126233,
+   "capaciteit": 320,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "P1 Kruisstraat",
+   "operator": "P1",
+   "type": "Garage parkeren",
+   "url": "",
+   "lat": 52.09373,
+   "lon": 5.129327,
+   "capaciteit": 105,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "P1 P+R Muziektheather",
+   "operator": "P1",
+   "type": "P+R",
+   "url": "",
+   "lat": 52.096477,
+   "lon": 5.075232,
+   "capaciteit": 220,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "P1 P+R Papendorp",
+   "operator": "P1",
+   "type": "P+R",
+   "url": "",
+   "lat": 52.069693,
+   "lon": 5.083057,
+   "capaciteit": 500,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "P1 P+R Westraven",
+   "operator": "P1",
+   "type": "P+R",
+   "url": "",
+   "lat": 52.058107,
+   "lon": 5.105118,
+   "capaciteit": 1000,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Q-Park Galgenwaard",
+   "operator": "Q-Park",
+   "type": "Garage parkeren",
+   "url": "www.q-park.nl",
+   "lat": 52.07843,
+   "lon": 5.14378,
+   "capaciteit": 1008,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Q-Park Galgenwaard Noord",
+   "operator": "Q-Park",
+   "type": "Terreinparkeren",
+   "url": "www.q-park.nl",
+   "lat": 52.07887,
+   "lon": 5.146519,
+   "capaciteit": 248,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Q-Park La Vie",
+   "operator": "Q-Park",
+   "type": "Garage parkeren",
+   "url": "www.q-park.nl",
+   "lat": 52.09407,
+   "lon": 5.114951,
+   "capaciteit": 344,
+   "uur": null,
+   "dagmax": null
+  }
+ ]
+}

@@ -1,0 +1,52 @@
+{
+ "areamanagerid": "748",
+ "gemeente": "Bergen op Zoom",
+ "bron": "RDW NPR Open Parkeerdata (CC-0)",
+ "gegenereerd": "2026-06-05T11:50:22Z",
+ "garages": [
+  {
+   "naam": "Achter de Grote Markt",
+   "operator": "Bergen op Zoom",
+   "type": "Garage parkeren",
+   "url": null,
+   "lat": 51.492732,
+   "lon": 4.285022,
+   "capaciteit": 150,
+   "uur": 1.5,
+   "dagmax": 10.0
+  },
+  {
+   "naam": "De Parade",
+   "operator": "Bergen op Zoom",
+   "type": "Garage parkeren",
+   "url": null,
+   "lat": 51.493552,
+   "lon": 4.291962,
+   "capaciteit": 375,
+   "uur": 1.5,
+   "dagmax": 10.0
+  },
+  {
+   "naam": "Nederlandse Spoorwegen P+R Parallelweg",
+   "operator": "Nederlandse Spoorwegen",
+   "type": "P+R",
+   "url": "",
+   "lat": 51.49488,
+   "lon": 4.29674,
+   "capaciteit": 126,
+   "uur": 1.59,
+   "dagmax": 7.05
+  },
+  {
+   "naam": "Pastoor Joorenplein",
+   "operator": "Bergen op Zoom",
+   "type": "Terreinparkeren",
+   "url": null,
+   "lat": 51.496397,
+   "lon": 4.29316,
+   "capaciteit": 123,
+   "uur": 1.5,
+   "dagmax": 10.0
+  }
+ ]
+}

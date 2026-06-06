@@ -1,0 +1,184 @@
+#!/usr/bin/env python3
+"""
+qurb · Fase 1 datapijplijn — echte Amsterdam-garages (gemeente + privaat) uit RDW.
+
+Bron: NPR v2 facility-index + per-faciliteit static feed (CC-0).
+We filteren op faciliteiten met 'amsterdam' in de naam en valideren op coordinaten
+(Amsterdam bounding box). Per faciliteit: naam, operator, coordinaten, capaciteit,
+uurtarief en dagmax uit de gepubliceerde tarieven.
+
+Tarief (zie FASE1-bevindingen.md):
+  uurtarief = charge / (chargePeriod/60)          # kleinste chargePeriod < 24u
+  dagmax    = charge van een ~1440-min (24u) tariefdeel
+
+Garages zonder gepubliceerd tarief (bv. Q-Park) worden overgeslagen.
+Uitvoer: data/amsterdam-garages.json
+Gebruik:  python3 scripts/build_garages.py
+"""
+import json, sys, time, os, re, urllib.request
+
+# Argumenten: <areamanagerid> <gemeentenaam>   (default Amsterdam 363)
+ARGS = [a for a in sys.argv[1:] if not a.startswith("--")]
+AREAMANAGER = ARGS[0] if len(ARGS) > 0 else "363"
+GEMEENTE    = ARGS[1] if len(ARGS) > 1 else "Amsterdam"
+# Naamvarianten van de gemeente (voor opschonen namen + herkennen gemeente-exploitant).
+STAD_ALIASSEN = {"den haag": ["Den Haag", "'s-Gravenhage"], "'s-gravenhage": ["Den Haag", "'s-Gravenhage"]}
+STAD_NAMEN = STAD_ALIASSEN.get(GEMEENTE.lower(), [GEMEENTE])
+BASE = os.path.join(os.path.dirname(__file__), "..", "data", AREAMANAGER)
+NPR = "https://npropendata.rdw.nl/parkingdata/v2"
+OUT = os.path.join(BASE, "garages.json")
+NOW = time.time()
+PARKEER_TYPES = {"Garage parkeren", "Parkeergarage", "Terreinparkeren", "P+R"}
+
+def bbox_uit_straat():
+    """Bounding box (lat0,lat1,lon0,lon1) afgeleid uit de gebouwde straatzones."""
+    try:
+        zones = json.load(open(os.path.join(BASE, "straat.json")))["zones"]
+    except Exception:
+        return None
+    lats, lons = [], []
+    for z in zones:
+        for poly in z.get("polys", []):
+            for lon, lat in poly:
+                lons.append(lon); lats.append(lat)
+    if not lons:
+        return None
+    m = 0.012  # ~1,3 km marge rond de stad
+    return (min(lats)-m, max(lats)+m, min(lons)-m, max(lons)+m)
+
+def get(url):
+    req = urllib.request.Request(url, headers={"User-Agent": "qurb-datapijplijn/1.0"})
+    for poging in range(4):
+        try:
+            with urllib.request.urlopen(req, timeout=60) as r:
+                return json.load(r)
+        except Exception:
+            if poging == 3: raise
+            time.sleep(2 + poging)
+
+def kort_operator(op):
+    """'Q-Park Nederland BV' -> 'Q-Park', 'Markthof Parkeergarage B.V.' -> 'Markthof'."""
+    if not op: return op
+    o = op.strip()
+    while True:                                                  # herhaaldelijk achtervoegsels strippen
+        n = re.sub(r"\s+(Nederland\s+B\.?V\.?|B\.?V\.?|Parking|Parkeergarage|Garage)$", "", o, flags=re.I).strip()
+        if n == o: return o
+        o = n
+
+def is_gemeente_operator(merk):
+    m = (merk or "").lower().strip()
+    return m in {s.lower() for s in STAD_NAMEN} or m.startswith("gemeente")
+
+def _opschonen(s):
+    """Generieke woorden ('Parkeergarage') en herhaald woord verwijderen."""
+    s = re.sub(r"\bParkeergarage\b", "", s, flags=re.I)
+    s = re.sub(r"\s+", " ", s).strip()
+    w = s.split()
+    if len(w) >= 2 and w[-1].lower() == w[0].lower():           # 'Markthof Markthof' -> 'Markthof'
+        w = w[:-1]
+    return " ".join(w)
+
+def nette_naam(raw, merk):
+    """Exploitantnaam vooraan, geen '(Gemeente)'/'GEMEENTE-'/stad-suffix."""
+    n = (raw or "").strip()
+    for s in STAD_NAMEN:                                         # alle naamvarianten weghalen
+        g = re.escape(s)
+        n = re.sub(rf"\s*\({g}\)\s*$", "", n, flags=re.I).strip()
+        n = re.sub(rf"^{g}[-\s]+", "", n, flags=re.I).strip()
+    if is_gemeente_operator(merk):                              # gemeentegarage: geen merk-prefix
+        return _opschonen(re.sub(r"^(Parkeergarage|Garage|Terrein)\s+(?=\w)", "", n, flags=re.I)) or n
+    plaats = _opschonen(re.sub(r"^(Parkeergarage|Garage|Terrein)\s+", "", n, flags=re.I))
+    if merk:
+        return plaats if plaats.lower().startswith(merk.lower()) else f"{merk} {plaats}"
+    return n  # gemeente: beschrijvende naam zonder stad
+
+def tarief_uit_npr(tariffs):
+    """uurtarief (kleinste intra-uur stap) en dagmax (24u-kaart) uit huidige rates."""
+    uur = None; best_cp = None; dag = None
+    for t in tariffs or []:
+        for ir in t.get("intervalRates") or []:
+            if not (ir.get("validityStartOfPeriod", 0) <= NOW and
+                    (ir.get("validityEndOfPeriod") is None or ir["validityEndOfPeriod"] > NOW)):
+                continue
+            cp = ir.get("chargePeriod") or 0
+            ch = ir.get("charge")
+            if cp <= 0 or ch is None:
+                continue
+            df = ir.get("durationFrom", 0) or 0
+            # Alleen positieve tarieven: een charge=0-band is meestal een gratis
+            # tijdvenster of ontbrekende data, niet het echte uurtarief.
+            if df <= 0 and cp < 1440 and ch > 0:
+                if best_cp is None or cp < best_cp:
+                    best_cp = cp; uur = round(ch / (cp / 60.0), 2)
+            if cp >= 1440 and ch > 0:
+                d = round(ch, 2)
+                if dag is None or d < dag:
+                    dag = d
+    return uur, dag
+
+def coords_capaciteit_operator(info):
+    specs = info.get("specifications") or [{}]
+    cap = specs[0].get("capacity")
+    operator = info.get("operator") or {}
+    op, url = operator.get("name"), operator.get("url")
+    lat = lon = None
+    for ap in info.get("accessPoints", []):
+        for l in ap.get("accessPointLocation", []):
+            if l.get("coordinatesType") == "WGS84":
+                lat, lon = l.get("latitude"), l.get("longitude")
+        if lat is not None:
+            break
+    usage = specs[0].get("usage")
+    return lat, lon, cap, op, url, usage
+
+def main():
+    bbox = bbox_uit_straat()   # (lat0,lat1,lon0,lon1) of None
+    naamfilter = GEMEENTE.lower()
+    idx = get(NPR)
+    fac = [f for f in idx.get("ParkingFacilities", []) if naamfilter in (f.get("name") or "").lower()]
+    print(f"{GEMEENTE}-kandidaten in index: {len(fac)} | bbox uit straatzones: {'ja' if bbox else 'nee'}", file=sys.stderr)
+
+    out = []
+    for f in fac:
+        try:
+            s = get(f"{NPR}/static/{f['identifier']}")
+            info = s.get("parkingFacilityInformation", {})
+            lat, lon, cap, op, url, usage = coords_capaciteit_operator(info)
+            if lat is None:
+                continue
+            if bbox and not (bbox[0] < lat < bbox[1] and bbox[2] < lon < bbox[3]):
+                continue
+            if usage not in PARKEER_TYPES:
+                continue
+            uur, dag = tarief_uit_npr(info.get("tariffs"))
+            # Garages zonder gepubliceerd tarief (bv. Q-Park) tonen we tóch:
+            # met locatie/capaciteit en een link naar de exploitant (uur=null).
+            merk = kort_operator(op)
+            if is_gemeente_operator(merk):
+                merk = GEMEENTE                      # 's-Gravenhage -> Den Haag
+            out.append({
+                "naam": nette_naam(info.get("name") or f.get("name"), merk),
+                "operator": merk, "type": usage, "url": url,
+                "lat": lat, "lon": lon, "capaciteit": cap,
+                "uur": uur, "dagmax": dag,
+            })
+            print(f"  ✓ {info.get('name','')[:40]}: "
+                  + (f"€{uur}/uur" + (f", dagmax €{dag}" if dag else "") if uur is not None
+                     else "tarief bij exploitant")
+                  + f", {op}, cap {cap}", file=sys.stderr)
+            time.sleep(0.04)
+        except Exception as e:
+            print(f"  ! {f.get('name','?')[:30]}: {e}", file=sys.stderr)
+
+    out.sort(key=lambda x: x["naam"])
+    payload = {"areamanagerid": AREAMANAGER, "gemeente": GEMEENTE,
+               "bron": "RDW NPR Open Parkeerdata (CC-0)",
+               "gegenereerd": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
+               "garages": out}
+    os.makedirs(os.path.dirname(OUT), exist_ok=True)
+    with open(OUT, "w", encoding="utf-8") as fp:
+        json.dump(payload, fp, ensure_ascii=False, indent=1)
+    print(f"\nGeschreven: {os.path.relpath(OUT)} — {len(out)} garages", file=sys.stderr)
+
+if __name__ == "__main__":
+    main()
