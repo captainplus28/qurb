@@ -3,6 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Baseline Content-Security-Policy. De volledige set headers (incl. frame-ancestors,
+     HSTS, X-Content-Type-Options) wordt op hostingniveau gezet via _headers. -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://api.pdok.nl; base-uri 'self'; form-action 'self'">
 <title>Qurb — Slim parkeren begint hier</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2048%2048'%3E%3Ccircle%20cx='22'%20cy='21'%20r='14'%20fill='none'%20stroke='%232BB24F'%20stroke-width='8'/%3E%3Cpolygon%20points='31,29%2025,32%2036,43'%20fill='%231C8F40'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -647,6 +650,66 @@ footer {
   .summary-strip { gap: 24px; }
   .summary-item .val { font-size: 28px; }
 }
+
+/* ─── HOVER & MICRO-ANIMATIES ─── */
+.btn-primary { transition: transform .14s ease, box-shadow .22s ease, background .25s, filter .2s; }
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 22px rgba(25,150,70,.30); filter: saturate(1.06); }
+.btn-primary:active { transform: scale(.96); }
+
+.howto-grid > div {
+  padding: 18px 18px 20px;
+  border-radius: 16px;
+  transition: transform .22s cubic-bezier(.2,.7,.2,1), background .22s, box-shadow .22s;
+}
+.howto-grid > div:hover {
+  transform: translateY(-4px);
+  background: var(--canvas);
+  box-shadow: 0 10px 30px rgba(0,0,0,.07);
+}
+
+.result-row { transition: background .18s ease; }
+.result-row:hover { background: rgba(255,255,255,.05); }
+
+.brand-mark { transition: transform .35s cubic-bezier(.2,.7,.2,1); transform-origin: 50% 60%; }
+.brand-lockup:hover .brand-mark { transform: scale(1.1) rotate(-8deg); }
+
+.suggest-item { transition: background .12s ease, padding-left .15s ease; }
+.suggest-item:hover { padding-left: 26px; }
+
+/*
+  Parallelparkeren — fysisch correct.
+  Twee cirkelbogen R=6em, φ=30° elk.
+  Fase 1 (0°→−30°): Tx = 6+6·sinθ,   Ty = −1.61+6·(1−cosθ)
+  Fase 2 (−30°→0°): Tx = −6·sinθ,    Ty = 6·cosθ−6
+  Op elk moment is Δ(Tx,Ty) ∥ (−cosθ, −sinθ) — auto rijdt altijd in eigen rijrichting.
+*/
+@keyframes inparkeren {
+  0%   { transform: translateX(8em)    translateY(-1.61em) rotate(0deg);    opacity: 0; }
+  10%  { transform: translateX(8em)    translateY(-1.61em) rotate(0deg);    opacity: 1; animation-timing-function: linear; }
+  /* rijdt langs "you" heen in rijbaan */
+  38%  { transform: translateX(6em)    translateY(-1.61em) rotate(0deg);    animation-timing-function: linear; }
+  /* fase 1: eerste boog — achterste 'b' zwaait de ruimte in */
+  46%  { transform: translateX(4.96em) translateY(-1.52em) rotate(-10deg);  animation-timing-function: linear; }
+  54%  { transform: translateX(3.95em) translateY(-1.25em) rotate(-20deg);  animation-timing-function: linear; }
+  63%  { transform: translateX(3em)    translateY(-0.80em) rotate(-30deg);  animation-timing-function: linear; }
+  /* fase 2: tweede boog — voorste 'e' daalt de ruimte in, auto recht */
+  71%  { transform: translateX(2.05em) translateY(-0.36em) rotate(-20deg);  animation-timing-function: linear; }
+  79%  { transform: translateX(1.04em) translateY(-0.09em) rotate(-10deg);  animation-timing-function: linear; }
+  87%  { transform: translateX(0)      translateY(0)       rotate(0deg);    animation-timing-function: ease-out; }
+  /* kleine correctie */
+  92%  { transform: translateX(-0.07em) translateY(0) rotate(1.2deg); }
+  97%  { transform: translateX(0.03em)  translateY(0) rotate(-0.4deg); }
+  100% { transform: translateX(0)       translateY(0) rotate(0deg); }
+}
+.kicker-before {
+  display: inline-block;
+  animation: inparkeren 3s linear 0.3s both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .kicker-before { animation: none; }
+  .howto-grid > div:hover, .btn-primary:hover { transform: none; }
+}
 </style>
 </head>
 <body>
@@ -690,23 +753,16 @@ footer {
   </div>
 </nav>
 
-<!-- Sub nav -->
-<div class="sub-nav">
-  <div class="sub-nav-inner">
-    <span class="sub-nav-title">Qurb</span>
-  </div>
-</div>
-
 <!-- Hero -->
 <section class="hero-tile">
   <div class="hero-inner">
     <div style="display:flex;justify-content:center;margin-bottom:20px;">
-      <svg width="56" height="56" viewBox="0 0 48 48" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+      <svg class="hero-mark" width="56" height="56" viewBox="0 0 48 48" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
         <circle cx="22" cy="21" r="14" fill="none" stroke="var(--logo-green)" stroke-width="8"/>
         <polygon points="31,29 25,32 36,43" fill="var(--logo-tail)"/>
       </svg>
     </div>
-    <p class="hero-kicker">Straatparkeren · Nederland</p>
+    <p class="hero-kicker">qurb · Peek <span class="kicker-before">before</span> you Park</p>
     <h1 class="hero-h1">Slim parkeren begint hier.</h1>
     <p class="hero-lede">Voer een adres in, kies je tijdstip — en zie meteen waar jij het goedkoopst parkeert. Straat, garage of P+R: alles op een rij.</p>
     <div class="cta-row" style="justify-content:center;margin-top:28px;">
@@ -762,7 +818,7 @@ footer {
 <section style="background:var(--canvas-parchment);padding:80px 24px;transition:background .25s;">
   <div style="max-width:680px;margin:0 auto;text-align:center;">
     <p style="font-size:21px;font-weight:600;letter-spacing:0.231px;color:var(--ink);margin-bottom:40px;transition:color .25s;">Zo werkt het</p>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:32px;text-align:left;">
+    <div class="howto-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:32px;text-align:left;">
       <div>
         <p style="font-size:17px;font-weight:600;color:var(--ink);margin-bottom:8px;transition:color .25s;">Vul je bestemming in</p>
         <p style="font-size:15px;color:var(--body-muted);line-height:1.5;transition:color .25s;">Waar ga je naartoe? Qurb zoekt alle parkeeropties in de buurt — van straatparkeren tot garages.</p>
@@ -833,6 +889,8 @@ checkbox.addEventListener('change', () => {
 /* ── Utilities ── */
 const eur    = new Intl.NumberFormat('nl-NL',{style:'currency',currency:'EUR'});
 const round2 = x => Math.round((x + Number.EPSILON)*100)/100;
+/* Escape tekst uit externe bronnen (PDOK) voordat die in innerHTML belandt. */
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 function toInput(d){
   const p = n => String(n).padStart(2,'0');
   return `${d.getFullYear()}-${p(d.getMonth()+1)}-${p(d.getDate())}T${p(d.getHours())}:${p(d.getMinutes())}`;
@@ -857,12 +915,114 @@ syncTot();
 const addr   = document.getElementById('addr');
 const sugBox = document.getElementById('suggest');
 const found  = document.getElementById('found');
-let tmr = null, gekozenStad = '';
+let tmr = null, gekozenStad = '', gekozenCoord = null;
 
 function stadUit(naam){
   if(!naam) return '';
   const deel = naam.split(',').pop().trim();
   return deel.replace(/^\s*\d{4}\s?[A-Za-z]{2}\s*/,'').trim();
+}
+
+/* Gekozen stad (RDW areamanager-id) + gemeente-kaart + per-stad datacache. */
+let gekozenStadId = null, gemeentenMap = null;
+const stadCache = {};
+
+async function laadGemeenten(){
+  if(gemeentenMap) return gemeentenMap;
+  try{ const r=await fetch('data/gemeenten.json'); gemeentenMap = r.ok ? ((await r.json()).gemeenten||{}) : {}; }
+  catch(e){ gemeentenMap = {}; }
+  return gemeentenMap;
+}
+/* Per gemeente: aantal betaalde zones (om valse 'gratis' te voorkomen). */
+let dekkingMap = null;
+async function laadDekking(){
+  if(dekkingMap) return dekkingMap;
+  try{ const r=await fetch('data/dekking.json'); dekkingMap = r.ok ? ((await r.json()).betaald_zones||{}) : {}; }
+  catch(e){ dekkingMap = {}; }
+  return dekkingMap;
+}
+
+/* Coordinaat (WGS84) + gemeente van een PDOK-adres ophalen. */
+async function haalAdres(id){
+  try{
+    const r = await fetch('https://api.pdok.nl/bzk/locatieserver/search/v3_1/lookup?fl=centroide_ll,gemeentenaam&id='+encodeURIComponent(id));
+    if(!r.ok) return null;
+    const j = await r.json();
+    const doc = j.response && j.response.docs && j.response.docs[0];
+    const m = doc && doc.centroide_ll && doc.centroide_ll.match(/POINT\(([-\d.]+) ([-\d.]+)\)/);
+    if(!m) return null;
+    return {lon:parseFloat(m[1]), lat:parseFloat(m[2]), gemeente:(doc.gemeentenaam||'')};
+  }catch(e){ return null; }
+}
+async function bepaalStadId(gemeente){
+  const m = await laadGemeenten();
+  return m[(gemeente||'').toLowerCase().trim()] || null;
+}
+/* Nettere weergavenaam voor een paar gemeenten. */
+const STAD_WEERGAVE = {"'s-gravenhage":"Den Haag"};
+function weergaveStad(s){ return STAD_WEERGAVE[(s||'').toLowerCase().trim()] || s; }
+
+/* Per-stad lazy loaders (data/<areamanagerid>/...). */
+function _stad(id){ return stadCache[id] || (stadCache[id]={straat:null,verg:null,gar:null}); }
+async function laadStraat(id){
+  if(!id) return []; const c=_stad(id);
+  if(c.straat===null){ try{const r=await fetch(`data/${id}/straat.json`); c.straat=r.ok?((await r.json()).zones||[]):[];}catch(e){c.straat=[];} }
+  return c.straat;
+}
+async function laadGaragesStad(id){
+  if(!id) return []; const c=_stad(id);
+  if(c.gar===null){ try{const r=await fetch(`data/${id}/garages.json`); c.gar=r.ok?((await r.json()).garages||[]):[];}catch(e){c.gar=[];} }
+  return c.gar;
+}
+async function laadVergunningStad(id){
+  if(!id) return []; const c=_stad(id);
+  if(c.verg===null){ try{const r=await fetch(`data/${id}/vergunning.json`); c.verg=r.ok?((await r.json()).zones||[]):[];}catch(e){c.verg=[];} }
+  return c.verg;
+}
+
+/* Hemelsbrede afstand in meters (haversine). */
+function afstandM(a,b){
+  const R=6371000, t=x=>x*Math.PI/180;
+  const dLat=t(b.lat-a.lat), dLon=t(b.lon-a.lon);
+  const s=Math.sin(dLat/2)**2 + Math.cos(t(a.lat))*Math.cos(t(b.lat))*Math.sin(dLon/2)**2;
+  return Math.round(R*2*Math.atan2(Math.sqrt(s),Math.sqrt(1-s)));
+}
+
+/* Punt-in-polygon (ray casting). poly = [[lon,lat],...]; pt = {lon,lat}. */
+function puntInPolygon(pt, poly){
+  let inside=false;
+  for(let i=0,j=poly.length-1;i<poly.length;j=i++){
+    const xi=poly[i][0], yi=poly[i][1], xj=poly[j][0], yj=poly[j][1];
+    if(((yi>pt.lat)!==(yj>pt.lat)) && (pt.lon < (xj-xi)*(pt.lat-yi)/(yj-yi)+xi)) inside=!inside;
+  }
+  return inside;
+}
+/* Echt straattarief (€/uur) voor een punt op een tijdstip, of null buiten dekking. */
+async function straatTariefVoor(coord, start){
+  const zones = await laadStraat(gekozenStadId);
+  if(!zones.length) return null;
+  const treffers = zones.filter(z => (z.polys||[]).some(p => puntInPolygon(coord, p)));
+  if(!treffers.length) return null;
+  const wd   = start.getDay()===0 ? 7 : start.getDay();   // 1=ma .. 7=zo
+  const mins = start.getHours()*60 + start.getMinutes();
+  // Overlappende zone-varianten dragen verschillende producten (bv. dagvenster vs
+  // regulier uurtarief). Het hoogste passende tarief = het reguliere bezoekers-
+  // uurtarief; dat is wat een bezoeker per uur betaalt.
+  let eur=null, naam=null;
+  for(const z of treffers){
+    for(const w of z.vensters){
+      if(w.days.includes(wd) && mins>=w.from && mins<=w.to){
+        if(eur===null || w.eur>eur){ eur=w.eur; naam=z.naam; }
+      }
+    }
+  }
+  if(eur===null) return {eur:0, naam:treffers[0].naam, gratis:true};   // in zone, buiten betaald venster
+  return {eur, naam};
+}
+
+async function inVergunningZone(coord){
+  const z = await laadVergunningStad(gekozenStadId);
+  return z.some(x => (x.polys||[]).some(p => puntInPolygon(coord, p)));
 }
 
 const TARIEVEN = {
@@ -886,7 +1046,7 @@ function updateTariefWeergave(){
   if(!res){ huidigTarief=null; el.className='tarief-value empty'; el.innerHTML='Kies eerst een adres'; return; }
   huidigTarief = res.tarief;
   el.className = 'tarief-value';
-  el.innerHTML = `${eur.format(res.tarief)} <span class="tarief-bron">· ${res.bron}</span>`;
+  el.innerHTML = `${eur.format(res.tarief)} <span class="tarief-bron">· ${esc(res.bron)}</span>`;
 }
 
 addr.addEventListener('input',()=>{
@@ -909,13 +1069,22 @@ async function lookup(q){
       const el=document.createElement('div');
       el.className='suggest-item';
       el.textContent=d.weergavenaam;
-      el.addEventListener('click',()=>{
+      el.addEventListener('click',async ()=>{
         addr.value=d.weergavenaam;
         gekozenStad=stadUit(d.weergavenaam);
+        gekozenCoord=null; gekozenStadId=null;
         updateTariefWeergave();
         sugBox.classList.remove('open');
-        found.innerHTML=`<span class="found-tag">${d.weergavenaam}</span>`;
+        found.innerHTML=`<span class="found-tag">${esc(d.weergavenaam)}</span>`;
         found.style.display='block';
+        if(d.id){
+          const a = await haalAdres(d.id);
+          if(a){
+            gekozenCoord = {lon:a.lon, lat:a.lat};
+            gekozenStad  = a.gemeente || gekozenStad;
+            gekozenStadId = await bepaalStadId(a.gemeente);
+          }
+        }
       });
       sugBox.appendChild(el);
     });
@@ -990,7 +1159,7 @@ function showError(msg){
   resMount.innerHTML='';
 }
 
-function bereken(){
+async function bereken(){
   const start=new Date(document.getElementById('van').value);
   const eind =new Date(document.getElementById('tot').value);
   outLight.innerHTML='';
@@ -1000,53 +1169,119 @@ function bereken(){
   const ms=eind-start;
   if(ms<=0){showError('De eindtijd moet na de begintijd liggen.');return;}
 
-  const min=Math.round(ms/60000), uren=ms/3600000, basis=round2(huidigTarief*uren);
-  const rij=APPS.map(a=>({...a,fee:round2(a.fee(huidigTarief,uren)),totaal:round2(basis+round2(a.fee(huidigTarief,uren)))}))
+  // Live straattarief per zone (Amsterdam); anders het indicatieve gemeentecijfer.
+  let tarief=huidigTarief, tariefNaam=null, gratisStraat=false, dekking=true, vergunning=false, onzeker=false;
+  const stadKey=(gekozenStad||'').toLowerCase().trim();
+  if(gekozenStadId && gekozenCoord){
+    const st=await straatTariefVoor(gekozenCoord, start);
+    if(st && st.eur>0){ tarief=st.eur; tariefNaam=st.naam; }
+    else if(st){ tarief=0; gratisStraat=true; tariefNaam='Gratis op dit tijdstip · '+st.naam; }
+    else if(await inVergunningZone(gekozenCoord)){ tarief=0; vergunning=true; tariefNaam='Vergunninghoudersgebied'; }
+    else if(((await laadDekking())[gekozenStadId]||0) > 0){ tarief=0; onzeker=true; tariefNaam='Zone niet te bepalen'; }
+    else { tarief=0; gratisStraat=true; dekking=false; tariefNaam='Geen betaald straatparkeren gevonden'; }
+  }
+
+  const min=Math.round(ms/60000), uren=ms/3600000, basis=round2(tarief*uren);
+  const rij=APPS.map(a=>({...a,fee:round2(a.fee(tarief,uren)),totaal:round2(basis+round2(a.fee(tarief,uren)))}))
     .sort((x,y)=>x.totaal-y.totaal);
-  const goedkoopst=rij[0].totaal;
+  const goedkoopst=rij.length?rij[0].totaal:0;
 
   let html=`<section class="results-tile"><div class="tile-inner">
   <div class="summary-strip anim">
     <div class="summary-item"><div class="lab">Duur</div><div class="val">${duurTekst(min)}</div></div>
-    <div class="summary-item"><div class="lab">Basisprijs</div><div class="val">${eur.format(basis)}</div><div class="sub">Gelijk voor alle apps</div></div>
+    <div class="summary-item"><div class="lab">${vergunning||onzeker?'Straat':'Basisprijs'}</div><div class="val">${vergunning?'—':(onzeker?'?':(gratisStraat?'Gratis':eur.format(basis)))}</div><div class="sub">${tariefNaam?esc(tariefNaam)+(gratisStraat||vergunning||onzeker?'':' · '+eur.format(tarief)+'/uur'):'Gelijk voor alle apps'}</div></div>
   </div>
   <div class="results-group">
-    <div class="section-label">Op straat</div>
-    <div class="results-list">`;
+    <div class="section-label">Op straat</div>`;
 
-  rij.forEach((a,i)=>{
-    const best=a.totaal===goedkoopst, delta=round2(a.totaal-goedkoopst);
-    const feeTekst=a.fee===0?'geen servicekosten':`${eur.format(a.fee)} servicekosten`;
-    html+=`<div class="result-row anim" style="animation-delay:${(0.05*(i+1)).toFixed(2)}s">
-      <div><div class="row-name">${a.name}${best?'<span class="best-tag">goedkoopst</span>':''}</div><div class="row-sub">${a.rule}</div></div>
-      <div class="row-right"><div class="row-total">${eur.format(a.totaal)}</div>
-      <div class="row-delta ${!best&&delta>0?'higher':''}">${best?feeTekst:`+${eur.format(delta)}`}</div></div>
-    </div>`;
-  });
-  html+=`</div></div>`;
-
-  const stadKey=(gekozenStad||'').toLowerCase().trim();
-  const garages=GARAGES[stadKey];
-  html+=`<div class="results-group"><div class="section-label">Garages${gekozenStad?' in '+gekozenStad:''}</div>`;
-
-  if(!garages){
-    html+=`<div class="info-box anim" style="animation-delay:0.3s">Geen garagedata voor ${gekozenStad||'deze plaats'}. In de volledige versie komen alle garages live uit de open parkeerdata van de RDW.</div>`;
+  if(vergunning){
+    html+=`<div class="info-box anim">Hier geldt <strong>vergunninghoudersparkeren</strong>. Als bezoeker kun je op straat doorgaans niet parkeren — kies een garage hieronder, of controleer of er een bezoekersregeling geldt.</div>`;
+  } else if(onzeker){
+    html+=`<div class="info-box anim">Deze gemeente kent <strong>betaald parkeren</strong>, maar we konden de zone op dit punt niet bepalen — de open parkeerdata is hier onvolledig. Controleer de <strong>automaat of je parkeerapp</strong> voor het juiste tarief en de zonecode.</div>`;
+  } else if(gratisStraat){
+    html+=`<div class="info-box anim">${dekking
+      ?'Op dit tijdstip is betaald straatparkeren hier niet van kracht — je parkeert gratis.'
+      :'Hier vonden we geen betaald of vergunningregime in de RDW-data. Waarschijnlijk parkeer je hier gratis — controleer het bord ter plekke.'}</div>`;
   } else {
-    const grij=garages.map(g=>({...g,kosten:garageKosten(g,uren),status:vrijStatus(g)}))
-      .sort((a,b)=>(a.vrij===0)-(b.vrij===0)||a.kosten-b.kosten);
-    const beste=grij.find(g=>g.vrij>0);
     html+=`<div class="results-list">`;
-    grij.forEach((g,i)=>{
-      const best=g===beste, dc=dotClass(g.status);
-      const vrijTekst=g.vrij===0?'vol':`${g.status} · ${g.vrij} vrij`;
+    rij.forEach((a,i)=>{
+      const best=a.totaal===goedkoopst, delta=round2(a.totaal-goedkoopst);
+      const feeTekst=a.fee===0?'geen servicekosten':`${eur.format(a.fee)} servicekosten`;
       html+=`<div class="result-row anim" style="animation-delay:${(0.05*(i+1)).toFixed(2)}s">
-        <div><div class="row-name">${g.naam}${best?'<span class="best-tag">goedkoopst</span>':''}</div>
-        <div class="row-sub">${g.exploitant} · ${afstandTekst(g.afstand)} · ${eur.format(g.uur)}/uur, max ${eur.format(g.dagmax)}/dag</div></div>
-        <div class="row-right"><div class="row-total">${eur.format(g.kosten)}</div>
-        <div class="row-delta"><span class="avail"><span class="avail-dot ${dc}"></span>${vrijTekst}</span></div></div>
+        <div><div class="row-name">${a.name}${best?'<span class="best-tag">goedkoopst</span>':''}</div><div class="row-sub">${a.rule}</div></div>
+        <div class="row-right"><div class="row-total">${eur.format(a.totaal)}</div>
+        <div class="row-delta ${!best&&delta>0?'higher':''}">${best?feeTekst:`+${eur.format(delta)}`}</div></div>
       </div>`;
     });
-    html+=`</div><div class="info-box anim" style="animation-delay:0.4s">Echte garagenamen en exploitanten. Tarieven zijn indicatief en beschikbaarheid gesimuleerd. Bij een garage betaal je het exploitantstarief zonder app-servicekosten.</div>`;
+    html+=`</div>`;
+  }
+  html+=`</div>`;
+
+  html+=`<div class="results-group"><div class="section-label">Garages &amp; terreinen${gekozenStad?' in '+esc(weergaveStad(gekozenStad)):''}</div>`;
+
+  // Steden met RDW-data: echte live garages; overige: voorlopige tabel als fallback.
+  let amsGar = null;
+  if(gekozenStadId){
+    const data = await laadGaragesStad(gekozenStadId);
+    if(data && data.length) amsGar = data;
+  }
+
+  if(amsGar){
+    const TYPE={'Terreinparkeren':'terrein','P+R':'P+R','Carpoolparkeren':'carpool'};
+    const grij = amsGar.map(g=>{
+        const heeftTarief = g.uur!=null && g.uur>0;   // €0 = onbekend/gratis-venster, niet tonen als prijs
+        const dagmax = heeftTarief ? (g.dagmax!=null ? g.dagmax : round2(g.uur*24)) : null;
+        return {
+          naam:g.naam, operator:g.operator||'—', capaciteit:g.capaciteit, url:g.url, soort:TYPE[g.type]||null,
+          afstand: gekozenCoord ? afstandM(gekozenCoord, g) : null,
+          uur:g.uur, dagmax,
+          kosten: heeftTarief ? garageKosten({uur:g.uur, dagmax}, uren) : null
+        };
+      })
+      .sort((a,b)=> ((a.afstand??1e9)-(b.afstand??1e9)) || ((a.kosten??1e9)-(b.kosten??1e9)));  // op afstand
+    const toon = grij.slice(0, 18);
+    const metTarief = toon.filter(g=>g.kosten!=null);
+    const goedkoopsteG = metTarief.length ? Math.min(...metTarief.map(g=>g.kosten)) : null;
+    html+=`<div class="results-list">`;
+    toon.forEach((g,i)=>{
+      const heeft = g.kosten!=null;
+      const best  = heeft && g.kosten===goedkoopsteG;
+      const afst  = g.afstand!=null ? afstandTekst(g.afstand)+' · ' : '';
+      const cap   = g.capaciteit ? `${g.capaciteit} plaatsen` : '';
+      const srt   = g.soort ? g.soort+' · ' : '';
+      const sub   = srt + (heeft ? `${eur.format(g.uur)}/uur, max ${eur.format(g.dagmax)}/dag` : 'tarief bij exploitant');
+      const rechts= heeft ? eur.format(g.kosten)
+                   : (g.url ? `<a href="https://${esc(g.url)}" target="_blank" rel="noopener" style="font-size:15px;color:var(--primary-on-dark);text-decoration:none">tarief&nbsp;&rarr;</a>` : '—');
+      html+=`<div class="result-row anim" style="animation-delay:${(0.05*(Math.min(i,12)+1)).toFixed(2)}s">
+        <div><div class="row-name">${esc(g.naam)}${best?'<span class="best-tag">goedkoopst</span>':''}</div>
+        <div class="row-sub">${esc(g.operator)} · ${afst}${sub}</div></div>
+        <div class="row-right"><div class="row-total">${rechts}</div>
+        <div class="row-delta">${cap}</div></div>
+      </div>`;
+    });
+    const meer = grij.length - toon.length;
+    html+=`</div><div class="info-box anim" style="animation-delay:0.4s">Dichtstbijzijnde ${toon.length} garages${meer>0?` (${meer} verder weg niet getoond)`:''}. Live locaties en tarieven uit de open parkeerdata van de RDW (CC-0). Garages zonder gepubliceerd tarief (o.a. Q-Park) tonen we met een link naar de exploitant. Vrije plekken volgen later.</div>`;
+  } else {
+    const garages=GARAGES[stadKey];
+    if(!garages){
+      html+=`<div class="info-box anim" style="animation-delay:0.3s">Geen garagedata voor ${esc(gekozenStad)||'deze plaats'}. In de volledige versie komen alle garages live uit de open parkeerdata van de RDW.</div>`;
+    } else {
+      const grij=garages.map(g=>({...g,kosten:garageKosten(g,uren),status:vrijStatus(g)}))
+        .sort((a,b)=>(a.vrij===0)-(b.vrij===0)||a.kosten-b.kosten);
+      const beste=grij.find(g=>g.vrij>0);
+      html+=`<div class="results-list">`;
+      grij.forEach((g,i)=>{
+        const best=g===beste, dc=dotClass(g.status);
+        const vrijTekst=g.vrij===0?'vol':`${g.status} · ${g.vrij} vrij`;
+        html+=`<div class="result-row anim" style="animation-delay:${(0.05*(i+1)).toFixed(2)}s">
+          <div><div class="row-name">${g.naam}${best?'<span class="best-tag">goedkoopst</span>':''}</div>
+          <div class="row-sub">${g.exploitant} · ${afstandTekst(g.afstand)} · ${eur.format(g.uur)}/uur, max ${eur.format(g.dagmax)}/dag</div></div>
+          <div class="row-right"><div class="row-total">${eur.format(g.kosten)}</div>
+          <div class="row-delta"><span class="avail"><span class="avail-dot ${dc}"></span>${vrijTekst}</span></div></div>
+        </div>`;
+      });
+      html+=`</div><div class="info-box anim" style="animation-delay:0.4s">Echte garagenamen en exploitanten. Tarieven zijn indicatief en beschikbaarheid gesimuleerd. Bij een garage betaal je het exploitantstarief zonder app-servicekosten.</div>`;
+    }
   }
   html+=`</div></div></section>`;
   resMount.innerHTML=html;
