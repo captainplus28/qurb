@@ -1045,7 +1045,7 @@
       const sub = (g.kind ? `${g.kind} · ` : '') + (g.cost != null ? `${eur.format(g.hourly)}/uur, max ${eur.format(g.dayMax)}/dag` : 'tarief bij exploitant');
       const safeUrl = g.url ? safeHttps(g.url) : null;
       const right = g.cost != null ? eur.format(g.cost)
-        : safeUrl ? html`<a class="row__link" href="${safeUrl}" target="_blank" rel="noopener">tarief →</a>` : '—';
+        : safeUrl ? raw(html`<a class="row__link" href="${safeUrl}" target="_blank" rel="noopener">tarief →</a>`) : '—';
       return html`<li class="row anim" style="animation-delay:${(0.05 * (Math.min(i, 12) + 1)).toFixed(2)}s">
         <div><p class="row__name">${g.name}${best ? raw('<span class="tag">goedkoopst</span>') : ''}</p><p class="row__sub">${g.operator} · ${raw(dist)}${sub}</p></div>
         <div class="row__right"><p class="row__total">${right}</p><p class="row__delta">${g.capacity ? `${g.capacity} plaatsen` : ''}</p></div>
