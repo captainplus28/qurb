@@ -74,7 +74,11 @@ def geometrie_socrata(areaid):
         polys += polys_from_wkt(r.get("areageometryastext",""))
     return polys
 
-def current_rate(interval_rates):
+# Een chargePeriod van >= 4 uur in één blok = feitelijk een dag-/bloktarief:
+# je betaalt het hele bedrag, ook al sta je er kort. Die zones markeren we apart.
+DAGBLOK_MIN = 240
+
+def current_interval(interval_rates):
     """Kies de intervalRate die nu geldig is en de basis-duurband dekt."""
     cands = [r for r in interval_rates
              if r.get("validityStartOfPeriod",0) <= NOW
@@ -84,24 +88,28 @@ def current_rate(interval_rates):
     flat = [r for r in cands if r.get("durationUntil",-1) in (-1, None)]
     r = (flat or cands)[0]
     if r.get("durationType") != "Minutes": return None
-    cp = r.get("chargePeriod") or 0
-    if cp <= 0: return None
-    return round(float(r["charge"]) / (cp/60.0), 2)
+    if (r.get("chargePeriod") or 0) <= 0: return None
+    return r
 
 def windows_for_zone(tariffs):
     out = []
     for t in tariffs:
-        eur = current_rate(t.get("intervalRates") or [])
-        if eur is None: continue
+        ir = current_interval(t.get("intervalRates") or [])
+        if ir is None: continue
+        cp = ir["chargePeriod"]; charge = round(float(ir["charge"]), 2)
         days = [DAYMAP[d] for d in t.get("validityDays",[]) if d in DAYMAP]
         if not days: continue
         vf, vu = t.get("validityFromTime",{}), t.get("validityUntilTime",{})
-        out.append({
+        w = {
             "days": days,
             "from": vf.get("h",0)*60 + vf.get("m",0),
             "to":   vu.get("h",0)*60 + vu.get("m",0),
-            "eur":  eur,
-        })
+            "eur":  round(charge / (cp/60.0), 2),   # uurtarief-equivalent (back-compat + sortering)
+        }
+        if cp >= DAGBLOK_MIN:   # vast dag-/bloktarief: bedrag geldt per blok, niet per uur
+            w["dag"] = charge
+            w["blok"] = cp
+        out.append(w)
     return out
 
 def main():

@@ -325,6 +325,16 @@
     .avail__dot--red    { background: #ff453a; }
     .info { background: var(--results-info-bg); border-radius: var(--radius-md); padding: 18px 22px; font-size: 14px; color: var(--results-muted); line-height: 1.6; margin-block-start: 14px; }
     .info strong { color: var(--results-text); }
+    /* Day-tariff warning — deliberately loud (red) on the dark tile. */
+    .warn {
+      display: flex; gap: 12px; align-items: flex-start;
+      background: rgba(255,69,58,.14); border: 1.5px solid rgba(255,69,58,.55);
+      border-radius: var(--radius-md); padding: 16px 18px;
+      font-size: 14px; line-height: 1.55; color: #ffc9c4; margin-block-end: 16px;
+    }
+    .warn svg { flex: none; margin-block-start: 1px; color: #ff6b61; }
+    .warn strong { color: #ff8d83; }
+    .warn b { color: #fff; font-weight: 700; }
     .report { margin-block-start: 16px; }
     .report__btn {
       display: inline-flex; align-items: center; gap: 7px;
@@ -765,17 +775,21 @@
 
     const weekday = start.getDay() === 0 ? 7 : start.getDay();     // 1=Mon … 7=Sun
     const minutes = start.getHours() * 60 + start.getMinutes();
-    let rate = null, label = null;
+    let rate = null, label = null, dayRate = null;
     for (const zone of hits) {
       for (const w of zone.vensters ?? []) {
-        if (w.days.includes(weekday) && minutes >= w.from && minutes <= w.to && (rate === null || w.eur > rate)) {
-          rate = w.eur; label = zone.naam;
+        if (!w.days.includes(weekday) || minutes < w.from || minutes > w.to) continue;
+        if (rate === null || w.eur > rate) { rate = w.eur; label = zone.naam; }
+        // A window billed as one big block (dag/blok) = flat day-tariff: you pay the whole
+        // amount even for a short stay. Surface the heaviest one as a warning.
+        if (w.dag != null && (!dayRate || w.dag > dayRate.amount)) {
+          dayRate = { amount: w.dag, blockMin: w.blok, label: zone.naam };
         }
       }
     }
     return rate === null
-      ? { rate: 0, label: hits[0].naam, free: true }   // in a zone, outside any paid window
-      : { rate, label };
+      ? { rate: 0, label: hits[0].naam, free: true, dayRate }   // in a zone, outside any paid window
+      : { rate, label, dayRate };
   }
   const inPermitZone = async (areaId, coord) =>
     (await loadPermitZones(areaId)).some((z) => inAnyPolygon(coord, z));
@@ -795,6 +809,7 @@
     }
 
     const street = await streetRateAt(place.areaId, place.coord, start);
+    if (street && street.dayRate)  return { kind: 'daytariff', tier, rate: street.rate, dayRate: street.dayRate, label: street.dayRate.label };
     if (street && street.rate > 0) return { kind: 'paid', tier, rate: street.rate, label: street.label };
     if (street)                    return { kind: 'free', tier, rate: 0, label: `Gratis op dit tijdstip · ${street.label}` };
     if (await inPermitZone(place.areaId, place.coord)) return { kind: 'permit', tier, rate: 0, label: 'Vergunninghoudersgebied' };
@@ -1006,8 +1021,20 @@
     if (busy) el.results.innerHTML = html`<div class="spinner" role="status">Parkeeropties berekenen…</div>`;
   };
 
+  // Loud red banner for day-tariff zones (e.g. Scheveningen/Centrum Dagtarief).
+  // These carry a high, often escalating street rate with a fixed day-maximum, so a
+  // per-hour comparison would mislead — we warn and point to a garage instead.
+  function dayTariffWarning(dayRate) {
+    const hours = Math.round(dayRate.blockMin / 60);
+    return html`<div class="warn anim" role="note">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      <span><strong>Let op: dagtarief-zone.</strong> In deze zone (<em>${dayRate.label}</em>) geldt een hoog straattarief met een <b>dagmaximum van ${eur.format(dayRate.amount)}</b> (blok van ${hours} uur). Ook kort parkeren kan hier flink oplopen — de exacte prijs staat op de automaat. Een nabije garage is vaak voordeliger.</span>
+    </div>`;
+  }
+
   function renderStreet(street, base, hours) {
     if (street.kind === 'unsupported') return html`<div class="info anim">Voor deze gemeente is het straattarief <strong>niet betrouwbaar</strong> uit de open RDW-data te bepalen — de zonegegevens zijn hier te onvolledig. We tonen daarom geen straatprijs. Controleer de <strong>automaat of je parkeerapp</strong> voor het juiste tarief; de garages hieronder kloppen wel.</div>`;
+    if (street.kind === 'daytariff') return dayTariffWarning(street.dayRate);
     if (street.kind === 'permit') return html`<div class="info anim">Hier geldt <strong>vergunninghoudersparkeren</strong>. Als bezoeker kun je op straat doorgaans niet parkeren — kies een garage hieronder, of controleer of er een bezoekersregeling geldt.</div>`;
     if (street.kind === 'uncertain') return html`<div class="info anim">Deze gemeente kent <strong>betaald parkeren</strong>, maar we konden de zone op dit punt niet bepalen — de open parkeerdata is hier onvolledig. Controleer de <strong>automaat of je parkeerapp</strong> voor het juiste tarief en de zonecode.</div>`;
     if (street.kind === 'free' || street.kind === 'nodata') {
@@ -1079,11 +1106,16 @@
   const FLAG = raw('<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>');
 
   function renderResults({ street, durationMin, base, hours, garages, start, end }) {
-    const summaryRight = street.kind === 'permit' ? '—'
+    const summaryLabel = street.kind === 'daytariff' ? 'Dagmaximum'
+      : ['permit', 'uncertain', 'unsupported'].includes(street.kind) ? 'Straat'
+      : 'Basisprijs';
+    const summaryRight = street.kind === 'daytariff' ? eur.format(street.dayRate.amount)
+      : street.kind === 'permit' ? '—'
       : street.kind === 'uncertain' || street.kind === 'unsupported' ? '?'
       : (street.kind === 'free' || street.kind === 'nodata') ? 'Gratis'
       : eur.format(base);
-    const summarySub = street.label
+    const summarySub = street.kind === 'daytariff' ? `${street.label} · hoog tarief, max per dag`
+      : street.label
       ? `${street.label}${['paid', 'indicative'].includes(street.kind) ? ` · ${eur.format(street.rate)}/uur` : ''}`
       : 'Gelijk voor alle apps';
     const cityLabel = state.place?.municipality ? ` in ${displayCity(state.place.municipality)}` : '';
@@ -1097,7 +1129,7 @@
         <div class="results__inner">
           <div class="summary anim">
             <div><p class="summary__label">Duur</p><p class="summary__value">${formatDuration(durationMin)}</p></div>
-            <div><p class="summary__label">${['permit', 'uncertain', 'unsupported'].includes(street.kind) ? 'Straat' : 'Basisprijs'}</p><p class="summary__value">${summaryRight}</p><p class="summary__sub">${summarySub}</p></div>
+            <div><p class="summary__label">${summaryLabel}</p><p class="summary__value">${summaryRight}</p><p class="summary__sub">${summarySub}</p></div>
           </div>
           <div class="group">
             <h2 class="group__label">Op straat</h2>
