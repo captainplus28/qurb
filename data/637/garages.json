@@ -2,7 +2,7 @@
  "areamanagerid": "637",
  "gemeente": "Zoetermeer",
  "bron": "RDW NPR Open Parkeerdata (CC-0)",
- "gegenereerd": "2026-06-05T09:36:26Z",
+ "gegenereerd": "2026-06-08T08:22:52Z",
  "garages": [
   {
    "naam": "Interparking Amsterdamstraat",
@@ -12,7 +12,7 @@
    "lat": 52.061053,
    "lon": 4.491309,
    "capaciteit": 495,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": 11.5
   },
   {
@@ -23,7 +23,7 @@
    "lat": 52.062394,
    "lon": 4.488582,
    "capaciteit": 297,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": 11.5
   },
   {
@@ -34,7 +34,7 @@
    "lat": 52.060808,
    "lon": 4.487829,
    "capaciteit": 448,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": 11.5
   },
   {
@@ -45,7 +45,7 @@
    "lat": 52.062806,
    "lon": 4.4944,
    "capaciteit": 581,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": 11.5
   },
   {
@@ -56,7 +56,7 @@
    "lat": 52.0626,
    "lon": 4.491337,
    "capaciteit": 456,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": 11.5
   },
   {
@@ -67,7 +67,7 @@
    "lat": 52.061524,
    "lon": 4.483849,
    "capaciteit": 656,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": 11.5
   },
   {
@@ -78,7 +78,7 @@
    "lat": 52.060393,
    "lon": 4.487418,
    "capaciteit": 307,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": 11.5
   },
   {
@@ -133,7 +133,7 @@
    "lat": 52.04735,
    "lon": 4.47355,
    "capaciteit": 416,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": null
   },
   {
@@ -144,7 +144,7 @@
    "lat": 52.046237,
    "lon": 4.491361,
    "capaciteit": 250,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": null
   },
   {
@@ -155,7 +155,7 @@
    "lat": 52.060383,
    "lon": 4.492771,
    "capaciteit": 261,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": 11.5
   },
   {
@@ -166,7 +166,7 @@
    "lat": 52.060735,
    "lon": 4.494145,
    "capaciteit": 117,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": 11.5
   },
   {
@@ -188,7 +188,7 @@
    "lat": 52.064249,
    "lon": 4.491509,
    "capaciteit": null,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": 11.5
   },
   {
