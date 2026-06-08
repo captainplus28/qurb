@@ -2,7 +2,7 @@
  "areamanagerid": "193",
  "gemeente": "Zwolle",
  "bron": "RDW NPR Open Parkeerdata (CC-0)",
- "gegenereerd": "2026-06-05T09:38:13Z",
+ "gegenereerd": "2026-06-08T08:24:41Z",
  "garages": [
   {
    "naam": "Emmawijk - Dek",
@@ -12,7 +12,7 @@
    "lat": 52.509209,
    "lon": 6.086367,
    "capaciteit": 100,
-   "uur": 0.0,
+   "uur": 2.2,
    "dagmax": null
   },
   {
