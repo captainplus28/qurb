@@ -99,6 +99,7 @@
     :where(a) { color: inherit; }
     :where(button) { font: inherit; cursor: pointer; }
     :where(ul) { list-style: none; padding: 0; }
+    [hidden] { display: none !important; }   /* beat explicit display on flex containers */
 
     /* Visible, consistent focus for keyboard users only. */
     :where(a, button, input, [tabindex], [role="option"]):focus-visible {
@@ -263,9 +264,13 @@
     .found::before { content: ""; inline-size: 6px; block-size: 6px; border-radius: 50%; background: var(--brand); }
 
     /* When (start: now / specific) */
-    .when { display: flex; align-items: center; gap: 8px; }
-    .when__now { background: none; border: 0; padding: 0; font: inherit; font-size: 14px; font-weight: 500; color: var(--ink); cursor: pointer; }
-    .when__now:hover { color: var(--brand-strong); }
+    .when { display: flex; align-items: center; }
+    .when__choice { display: flex; align-items: center; gap: 7px; }
+    .when__opt { background: none; border: 0; padding: 0; font: inherit; font-size: 14px; color: var(--muted-soft); cursor: pointer; white-space: nowrap; }
+    .when__opt[aria-pressed="true"] { color: var(--ink); font-weight: 500; }
+    .when__opt:hover { color: var(--brand-strong); }
+    .when__sep { color: var(--hairline); }
+    .when__at-wrap { display: flex; align-items: center; gap: 8px; min-inline-size: 0; }
     .when__at { font-size: 14px; }
     .when__reset { background: none; border: 0; padding: 0; font: inherit; font-size: 12px; color: var(--brand-strong); cursor: pointer; white-space: nowrap; }
 
@@ -481,16 +486,22 @@
           <div class="field field--when">
             <span class="field__label" id="when-label">Wanneer</span>
             <div class="when" aria-labelledby="when-label">
-              <button type="button" class="when__now" id="when-now" aria-pressed="true">Nu</button>
-              <input class="field__input when__at" id="start" type="datetime-local" hidden aria-label="Starttijd">
-              <button type="button" class="when__reset" id="when-reset" hidden>↺ nu</button>
+              <div class="when__choice" id="when-choice">
+                <button type="button" class="when__opt" id="when-now" aria-pressed="true">Nu</button>
+                <span class="when__sep" aria-hidden="true">·</span>
+                <button type="button" class="when__opt" id="when-specific" aria-pressed="false">Specifieke tijd</button>
+              </div>
+              <div class="when__at-wrap" id="when-at-wrap" hidden>
+                <input class="field__input when__at" id="start" type="datetime-local" aria-label="Starttijd">
+                <button type="button" class="when__reset" id="when-reset" aria-label="Terug naar nu">↺ Nu</button>
+              </div>
             </div>
           </div>
           <div class="field field--dur">
             <span class="field__label" id="dur-label">Hoe lang</span>
             <div class="dur" role="group" aria-labelledby="dur-label">
               <button type="button" class="dur__btn" id="dur-minus" aria-label="Korter parkeren">−</button>
-              <span class="dur__val" id="dur-val" aria-live="polite">2 uur</span>
+              <span class="dur__val" id="dur-val" aria-live="polite">1 uur</span>
               <button type="button" class="dur__btn" id="dur-plus" aria-label="Langer parkeren">+</button>
             </div>
           </div>
@@ -898,9 +909,12 @@
   const el = {
     form:      $('#search-form'),
     addr:      $('#addr'),
-    whenNow:   $('#when-now'),
-    whenReset: $('#when-reset'),
-    start:     $('#start'),
+    whenChoice: $('#when-choice'),
+    whenAtWrap: $('#when-at-wrap'),
+    whenNow:    $('#when-now'),
+    whenSpec:   $('#when-specific'),
+    whenReset:  $('#when-reset'),
+    start:      $('#start'),
     durVal:    $('#dur-val'),
     durMinus:  $('#dur-minus'),
     durPlus:   $('#dur-plus'),
@@ -915,31 +929,29 @@
   /* ════════════════════════════ When + duration ════════════════════════════
    * Default: start = "Nu" + a duration; end is derived (start + duration).
    * "Nu" can be swapped for a specific start time. Duration via stepper + presets. */
-  const STEPS = [15, 30, 45, 60, 90, 120, 150, 180, 240, 300, 360, 480, 600, 720, 960, 1440];
-  let durationMin = 120;       // default 2 uur
+  const MIN_DUR = 15, MAX_DUR = 1440, STEP_DUR = 15;   // 15 min … 24 u, in 15-min steps
+  let durationMin = 60;        // default 1 uur
   let startMode = 'now';       // 'now' | 'at'
 
   const durationLabelFull = (min) => (min >= 1440 ? 'Hele dag' : formatDuration(min));
 
   function renderDuration() {
     el.durVal.textContent = durationLabelFull(durationMin);
-    el.durMinus.disabled = durationMin <= STEPS[0];
-    el.durPlus.disabled = durationMin >= STEPS[STEPS.length - 1];
+    el.durMinus.disabled = durationMin <= MIN_DUR;
+    el.durPlus.disabled = durationMin >= MAX_DUR;
     el.presets.forEach((b) => b.setAttribute('aria-pressed', String(Number(b.dataset.min) === durationMin)));
   }
   function stepDuration(dir) {
-    let i = STEPS.indexOf(durationMin);
-    if (i === -1) i = STEPS.reduce((best, v, idx) => (Math.abs(v - durationMin) < Math.abs(STEPS[best] - durationMin) ? idx : best), 0);
-    durationMin = STEPS[Math.min(STEPS.length - 1, Math.max(0, i + dir))];
+    durationMin = Math.min(MAX_DUR, Math.max(MIN_DUR, durationMin + dir * STEP_DUR));
     renderDuration();
   }
   function setStartMode(mode) {
     startMode = mode;
     const now = mode === 'now';
-    el.whenNow.hidden = !now;
-    el.start.hidden = now;
-    el.whenReset.hidden = now;
+    el.whenChoice.hidden = !now;
+    el.whenAtWrap.hidden = now;
     el.whenNow.setAttribute('aria-pressed', String(now));
+    el.whenSpec.setAttribute('aria-pressed', String(!now));
     if (!now) {
       if (!el.start.value) el.start.value = toLocalInput(new Date());
       el.start.focus();
@@ -953,7 +965,8 @@
   function initWhenDuration() {
     el.durMinus.addEventListener('click', () => stepDuration(-1));
     el.durPlus.addEventListener('click', () => stepDuration(1));
-    el.whenNow.addEventListener('click', () => setStartMode('at'));
+    el.whenNow.addEventListener('click', () => setStartMode('now'));
+    el.whenSpec.addEventListener('click', () => setStartMode('at'));
     el.whenReset.addEventListener('click', () => setStartMode('now'));
     el.presets.forEach((b) => b.addEventListener('click', () => { durationMin = Number(b.dataset.min); renderDuration(); }));
     renderDuration();
