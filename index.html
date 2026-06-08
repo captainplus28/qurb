@@ -5,6 +5,75 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light">
   <meta name="description" content="Qurb vergelijkt wat je écht betaalt aan parkeren — straattarief, parkeer-apps en garages, met live open parkeerdata van de RDW. Peek before you park.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.qurb.nl/" />
+  <meta property="og:title" content="Qurb — Weet wat je écht betaalt aan parkeren">
+  <meta property="og:description" content="Vergelijk alle parkeer-apps in één oogopslag. Inclusief servicekosten van Parkmobile, EasyPark, Yellowbrick, ANWB en Q-Park. Gratis, geen account nodig.">
+  <meta property="og:url" content="https://www.qurb.nl">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://www.qurb.nl/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Qurb — Weet wat je écht betaalt aan parkeren">
+  <meta name="twitter:description" content="Vergelijk alle parkeer-apps in één oogopslag. Inclusief servicekosten van Parkmobile, EasyPark, Yellowbrick, ANWB en Q-Park. Gratis, geen account nodig.">
+  <meta name="twitter:image" content="https://www.qurb.nl/og-image.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "name": "Qurb",
+        "url": "https://www.qurb.nl",
+        "description": "Vergelijk parkeer-apps op prijs inclusief servicekosten. Live data van de RDW.",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "Web",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "EUR"
+        },
+        "areaServed": "NL"
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Wat is Qurb?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Qurb is een gratis parkeervergelijker die alle grote parkeer-apps vergelijkt op wat je écht betaalt, inclusief servicekosten."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Welke parkeer-apps vergelijkt Qurb?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Qurb vergelijkt Parkmobile, EasyPark, Yellowbrick, ANWB Parkeren en Q-Park."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is Qurb gratis?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Ja, Qurb is volledig gratis en vereist geen account."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Gebruikt Qurb live parkeerdata?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Ja, Qurb gebruikt open parkeerdata van de RDW."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
   <!-- Baseline CSP (also enforced at hosting level via _headers). -->
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://www.google-analytics.com https://www.googletagmanager.com; connect-src 'self' https://api.pdok.nl https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; base-uri 'self'; form-action 'self'; frame-ancestors 'none'">
   <title>Qurb — Weet wat je écht betaalt aan parkeren</title>
@@ -464,7 +533,7 @@
       <p class="hero__kicker">qurb · Peek <span class="kicker">before</span> you Park</p>
       <p class="hero__eyebrow">Parkeervergelijker · Nederland</p>
       <h1 class="hero__title">Weet wat je écht betaalt aan parkeren.</h1>
-      <p class="hero__sub">Zelfde plek, zelfde tijd — maar elke parkeer-app rekent zijn eigen servicekosten bovenop het gemeentetarief. Qurb maakt het verschil zichtbaar in één oogopslag.</p>
+      <p class="hero__sub">Parkmobile, EasyPark, Yellowbrick, ANWB Parkeren of Q-Park — elke app rekent andere servicekosten. Qurb vergelijkt ze allemaal op één plek, zodat jij de goedkoopste keuze maakt.</p>
     </section>
 
     <!-- Live regions: errors + results -->
@@ -499,7 +568,7 @@
     <!-- Apps -->
     <section class="section" id="apps">
       <p class="eyebrow">Gedekte apps</p>
-      <h2 class="title">We vergelijken de grote vijf.</h2>
+      <h2 class="title">Parkeer-apps vergelijken: de grote vijf</h2>
       <p class="lede">Van marktleider tot challenger — alle grote parkeer-apps in één overzicht.</p>
       <ul class="chips">
         <li class="chip"><span class="chip__dot" style="background:#FF4B00"></span>Parkmobile</li>
@@ -512,7 +581,7 @@
 
     <!-- CTA -->
     <section class="cta" id="over">
-      <h2>Parkeer nooit meer te duur.</h2>
+      <h2>Goedkoop parkeren begint met vergelijken</h2>
       <p>Qurb is gratis. Altijd. Geen account, geen gedoe.</p>
       <a class="btn" href="#vergelijker">Start vergelijking</a>
     </section>
@@ -523,9 +592,9 @@
       <section>
         <h2 class="footer__title">Ondersteuning</h2>
         <ul class="footer__links">
-          <li><a href="#over">Over Qurb</a></li>
-          <li><a href="#hoe">Hoe het werkt</a></li>
-          <li><a href="#vergelijker">Veelgestelde vragen</a></li>
+          <li><a href="/over">Over Qurb</a></li>
+          <li><a href="/hoe-het-werkt">Hoe het werkt</a></li>
+          <li><a href="/faq">Veelgestelde vragen</a></li>
         </ul>
       </section>
       <section>
@@ -539,8 +608,8 @@
       <section>
         <h2 class="footer__title">Qurb</h2>
         <ul class="footer__links">
-          <li><a href="#vergelijker">Privacy</a></li>
-          <li><a href="#vergelijker">Contact</a></li>
+          <li><a href="/privacy">Privacy</a></li>
+          <li><a href="/contact">Contact</a></li>
           <li><a href="https://github.com/captainplus28/qurb" rel="noopener" target="_blank">GitHub</a></li>
         </ul>
       </section>
