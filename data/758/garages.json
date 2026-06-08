@@ -2,7 +2,7 @@
  "areamanagerid": "758",
  "gemeente": "Breda",
  "bron": "RDW NPR Open Parkeerdata (CC-0)",
- "gegenereerd": "2026-06-05T08:32:52Z",
+ "gegenereerd": "2026-06-08T07:16:18Z",
  "garages": [
   {
    "naam": "Chasséparking",
@@ -89,7 +89,7 @@
    "lat": 51.575612,
    "lon": 4.762343,
    "capaciteit": null,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": 6.0
   },
   {
@@ -100,7 +100,7 @@
    "lat": 51.581302,
    "lon": 4.798806,
    "capaciteit": null,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": 6.0
   },
   {

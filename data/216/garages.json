@@ -2,7 +2,7 @@
  "areamanagerid": "216",
  "gemeente": "Culemborg",
  "bron": "RDW NPR Open Parkeerdata (CC-0)",
- "gegenereerd": "2026-06-05T08:33:20Z",
+ "gegenereerd": "2026-06-08T07:16:44Z",
  "garages": [
   {
    "naam": "P+R Parallelweg Oost",
@@ -12,7 +12,7 @@
    "lat": 51.946842,
    "lon": 5.227887,
    "capaciteit": 250,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": null
   },
   {
@@ -23,7 +23,7 @@
    "lat": 51.947977,
    "lon": 5.226854,
    "capaciteit": 47,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": null
   },
   {
@@ -34,7 +34,7 @@
    "lat": 51.95837,
    "lon": 5.227476,
    "capaciteit": 82,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": null
   },
   {
@@ -45,7 +45,7 @@
    "lat": 51.960565,
    "lon": 5.224781,
    "capaciteit": 125,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": null
   }
  ]

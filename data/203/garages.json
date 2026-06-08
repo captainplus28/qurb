@@ -2,7 +2,7 @@
  "areamanagerid": "203",
  "gemeente": "Barneveld",
  "bron": "RDW NPR Open Parkeerdata (CC-0)",
- "gegenereerd": "2026-06-05T08:29:54Z",
+ "gegenereerd": "2026-06-08T07:13:10Z",
  "garages": [
   {
    "naam": "De Vetkamp",
@@ -13,7 +13,7 @@
    "lon": 5.589045,
    "capaciteit": 170,
    "uur": null,
-   "dagmax": 0.0
+   "dagmax": null
   },
   {
    "naam": "Gowthorpeplein",
@@ -34,7 +34,7 @@
    "lat": 52.139025,
    "lon": 5.590491,
    "capaciteit": 50,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": null
   },
   {

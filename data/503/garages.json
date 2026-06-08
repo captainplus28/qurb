@@ -2,7 +2,7 @@
  "areamanagerid": "503",
  "gemeente": "Delft",
  "bron": "RDW NPR Open Parkeerdata (CC-0)",
- "gegenereerd": "2026-06-05T08:33:57Z",
+ "gegenereerd": "2026-06-08T07:17:25Z",
  "garages": [
   {
    "naam": "Interparking In de Hoven",
@@ -34,7 +34,7 @@
    "lat": 51.989435,
    "lon": 4.365975,
    "capaciteit": 150,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": null
   },
   {

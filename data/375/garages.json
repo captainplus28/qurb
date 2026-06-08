@@ -2,7 +2,7 @@
  "areamanagerid": "375",
  "gemeente": "Beverwijk",
  "bron": "RDW NPR Open Parkeerdata (CC-0)",
- "gegenereerd": "2026-06-05T08:31:22Z",
+ "gegenereerd": "2026-06-08T07:14:39Z",
  "garages": [
   {
    "naam": "Nederlandse Spoorwegen P+R Wijckermolen",
@@ -23,7 +23,7 @@
    "lat": 52.479111,
    "lon": 4.650249,
    "capaciteit": 420,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": 6.0
   }
  ]
