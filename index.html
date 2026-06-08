@@ -1115,13 +1115,13 @@
   };
 
   // Loud red banner for day-tariff zones (e.g. Scheveningen/Centrum Dagtarief).
-  // These carry a high, often escalating street rate with a fixed day-maximum, so a
-  // per-hour comparison would mislead — we warn and point to a garage instead.
+  // In these zones there is NO hourly option — you pay the full day amount the moment
+  // you park, even for a short stay. The city uses this deliberately to push visitors
+  // towards nearby garages instead of street parking.
   function dayTariffWarning(dayRate) {
-    const hours = Math.round(dayRate.blockMin / 60);
     return html`<div class="warn anim" role="note">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-      <span><strong>Let op: dagtarief-zone.</strong> In deze zone (<em>${dayRate.label}</em>) geldt een hoog straattarief met een <b>dagmaximum van ${eur.format(dayRate.amount)}</b> (blok van ${hours} uur). Ook kort parkeren kan hier flink oplopen — de exacte prijs staat op de automaat. Een nabije garage is vaak voordeliger.</span>
+      <span><strong>Let op: geen uurtarief beschikbaar.</strong> In deze zone (<em>${dayRate.label}</em>) kun je <b>niet per uur betalen</b> — je betaalt direct <b>${eur.format(dayRate.amount)} voor de hele dag</b>, ook bij een kort bezoek. Parkeer bij voorkeur in een nabije garage.</span>
     </div>`;
   }
 

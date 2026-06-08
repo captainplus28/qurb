@@ -74,21 +74,33 @@ def geometrie_socrata(areaid):
         polys += polys_from_wkt(r.get("areageometryastext",""))
     return polys
 
-# Een chargePeriod van >= 4 uur in één blok = feitelijk een dag-/bloktarief:
-# je betaalt het hele bedrag, ook al sta je er kort. Die zones markeren we apart.
-DAGBLOK_MIN = 240
+# Een chargePeriod van >= 8 uur in één blok = feitelijk een dagtarief:
+# je betaalt het hele dagbedrag direct, ook voor een kort bezoek, en er is
+# geen uur-optie beschikbaar. Zones met kortere blokken (bijv. 6 uur) hebben
+# naast het blok ook een per-minuuttarief — dat zijn gewone betaalzones.
+DAGBLOK_MIN = 480
 
 def current_interval(interval_rates):
-    """Kies de intervalRate die nu geldig is en de basis-duurband dekt."""
+    """Kies de meest representatieve intervalRate die nu geldig is.
+
+    Strategie: als er zowel een kort (per-minuut/uur) als een lang blok beschikbaar
+    zijn, kies dan het kortste — dat is het feitelijke uurtarief. Alleen als álle
+    open-eind-tarieven een lang blok zijn (>= DAGBLOK_MIN) spreken we van een
+    dagtarief-zone zonder uur-optie.
+    """
     cands = [r for r in interval_rates
              if r.get("validityStartOfPeriod",0) <= NOW
              and (r.get("validityEndOfPeriod") is None or r["validityEndOfPeriod"] > NOW)]
     if not cands: return None
     # voorkeur voor de open-eind duurband (durationUntil == -1), anders de eerste
     flat = [r for r in cands if r.get("durationUntil",-1) in (-1, None)]
-    r = (flat or cands)[0]
-    if r.get("durationType") != "Minutes": return None
-    if (r.get("chargePeriod") or 0) <= 0: return None
+    pool = flat or cands
+    # Onder de open-eind-tarieven: kies het kortste chargePeriod.
+    # Zo pakken we het uur-/minuuttarief als dat naast een dagtarief-blok bestaat.
+    pool = [r for r in pool if r.get("durationType") == "Minutes"
+            and (r.get("chargePeriod") or 0) > 0]
+    if not pool: return None
+    r = min(pool, key=lambda x: x["chargePeriod"])
     return r
 
 def windows_for_zone(tariffs):
