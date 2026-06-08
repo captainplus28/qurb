@@ -2,7 +2,7 @@
  "areamanagerid": "777",
  "gemeente": "Etten-Leur",
  "bron": "RDW NPR Open Parkeerdata (CC-0)",
- "gegenereerd": "2026-06-05T08:47:05Z",
+ "gegenereerd": "2026-06-08T07:31:26Z",
  "garages": [
   {
    "naam": "Centrum Ingang Oost, Ingang West",
@@ -23,7 +23,7 @@
    "lat": 51.575606,
    "lon": 4.635922,
    "capaciteit": 66,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": null
   },
   {
@@ -34,7 +34,7 @@
    "lat": 51.575059,
    "lon": 4.637611,
    "capaciteit": 96,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": null
   }
  ]

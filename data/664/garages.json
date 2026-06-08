@@ -2,7 +2,7 @@
  "areamanagerid": "664",
  "gemeente": "Goes",
  "bron": "RDW NPR Open Parkeerdata (CC-0)",
- "gegenereerd": "2026-06-05T08:49:25Z",
+ "gegenereerd": "2026-06-08T07:34:07Z",
  "garages": [
   {
    "naam": "Centrum",
@@ -34,7 +34,7 @@
    "lat": 51.496286,
    "lon": 3.894052,
    "capaciteit": 445,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": null
   },
   {
@@ -45,7 +45,7 @@
    "lat": 51.490112,
    "lon": 3.872187,
    "capaciteit": 1500,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": null
   },
   {
@@ -56,7 +56,7 @@
    "lat": 51.518904,
    "lon": 3.891515,
    "capaciteit": 171,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": null
   },
   {
@@ -67,7 +67,7 @@
    "lat": 51.512291,
    "lon": 3.888473,
    "capaciteit": 112,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": null
   },
   {
@@ -78,7 +78,7 @@
    "lat": 51.496463,
    "lon": 3.879364,
    "capaciteit": 141,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": null
   },
   {
@@ -89,7 +89,7 @@
    "lat": 51.484857,
    "lon": 3.904136,
    "capaciteit": null,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": 4.0
   },
   {

@@ -2,7 +2,7 @@
  "areamanagerid": "114",
  "gemeente": "Emmen",
  "bron": "RDW NPR Open Parkeerdata (CC-0)",
- "gegenereerd": "2026-06-05T08:45:41Z",
+ "gegenereerd": "2026-06-08T07:29:36Z",
  "garages": [
   {
    "naam": "P+R Emmen",
@@ -12,7 +12,7 @@
    "lat": 52.789701,
    "lon": 6.899127,
    "capaciteit": 32,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": null
   },
   {
