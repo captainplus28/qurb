@@ -2,7 +2,7 @@
  "areamanagerid": "119",
  "gemeente": "Meppel",
  "bron": "RDW NPR Open Parkeerdata (CC-0)",
- "gegenereerd": "2026-06-05T09:06:39Z",
+ "gegenereerd": "2026-06-08T07:51:55Z",
  "garages": [
   {
    "naam": "Keyserstroom",
@@ -45,7 +45,7 @@
    "lat": 52.705419,
    "lon": 6.180803,
    "capaciteit": 16,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": null
   },
   {
@@ -56,7 +56,7 @@
    "lat": 52.693431,
    "lon": 6.188228,
    "capaciteit": 107,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": null
   }
  ]

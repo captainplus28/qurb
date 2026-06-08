@@ -2,7 +2,7 @@
  "areamanagerid": "424",
  "gemeente": "Muiden",
  "bron": "RDW NPR Open Parkeerdata (CC-0)",
- "gegenereerd": "2026-06-05T09:07:11Z",
+ "gegenereerd": "2026-06-08T07:52:28Z",
  "garages": [
   {
    "naam": "Gooise Meren P+R P1 Muiden",
@@ -12,7 +12,7 @@
    "lat": 52.328901,
    "lon": 5.050351,
    "capaciteit": 175,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": null
   },
   {
@@ -23,7 +23,7 @@
    "lat": 52.327773,
    "lon": 5.062122,
    "capaciteit": 100,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": null
   },
   {
@@ -34,7 +34,7 @@
    "lat": 52.325816,
    "lon": 5.068829,
    "capaciteit": 154,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": null
   },
   {
@@ -45,7 +45,7 @@
    "lat": 52.330123,
    "lon": 5.056671,
    "capaciteit": 106,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": null
   },
   {
@@ -67,7 +67,7 @@
    "lat": 52.459823,
    "lon": 4.620431,
    "capaciteit": 181,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": null
   },
   {
@@ -78,7 +78,7 @@
    "lat": 52.453416,
    "lon": 4.622247,
    "capaciteit": 205,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": null
   },
   {
@@ -111,7 +111,7 @@
    "lat": 52.623686,
    "lon": 6.037228,
    "capaciteit": 77,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": null
   }
  ]

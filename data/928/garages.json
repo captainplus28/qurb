@@ -2,7 +2,7 @@
  "areamanagerid": "928",
  "gemeente": "Kerkrade",
  "bron": "RDW NPR Open Parkeerdata (CC-0)",
- "gegenereerd": "2026-06-05T09:01:47Z",
+ "gegenereerd": "2026-06-08T07:46:35Z",
  "garages": [
   {
    "naam": "Einderstraat",
@@ -12,7 +12,7 @@
    "lat": 50.862208,
    "lon": 6.063245,
    "capaciteit": 65,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": null
   },
   {
@@ -23,7 +23,7 @@
    "lat": 50.868462,
    "lon": 6.062801,
    "capaciteit": 74,
-   "uur": 0.0,
+   "uur": 0.73,
    "dagmax": null
   },
   {
@@ -34,7 +34,7 @@
    "lat": 50.860831,
    "lon": 6.056347,
    "capaciteit": 170,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": null
   },
   {
@@ -45,7 +45,7 @@
    "lat": 50.869289,
    "lon": 6.069218,
    "capaciteit": 60,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": null
   },
   {
@@ -56,7 +56,7 @@
    "lat": 50.865555,
    "lon": 6.065349,
    "capaciteit": 84,
-   "uur": 0.0,
+   "uur": 0.73,
    "dagmax": null
   },
   {
@@ -78,7 +78,7 @@
    "lat": 50.861908,
    "lon": 6.066071,
    "capaciteit": 50,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": null
   },
   {
@@ -89,7 +89,7 @@
    "lat": 50.865447,
    "lon": 6.065321,
    "capaciteit": 90,
-   "uur": 0.0,
+   "uur": 0.42,
    "dagmax": null
   },
   {
@@ -100,7 +100,7 @@
    "lat": 50.875631,
    "lon": 6.058901,
    "capaciteit": 25,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": null
   },
   {
@@ -111,7 +111,7 @@
    "lat": 50.860819,
    "lon": 6.056544,
    "capaciteit": 120,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": null
   },
   {
@@ -122,7 +122,7 @@
    "lat": 50.86765,
    "lon": 6.06341,
    "capaciteit": 45,
-   "uur": 0.0,
+   "uur": 0.48,
    "dagmax": null
   },
   {
@@ -133,7 +133,7 @@
    "lat": 50.866828,
    "lon": 6.062544,
    "capaciteit": 55,
-   "uur": 0.0,
+   "uur": 0.73,
    "dagmax": null
   }
  ]

@@ -2,7 +2,7 @@
  "areamanagerid": "80",
  "gemeente": "Leeuwarden",
  "bron": "RDW NPR Open Parkeerdata (CC-0)",
- "gegenereerd": "2026-06-05T09:02:21Z",
+ "gegenereerd": "2026-06-08T07:47:10Z",
  "garages": [
   {
    "naam": "Holland Casino B1",
@@ -13,7 +13,7 @@
    "lon": 5.773079,
    "capaciteit": 150,
    "uur": null,
-   "dagmax": 0.0
+   "dagmax": null
   },
   {
    "naam": "Holland Casino B2",
@@ -24,7 +24,7 @@
    "lon": 5.772478,
    "capaciteit": 84,
    "uur": null,
-   "dagmax": 0.0
+   "dagmax": null
   },
   {
    "naam": "Nederlandse Spoorwegen P+R Wijnhornsterstraat",

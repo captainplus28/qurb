@@ -2,7 +2,7 @@
  "areamanagerid": "546",
  "gemeente": "Leiden",
  "bron": "RDW NPR Open Parkeerdata (CC-0)",
- "gegenereerd": "2026-06-05T09:03:14Z",
+ "gegenereerd": "2026-06-08T07:48:07Z",
  "garages": [
   {
    "naam": "Garenmarkt",
@@ -34,7 +34,7 @@
    "lat": 52.159547,
    "lon": 4.478473,
    "capaciteit": 600,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": 12.0
   },
   {
@@ -89,7 +89,7 @@
    "lat": 52.166194,
    "lon": 4.505805,
    "capaciteit": 140,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": 10.0
   },
   {
