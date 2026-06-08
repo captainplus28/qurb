@@ -2,7 +2,7 @@
  "areamanagerid": "14",
  "gemeente": "Groningen",
  "bron": "RDW NPR Open Parkeerdata (CC-0)",
- "gegenereerd": "2026-06-05T08:51:24Z",
+ "gegenereerd": "2026-06-08T07:36:10Z",
  "garages": [
   {
    "naam": "APCOA Paddepoel",
@@ -12,7 +12,7 @@
    "lat": 53.230463,
    "lon": 6.545731,
    "capaciteit": 300,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": null
   },
   {
@@ -155,7 +155,7 @@
    "lat": 53.193098,
    "lon": 6.549578,
    "capaciteit": 1200,
-   "uur": 0.0,
+   "uur": 0.3,
    "dagmax": 20.0
   },
   {
@@ -331,7 +331,7 @@
    "lat": 53.224157,
    "lon": 6.573118,
    "capaciteit": null,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": 20.0
   },
   {
@@ -342,7 +342,7 @@
    "lat": 53.220378,
    "lon": 6.577471,
    "capaciteit": 1500,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": 20.0
   }
  ]
