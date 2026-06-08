@@ -2,7 +2,7 @@
  "areamanagerid": "385",
  "gemeente": "Edam-Volendam",
  "bron": "RDW NPR Open Parkeerdata (CC-0)",
- "gegenereerd": "2026-06-05T08:42:04Z",
+ "gegenereerd": "2026-06-08T07:25:53Z",
  "garages": [
   {
    "naam": "Parkeerterrein Haven",
@@ -12,7 +12,7 @@
    "lat": 52.491272,
    "lon": 5.069943,
    "capaciteit": 91,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": null
   },
   {
@@ -23,7 +23,7 @@
    "lat": 52.490661,
    "lon": 5.06243,
    "capaciteit": 238,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": null
   },
   {
@@ -34,7 +34,7 @@
    "lat": 52.492764,
    "lon": 5.064062,
    "capaciteit": 100,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": null
   }
  ]

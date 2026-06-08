@@ -2,7 +2,7 @@
  "areamanagerid": "384",
  "gemeente": "Diemen",
  "bron": "RDW NPR Open Parkeerdata (CC-0)",
- "gegenereerd": "2026-06-05T08:39:46Z",
+ "gegenereerd": "2026-06-08T07:23:37Z",
  "garages": [
   {
    "naam": "P+R Station Diemen",
@@ -12,7 +12,7 @@
    "lat": 52.345229,
    "lon": 4.967026,
    "capaciteit": 110,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": null
   },
   {
@@ -23,7 +23,7 @@
    "lat": 52.330269,
    "lon": 4.951637,
    "capaciteit": 77,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": null
   }
  ]

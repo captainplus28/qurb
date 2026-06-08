@@ -2,7 +2,7 @@
  "areamanagerid": "505",
  "gemeente": "Dordrecht",
  "bron": "RDW NPR Open Parkeerdata (CC-0)",
- "gegenereerd": "2026-06-05T08:41:54Z",
+ "gegenereerd": "2026-06-08T07:25:45Z",
  "garages": [
   {
    "naam": "APCOA Maasplaza",
@@ -12,7 +12,7 @@
    "lat": 51.809915,
    "lon": 4.655349,
    "capaciteit": 400,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": null
   },
   {

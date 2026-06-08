@@ -2,7 +2,7 @@
  "areamanagerid": "518",
  "gemeente": "Den Haag",
  "bron": "RDW NPR Open Parkeerdata (CC-0)",
- "gegenereerd": "2026-06-05T08:38:20Z",
+ "gegenereerd": "2026-06-08T07:22:05Z",
  "garages": [
   {
    "naam": "APCOA Havenkwartier",
@@ -12,7 +12,7 @@
    "lat": 52.094726,
    "lon": 4.26563,
    "capaciteit": 93,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": null
   },
   {
@@ -155,7 +155,7 @@
    "lat": 52.062768,
    "lon": 4.403608,
    "capaciteit": 207,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": 10.0
   },
   {
@@ -188,7 +188,7 @@
    "lat": 52.089868,
    "lon": 4.3698,
    "capaciteit": 212,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": null
   },
   {
@@ -232,7 +232,7 @@
    "lat": 52.039558,
    "lon": 4.245764,
    "capaciteit": 300,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": null
   },
   {
@@ -276,7 +276,7 @@
    "lat": 52.063934,
    "lon": 4.402669,
    "capaciteit": 240,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": 25.0
   },
   {

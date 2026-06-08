@@ -2,7 +2,7 @@
  "areamanagerid": "400",
  "gemeente": "Den Helder",
  "bron": "RDW NPR Open Parkeerdata (CC-0)",
- "gegenereerd": "2026-06-05T08:38:32Z",
+ "gegenereerd": "2026-06-08T07:22:17Z",
  "garages": [
   {
    "naam": "P1 Koninckshoek",
@@ -12,7 +12,7 @@
    "lat": 52.96067,
    "lon": 4.761692,
    "capaciteit": 120,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": null
   },
   {
@@ -23,7 +23,7 @@
    "lat": 52.957204,
    "lon": 4.765258,
    "capaciteit": 181,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": null
   },
   {
@@ -34,7 +34,7 @@
    "lat": 52.958977,
    "lon": 4.759871,
    "capaciteit": 107,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": null
   },
   {
@@ -45,7 +45,7 @@
    "lat": 52.957079,
    "lon": 4.764373,
    "capaciteit": 108,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": null
   }
  ]
