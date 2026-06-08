@@ -2,7 +2,7 @@
  "areamanagerid": "164",
  "gemeente": "Hengelo",
  "bron": "RDW NPR Open Parkeerdata (CC-0)",
- "gegenereerd": "2026-06-05T08:57:11Z",
+ "gegenereerd": "2026-06-08T07:41:57Z",
  "garages": [
   {
    "naam": "De Beurs",
@@ -23,7 +23,7 @@
    "lat": 52.263062,
    "lon": 6.772084,
    "capaciteit": 876,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": 4.0
   },
   {

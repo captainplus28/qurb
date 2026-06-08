@@ -2,7 +2,7 @@
  "areamanagerid": "353",
  "gemeente": "IJsselstein",
  "bron": "RDW NPR Open Parkeerdata (CC-0)",
- "gegenereerd": "2026-06-05T08:59:51Z",
+ "gegenereerd": "2026-06-08T07:44:46Z",
  "garages": [
   {
    "naam": "Eiteren",
@@ -12,7 +12,7 @@
    "lat": 52.022221,
    "lon": 5.044579,
    "capaciteit": 20,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": null
   },
   {
@@ -45,7 +45,7 @@
    "lat": 52.017588,
    "lon": 5.03851,
    "capaciteit": 225,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": null
   }
  ]

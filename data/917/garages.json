@@ -2,7 +2,7 @@
  "areamanagerid": "917",
  "gemeente": "Heerlen",
  "bron": "RDW NPR Open Parkeerdata (CC-0)",
- "gegenereerd": "2026-06-05T08:54:38Z",
+ "gegenereerd": "2026-06-08T07:39:27Z",
  "garages": [
   {
    "naam": "Interparking Maankwartier Centrum",
@@ -166,7 +166,7 @@
    "lat": 50.86767,
    "lon": 5.976791,
    "capaciteit": null,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": 8.5
   },
   {
