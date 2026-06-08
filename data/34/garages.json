@@ -2,7 +2,7 @@
  "areamanagerid": "34",
  "gemeente": "Almere",
  "bron": "RDW NPR Open Parkeerdata (CC-0)",
- "gegenereerd": "2026-06-05T08:19:48Z",
+ "gegenereerd": "2026-06-08T07:02:32Z",
  "garages": [
   {
    "naam": "Allround Parking Services WTC",
@@ -23,7 +23,7 @@
    "lat": 52.355843,
    "lon": 5.221213,
    "capaciteit": 100,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": null
   },
   {
@@ -45,7 +45,7 @@
    "lat": 52.377029,
    "lon": 5.242844,
    "capaciteit": 265,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": null
   },
   {

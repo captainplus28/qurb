@@ -2,7 +2,7 @@
  "areamanagerid": "484",
  "gemeente": "Alphen aan den Rijn",
  "bron": "RDW NPR Open Parkeerdata (CC-0)",
- "gegenereerd": "2026-06-05T08:20:03Z",
+ "gegenereerd": "2026-06-08T07:02:46Z",
  "garages": [
   {
    "naam": "ParkKing Baronie",
@@ -12,7 +12,7 @@
    "lat": 52.135437,
    "lon": 4.651256,
    "capaciteit": 450,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": 8.0
   },
   {

@@ -2,7 +2,7 @@
  "areamanagerid": "363",
  "gemeente": "Amsterdam",
  "bron": "RDW NPR Open Parkeerdata (CC-0)",
- "gegenereerd": "2026-06-05T08:25:13Z",
+ "gegenereerd": "2026-06-08T07:08:04Z",
  "garages": [
   {
    "naam": "APCOA Antarctica",
@@ -232,7 +232,7 @@
    "lat": 52.359656,
    "lon": 4.783157,
    "capaciteit": 550,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": null
   },
   {
@@ -562,7 +562,7 @@
    "lat": 52.331283,
    "lon": 4.87908,
    "capaciteit": 820,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": 50.0
   },
   {
@@ -595,7 +595,7 @@
    "lat": 52.353341,
    "lon": 4.931504,
    "capaciteit": 90,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": 30.0
   },
   {
@@ -639,7 +639,7 @@
    "lat": 52.335519,
    "lon": 4.922832,
    "capaciteit": 470,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": 35.0
   },
   {
@@ -782,6 +782,17 @@
    "lat": 52.313427,
    "lon": 4.954625,
    "capaciteit": 593,
+   "uur": null,
+   "dagmax": null
+  },
+  {
+   "naam": "Q-Park Bos en Lommer",
+   "operator": "Q-Park",
+   "type": "Garage parkeren",
+   "url": "www.q-park.nl",
+   "lat": 52.379246,
+   "lon": 4.845362,
+   "capaciteit": 497,
    "uur": null,
    "dagmax": null
   },

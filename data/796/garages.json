@@ -2,7 +2,7 @@
  "areamanagerid": "796",
  "gemeente": "'s-Hertogenbosch",
  "bron": "RDW NPR Open Parkeerdata (CC-0)",
- "gegenereerd": "2026-06-05T08:18:15Z",
+ "gegenereerd": "2026-06-08T07:00:58Z",
  "garages": [
   {
    "naam": "Nederlandse Spoorwegen P+R Magistratenlaan",
@@ -45,7 +45,7 @@
    "lat": 51.695123,
    "lon": 5.293918,
    "capaciteit": 74,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": null
   },
   {
@@ -56,7 +56,7 @@
    "lat": 51.685063,
    "lon": 5.278267,
    "capaciteit": 650,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": 12.5
   },
   {
@@ -67,7 +67,7 @@
    "lat": 51.684374,
    "lon": 5.278979,
    "capaciteit": 350,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": 12.5
   },
   {

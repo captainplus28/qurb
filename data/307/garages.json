@@ -2,7 +2,7 @@
  "areamanagerid": "307",
  "gemeente": "Amersfoort",
  "bron": "RDW NPR Open Parkeerdata (CC-0)",
- "gegenereerd": "2026-06-05T08:21:28Z",
+ "gegenereerd": "2026-06-08T07:04:15Z",
  "garages": [
   {
    "naam": "GPK-loket - ParkeerService Oliemolenkwartier",
@@ -34,7 +34,7 @@
    "lat": 52.162517,
    "lon": 5.397951,
    "capaciteit": 84,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": 5.0
   },
   {
@@ -56,7 +56,7 @@
    "lat": 52.171647,
    "lon": 5.370672,
    "capaciteit": 1070,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": 8.0
   },
   {
@@ -89,7 +89,7 @@
    "lat": 52.174266,
    "lon": 5.404785,
    "capaciteit": 236,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": null
   },
   {
@@ -100,7 +100,7 @@
    "lat": 52.1921,
    "lon": 5.434704,
    "capaciteit": 95,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": null
   },
   {
