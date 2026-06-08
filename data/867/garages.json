@@ -2,7 +2,7 @@
  "areamanagerid": "867",
  "gemeente": "Waalwijk",
  "bron": "RDW NPR Open Parkeerdata (CC-0)",
- "gegenereerd": "2026-06-05T09:31:53Z",
+ "gegenereerd": "2026-06-08T08:18:15Z",
  "garages": [
   {
    "naam": "P1 Parkeerterrein Unnaplein",
@@ -12,7 +12,7 @@
    "lat": 51.688261,
    "lon": 5.069066,
    "capaciteit": 225,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": 7.0
   },
   {
@@ -23,7 +23,7 @@
    "lat": 51.691951,
    "lon": 5.06375,
    "capaciteit": null,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": 4.8
   }
  ]

@@ -2,7 +2,7 @@
  "areamanagerid": "861",
  "gemeente": "Veldhoven",
  "bron": "RDW NPR Open Parkeerdata (CC-0)",
- "gegenereerd": "2026-06-05T09:30:18Z",
+ "gegenereerd": "2026-06-08T08:16:34Z",
  "garages": [
   {
    "naam": "Kerkplein Zeelst (Terrein, Veldhoven)",
@@ -12,7 +12,7 @@
    "lat": 51.42474,
    "lon": 5.41599,
    "capaciteit": 37,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": null
   },
   {
@@ -45,7 +45,7 @@
    "lat": 51.41859,
    "lon": 5.40865,
    "capaciteit": 137,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": null
   },
   {
@@ -56,7 +56,7 @@
    "lat": 51.42484,
    "lon": 5.41188,
    "capaciteit": 82,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": null
   },
   {
@@ -67,7 +67,7 @@
    "lat": 51.41579,
    "lon": 5.41598,
    "capaciteit": 41,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": null
   },
   {
@@ -78,7 +78,7 @@
    "lat": 51.42776,
    "lon": 5.39196,
    "capaciteit": 34,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": null
   },
   {
@@ -89,7 +89,7 @@
    "lat": 51.42713,
    "lon": 5.3931,
    "capaciteit": 47,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": null
   },
   {
@@ -100,7 +100,7 @@
    "lat": 51.41243,
    "lon": 5.39755,
    "capaciteit": 150,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": null
   },
   {
@@ -111,7 +111,7 @@
    "lat": 51.41243,
    "lon": 5.39755,
    "capaciteit": 85,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": null
   },
   {
@@ -122,7 +122,7 @@
    "lat": 51.41326,
    "lon": 5.40802,
    "capaciteit": 97,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": null
   },
   {
@@ -133,7 +133,7 @@
    "lat": 51.41453,
    "lon": 5.40743,
    "capaciteit": 100,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": null
   }
  ]

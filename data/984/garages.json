@@ -2,7 +2,7 @@
  "areamanagerid": "984",
  "gemeente": "Venray",
  "bron": "RDW NPR Open Parkeerdata (CC-0)",
- "gegenereerd": "2026-06-05T09:31:15Z",
+ "gegenereerd": "2026-06-08T08:17:32Z",
  "garages": [
   {
    "naam": "Centrumgarage",
@@ -23,7 +23,7 @@
    "lat": 51.526579,
    "lon": 5.972684,
    "capaciteit": 186,
-   "uur": 0.0,
+   "uur": 1.0,
    "dagmax": 3.0
   },
   {
@@ -45,7 +45,7 @@
    "lat": 51.528088,
    "lon": 5.976948,
    "capaciteit": 165,
-   "uur": 0.0,
+   "uur": 1.0,
    "dagmax": 3.0
   },
   {
@@ -56,7 +56,7 @@
    "lat": 51.527708,
    "lon": 5.972121,
    "capaciteit": 92,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": null
   },
   {
@@ -67,7 +67,7 @@
    "lat": 51.53018,
    "lon": 5.977516,
    "capaciteit": 127,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": null
   },
   {
@@ -78,7 +78,7 @@
    "lat": 51.522267,
    "lon": 5.970802,
    "capaciteit": 51,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": null
   },
   {
@@ -100,7 +100,7 @@
    "lat": 51.529534,
    "lon": 5.972733,
    "capaciteit": 101,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": null
   },
   {
@@ -111,7 +111,7 @@
    "lat": 51.52931,
    "lon": 5.973994,
    "capaciteit": 81,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": null
   }
  ]
