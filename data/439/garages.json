@@ -2,7 +2,7 @@
  "areamanagerid": "439",
  "gemeente": "Purmerend",
  "bron": "RDW NPR Open Parkeerdata (CC-0)",
- "gegenereerd": "2026-06-05T09:11:13Z",
+ "gegenereerd": "2026-06-08T07:56:33Z",
  "garages": [
   {
    "naam": "P+R Beatrixplein",
@@ -23,7 +23,7 @@
    "lat": 52.511076,
    "lon": 4.968069,
    "capaciteit": 54,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": null
   },
   {
@@ -34,7 +34,7 @@
    "lat": 52.503767,
    "lon": 4.953652,
    "capaciteit": 64,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": null
   },
   {
@@ -56,7 +56,7 @@
    "lat": 52.500728,
    "lon": 4.964176,
    "capaciteit": null,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": 4.0
   },
   {
@@ -67,7 +67,7 @@
    "lat": 52.49892,
    "lon": 4.961529,
    "capaciteit": null,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": 4.0
   },
   {
@@ -78,7 +78,7 @@
    "lat": 52.509955,
    "lon": 4.95238,
    "capaciteit": null,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": 25.0
   }
  ]

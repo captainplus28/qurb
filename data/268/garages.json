@@ -2,7 +2,7 @@
  "areamanagerid": "268",
  "gemeente": "Nijmegen",
  "bron": "RDW NPR Open Parkeerdata (CC-0)",
- "gegenereerd": "2026-06-05T09:08:42Z",
+ "gegenereerd": "2026-06-08T07:53:58Z",
  "garages": [
   {
    "naam": "Holland Casino",
@@ -45,7 +45,7 @@
    "lat": 51.836545,
    "lon": 5.800985,
    "capaciteit": 131,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": null
   },
   {
@@ -56,7 +56,7 @@
    "lat": 51.861969,
    "lon": 5.861608,
    "capaciteit": 30,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": null
   },
   {

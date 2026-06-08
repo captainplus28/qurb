@@ -2,7 +2,7 @@
  "areamanagerid": "575",
  "gemeente": "Noordwijk",
  "bron": "RDW NPR Open Parkeerdata (CC-0)",
- "gegenereerd": "2026-06-05T09:09:11Z",
+ "gegenereerd": "2026-06-08T07:54:26Z",
  "garages": [
   {
    "naam": "Centrum Vomar Bomstraat",
@@ -23,7 +23,7 @@
    "lat": 52.263712,
    "lon": 4.492139,
    "capaciteit": 200,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": 5.0
   }
  ]

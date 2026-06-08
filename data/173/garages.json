@@ -2,7 +2,7 @@
  "areamanagerid": "173",
  "gemeente": "Oldenzaal",
  "bron": "RDW NPR Open Parkeerdata (CC-0)",
- "gegenereerd": "2026-06-05T09:09:52Z",
+ "gegenereerd": "2026-06-08T07:55:14Z",
  "garages": [
   {
    "naam": "APCOA De Driehoek",
@@ -23,7 +23,7 @@
    "lat": 52.306666,
    "lon": 6.934785,
    "capaciteit": 180,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": null
   },
   {
