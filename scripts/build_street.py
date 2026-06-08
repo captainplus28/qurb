@@ -74,60 +74,34 @@ def geometrie_socrata(areaid):
         polys += polys_from_wkt(r.get("areageometryastext",""))
     return polys
 
-# Een chargePeriod van >= 8 uur in één blok = feitelijk een dagtarief:
-# je betaalt het hele dagbedrag direct, ook voor een kort bezoek, en er is
-# geen uur-optie beschikbaar. Zones met kortere blokken (bijv. 6 uur) hebben
-# naast het blok ook een per-minuuttarief — dat zijn gewone betaalzones.
-DAGBLOK_MIN = 480
-
-def current_interval(interval_rates):
-    """Kies de meest representatieve intervalRate die nu geldig is.
-
-    Strategie: als er zowel een kort (per-minuut/uur) als een lang blok beschikbaar
-    zijn, kies dan het kortste — dat is het feitelijke uurtarief. Alleen als álle
-    open-eind-tarieven een lang blok zijn (>= DAGBLOK_MIN) spreken we van een
-    dagtarief-zone zonder uur-optie.
-    """
+def current_rate(interval_rates):
+    """Kies de intervalRate die nu geldig is en de basis-duurband dekt."""
     cands = [r for r in interval_rates
              if r.get("validityStartOfPeriod",0) <= NOW
              and (r.get("validityEndOfPeriod") is None or r["validityEndOfPeriod"] > NOW)]
     if not cands: return None
     # voorkeur voor de open-eind duurband (durationUntil == -1), anders de eerste
     flat = [r for r in cands if r.get("durationUntil",-1) in (-1, None)]
-    pool = flat or cands
-    # Onder de open-eind-tarieven: kies het kortste chargePeriod.
-    # Zo pakken we het uur-/minuuttarief als dat naast een dagtarief-blok bestaat.
-    pool = [r for r in pool if r.get("durationType") == "Minutes"
-            and (r.get("chargePeriod") or 0) > 0]
-    if not pool: return None
-    r = min(pool, key=lambda x: x["chargePeriod"])
-    return r
+    r = (flat or cands)[0]
+    if r.get("durationType") != "Minutes": return None
+    cp = r.get("chargePeriod") or 0
+    if cp <= 0: return None
+    return round(float(r["charge"]) / (cp/60.0), 2)
 
 def windows_for_zone(tariffs):
     out = []
     for t in tariffs:
-        ir = current_interval(t.get("intervalRates") or [])
-        if ir is None: continue
-        cp = ir["chargePeriod"]; charge = round(float(ir["charge"]), 2)
+        eur = current_rate(t.get("intervalRates") or [])
+        if eur is None: continue
         days = [DAYMAP[d] for d in t.get("validityDays",[]) if d in DAYMAP]
         if not days: continue
         vf, vu = t.get("validityFromTime",{}), t.get("validityUntilTime",{})
-        w = {
+        out.append({
             "days": days,
             "from": vf.get("h",0)*60 + vf.get("m",0),
             "to":   vu.get("h",0)*60 + vu.get("m",0),
-            "eur":  round(charge / (cp/60.0), 2),   # uurtarief-equivalent (back-compat + sortering)
-        }
-        # Echt dagtarief: het blok is GROTER dan het parkeervenster + marge (30 min).
-        # Dit onderscheidt Den Haag T01I (cp=1020 > venster 900 min) van Amsterdam-zones
-        # waarbij cp precies gelijk is aan het venster (bijv. cp=600 voor 09:00-18:59).
-        # Bij Amsterdam betaal je het venster-tarief; bij Den Haag betaal je altijd de
-        # volledige dagprijs, ook bij een kort bezoek.
-        window_dur = w["to"] - w["from"]
-        if cp >= DAGBLOK_MIN and cp > window_dur + 30:
-            w["dag"] = charge
-            w["blok"] = cp
-        out.append(w)
+            "eur":  eur,
+        })
     return out
 
 def main():
