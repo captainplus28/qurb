@@ -118,7 +118,13 @@ def windows_for_zone(tariffs):
             "to":   vu.get("h",0)*60 + vu.get("m",0),
             "eur":  round(charge / (cp/60.0), 2),   # uurtarief-equivalent (back-compat + sortering)
         }
-        if cp >= DAGBLOK_MIN:   # vast dag-/bloktarief: bedrag geldt per blok, niet per uur
+        # Echt dagtarief: het blok is GROTER dan het parkeervenster + marge (30 min).
+        # Dit onderscheidt Den Haag T01I (cp=1020 > venster 900 min) van Amsterdam-zones
+        # waarbij cp precies gelijk is aan het venster (bijv. cp=600 voor 09:00-18:59).
+        # Bij Amsterdam betaal je het venster-tarief; bij Den Haag betaal je altijd de
+        # volledige dagprijs, ook bij een kort bezoek.
+        window_dur = w["to"] - w["from"]
+        if cp >= DAGBLOK_MIN and cp > window_dur + 30:
             w["dag"] = charge
             w["blok"] = cp
         out.append(w)
