@@ -2,7 +2,7 @@
  "areamanagerid": "599",
  "gemeente": "Rotterdam",
  "bron": "RDW NPR Open Parkeerdata (CC-0)",
- "gegenereerd": "2026-06-05T09:16:05Z",
+ "gegenereerd": "2026-06-08T08:01:30Z",
  "garages": [
   {
    "naam": "APCOA Blaak 16",
@@ -287,7 +287,7 @@
    "lat": 51.885571,
    "lon": 4.569489,
    "capaciteit": 508,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": null
   },
   {
@@ -298,7 +298,7 @@
    "lat": 51.920556,
    "lon": 4.558533,
    "capaciteit": 430,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": null
   },
   {
@@ -331,7 +331,7 @@
    "lat": 51.949404,
    "lon": 4.464408,
    "capaciteit": 80,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": null
   },
   {
@@ -342,7 +342,7 @@
    "lat": 51.894989,
    "lon": 4.533083,
    "capaciteit": 322,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": null
   },
   {
@@ -353,7 +353,7 @@
    "lat": 51.931883,
    "lon": 4.564271,
    "capaciteit": 102,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": null
   },
   {
@@ -375,7 +375,7 @@
    "lat": 51.879798,
    "lon": 4.529345,
    "capaciteit": 236,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": null
   },
   {

@@ -2,7 +2,7 @@
  "areamanagerid": "603",
  "gemeente": "Rijswijk",
  "bron": "RDW NPR Open Parkeerdata (CC-0)",
- "gegenereerd": "2026-06-05T09:12:06Z",
+ "gegenereerd": "2026-06-08T07:57:27Z",
  "garages": [
   {
    "naam": "P+R Station Rijswijk",
@@ -12,7 +12,7 @@
    "lat": 52.039261,
    "lon": 4.320236,
    "capaciteit": 48,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": null
   },
   {

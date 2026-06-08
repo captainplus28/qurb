@@ -2,7 +2,7 @@
  "areamanagerid": "597",
  "gemeente": "Ridderkerk",
  "bron": "RDW NPR Open Parkeerdata (CC-0)",
- "gegenereerd": "2026-06-05T09:11:38Z",
+ "gegenereerd": "2026-06-08T07:56:59Z",
  "garages": [
   {
    "naam": "Interparking Jorishof",
@@ -34,7 +34,7 @@
    "lat": 51.886139,
    "lon": 4.617814,
    "capaciteit": 151,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": null
   },
   {
@@ -45,7 +45,7 @@
    "lat": 51.859792,
    "lon": 4.627853,
    "capaciteit": 40,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": null
   },
   {

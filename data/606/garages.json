@@ -2,7 +2,7 @@
  "areamanagerid": "606",
  "gemeente": "Schiedam",
  "bron": "RDW NPR Open Parkeerdata (CC-0)",
- "gegenereerd": "2026-06-05T09:16:28Z",
+ "gegenereerd": "2026-06-08T08:01:53Z",
  "garages": [
   {
    "naam": "Centrummanagement Nieuwe Passage",
@@ -12,7 +12,7 @@
    "lat": 51.914491,
    "lon": 4.401779,
    "capaciteit": 280,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": 15.0
   },
   {
@@ -34,7 +34,7 @@
    "lat": 51.918733,
    "lon": 4.401101,
    "capaciteit": 325,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": 15.0
   },
   {
@@ -56,7 +56,7 @@
    "lat": 51.923321,
    "lon": 4.377816,
    "capaciteit": 730,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": 12.0
   },
   {
@@ -89,7 +89,7 @@
    "lat": 51.908207,
    "lon": 4.372793,
    "capaciteit": 88,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": null
   },
   {

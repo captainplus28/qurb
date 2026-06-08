@@ -2,7 +2,7 @@
  "areamanagerid": "612",
  "gemeente": "Spijkenisse",
  "bron": "RDW NPR Open Parkeerdata (CC-0)",
- "gegenereerd": "2026-06-05T09:19:21Z",
+ "gegenereerd": "2026-06-08T08:04:51Z",
  "garages": [
   {
    "naam": "Boekenberg",
@@ -78,7 +78,7 @@
    "lat": 51.845863,
    "lon": 4.332853,
    "capaciteit": 269,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": null
   },
   {
@@ -89,7 +89,7 @@
    "lat": 51.833002,
    "lon": 4.317735,
    "capaciteit": 326,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": null
   },
   {
@@ -100,7 +100,7 @@
    "lat": 51.837071,
    "lon": 4.332179,
    "capaciteit": 245,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": null
   },
   {
@@ -111,7 +111,7 @@
    "lat": 51.840196,
    "lon": 4.331245,
    "capaciteit": 121,
-   "uur": 0.0,
+   "uur": null,
    "dagmax": null
   },
   {
