@@ -4,79 +4,30 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light">
-  <meta name="description" content="Qurb vergelijkt wat je écht betaalt aan parkeren — straattarief, parkeer-apps en garages, met live open parkeerdata van de RDW. Peek before you park.">
+  <meta name="description" content="Vergelijk parkeer-apps in Rotterdam op prijs. Inclusief servicekosten van Parkmobile, EasyPark, Yellowbrick en meer. Gratis en zonder account.">
   <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://www.qurb.nl/" />
-  <meta property="og:title" content="Qurb — Weet wat je écht betaalt aan parkeren">
-  <meta property="og:description" content="Vergelijk alle parkeer-apps in één oogopslag. Inclusief servicekosten van Parkmobile, EasyPark, Yellowbrick, ANWB en Q-Park. Gratis, geen account nodig.">
-  <meta property="og:url" content="https://www.qurb.nl">
+  <link rel="canonical" href="https://www.qurb.nl/rotterdam" />
+  <meta property="og:title" content="Parkeerkosten vergelijken in Rotterdam — Qurb">
+  <meta property="og:description" content="Vergelijk parkeer-apps in Rotterdam op prijs. Inclusief servicekosten van Parkmobile, EasyPark, Yellowbrick en meer. Gratis en zonder account.">
+  <meta property="og:url" content="https://www.qurb.nl/rotterdam">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="https://www.qurb.nl/og-image.png">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Qurb — Weet wat je écht betaalt aan parkeren">
-  <meta name="twitter:description" content="Vergelijk alle parkeer-apps in één oogopslag. Inclusief servicekosten van Parkmobile, EasyPark, Yellowbrick, ANWB en Q-Park. Gratis, geen account nodig.">
-  <meta name="twitter:image" content="https://www.qurb.nl/og-image.png">
+  <!-- Baseline CSP (also enforced at hosting level via _headers). -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://www.google-analytics.com https://www.googletagmanager.com; connect-src 'self' https://api.pdok.nl https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; base-uri 'self'; form-action 'self'; frame-ancestors 'none'">
+  <title>Parkeerkosten vergelijken in Rotterdam — Qurb</title>
+
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "WebApplication",
-        "name": "Qurb",
-        "url": "https://www.qurb.nl",
-        "description": "Vergelijk parkeer-apps op prijs inclusief servicekosten. Live data van de RDW.",
-        "applicationCategory": "UtilitiesApplication",
-        "operatingSystem": "Web",
-        "offers": {
-          "@type": "Offer",
-          "price": "0",
-          "priceCurrency": "EUR"
-        },
-        "areaServed": "NL"
-      },
-      {
-        "@type": "FAQPage",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "Wat is Qurb?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Qurb is een gratis parkeervergelijker die alle grote parkeer-apps vergelijkt op wat je écht betaalt, inclusief servicekosten."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Welke parkeer-apps vergelijkt Qurb?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Qurb vergelijkt Parkmobile, EasyPark, Yellowbrick, ANWB Parkeren en Q-Park."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Is Qurb gratis?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Ja, Qurb is volledig gratis en vereist geen account."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Gebruikt Qurb live parkeerdata?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Ja, Qurb gebruikt open parkeerdata van de RDW."
-            }
-          }
-        ]
-      }
-    ]
+    "@type": "WebApplication",
+    "name": "Qurb",
+    "url": "https://www.qurb.nl/rotterdam",
+    "description": "Vergelijk parkeer-apps in Rotterdam op prijs. Inclusief servicekosten van Parkmobile, EasyPark, Yellowbrick en meer. Gratis en zonder account.",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Web",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
+    "areaServed": "Rotterdam"
   }
   </script>
-  <!-- Baseline CSP (also enforced at hosting level via _headers). -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://www.google-analytics.com https://www.googletagmanager.com; connect-src 'self' https://api.pdok.nl https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; base-uri 'self'; form-action 'self'; frame-ancestors 'none'">
-  <title>Qurb — Weet wat je écht betaalt aan parkeren</title>
 
   <!-- Google tag (gtag.js) -->
   <link rel="preconnect" href="https://www.googletagmanager.com">
@@ -95,31 +46,22 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
-    /* ───────────────────────── Design tokens ───────────────────────── */
     :root {
-      /* Brand. --brand is the accent (dots, icons, links, focus, borders).
-         --brand-strong backs text-bearing fills (buttons, ticker, CTA band)
-         and clears WCAG AA contrast for white text; --brand-active is press. */
       --brand:          #199646;
       --brand-strong:   #157a38;
       --brand-active:   #11602d;
       --brand-tint:     #e8f5ee;
-
       --ink:            #1d1d1f;
       --body:           #3f3f3f;
       --muted:          #595959;
       --muted-soft:     #6a6a6a;
-
       --hairline:       #dddddd;
       --hairline-soft:  #ebebeb;
       --border-strong:  #c1c1c1;
-
       --canvas:         #ffffff;
       --surface-soft:   #f7f7f7;
       --surface-strong: #f2f2f2;
       --on-brand:       #ffffff;
-
-      /* Dark results tile */
       --results-bg:       #18151f;
       --results-text:     #ffffff;
       --results-muted:    #b6b4bf;
@@ -129,93 +71,39 @@
       --results-link:     #7cc79a;
       --tag-bg:           #ffffff;
       --tag-ink:          #18151f;
-
       --danger-bg:      #fff5f5;
       --danger-border:  #ffd5d5;
       --danger-text:    #b3261e;
-
       --radius-sm:   8px;
       --radius-md:   14px;
       --radius-pill: 9999px;
-
       --shadow: rgba(0,0,0,.02) 0 0 0 1px, rgba(0,0,0,.04) 0 2px 6px, rgba(0,0,0,.10) 0 4px 8px;
-
       --font: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
       --measure: 60ch;
       --shell: 1280px;
       --tool: 860px;
     }
-
     *, *::before, *::after { box-sizing: border-box; }
     * { margin: 0; }
-
     html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
     }
-
-    body {
-      font-family: var(--font);
-      font-size: 16px;
-      line-height: 1.5;
-      color: var(--body);
-      background: var(--canvas);
-      -webkit-font-smoothing: antialiased;
-      text-rendering: optimizeLegibility;
-    }
-
+    body { font-family: var(--font); font-size: 16px; line-height: 1.5; color: var(--body); background: var(--canvas); -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
     :where(a) { color: inherit; }
     :where(button) { font: inherit; cursor: pointer; }
     :where(ul) { list-style: none; padding: 0; }
-
-    /* Visible, consistent focus for keyboard users only. */
-    :where(a, button, input, [tabindex], [role="option"]):focus-visible {
-      outline: 2px solid var(--brand);
-      outline-offset: 2px;
-      border-radius: var(--radius-sm);
-    }
-
-    .visually-hidden {
-      position: absolute; width: 1px; height: 1px;
-      padding: 0; margin: -1px; overflow: hidden;
-      clip: rect(0 0 0 0); white-space: nowrap; border: 0;
-    }
-    .skip-link {
-      position: absolute; inset-block-start: -100px; inset-inline-start: 12px;
-      z-index: 999; background: var(--canvas); color: var(--ink);
-      padding: 10px 16px; border-radius: var(--radius-sm); box-shadow: var(--shadow);
-      transition: inset-block-start .15s;
-    }
+    :where(a, button, input, [tabindex], [role="option"]):focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; border-radius: var(--radius-sm); }
+    .visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+    .skip-link { position: absolute; inset-block-start: -100px; inset-inline-start: 12px; z-index: 999; background: var(--canvas); color: var(--ink); padding: 10px 16px; border-radius: var(--radius-sm); box-shadow: var(--shadow); transition: inset-block-start .15s; }
     .skip-link:focus { inset-block-start: 12px; }
-
-    /* ───────────────────────── USP ticker ───────────────────────── */
-    .ticker {
-      background: var(--brand-strong);
-      color: var(--on-brand);
-      block-size: 40px;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-    }
-    .ticker__track {
-      display: flex;
-      align-items: center;
-      white-space: nowrap;
-      will-change: transform;
-      animation: ticker 32s linear infinite;
-    }
-    .ticker:hover .ticker__track,
-    .ticker:focus-within .ticker__track { animation-play-state: paused; }
-    .ticker__item {
-      display: inline-flex; align-items: center; gap: 10px;
-      padding-inline: 48px;
-      font-size: 13px; font-weight: 500; letter-spacing: .1px;
-    }
+    .ticker { background: var(--brand-strong); color: var(--on-brand); block-size: 40px; overflow: hidden; display: flex; align-items: center; }
+    .ticker__track { display: flex; align-items: center; white-space: nowrap; will-change: transform; animation: ticker 32s linear infinite; }
+    .ticker:hover .ticker__track, .ticker:focus-within .ticker__track { animation-play-state: paused; }
+    .ticker__item { display: inline-flex; align-items: center; gap: 10px; padding-inline: 48px; font-size: 13px; font-weight: 500; letter-spacing: .1px; }
     .ticker__dot { inline-size: 4px; block-size: 4px; border-radius: 50%; background: rgba(255,255,255,.55); }
     @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-
-    /* Kicker — "before" drives in and parks. Decorative; disabled for reduced motion. */
     .kicker { display: inline-block; animation: park 3s linear .3s both; }
     @keyframes park {
       0%   { transform: translateX(8em)    translateY(-1.61em) rotate(0deg);   opacity: 0; }
@@ -231,106 +119,42 @@
       97%  { transform: translateX(0.03em)  translateY(0) rotate(-0.4deg); }
       100% { transform: translateX(0)       translateY(0) rotate(0deg); }
     }
-
-    /* ───────────────────────── Top nav ───────────────────────── */
-    .nav {
-      position: sticky; inset-block-start: 0; z-index: 50;
-      background: var(--canvas);
-      border-block-end: 1px solid var(--hairline);
-      block-size: 80px;
-      display: flex; align-items: center;
-      padding-inline: 24px;
-    }
-    .nav__inner {
-      inline-size: 100%; max-inline-size: var(--shell); margin-inline: auto;
-      display: flex; align-items: center; justify-content: space-between; gap: 16px;
-    }
+    .nav { position: sticky; inset-block-start: 0; z-index: 50; background: var(--canvas); border-block-end: 1px solid var(--hairline); block-size: 80px; display: flex; align-items: center; padding-inline: 24px; }
+    .nav__inner { inline-size: 100%; max-inline-size: var(--shell); margin-inline: auto; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
     .nav__logo { font-size: 22px; font-weight: 700; color: var(--brand); text-decoration: none; letter-spacing: -.5px; }
     .nav__tabs { display: flex; gap: 4px; }
-    .nav__tab {
-      padding: 8px 16px; font-size: 16px; font-weight: 600; color: var(--muted-soft);
-      text-decoration: none; border-block-end: 2px solid transparent; white-space: nowrap;
-      transition: color .15s, border-color .15s;
-    }
+    .nav__tab { padding: 8px 16px; font-size: 16px; font-weight: 600; color: var(--muted-soft); text-decoration: none; border-block-end: 2px solid transparent; white-space: nowrap; transition: color .15s, border-color .15s; }
     .nav__tab[aria-current="page"] { color: var(--ink); border-block-end-color: var(--ink); }
     .nav__tab:hover { color: var(--ink); }
     .nav__right { display: flex; align-items: center; gap: 8px; }
-    .nav__link {
-      font-size: 14px; font-weight: 600; color: var(--ink); text-decoration: none;
-      padding: 8px 12px; border-radius: var(--radius-pill); transition: background .15s;
-    }
+    .nav__link { font-size: 14px; font-weight: 600; color: var(--ink); text-decoration: none; padding: 8px 12px; border-radius: var(--radius-pill); transition: background .15s; }
     .nav__link:hover { background: var(--surface-soft); }
-    .nav__account {
-      display: flex; align-items: center; gap: 8px;
-      border: 1px solid var(--hairline); border-radius: var(--radius-pill);
-      padding: 5px 5px 5px 12px; background: var(--canvas); transition: box-shadow .15s;
-    }
+    .nav__account { display: flex; align-items: center; gap: 8px; border: 1px solid var(--hairline); border-radius: var(--radius-pill); padding: 5px 5px 5px 12px; background: var(--canvas); transition: box-shadow .15s; }
     .nav__account:hover { box-shadow: var(--shadow); }
-    .nav__avatar {
-      inline-size: 32px; block-size: 32px; border-radius: 50%;
-      background: var(--ink); color: #fff; font-size: 13px; font-weight: 600;
-      display: grid; place-items: center;
-    }
-
-    /* ───────────────────────── Search ───────────────────────── */
     .search { background: var(--canvas); border-block-end: 1px solid var(--hairline-soft); padding: 16px 24px 20px; }
     .search__shell { max-inline-size: var(--tool); margin-inline: auto; container-type: inline-size; }
-    .search__bar {
-      display: flex; align-items: stretch;
-      background: var(--canvas); border: 1px solid var(--hairline);
-      border-radius: var(--radius-pill); box-shadow: var(--shadow);
-    }
-    .field {
-      flex: 1; min-inline-size: 0;
-      display: flex; flex-direction: column; justify-content: center;
-      padding: 8px 24px; border-inline-end: 1px solid var(--hairline);
-      transition: background .15s;
-    }
+    .search__bar { display: flex; align-items: stretch; background: var(--canvas); border: 1px solid var(--hairline); border-radius: var(--radius-pill); box-shadow: var(--shadow); }
+    .field { flex: 1; min-inline-size: 0; display: flex; flex-direction: column; justify-content: center; padding: 8px 24px; border-inline-end: 1px solid var(--hairline); transition: background .15s; }
     .field:first-child { border-start-start-radius: var(--radius-pill); border-end-start-radius: var(--radius-pill); }
     .field:last-of-type { border-inline-end: none; }
     .field:focus-within { background: var(--surface-soft); }
     .field--addr { flex: 2; position: relative; }
     .field__label { font-size: 12px; font-weight: 700; color: var(--ink); margin-block-end: 2px; }
-    .field__input {
-      inline-size: 100%; border: 0; outline: none; background: transparent;
-      font: inherit; font-size: 14px; color: var(--ink);
-    }
+    .field__input { inline-size: 100%; border: 0; outline: none; background: transparent; font: inherit; font-size: 14px; color: var(--ink); }
     .field__input::placeholder { color: var(--muted-soft); }
     .field__input[type="datetime-local"]::-webkit-calendar-picker-indicator { opacity: .45; cursor: pointer; }
-
-    .orb {
-      align-self: center; flex: none;
-      inline-size: 48px; block-size: 48px; margin-inline: 8px;
-      border: 0; border-radius: 50%; background: var(--brand-strong); color: #fff;
-      display: grid; place-items: center; transition: background .15s, transform .1s;
-    }
+    .orb { align-self: center; flex: none; inline-size: 48px; block-size: 48px; margin-inline: 8px; border: 0; border-radius: 50%; background: var(--brand-strong); color: #fff; display: grid; place-items: center; transition: background .15s, transform .1s; }
     .orb:hover { background: var(--brand-active); transform: scale(1.04); }
     .orb:active { transform: scale(.96); }
-
-    /* Autocomplete listbox */
-    .suggest {
-      position: absolute; inset-inline: -24px; inset-block-start: calc(100% + 16px); z-index: 60;
-      background: var(--canvas); border: 1px solid var(--hairline); border-radius: var(--radius-md);
-      box-shadow: var(--shadow); overflow: hidden; display: none;
-    }
+    .suggest { position: absolute; inset-inline: -24px; inset-block-start: calc(100% + 16px); z-index: 60; background: var(--canvas); border: 1px solid var(--hairline); border-radius: var(--radius-md); box-shadow: var(--shadow); overflow: hidden; display: none; }
     .suggest[data-open="true"] { display: block; }
-    .suggest__item {
-      padding: 12px 16px; font-size: 14px; color: var(--ink); cursor: pointer;
-      border-block-end: 1px solid var(--hairline-soft);
-    }
+    .suggest__item { padding: 12px 16px; font-size: 14px; color: var(--ink); cursor: pointer; border-block-end: 1px solid var(--hairline-soft); }
     .suggest__item:last-child { border-block-end: none; }
-    .suggest__item:hover,
-    .suggest__item[aria-selected="true"] { background: var(--surface-soft); }
+    .suggest__item:hover, .suggest__item[aria-selected="true"] { background: var(--surface-soft); }
     .suggest__empty { padding: 12px 16px; font-size: 14px; color: var(--muted-soft); }
-
-    .search__meta {
-      max-inline-size: var(--tool); margin: 10px auto 0; padding-inline: 8px;
-      display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
-      min-block-size: 20px; font-size: 13px; color: var(--muted-soft);
-    }
+    .search__meta { max-inline-size: var(--tool); margin: 10px auto 0; padding-inline: 8px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; min-block-size: 20px; font-size: 13px; color: var(--muted-soft); }
     .found { display: inline-flex; align-items: center; gap: 6px; color: var(--brand-strong); font-weight: 500; }
     .found::before { content: ""; inline-size: 6px; block-size: 6px; border-radius: 50%; background: var(--brand); }
-
     @container (max-width: 640px) {
       .search__bar { flex-direction: column; align-items: stretch; border-radius: var(--radius-md); }
       .field { border-inline-end: none; border-block-end: 1px solid var(--hairline-soft); border-radius: 0 !important; }
@@ -338,34 +162,16 @@
       .orb { align-self: flex-end; margin: 8px; }
       .suggest { inset-inline: 0; }
     }
-
-    /* ───────────────────────── Hero ───────────────────────── */
     .hero { max-inline-size: var(--shell); margin-inline: auto; padding: 64px 24px 48px; text-align: center; }
     .hero__kicker { font-size: 15px; font-weight: 500; color: var(--muted-soft); margin-block-end: 12px; overflow: hidden; }
     .hero__eyebrow { font-size: 12px; font-weight: 700; letter-spacing: .32px; text-transform: uppercase; color: var(--brand-strong); margin-block-end: 16px; }
     .hero__title { font-size: clamp(26px, 4vw, 32px); font-weight: 700; line-height: 1.25; color: var(--ink); margin-block-end: 12px; }
     .hero__sub { font-size: 16px; color: var(--muted-soft); line-height: 1.5; max-inline-size: var(--measure); margin-inline: auto; }
-
-    /* ───────────────────────── Status / results ───────────────────────── */
     .status { max-inline-size: var(--tool); margin-inline: auto; padding-inline: 24px; }
-    .banner {
-      display: flex; gap: 10px; align-items: flex-start;
-      background: var(--danger-bg); border: 1px solid var(--danger-border);
-      border-radius: var(--radius-sm); padding: 14px 16px;
-      font-size: 14px; color: var(--danger-text); margin-block-start: 16px;
-    }
-    .spinner {
-      max-inline-size: var(--tool); margin: 24px auto 0; padding: 40px 24px;
-      display: flex; align-items: center; justify-content: center; gap: 12px;
-      color: var(--muted-soft); font-size: 15px;
-    }
-    .spinner::before {
-      content: ""; inline-size: 20px; block-size: 20px; border-radius: 50%;
-      border: 2px solid var(--hairline); border-block-start-color: var(--brand);
-      animation: spin .7s linear infinite;
-    }
+    .banner { display: flex; gap: 10px; align-items: flex-start; background: var(--danger-bg); border: 1px solid var(--danger-border); border-radius: var(--radius-sm); padding: 14px 16px; font-size: 14px; color: var(--danger-text); margin-block-start: 16px; }
+    .spinner { max-inline-size: var(--tool); margin: 24px auto 0; padding: 40px 24px; display: flex; align-items: center; justify-content: center; gap: 12px; color: var(--muted-soft); font-size: 15px; }
+    .spinner::before { content: ""; inline-size: 20px; block-size: 20px; border-radius: 50%; border: 2px solid var(--hairline); border-block-start-color: var(--brand); animation: spin .7s linear infinite; }
     @keyframes spin { to { transform: rotate(1turn); } }
-
     .results { background: var(--results-bg); padding: 60px 24px; }
     .results__inner { max-inline-size: var(--tool); margin-inline: auto; }
     .summary { display: flex; gap: 40px; flex-wrap: wrap; margin-block-end: 36px; }
@@ -395,50 +201,32 @@
     .info { background: var(--results-info-bg); border-radius: var(--radius-md); padding: 18px 22px; font-size: 14px; color: var(--results-muted); line-height: 1.6; margin-block-start: 14px; }
     .info strong { color: var(--results-text); }
     .report { margin-block-start: 16px; }
-    .report__btn {
-      display: inline-flex; align-items: center; gap: 7px;
-      font-size: 13px; color: var(--results-muted); text-decoration: none;
-      background: transparent; border: 1px solid var(--results-divider);
-      border-radius: var(--radius-pill); padding: 7px 14px;
-      transition: color .15s, border-color .15s;
-    }
+    .report__btn { display: inline-flex; align-items: center; gap: 7px; font-size: 13px; color: var(--results-muted); text-decoration: none; background: transparent; border: 1px solid var(--results-divider); border-radius: var(--radius-pill); padding: 7px 14px; transition: color .15s, border-color .15s; }
     .report__btn:hover { color: var(--results-text); border-color: var(--results-muted); }
     .report__btn svg { flex: none; }
     .report__done { font-size: 13px; color: var(--results-link); }
-
     @keyframes rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
     .anim { animation: rise .4s cubic-bezier(.2,.7,.2,1) both; }
-
-    /* ───────────────────────── Content sections ───────────────────────── */
     .section { max-inline-size: var(--shell); margin-inline: auto; padding: 64px 24px; }
     .band { background: var(--surface-soft); border-block: 1px solid var(--hairline-soft); }
     .eyebrow { font-size: 12px; font-weight: 700; letter-spacing: .32px; text-transform: uppercase; color: var(--brand-strong); margin-block-end: 12px; }
     .title { font-size: 22px; font-weight: 700; line-height: 1.3; color: var(--ink); margin-block-end: 8px; }
     .lede { font-size: 16px; color: var(--muted-soft); line-height: 1.5; max-inline-size: var(--measure); margin-block-end: 32px; }
-
     .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; }
     .step { padding: 32px 24px; border-radius: var(--radius-md); background: var(--canvas); border: 1px solid var(--hairline); }
     .step__n { font-size: 28px; font-weight: 700; color: var(--brand); line-height: 1; margin-block-end: 16px; }
     .step__t { font-size: 16px; font-weight: 600; color: var(--ink); margin-block-end: 8px; }
     .step__b { font-size: 14px; color: var(--muted-soft); line-height: 1.43; }
-
     .chips { display: flex; flex-wrap: wrap; gap: 8px; }
-    .chip { display: flex; align-items: center; gap: 8px; padding: 10px 20px; border-radius: var(--radius-pill); background: var(--canvas); border: 1px solid var(--hairline); font-size: 14px; font-weight: 500; color: var(--ink); transition: box-shadow .15s; }
+    .chip { display: flex; align-items: center; gap: 8px; padding: 10px 20px; border-radius: var(--radius-pill); background: var(--canvas); border: 1px solid var(--hairline); font-size: 14px; font-weight: 500; color: var(--ink); transition: box-shadow .15s; text-decoration: none; }
     .chip:hover { box-shadow: var(--shadow); }
     .chip__dot { inline-size: 8px; block-size: 8px; border-radius: 50%; }
-
     .cta { background: var(--brand-strong); text-align: center; padding: 64px 24px; }
     .cta h2 { font-size: clamp(24px, 4vw, 28px); font-weight: 700; line-height: 1.25; color: #fff; margin-block-end: 12px; }
     .cta p { font-size: 16px; color: rgba(255,255,255,.85); margin-block-end: 32px; }
-    .btn {
-      display: inline-block; background: #fff; color: var(--brand-strong);
-      padding: 14px 24px; border-radius: var(--radius-sm); border: 0;
-      font: inherit; font-size: 16px; font-weight: 600; text-decoration: none;
-      transition: box-shadow .15s, transform .1s;
-    }
+    .btn { display: inline-block; background: #fff; color: var(--brand-strong); padding: 14px 24px; border-radius: var(--radius-sm); border: 0; font: inherit; font-size: 16px; font-weight: 600; text-decoration: none; transition: box-shadow .15s, transform .1s; }
     .btn:hover { box-shadow: 0 4px 12px rgba(0,0,0,.18); }
     .btn:active { transform: translateY(1px); }
-
     footer { background: var(--canvas); border-block-start: 1px solid var(--hairline); padding: 48px 24px 24px; }
     .footer__cols { max-inline-size: var(--shell); margin-inline: auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 24px; margin-block-end: 32px; }
     .footer__title { font-size: 16px; font-weight: 600; color: var(--ink); margin-block-end: 16px; }
@@ -448,7 +236,6 @@
     .legal { max-inline-size: var(--shell); margin-inline: auto; border-block-start: 1px solid var(--hairline-soft); padding-block-start: 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
     .legal p { font-size: 13px; color: var(--muted-soft); max-inline-size: 70ch; }
     .legal__logo { font-size: 16px; font-weight: 700; color: var(--brand); }
-
     @media (max-width: 760px) {
       .nav { block-size: 64px; }
       .nav__tabs { display: none; }
@@ -462,7 +249,6 @@
 <body>
   <a class="skip-link" href="#vergelijker">Naar de vergelijker</a>
 
-  <!-- USP ticker (decorative; duplicated once for a seamless loop, hidden from AT) -->
   <div class="ticker" aria-hidden="true">
     <div class="ticker__track">
       <span class="ticker__item">🅿️ 5 parkeer-apps vergeleken</span><span class="ticker__dot"></span>
@@ -480,14 +266,14 @@
 
   <header class="nav">
     <div class="nav__inner">
-      <a class="nav__logo" href="#top">qurb</a>
+      <a class="nav__logo" href="/">qurb</a>
       <nav class="nav__tabs" aria-label="Hoofdmenu">
         <a class="nav__tab" href="#vergelijker" aria-current="page">Vergelijker</a>
         <a class="nav__tab" href="#hoe">Hoe het werkt</a>
         <a class="nav__tab" href="#apps">Apps</a>
       </nav>
       <div class="nav__right">
-        <a class="nav__link" href="#over">Over Qurb</a>
+        <a class="nav__link" href="/over">Over Qurb</a>
         <button class="nav__account" type="button" aria-label="Account">
           <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><rect x="1" y="3" width="14" height="1.5" rx=".75"/><rect x="1" y="7.25" width="14" height="1.5" rx=".75"/><rect x="1" y="11.5" width="14" height="1.5" rx=".75"/></svg>
         </button>
@@ -496,7 +282,6 @@
   </header>
 
   <main id="top">
-    <!-- Search -->
     <section class="search" id="vergelijker" aria-label="Parkeren vergelijken">
       <form class="search__shell" id="search-form" autocomplete="off" novalidate>
         <div class="search__bar">
@@ -528,19 +313,16 @@
       </form>
     </section>
 
-    <!-- Hero -->
     <section class="hero">
-      <p class="hero__kicker">qurb · Peek <span class="kicker">before</span> you Park</p>
-      <p class="hero__eyebrow">Parkeervergelijker · Nederland</p>
-      <h1 class="hero__title">Weet wat je écht betaalt aan parkeren.</h1>
-      <p class="hero__sub">Parkmobile, EasyPark, Yellowbrick, ANWB Parkeren of Q-Park — elke app rekent andere servicekosten. Qurb vergelijkt ze allemaal op één plek, zodat jij de goedkoopste keuze maakt.</p>
+      <p class="hero__kicker">qurb · Rotterdam</p>
+      <p class="hero__eyebrow">Parkeervergelijker · Rotterdam</p>
+      <h1 class="hero__title">Parkeren in Rotterdam: wat betaal je écht?</h1>
+      <p class="hero__sub">Rotterdam combineert grote parkeergarages met betaald straatparkeren in het centrum. De tarieven lopen sterk uiteen per wijk. Met Qurb zie je per locatie welke app het voordeligst uitpakt — inclusief servicekosten.</p>
     </section>
 
-    <!-- Live regions: errors + results -->
     <div class="status" id="error" role="alert" aria-live="assertive"></div>
     <div id="results" aria-live="polite" aria-busy="false"></div>
 
-    <!-- How it works -->
     <section class="band">
       <div class="section" id="hoe">
         <p class="eyebrow">Zo werkt het</p>
@@ -565,7 +347,6 @@
       </div>
     </section>
 
-    <!-- Apps -->
     <section class="section" id="apps">
       <p class="eyebrow">Gedekte apps</p>
       <h2 class="title">Parkeer-apps vergelijken: de grote vijf</h2>
@@ -579,19 +360,25 @@
       </ul>
     </section>
 
-    <!-- Steden -->
+    <section class="band">
+      <div class="section">
+        <p class="eyebrow">Lokale tarieven</p>
+        <h2 class="title">Parkeertarieven in Rotterdam</h2>
+        <p class="lede">Straatparkeren in Rotterdam centrum kost gemiddeld €3,00–€4,50/uur. In wijken als Kralingen en het Lloydkwartier liggen de tarieven iets lager. Parkeergarages zijn in Rotterdam vaak een goed alternatief voor straatparkeren. Qurb vergelijkt beide.</p>
+      </div>
+    </section>
+
     <section class="section">
-      <p class="eyebrow">Beschikbaar in</p>
-      <h2 class="title">Jouw stad</h2>
+      <p class="eyebrow">Andere steden</p>
+      <h2 class="title">Qurb werkt ook in</h2>
       <ul class="chips">
         <li><a class="chip" href="/amsterdam"><span class="chip__dot" style="background:var(--brand)"></span>Amsterdam</a></li>
-        <li><a class="chip" href="/rotterdam"><span class="chip__dot" style="background:var(--brand)"></span>Rotterdam</a></li>
+        <li class="chip" aria-current="page"><span class="chip__dot" style="background:var(--brand)"></span>Rotterdam</li>
         <li><a class="chip" href="/utrecht"><span class="chip__dot" style="background:var(--brand)"></span>Utrecht</a></li>
         <li><a class="chip" href="/den-haag"><span class="chip__dot" style="background:var(--brand)"></span>Den Haag</a></li>
       </ul>
     </section>
 
-    <!-- CTA -->
     <section class="cta" id="over">
       <h2>Goedkoop parkeren begint met vergelijken</h2>
       <p>Qurb is gratis. Altijd. Geen account, geen gedoe.</p>
@@ -644,22 +431,15 @@
   <script type="module">
   'use strict';
 
-  /* ════════════════════════════ Config ════════════════════════════ */
   const CONFIG = Object.freeze({
     pdok: {
       suggest: 'https://api.pdok.nl/bzk/locatieserver/search/v3_1/suggest',
       lookup:  'https://api.pdok.nl/bzk/locatieserver/search/v3_1/lookup',
     },
-    debounceMs:   250,
-    minQuery:     3,
-    suggestRows:  6,
-    requestMs:    8000,   // per-request timeout
-    maxGarages:   18,
-    fallbackRate: 3.00,   // €/uur — landelijk gemiddelde wanneer geen stadcijfer bekend is
-    reportEmail:  'meldingen@qurb.nl',   // TODO: definitief meld-adres instellen
+    debounceMs: 250, minQuery: 3, suggestRows: 6, requestMs: 8000, maxGarages: 18,
+    fallbackRate: 3.00, reportEmail: 'meldingen@qurb.nl',
   });
 
-  // Indicatief gemeentetarief (€/uur) tot het zone-exacte cijfer uit de RDW-data komt.
   const MUNICIPAL_RATE = Object.freeze({
     amsterdam: 7.50, utrecht: 5.50, rotterdam: 3.75, 'den haag': 4.00, "'s-gravenhage": 4.00,
     haarlem: 4.40, leiden: 4.00, delft: 3.30, eindhoven: 3.20, groningen: 3.10,
@@ -668,24 +448,18 @@
   });
 
   const DISPLAY_NAME = Object.freeze({ "'s-gravenhage": 'Den Haag' });
-
-  // Servicekostenmodel per parkeer-app. fee(rate, hours) → € bovenop het straattarief.
   const easyParkFee = (rate, hours) => Math.min(7, round2(Math.min(0.70, Math.max(0.19, 0.15 * rate)) * hours));
   const APPS = Object.freeze([
-    { name: 'Parkmobile',    rule: '€0,52 per parkeeractie',                 fee: () => 0.52 },
-    { name: 'EasyPark',      rule: '15% van tarief, €0,19–€0,70/uur, max €7', fee: easyParkFee },
-    { name: 'Yellowbrick',   rule: '€0,49 per parkeeractie',                 fee: () => 0.49 },
-    { name: 'ANWB Parkeren', rule: '€0,33 per actie, alleen voor leden',     fee: () => 0.33 },
-    { name: 'Q-Park',        rule: 'Geen transactiekosten op straat',         fee: () => 0 },
+    { name: 'Parkmobile',    rule: '€0,52 per parkeeractie',                   fee: () => 0.52 },
+    { name: 'EasyPark',      rule: '15% van tarief, €0,19–€0,70/uur, max €7',  fee: easyParkFee },
+    { name: 'Yellowbrick',   rule: '€0,49 per parkeeractie',                   fee: () => 0.49 },
+    { name: 'ANWB Parkeren', rule: '€0,33 per actie, alleen voor leden',       fee: () => 0.33 },
+    { name: 'Q-Park',        rule: 'Geen transactiekosten op straat',           fee: () => 0 },
   ]);
 
-  /* ════════════════════════════ Utilities ════════════════════════════ */
   const $ = (sel, root = document) => root.querySelector(sel);
   const eur = new Intl.NumberFormat('nl-NL', { style: 'currency', currency: 'EUR' });
   const round2 = (n) => Math.round((n + Number.EPSILON) * 100) / 100;
-
-  /** Tagged template that HTML-escapes every interpolation by default.
-   *  Arrays are joined as already-trusted fragments; raw(x) opts a value out. */
   const ESCAPE = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' };
   const escapeHtml = (v) => String(v).replace(/[&<>"']/g, (c) => ESCAPE[c]);
   const raw = (value) => ({ raw: true, value: String(value) });
@@ -693,39 +467,27 @@
     let out = strings[0];
     for (let i = 0; i < values.length; i++) {
       const v = values[i];
-      const piece = v == null ? ''
-        : Array.isArray(v) ? v.join('')
-        : v.raw ? v.value
-        : escapeHtml(v);
+      const piece = v == null ? '' : Array.isArray(v) ? v.join('') : v.raw ? v.value : escapeHtml(v);
       out += piece + strings[i + 1];
     }
     return out;
   }
-
-  /** Only allow a bare hostname/path to become an https URL; reject anything else. */
   function safeHttps(url) {
     if (typeof url !== 'string' || !/^[\w.-]+(\/[\w./#?=&%-]*)?$/.test(url)) return null;
     try { return new URL('https://' + url).href; } catch { return null; }
   }
-
   function debounce(fn, ms) {
     let t;
     const wrapped = (...args) => { clearTimeout(t); t = setTimeout(() => fn(...args), ms); };
     wrapped.cancel = () => clearTimeout(t);
     return wrapped;
   }
-
   const pad2 = (n) => String(n).padStart(2, '0');
   const toLocalInput = (d) => `${d.getFullYear()}-${pad2(d.getMonth() + 1)}-${pad2(d.getDate())}T${pad2(d.getHours())}:${pad2(d.getMinutes())}`;
-  const NBSP_THIN = ' ';
+  const NBSP_THIN = ' ';
   const formatDistance = (m) => m >= 1000 ? `${(m / 1000).toFixed(1).replace('.', ',')}${NBSP_THIN}km` : `${m}${NBSP_THIN}m`;
-  const formatDuration = (min) => {
-    const h = Math.floor(min / 60), m = min % 60;
-    return h && m ? `${h}u ${m}m` : h ? `${h}u` : `${m}m`;
-  };
+  const formatDuration = (min) => { const h = Math.floor(min / 60), m = min % 60; return h && m ? `${h}u ${m}m` : h ? `${h}u` : `${m}m`; };
 
-  /* ════════════════════════════ Network ════════════════════════════ */
-  /** fetch JSON with a hard timeout and optional external abort signal. */
   async function fetchJson(url, { signal } = {}) {
     const timeout = AbortSignal.timeout(CONFIG.requestMs);
     const composed = signal ? AbortSignal.any([signal, timeout]) : timeout;
@@ -733,39 +495,24 @@
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     return res.json();
   }
-
-  // Small session-scoped cache for PDOK responses (bounded; survives soft reloads).
   const sessionCache = {
-    get(key) {
-      try { const v = sessionStorage.getItem(key); return v ? JSON.parse(v) : null; }
-      catch { return null; }
-    },
-    set(key, value) {
-      try { sessionStorage.setItem(key, JSON.stringify(value)); } catch { /* quota/private mode: skip */ }
-    },
+    get(key) { try { const v = sessionStorage.getItem(key); return v ? JSON.parse(v) : null; } catch { return null; } },
+    set(key, value) { try { sessionStorage.setItem(key, JSON.stringify(value)); } catch { /* skip */ } },
   };
-
-  /* ════════════════════════════ PDOK address API ════════════════════════════ */
   async function suggestAddresses(query, signal) {
     const cacheKey = `pdok:s:${query.toLowerCase()}`;
     const cached = sessionCache.get(cacheKey);
     if (cached) return cached;
-
     const url = `${CONFIG.pdok.suggest}?rows=${CONFIG.suggestRows}&fq=type:adres&q=${encodeURIComponent(query)}`;
     const data = await fetchJson(url, { signal });
-    const docs = data?.response?.docs ?? [];
-    const items = docs
-      .filter((d) => d && typeof d.weergavenaam === 'string')
-      .map((d) => ({ id: String(d.id ?? ''), label: d.weergavenaam }));
+    const items = (data?.response?.docs ?? []).filter((d) => d && typeof d.weergavenaam === 'string').map((d) => ({ id: String(d.id ?? ''), label: d.weergavenaam }));
     sessionCache.set(cacheKey, items);
     return items;
   }
-
   async function lookupAddress(id) {
     const cacheKey = `pdok:l:${id}`;
     const cached = sessionCache.get(cacheKey);
     if (cached) return cached;
-
     const url = `${CONFIG.pdok.lookup}?fl=centroide_ll,gemeentenaam&id=${encodeURIComponent(id)}`;
     const data = await fetchJson(url);
     const doc = data?.response?.docs?.[0];
@@ -775,49 +522,21 @@
     sessionCache.set(cacheKey, result);
     return result;
   }
-
-  /* ════════════════════════════ Per-municipality data (lazy, in-memory) ════════════════════════════ */
-  // The frontend resolves a municipality → RDW area id → loads only that city's
-  // street/permit/garage data on demand. Scales to all of NL without a server.
-  const dataCache = new Map();          // url → Promise<json|null>
-  let municipalityMap = null;           // { naam → areaId }
-  let coverageMap = null;               // { areaId → #paid zones }
-
+  const dataCache = new Map();
+  let municipalityMap = null, coverageMap = null, reliabilityMap = null;
   async function loadJson(url, shape) {
-    if (!dataCache.has(url)) {
-      dataCache.set(url, fetchJson(url).then(shape).catch(() => null));
-    }
+    if (!dataCache.has(url)) dataCache.set(url, fetchJson(url).then(shape).catch(() => null));
     return dataCache.get(url);
   }
-
-  async function getMunicipalityMap() {
-    if (municipalityMap) return municipalityMap;
-    municipalityMap = (await loadJson('data/gemeenten.json', (d) => d.gemeenten)) ?? {};
-    return municipalityMap;
-  }
-  async function getCoverageMap() {
-    if (coverageMap) return coverageMap;
-    coverageMap = (await loadJson('data/dekking.json', (d) => d.betaald_zones)) ?? {};
-    return coverageMap;
-  }
-  // Reliability tier per RDW area id: 'geverifieerd' | 'compleet' | 'onvoldoende'.
-  // Generated by scripts/build_betrouwbaarheid.py. Cities not listed (or 'onvoldoende')
-  // do NOT get a live street tariff — we never claim a price we can't trust.
-  let reliabilityMap = null;
-  async function getReliabilityMap() {
-    if (reliabilityMap) return reliabilityMap;
-    reliabilityMap = (await loadJson('data/betrouwbaarheid.json', (d) => d.tiers)) ?? {};
-    return reliabilityMap;
-  }
+  async function getMunicipalityMap() { if (municipalityMap) return municipalityMap; municipalityMap = (await loadJson('data/gemeenten.json', (d) => d.gemeenten)) ?? {}; return municipalityMap; }
+  async function getCoverageMap() { if (coverageMap) return coverageMap; coverageMap = (await loadJson('data/dekking.json', (d) => d.betaald_zones)) ?? {}; return coverageMap; }
+  async function getReliabilityMap() { if (reliabilityMap) return reliabilityMap; reliabilityMap = (await loadJson('data/betrouwbaarheid.json', (d) => d.tiers)) ?? {}; return reliabilityMap; }
   const reliabilityTier = async (areaId) => (await getReliabilityMap())[areaId] ?? 'onvoldoende';
-  const resolveAreaId = async (municipality) =>
-    (await getMunicipalityMap())[(municipality ?? '').toLowerCase().trim()] ?? null;
-
+  const resolveAreaId = async (municipality) => (await getMunicipalityMap())[(municipality ?? '').toLowerCase().trim()] ?? null;
   const loadStreetZones = (id) => loadJson(`data/${id}/straat.json`, (d) => d.zones ?? []).then((z) => z ?? []);
   const loadPermitZones = (id) => loadJson(`data/${id}/vergunning.json`, (d) => d.zones ?? []).then((z) => z ?? []);
   const loadGarages     = (id) => loadJson(`data/${id}/garages.json`, (d) => d.garages ?? []).then((g) => g ?? []);
 
-  /* ════════════════════════════ Geometry ════════════════════════════ */
   function haversineMeters(a, b) {
     const R = 6371000, rad = (x) => x * Math.PI / 180;
     const dLat = rad(b.lat - a.lat), dLon = rad(b.lon - a.lon);
@@ -833,62 +552,35 @@
     return inside;
   }
   const inAnyPolygon = (pt, zone) => (zone.polys ?? []).some((p) => pointInPolygon(pt, p));
-
-  /* ════════════════════════════ Tariff resolution ════════════════════════════ */
-  const municipalRate = (municipality) => {
-    const key = (municipality ?? '').toLowerCase().trim();
-    if (!key) return null;
-    return key in MUNICIPAL_RATE
-      ? { rate: MUNICIPAL_RATE[key], source: municipality }
-      : { rate: CONFIG.fallbackRate, source: 'landelijk gemiddelde' };
-  };
+  const municipalRate = (municipality) => { const key = (municipality ?? '').toLowerCase().trim(); if (!key) return null; return key in MUNICIPAL_RATE ? { rate: MUNICIPAL_RATE[key], source: municipality } : { rate: CONFIG.fallbackRate, source: 'landelijk gemiddelde' }; };
   const displayCity = (s) => DISPLAY_NAME[(s ?? '').toLowerCase().trim()] ?? s;
 
-  /** Zone-exact street tariff for a coordinate at a start time, or null outside coverage.
-   *  Overlapping zone variants carry different products; the highest matching rate is
-   *  the regular visitor hourly rate — what a visitor actually pays per hour. */
   async function streetRateAt(areaId, coord, start) {
     const zones = await loadStreetZones(areaId);
     if (!zones.length) return null;
     const hits = zones.filter((z) => inAnyPolygon(coord, z));
     if (!hits.length) return null;
-
-    const weekday = start.getDay() === 0 ? 7 : start.getDay();     // 1=Mon … 7=Sun
+    const weekday = start.getDay() === 0 ? 7 : start.getDay();
     const minutes = start.getHours() * 60 + start.getMinutes();
     let rate = null, label = null;
     for (const zone of hits) {
       for (const w of zone.vensters ?? []) {
-        if (w.days.includes(weekday) && minutes >= w.from && minutes <= w.to && (rate === null || w.eur > rate)) {
-          rate = w.eur; label = zone.naam;
-        }
+        if (w.days.includes(weekday) && minutes >= w.from && minutes <= w.to && (rate === null || w.eur > rate)) { rate = w.eur; label = zone.naam; }
       }
     }
-    return rate === null
-      ? { rate: 0, label: hits[0].naam, free: true }   // in a zone, outside any paid window
-      : { rate, label };
+    return rate === null ? { rate: 0, label: hits[0].naam, free: true } : { rate, label };
   }
-  const inPermitZone = async (areaId, coord) =>
-    (await loadPermitZones(areaId)).some((z) => inAnyPolygon(coord, z));
+  const inPermitZone = async (areaId, coord) => (await loadPermitZones(areaId)).some((z) => inAnyPolygon(coord, z));
 
-  /* ════════════════════════════ Domain model ════════════════════════════ */
-  /** Resolve what a visitor pays on the street. Returns a `kind` (state) plus the
-   *  reliability `tier` of the source data. The live-zone path runs only for cities
-   *  whose open data is trustworthy ('geverifieerd'/'compleet'); for 'onvoldoende'
-   *  cities we refuse to claim a tariff and say so honestly. */
   async function resolveStreet(place, start) {
-    const fallback = place.rate; // indicative municipal €/uur, already known
+    const fallback = place.rate;
     if (!place.areaId || !place.coord) return { kind: 'indicative', tier: null, rate: fallback, label: null };
-
     const tier = await reliabilityTier(place.areaId);
-    if (tier === 'onvoldoende') {
-      return { kind: 'unsupported', tier, rate: 0, label: 'Straattarief niet betrouwbaar beschikbaar' };
-    }
-
+    if (tier === 'onvoldoende') return { kind: 'unsupported', tier, rate: 0, label: 'Straattarief niet betrouwbaar beschikbaar' };
     const street = await streetRateAt(place.areaId, place.coord, start);
     if (street && street.rate > 0) return { kind: 'paid', tier, rate: street.rate, label: street.label };
-    if (street)                    return { kind: 'free', tier, rate: 0, label: `Gratis op dit tijdstip · ${street.label}` };
+    if (street) return { kind: 'free', tier, rate: 0, label: `Gratis op dit tijdstip · ${street.label}` };
     if (await inPermitZone(place.areaId, place.coord)) return { kind: 'permit', tier, rate: 0, label: 'Vergunninghoudersgebied' };
-
     const coverage = await getCoverageMap();
     if ((coverage[place.areaId] ?? 0) > 0) return { kind: 'uncertain', tier, rate: 0, label: 'Zone niet te bepalen' };
     return { kind: 'nodata', tier, rate: 0, label: 'Geen betaald straatparkeren gevonden' };
@@ -896,232 +588,77 @@
 
   function rankApps(rate, hours) {
     const base = round2(rate * hours);
-    return APPS
-      .map((app) => {
-        const fee = round2(app.fee(rate, hours));
-        return { name: app.name, rule: app.rule, fee, total: round2(base + fee) };
-      })
-      .sort((a, b) => a.total - b.total);
+    return APPS.map((app) => { const fee = round2(app.fee(rate, hours)); return { name: app.name, rule: app.rule, fee, total: round2(base + fee) }; }).sort((a, b) => a.total - b.total);
   }
-
   const GARAGE_TYPE = { Terreinparkeren: 'terrein', 'P+R': 'P+R', Carpoolparkeren: 'carpool' };
   function rankGarages(garages, coord, hours) {
-    return garages
-      .map((g) => {
-        const priced = g.uur != null && g.uur > 0;
-        const dayMax = priced ? (g.dagmax ?? round2(g.uur * 24)) : null;
-        return {
-          name: g.naam, operator: g.operator || '—', capacity: g.capaciteit, url: g.url,
-          kind: GARAGE_TYPE[g.type] ?? null,
-          distance: coord ? haversineMeters(coord, g) : null,
-          hourly: g.uur, dayMax,
-          cost: priced ? round2(Math.min(g.uur * hours, dayMax)) : null,
-        };
-      })
-      .sort((a, b) => (a.distance ?? Infinity) - (b.distance ?? Infinity) || (a.cost ?? Infinity) - (b.cost ?? Infinity));
+    return garages.map((g) => { const priced = g.uur != null && g.uur > 0; const dayMax = priced ? (g.dagmax ?? round2(g.uur * 24)) : null; return { name: g.naam, operator: g.operator || '—', capacity: g.capaciteit, url: g.url, kind: GARAGE_TYPE[g.type] ?? null, distance: coord ? haversineMeters(coord, g) : null, hourly: g.uur, dayMax, cost: priced ? round2(Math.min(g.uur * hours, dayMax)) : null }; }).sort((a, b) => (a.distance ?? Infinity) - (b.distance ?? Infinity) || (a.cost ?? Infinity) - (b.cost ?? Infinity));
   }
 
-  /* ════════════════════════════ State ════════════════════════════ */
-  const state = {
-    place: null,   // { label, municipality, rate, coord:{lon,lat}|null, areaId:string|null }
-  };
+  const state = { place: null };
+  const el = { form: $('#search-form'), addr: $('#addr'), van: $('#van'), tot: $('#tot'), suggest: $('#suggest'), found: $('#found'), tarief: $('#tarief'), error: $('#error'), results: $('#results') };
 
-  /* ════════════════════════════ DOM refs ════════════════════════════ */
-  const el = {
-    form:    $('#search-form'),
-    addr:    $('#addr'),
-    van:     $('#van'),
-    tot:     $('#tot'),
-    suggest: $('#suggest'),
-    found:   $('#found'),
-    tarief:  $('#tarief'),
-    error:   $('#error'),
-    results: $('#results'),
-  };
-
-  /* ════════════════════════════ Time inputs ════════════════════════════ */
   function initTimeInputs() {
     el.van.value = toLocalInput(new Date());
-    const sync = () => {
-      const from = new Date(el.van.value);
-      if (Number.isNaN(+from)) return;
-      el.tot.min = toLocalInput(from);
-      const to = new Date(el.tot.value);
-      if (Number.isNaN(+to) || to <= from) el.tot.value = toLocalInput(new Date(from.getTime() + 2 * 3600_000));
-    };
+    const sync = () => { const from = new Date(el.van.value); if (Number.isNaN(+from)) return; el.tot.min = toLocalInput(from); const to = new Date(el.tot.value); if (Number.isNaN(+to) || to <= from) el.tot.value = toLocalInput(new Date(from.getTime() + 2 * 3600_000)); };
     el.van.addEventListener('input', sync);
     el.van.addEventListener('change', sync);
     sync();
   }
 
-  /* ════════════════════════════ Autocomplete (WAI-ARIA combobox) ════════════════════════════ */
   const combobox = (() => {
-    let options = [];       // [{ id, label }]
-    let activeIndex = -1;
-    let inflight = null;    // AbortController for the in-flight suggest call
-
-    const close = () => {
-      el.suggest.dataset.open = 'false';
-      el.suggest.replaceChildren();
-      el.addr.setAttribute('aria-expanded', 'false');
-      el.addr.removeAttribute('aria-activedescendant');
-      options = []; activeIndex = -1;
-    };
-
-    const renderEmpty = (text) => {
-      el.suggest.innerHTML = html`<li class="suggest__empty" role="presentation">${text}</li>`;
-      el.suggest.dataset.open = 'true';
-      el.addr.setAttribute('aria-expanded', 'true');
-    };
-
-    const render = () => {
-      el.suggest.innerHTML = options
-        .map((o, i) => html`<li class="suggest__item" role="option" id="opt-${i}" aria-selected="${i === activeIndex}">${o.label}</li>`)
-        .join('');
-      el.suggest.dataset.open = 'true';
-      el.addr.setAttribute('aria-expanded', 'true');
-    };
-
-    const setActive = (i) => {
-      activeIndex = (i + options.length) % options.length;
-      [...el.suggest.children].forEach((li, idx) => li.setAttribute('aria-selected', String(idx === activeIndex)));
-      el.addr.setAttribute('aria-activedescendant', `opt-${activeIndex}`);
-      el.suggest.children[activeIndex]?.scrollIntoView({ block: 'nearest' });
-    };
-
+    let options = [], activeIndex = -1, inflight = null;
+    const close = () => { el.suggest.dataset.open = 'false'; el.suggest.replaceChildren(); el.addr.setAttribute('aria-expanded', 'false'); el.addr.removeAttribute('aria-activedescendant'); options = []; activeIndex = -1; };
+    const renderEmpty = (text) => { el.suggest.innerHTML = html`<li class="suggest__empty" role="presentation">${text}</li>`; el.suggest.dataset.open = 'true'; el.addr.setAttribute('aria-expanded', 'true'); };
+    const render = () => { el.suggest.innerHTML = options.map((o, i) => html`<li class="suggest__item" role="option" id="opt-${i}" aria-selected="${i === activeIndex}">${o.label}</li>`).join(''); el.suggest.dataset.open = 'true'; el.addr.setAttribute('aria-expanded', 'true'); };
+    const setActive = (i) => { activeIndex = (i + options.length) % options.length; [...el.suggest.children].forEach((li, idx) => li.setAttribute('aria-selected', String(idx === activeIndex))); el.addr.setAttribute('aria-activedescendant', `opt-${activeIndex}`); el.suggest.children[activeIndex]?.scrollIntoView({ block: 'nearest' }); };
     async function choose(option) {
-      el.addr.value = option.label;
-      close();
-      // Optimistic: indicative municipal rate from the address text…
+      el.addr.value = option.label; close();
       const guessedCity = cityFromLabel(option.label);
       setPlace({ label: option.label, municipality: guessedCity, ...rateFor(guessedCity), coord: null, areaId: null });
-      // …then refine with the exact coordinate + RDW area id.
       try {
         const place = await lookupAddress(option.id);
-        if (place) {
-          // PDOK returns the current municipality (e.g. "Nissewaard"); the RDW area
-          // map keys on the historical place name (e.g. "Spijkenisse"). Try both, so
-          // merged municipalities still resolve to their area id and reliability tier.
-          const areaId = (await resolveAreaId(place.municipality)) ?? (await resolveAreaId(guessedCity));
-          setPlace({
-            label: option.label,
-            municipality: place.municipality || guessedCity,
-            ...rateFor(place.municipality || guessedCity),
-            coord: { lon: place.lon, lat: place.lat },
-            areaId,
-          });
-        }
-      } catch { /* keep the indicative estimate; comparison still works */ }
+        if (place) { const areaId = (await resolveAreaId(place.municipality)) ?? (await resolveAreaId(guessedCity)); setPlace({ label: option.label, municipality: place.municipality || guessedCity, ...rateFor(place.municipality || guessedCity), coord: { lon: place.lon, lat: place.lat }, areaId }); }
+      } catch { /* keep indicative */ }
     }
-
     const search = debounce(async (query) => {
-      inflight?.abort();
-      inflight = new AbortController();
-      try {
-        options = await suggestAddresses(query, inflight.signal);
-        activeIndex = -1;
-        if (options.length) render();
-        else renderEmpty('Geen adres gevonden');
-      } catch (err) {
-        if (err?.name !== 'AbortError') close();
-      }
+      inflight?.abort(); inflight = new AbortController();
+      try { options = await suggestAddresses(query, inflight.signal); activeIndex = -1; if (options.length) render(); else renderEmpty('Geen adres gevonden'); }
+      catch (err) { if (err?.name !== 'AbortError') close(); }
     }, CONFIG.debounceMs);
-
-    el.addr.addEventListener('input', () => {
-      clearFound();
-      const q = el.addr.value.trim();
-      if (q.length < CONFIG.minQuery) { search.cancel(); close(); return; }
-      search(q);
-    });
-
+    el.addr.addEventListener('input', () => { clearFound(); const q = el.addr.value.trim(); if (q.length < CONFIG.minQuery) { search.cancel(); close(); return; } search(q); });
     el.addr.addEventListener('keydown', (e) => {
       const open = el.suggest.dataset.open === 'true' && options.length > 0;
       switch (e.key) {
         case 'ArrowDown': if (open) { e.preventDefault(); setActive(activeIndex + 1); } break;
         case 'ArrowUp':   if (open) { e.preventDefault(); setActive(activeIndex - 1); } break;
-        case 'Enter':
-          if (open && activeIndex >= 0) { e.preventDefault(); choose(options[activeIndex]); }
-          break;
+        case 'Enter': if (open && activeIndex >= 0) { e.preventDefault(); choose(options[activeIndex]); } break;
         case 'Escape': if (open) { e.preventDefault(); close(); } break;
       }
     });
-
-    el.suggest.addEventListener('click', (e) => {
-      const li = e.target.closest('.suggest__item');
-      if (!li) return;
-      choose(options[[...el.suggest.children].indexOf(li)]);
-    });
-
-    document.addEventListener('click', (e) => {
-      if (!el.suggest.contains(e.target) && e.target !== el.addr) close();
-    });
-
+    el.suggest.addEventListener('click', (e) => { const li = e.target.closest('.suggest__item'); if (!li) return; choose(options[[...el.suggest.children].indexOf(li)]); });
+    document.addEventListener('click', (e) => { if (!el.suggest.contains(e.target) && e.target !== el.addr) close(); });
     return { close };
   })();
 
-  function cityFromLabel(label) {
-    if (!label) return '';
-    const tail = label.split(',').pop().trim();
-    return tail.replace(/^\s*\d{4}\s?[A-Za-z]{2}\s*/, '').trim();
-  }
-  const rateFor = (city) => {
-    const r = municipalRate(city);
-    return { rate: r ? r.rate : null, rateSource: r ? r.source : null };
-  };
+  function cityFromLabel(label) { if (!label) return ''; const tail = label.split(',').pop().trim(); return tail.replace(/^\s*\d{4}\s?[A-Za-z]{2}\s*/, '').trim(); }
+  const rateFor = (city) => { const r = municipalRate(city); return { rate: r ? r.rate : null, rateSource: r ? r.source : null }; };
+  function setPlace(place) { state.place = place; el.found.hidden = false; el.found.textContent = place.label; el.tarief.innerHTML = place.rate != null ? html`&nbsp;· gemeentetarief <strong>${eur.format(place.rate)}/uur</strong> <span style="color:var(--muted-soft)">(${place.rateSource})</span>` : ''; }
+  function clearFound() { el.found.hidden = true; el.found.textContent = ''; el.tarief.textContent = ''; state.place = null; }
 
-  /* ════════════════════════════ Search-meta (found + rate) ════════════════════════════ */
-  function setPlace(place) {
-    state.place = place;
-    el.found.hidden = false;
-    el.found.textContent = place.label;
-    el.tarief.innerHTML = place.rate != null
-      ? html`&nbsp;· gemeentetarief <strong>${eur.format(place.rate)}/uur</strong> <span style="color:var(--muted-soft)">(${place.rateSource})</span>`
-      : '';
-  }
-  function clearFound() {
-    el.found.hidden = true;
-    el.found.textContent = '';
-    el.tarief.textContent = '';
-    state.place = null;
-  }
-
-  /* ════════════════════════════ Rendering ════════════════════════════ */
-  const showError = (message) => {
-    el.results.replaceChildren();
-    el.error.innerHTML = html`<p class="banner" role="alert">${message}</p>`;
-  };
+  const showError = (message) => { el.results.replaceChildren(); el.error.innerHTML = html`<p class="banner" role="alert">${message}</p>`; };
   const clearError = () => el.error.replaceChildren();
-  const setBusy = (busy) => {
-    el.results.setAttribute('aria-busy', String(busy));
-    if (busy) el.results.innerHTML = html`<div class="spinner" role="status">Parkeeropties berekenen…</div>`;
-  };
+  const setBusy = (busy) => { el.results.setAttribute('aria-busy', String(busy)); if (busy) el.results.innerHTML = html`<div class="spinner" role="status">Parkeeropties berekenen…</div>`; };
 
   function renderStreet(street, base, hours) {
     if (street.kind === 'unsupported') return html`<div class="info anim">Voor deze gemeente is het straattarief <strong>niet betrouwbaar</strong> uit de open RDW-data te bepalen — de zonegegevens zijn hier te onvolledig. We tonen daarom geen straatprijs. Controleer de <strong>automaat of je parkeerapp</strong> voor het juiste tarief; de garages hieronder kloppen wel.</div>`;
     if (street.kind === 'permit') return html`<div class="info anim">Hier geldt <strong>vergunninghoudersparkeren</strong>. Als bezoeker kun je op straat doorgaans niet parkeren — kies een garage hieronder, of controleer of er een bezoekersregeling geldt.</div>`;
     if (street.kind === 'uncertain') return html`<div class="info anim">Deze gemeente kent <strong>betaald parkeren</strong>, maar we konden de zone op dit punt niet bepalen — de open parkeerdata is hier onvolledig. Controleer de <strong>automaat of je parkeerapp</strong> voor het juiste tarief en de zonecode.</div>`;
-    if (street.kind === 'free' || street.kind === 'nodata') {
-      return html`<div class="info anim">${street.kind === 'free'
-        ? 'Op dit tijdstip is betaald straatparkeren hier niet van kracht — je parkeert gratis.'
-        : 'Hier vonden we geen betaald of vergunningregime in de RDW-data. Waarschijnlijk parkeer je gratis — controleer het bord ter plekke.'}</div>`;
-    }
-    // paid / indicative → ranked app table
+    if (street.kind === 'free' || street.kind === 'nodata') return html`<div class="info anim">${street.kind === 'free' ? 'Op dit tijdstip is betaald straatparkeren hier niet van kracht — je parkeert gratis.' : 'Hier vonden we geen betaald of vergunningregime in de RDW-data. Waarschijnlijk parkeer je gratis — controleer het bord ter plekke.'}</div>`;
     const ranked = rankApps(street.rate, hours);
     const cheapest = ranked[0]?.total ?? 0;
-    const rows = ranked.map((a, i) => {
-      const best = a.total === cheapest;
-      const delta = round2(a.total - cheapest);
-      const right = best
-        ? (a.fee === 0 ? 'geen servicekosten' : `${eur.format(a.fee)} servicekosten`)
-        : `+${eur.format(delta)}`;
-      return html`<li class="row anim" style="animation-delay:${(0.05 * (i + 1)).toFixed(2)}s">
-        <div><p class="row__name">${a.name}${best ? raw('<span class="tag">goedkoopst</span>') : ''}</p><p class="row__sub">${a.rule}</p></div>
-        <div class="row__right"><p class="row__total">${eur.format(a.total)}</p><p class="row__delta${best ? '' : ' row__delta--higher'}">${right}</p></div>
-      </li>`;
-    });
-    const note = street.tier === 'compleet'
-      ? html`<p class="info anim" style="animation-delay:.3s">Tarief uit de open RDW-data, <strong>indicatief</strong> — voor deze gemeente niet handmatig geverifieerd. Twijfel je? Controleer de automaat.</p>`
-      : '';
+    const rows = ranked.map((a, i) => { const best = a.total === cheapest; const delta = round2(a.total - cheapest); const right = best ? (a.fee === 0 ? 'geen servicekosten' : `${eur.format(a.fee)} servicekosten`) : `+${eur.format(delta)}`; return html`<li class="row anim" style="animation-delay:${(0.05 * (i + 1)).toFixed(2)}s"><div><p class="row__name">${a.name}${best ? raw('<span class="tag">goedkoopst</span>') : ''}</p><p class="row__sub">${a.rule}</p></div><div class="row__right"><p class="row__total">${eur.format(a.total)}</p><p class="row__delta${best ? '' : ' row__delta--higher'}">${right}</p></div></li>`; });
+    const note = street.tier === 'compleet' ? html`<p class="info anim" style="animation-delay:.3s">Tarief uit de open RDW-data, <strong>indicatief</strong> — voor deze gemeente niet handmatig geverifieerd. Twijfel je? Controleer de automaat.</p>` : '';
     return html`<ul class="rows">${rows}</ul>${raw(note)}`;
   }
 
@@ -1129,120 +666,51 @@
     const shown = ranked.slice(0, CONFIG.maxGarages);
     const priced = shown.filter((g) => g.cost != null).map((g) => g.cost);
     const cheapest = priced.length ? Math.min(...priced) : null;
-    const rows = shown.map((g, i) => {
-      const best = g.cost != null && g.cost === cheapest;
-      const dist = g.distance != null ? `${formatDistance(g.distance)} · ` : '';
-      const sub = (g.kind ? `${g.kind} · ` : '') + (g.cost != null ? `${eur.format(g.hourly)}/uur, max ${eur.format(g.dayMax)}/dag` : 'tarief bij exploitant');
-      const safeUrl = g.url ? safeHttps(g.url) : null;
-      const right = g.cost != null ? eur.format(g.cost)
-        : safeUrl ? raw(html`<a class="row__link" href="${safeUrl}" target="_blank" rel="noopener">tarief →</a>`) : '—';
-      return html`<li class="row anim" style="animation-delay:${(0.05 * (Math.min(i, 12) + 1)).toFixed(2)}s">
-        <div><p class="row__name">${g.name}${best ? raw('<span class="tag">goedkoopst</span>') : ''}</p><p class="row__sub">${g.operator} · ${raw(dist)}${sub}</p></div>
-        <div class="row__right"><p class="row__total">${right}</p><p class="row__delta">${g.capacity ? `${g.capacity} plaatsen` : ''}</p></div>
-      </li>`;
-    });
+    const rows = shown.map((g, i) => { const best = g.cost != null && g.cost === cheapest; const dist = g.distance != null ? `${formatDistance(g.distance)} · ` : ''; const sub = (g.kind ? `${g.kind} · ` : '') + (g.cost != null ? `${eur.format(g.hourly)}/uur, max ${eur.format(g.dayMax)}/dag` : 'tarief bij exploitant'); const safeUrl = g.url ? safeHttps(g.url) : null; const right = g.cost != null ? eur.format(g.cost) : safeUrl ? raw(html`<a class="row__link" href="${safeUrl}" target="_blank" rel="noopener">tarief →</a>`) : '—'; return html`<li class="row anim" style="animation-delay:${(0.05 * (Math.min(i, 12) + 1)).toFixed(2)}s"><div><p class="row__name">${g.name}${best ? raw('<span class="tag">goedkoopst</span>') : ''}</p><p class="row__sub">${g.operator} · ${raw(dist)}${sub}</p></div><div class="row__right"><p class="row__total">${right}</p><p class="row__delta">${g.capacity ? `${g.capacity} plaatsen` : ''}</p></div></li>`; });
     const hidden = totalCount - shown.length;
-    return html`<ul class="rows">${rows}</ul>
-      <p class="info anim" style="animation-delay:.4s">Dichtstbijzijnde ${shown.length} garages${hidden > 0 ? ` (${hidden} verder weg niet getoond)` : ''}. Live locaties en tarieven uit de open parkeerdata van de RDW (CC-0). Garages zonder gepubliceerd tarief (o.a. Q-Park) tonen we met een link naar de exploitant.</p>`;
+    return html`<ul class="rows">${rows}</ul><p class="info anim" style="animation-delay:.4s">Dichtstbijzijnde ${shown.length} garages${hidden > 0 ? ` (${hidden} verder weg niet getoond)` : ''}. Live locaties en tarieven uit de open parkeerdata van de RDW (CC-0). Garages zonder gepubliceerd tarief (o.a. Q-Park) tonen we met een link naar de exploitant.</p>`;
   }
 
-  /** Prefilled mailto report — opens the visitor's mail app with full context.
-   *  CONFIG.reportEmail is the (later configurable) destination address. */
   function reportHref(street, start, end) {
     const p = state.place;
-    const body = [
-      'Ik denk dat deze parkeerdata niet klopt.',
-      '',
-      `Adres: ${p?.label ?? '-'}`,
-      `Gemeente: ${p?.municipality ?? '-'}`,
-      `Straat-status: ${street.label ?? street.kind}`,
-      `Gedetecteerd tarief: ${street.rate ? `${eur.format(street.rate)}/uur` : 'geen'}`,
-      `Betrouwbaarheid: ${street.tier ?? 'n.v.t.'}`,
-      `Tijdvak: ${start.toLocaleString('nl-NL')} – ${end.toLocaleString('nl-NL')}`,
-      '',
-      'Wat klopt er volgens jou niet?',
-      '',
-    ].join('\n');
+    const body = ['Ik denk dat deze parkeerdata niet klopt.', '', `Adres: ${p?.label ?? '-'}`, `Gemeente: ${p?.municipality ?? '-'}`, `Straat-status: ${street.label ?? street.kind}`, `Gedetecteerd tarief: ${street.rate ? `${eur.format(street.rate)}/uur` : 'geen'}`, `Betrouwbaarheid: ${street.tier ?? 'n.v.t.'}`, `Tijdvak: ${start.toLocaleString('nl-NL')} – ${end.toLocaleString('nl-NL')}`, '', 'Wat klopt er volgens jou niet?', ''].join('\n');
     return `mailto:${CONFIG.reportEmail}?subject=${encodeURIComponent(`Qurb datamelding — ${p?.municipality ?? 'onbekend'}`)}&body=${encodeURIComponent(body)}`;
   }
 
   const FLAG = raw('<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>');
 
   function renderResults({ street, durationMin, base, hours, garages, start, end }) {
-    const summaryRight = street.kind === 'permit' ? '—'
-      : street.kind === 'uncertain' || street.kind === 'unsupported' ? '?'
-      : (street.kind === 'free' || street.kind === 'nodata') ? 'Gratis'
-      : eur.format(base);
-    const summarySub = street.label
-      ? `${street.label}${['paid', 'indicative'].includes(street.kind) ? ` · ${eur.format(street.rate)}/uur` : ''}`
-      : 'Gelijk voor alle apps';
+    const summaryRight = street.kind === 'permit' ? '—' : street.kind === 'uncertain' || street.kind === 'unsupported' ? '?' : (street.kind === 'free' || street.kind === 'nodata') ? 'Gratis' : eur.format(base);
+    const summarySub = street.label ? `${street.label}${['paid', 'indicative'].includes(street.kind) ? ` · ${eur.format(street.rate)}/uur` : ''}` : 'Gelijk voor alle apps';
     const cityLabel = state.place?.municipality ? ` in ${displayCity(state.place.municipality)}` : '';
-
-    const garagesHtml = garages == null
-      ? html`<p class="info anim">Geen garagedata voor ${displayCity(state.place?.municipality) || 'deze plaats'}. In de volledige versie komen alle garages live uit de open parkeerdata van de RDW.</p>`
-      : renderGarages(garages.ranked, garages.total);
-
-    el.results.innerHTML = html`
-      <section class="results" aria-label="Resultaten">
-        <div class="results__inner">
-          <div class="summary anim">
-            <div><p class="summary__label">Duur</p><p class="summary__value">${formatDuration(durationMin)}</p></div>
-            <div><p class="summary__label">${['permit', 'uncertain', 'unsupported'].includes(street.kind) ? 'Straat' : 'Basisprijs'}</p><p class="summary__value">${summaryRight}</p><p class="summary__sub">${summarySub}</p></div>
-          </div>
-          <div class="group">
-            <h2 class="group__label">Op straat</h2>
-            ${raw(renderStreet(street, base, hours))}
-            <p class="report"><a class="report__btn" href="${reportHref(street, start, end)}">${FLAG} Deze data klopt niet</a></p>
-          </div>
-          <div class="group">
-            <h2 class="group__label">Garages &amp; terreinen${cityLabel}</h2>
-            ${raw(garagesHtml)}
-          </div>
-        </div>
-      </section>`;
+    const garagesHtml = garages == null ? html`<p class="info anim">Geen garagedata voor ${displayCity(state.place?.municipality) || 'deze plaats'}. In de volledige versie komen alle garages live uit de open parkeerdata van de RDW.</p>` : renderGarages(garages.ranked, garages.total);
+    el.results.innerHTML = html`<section class="results" aria-label="Resultaten"><div class="results__inner"><div class="summary anim"><div><p class="summary__label">Duur</p><p class="summary__value">${formatDuration(durationMin)}</p></div><div><p class="summary__label">${['permit', 'uncertain', 'unsupported'].includes(street.kind) ? 'Straat' : 'Basisprijs'}</p><p class="summary__value">${summaryRight}</p><p class="summary__sub">${summarySub}</p></div></div><div class="group"><h2 class="group__label">Op straat</h2>${raw(renderStreet(street, base, hours))}<p class="report"><a class="report__btn" href="${reportHref(street, start, end)}">${FLAG} Deze data klopt niet</a></p></div><div class="group"><h2 class="group__label">Garages &amp; terreinen${cityLabel}</h2>${raw(garagesHtml)}</div></div></section>`;
     el.results.querySelector('.results')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 
-  /* ════════════════════════════ Compare (controller) ════════════════════════════ */
   async function compare() {
-    clearError();
-    combobox.close();
-
+    clearError(); combobox.close();
     if (!state.place || state.place.rate == null) return showError('Kies eerst een adres uit de lijst, dan verschijnt het gemeentetarief.');
     const start = new Date(el.van.value), end = new Date(el.tot.value);
     if (Number.isNaN(+start) || Number.isNaN(+end)) return showError('Vul een begin- en eindtijd in.');
     const ms = end - start;
     if (ms <= 0) return showError('De eindtijd moet ná de begintijd liggen.');
     if (!navigator.onLine) return showError('Je lijkt offline te zijn. Controleer je verbinding en probeer opnieuw.');
-
     setBusy(true);
     try {
       const hours = ms / 3_600_000;
       const street = await resolveStreet(state.place, start);
       const base = round2(street.rate * hours);
-
       let garages = null;
-      if (state.place.areaId) {
-        const list = await loadGarages(state.place.areaId);
-        if (list.length) garages = { ranked: rankGarages(list, state.place.coord, hours), total: list.length };
-      }
+      if (state.place.areaId) { const list = await loadGarages(state.place.areaId); if (list.length) garages = { ranked: rankGarages(list, state.place.coord, hours), total: list.length }; }
       renderResults({ street, durationMin: Math.round(ms / 60000), base, hours, garages, start, end });
-    } catch {
-      showError('Er ging iets mis bij het ophalen van de parkeerdata. Probeer het zo nog eens.');
-    } finally {
-      setBusy(false);
-    }
+    } catch { showError('Er ging iets mis bij het ophalen van de parkeerdata. Probeer het zo nog eens.'); }
+    finally { setBusy(false); }
   }
 
-  /* ════════════════════════════ Boot ════════════════════════════ */
   initTimeInputs();
   el.form.addEventListener('submit', (e) => { e.preventDefault(); compare(); });
-  // After a report-click the mailto opens; confirm inline (delegated, results re-render safe).
-  el.results.addEventListener('click', (e) => {
-    const btn = e.target.closest('.report__btn');
-    if (!btn) return;
-    btn.closest('.report').innerHTML = html`<span class="report__done">Bedankt — je mailprogramma opent met je melding.</span>`;
-  });
+  el.results.addEventListener('click', (e) => { const btn = e.target.closest('.report__btn'); if (!btn) return; btn.closest('.report').innerHTML = html`<span class="report__done">Bedankt — je mailprogramma opent met je melding.</span>`; });
   </script>
 </body>
 </html>
