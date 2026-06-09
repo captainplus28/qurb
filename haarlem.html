@@ -156,6 +156,53 @@
     .search__meta { max-inline-size: var(--tool); margin: 10px auto 0; padding-inline: 8px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; min-block-size: 20px; font-size: 13px; color: var(--muted-soft); }
     .found { display: inline-flex; align-items: center; gap: 6px; color: var(--brand-strong); font-weight: 500; }
     .found::before { content: ""; inline-size: 6px; block-size: 6px; border-radius: 50%; background: var(--brand); }
+
+    [hidden] { display: none !important; }
+
+    /* When toggle */
+    .field__toggle { display: flex; gap: 4px; }
+    .toggle-btn {
+      display: inline-flex; align-items: center; gap: 5px;
+      padding: 4px 10px; border-radius: var(--radius-pill);
+      border: 1px solid var(--hairline); background: var(--canvas);
+      font: inherit; font-size: 13px; font-weight: 500; color: var(--muted-soft);
+      cursor: pointer; white-space: nowrap; transition: background .15s, border-color .15s, color .15s;
+    }
+    .toggle-btn:hover { border-color: var(--border-strong); color: var(--ink); }
+    .toggle-btn--active { background: var(--ink); border-color: var(--ink); color: #fff; }
+    .toggle-btn--active:hover { background: var(--ink); }
+    .field__datetime { margin-block-start: 4px; }
+    .when__reset { background: none; border: 0; padding: 0; font: inherit; font-size: 12px; color: var(--brand-strong); cursor: pointer; white-space: nowrap; }
+
+    /* Duration stepper */
+    .dur { display: flex; align-items: center; gap: 10px; }
+    .dur__btn {
+      inline-size: 28px; block-size: 28px; border-radius: 50%;
+      border: 1px solid var(--hairline); background: var(--canvas);
+      font-size: 16px; line-height: 1; display: grid; place-items: center;
+      transition: border-color .15s, background .15s;
+    }
+    .dur__btn:hover:not(:disabled) { border-color: var(--border-strong); background: var(--surface-soft); }
+    .dur__btn:disabled { opacity: .35; cursor: default; }
+    .dur__val { font-size: 14px; font-weight: 500; color: var(--ink); min-inline-size: 64px; text-align: center; font-variant-numeric: tabular-nums; }
+
+    /* Quick shortcuts */
+    .shortcuts {
+      max-inline-size: var(--tool); margin: 10px auto 0; padding-inline: 8px;
+      display: flex; align-items: center; gap: 6px; flex-wrap: wrap;
+    }
+    .shortcut {
+      display: inline-flex; align-items: center; gap: 4px;
+      padding: 5px 12px; border-radius: var(--radius-pill);
+      border: 1px solid var(--hairline); background: var(--canvas);
+      font: inherit; font-size: 13px; font-weight: 500; color: var(--muted-soft);
+      cursor: pointer; white-space: nowrap;
+      transition: background .12s, border-color .12s, color .12s;
+    }
+    .shortcut:hover { background: var(--surface-soft); border-color: var(--border-strong); color: var(--ink); }
+    .shortcut--active { background: var(--brand-tint); border-color: var(--brand); color: var(--brand-strong); }
+    .shortcut--more { color: var(--brand-strong); border-color: var(--brand); }
+    .shortcut--more:hover { background: var(--brand-tint); }
     @container (max-width: 640px) {
       .search__bar { flex-direction: column; align-items: stretch; border-radius: var(--radius-md); }
       .field { border-inline-end: none; border-block-end: 1px solid var(--hairline-soft); border-radius: 0 !important; }
@@ -294,13 +341,26 @@
                    aria-autocomplete="list" aria-describedby="addr-help">
             <ul class="suggest" id="suggest" role="listbox" aria-label="Adressuggesties"></ul>
           </div>
-          <div class="field">
-            <label class="field__label" for="van">Van</label>
-            <input class="field__input" id="van" name="van" type="datetime-local" required>
+          <div class="field field--when">
+            <span class="field__label" id="when-label">Wanneer</span>
+            <div class="field__toggle" id="when-choice" aria-labelledby="when-label">
+              <button type="button" class="toggle-btn toggle-btn--active" id="when-now" aria-pressed="true">Nu</button>
+              <button type="button" class="toggle-btn" id="when-specific" aria-pressed="false">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                Plan vooruit
+              </button>
+            </div>
+            <div id="when-at-wrap" hidden>
+              <input class="field__input field__datetime" id="start" name="van" type="datetime-local" aria-label="Vertrektijd">
+            </div>
           </div>
-          <div class="field">
-            <label class="field__label" for="tot">Tot</label>
-            <input class="field__input" id="tot" name="tot" type="datetime-local" required>
+          <div class="field field--dur">
+            <span class="field__label" id="dur-label">Hoe lang</span>
+            <div class="dur" role="group" aria-labelledby="dur-label">
+              <button type="button" class="dur__btn" id="dur-minus" aria-label="Korter parkeren">−</button>
+              <span class="dur__val" id="dur-val" aria-live="polite">1 uur</span>
+              <button type="button" class="dur__btn" id="dur-plus" aria-label="Langer parkeren">+</button>
+            </div>
           </div>
           <button class="orb" id="go" type="submit" aria-label="Vergelijk parkeerkosten">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
@@ -310,6 +370,16 @@
           <span id="found" class="found" hidden></span>
           <span id="tarief" aria-live="polite"></span>
         </p>
+        <div class="shortcuts" role="group" aria-label="Snelle duratie-keuze">
+          <button type="button" class="shortcut" data-min="60">1 uur</button>
+          <button type="button" class="shortcut" data-min="120">2 uur</button>
+          <button type="button" class="shortcut" data-min="240">4 uur</button>
+          <button type="button" class="shortcut" data-min="1440">Hele dag</button>
+          <button type="button" class="shortcut shortcut--more" id="shortcut-longer">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            Langer parkeren
+          </button>
+        </div>
         <span id="addr-help" class="visually-hidden">Begin te typen en kies een adres uit de lijst met pijltjestoetsen.</span>
       </form>
     </section>
@@ -701,10 +771,9 @@
   async function compare() {
     clearError(); combobox.close();
     if (!state.place || state.place.rate == null) return showError('Kies eerst een adres uit de lijst, dan verschijnt het gemeentetarief.');
-    const start = new Date(el.van.value), end = new Date(el.tot.value);
-    if (Number.isNaN(+start) || Number.isNaN(+end)) return showError('Vul een begin- en eindtijd in.');
-    const ms = end - start;
-    if (ms <= 0) return showError('De eindtijd moet ná de begintijd liggen.');
+    const start = getStartTime();
+    const ms = durationMin * 60_000;
+    const end = new Date(start.getTime() + ms);
     if (!navigator.onLine) return showError('Je lijkt offline te zijn. Controleer je verbinding en probeer opnieuw.');
     setBusy(true);
     try {
@@ -718,7 +787,7 @@
     finally { setBusy(false); }
   }
 
-  initTimeInputs();
+  initWhenDuration();
   el.form.addEventListener('submit', (e) => { e.preventDefault(); compare(); });
   el.results.addEventListener('click', (e) => { const btn = e.target.closest('.report__btn'); if (!btn) return; btn.closest('.report').innerHTML = html`<span class="report__done">Bedankt — je mailprogramma opent met je melding.</span>`; });
   </script>

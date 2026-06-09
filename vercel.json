@@ -1,6 +1,7 @@
 {
   "rewrites": [
     { "source": "/over-ons", "destination": "/over-ons.html" },
+    { "source": "/goedkoopste-parkeerapp", "destination": "/goedkoopste-parkeerapp.html" },
     { "source": "/amsterdam", "destination": "/amsterdam.html" },
     { "source": "/rotterdam", "destination": "/rotterdam.html" },
     { "source": "/utrecht", "destination": "/utrecht.html" },
