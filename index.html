@@ -333,6 +333,24 @@
     .found { display: inline-flex; align-items: center; gap: 6px; color: var(--brand-strong); font-weight: 500; }
     .found::before { content: ""; inline-size: 6px; block-size: 6px; border-radius: 50%; background: var(--brand); }
 
+    /* Quick shortcuts */
+    .shortcuts {
+      max-inline-size: var(--tool); margin: 10px auto 0; padding-inline: 8px;
+      display: flex; align-items: center; gap: 6px; flex-wrap: wrap;
+    }
+    .shortcut {
+      display: inline-flex; align-items: center; gap: 4px;
+      padding: 5px 12px; border-radius: var(--radius-pill);
+      border: 1px solid var(--hairline); background: var(--canvas);
+      font: inherit; font-size: 13px; font-weight: 500; color: var(--muted-soft);
+      cursor: pointer; white-space: nowrap;
+      transition: background .12s, border-color .12s, color .12s;
+    }
+    .shortcut:hover { background: var(--surface-soft); border-color: var(--border-strong); color: var(--ink); }
+    .shortcut--active { background: var(--brand-tint); border-color: var(--brand); color: var(--brand-strong); }
+    .shortcut--more { color: var(--brand-strong); border-color: var(--brand); }
+    .shortcut--more:hover { background: var(--brand-tint); }
+
     /* When toggle */
     .field__toggle { display: flex; gap: 4px; }
     .toggle-btn {
@@ -566,6 +584,16 @@
           <span id="found" class="found" hidden></span>
           <span id="tarief" aria-live="polite"></span>
         </p>
+        <div class="shortcuts" role="group" aria-label="Snelle duratie-keuze">
+          <button type="button" class="shortcut" data-min="60">1 uur</button>
+          <button type="button" class="shortcut" data-min="120">2 uur</button>
+          <button type="button" class="shortcut" data-min="240">4 uur</button>
+          <button type="button" class="shortcut" data-min="1440">Hele dag</button>
+          <button type="button" class="shortcut shortcut--more" id="shortcut-longer">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            Langer parkeren
+          </button>
+        </div>
         <span id="addr-help" class="visually-hidden">Begin te typen en kies een adres uit de lijst met pijltjestoetsen.</span>
       </form>
     </section>
@@ -981,7 +1009,9 @@
     durVal:    $('#dur-val'),
     durMinus:  $('#dur-minus'),
     durPlus:   $('#dur-plus'),
-    presets:   [...document.querySelectorAll('.dur__preset')],
+    presets:       [...document.querySelectorAll('.dur__preset')],
+    shortcuts:     [...document.querySelectorAll('.shortcut[data-min]')],
+    shortcutLonger: $('#shortcut-longer'),
     suggest:   $('#suggest'),
     found:     $('#found'),
     tarief:    $('#tarief'),
@@ -1018,7 +1048,11 @@
     el.whenSpec.classList.toggle('toggle-btn--active', !now);
     if (!now) {
       if (!el.start.value) el.start.value = toLocalInput(new Date());
-      el.start.focus();
+      requestAnimationFrame(() => {
+        el.start.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        el.start.focus();
+        try { el.start.showPicker(); } catch { /* niet ondersteund in oudere browsers */ }
+      });
     }
   }
   function getStartTime() {
@@ -1026,14 +1060,31 @@
     const v = new Date(el.start.value);
     return Number.isNaN(+v) ? new Date() : v;
   }
+  function updateShortcutActive() {
+    el.shortcuts.forEach((b) => b.classList.toggle('shortcut--active', Number(b.dataset.min) === durationMin));
+  }
+
   function initWhenDuration() {
-    el.durMinus.addEventListener('click', () => stepDuration(-1));
-    el.durPlus.addEventListener('click', () => stepDuration(1));
+    el.durMinus.addEventListener('click', () => { stepDuration(-1); updateShortcutActive(); });
+    el.durPlus.addEventListener('click', () => { stepDuration(1); updateShortcutActive(); });
     el.whenNow.addEventListener('click', () => setStartMode('now'));
     el.whenSpec.addEventListener('click', () => setStartMode('at'));
-    el.whenReset.addEventListener('click', () => setStartMode('now'));
-    el.presets.forEach((b) => b.addEventListener('click', () => { durationMin = Number(b.dataset.min); renderDuration(); }));
+    el.whenReset?.addEventListener('click', () => setStartMode('now'));
+    el.presets.forEach((b) => b.addEventListener('click', () => { durationMin = Number(b.dataset.min); renderDuration(); updateShortcutActive(); }));
+
+    // Shortcut buttons
+    el.shortcuts.forEach((b) => {
+      b.addEventListener('click', () => {
+        durationMin = Number(b.dataset.min);
+        renderDuration();
+        updateShortcutActive();
+        if (state.place?.rate != null) compare();
+      });
+    });
+    el.shortcutLonger.addEventListener('click', () => setStartMode('at'));
+
     renderDuration();
+    updateShortcutActive();
   }
 
   /* ════════════════════════════ Autocomplete (WAI-ARIA combobox) ════════════════════════════ */
