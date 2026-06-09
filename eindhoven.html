@@ -4,28 +4,28 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light">
-  <meta name="description" content="Vergelijk parkeer-apps in Den Haag. Qurb toont wat je écht betaalt inclusief servicekosten — van centrum tot Scheveningen. Gratis, geen account.">
+  <meta name="description" content="Vergelijk parkeer-apps in Eindhoven. Qurb toont wat je écht betaalt inclusief servicekosten — van centrum tot Strijp-S. Gratis, geen account.">
   <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://www.qurb.nl/den-haag" />
-  <meta property="og:title" content="Parkeerkosten vergelijken in Den Haag — Qurb">
-  <meta property="og:description" content="Vergelijk parkeer-apps in Den Haag. Qurb toont wat je écht betaalt inclusief servicekosten — van centrum tot Scheveningen. Gratis, geen account.">
-  <meta property="og:url" content="https://www.qurb.nl/den-haag">
+  <link rel="canonical" href="https://www.qurb.nl/eindhoven" />
+  <meta property="og:title" content="Parkeerkosten vergelijken in Eindhoven — Qurb">
+  <meta property="og:description" content="Vergelijk parkeer-apps in Eindhoven. Qurb toont wat je écht betaalt inclusief servicekosten — van centrum tot Strijp-S. Gratis, geen account.">
+  <meta property="og:url" content="https://www.qurb.nl/eindhoven">
   <meta property="og:type" content="website">
   <!-- Baseline CSP (also enforced at hosting level via _headers). -->
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://www.google-analytics.com https://www.googletagmanager.com; connect-src 'self' https://api.pdok.nl https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; base-uri 'self'; form-action 'self'; frame-ancestors 'none'">
-  <title>Parkeerkosten vergelijken in Den Haag — Qurb</title>
+  <title>Parkeerkosten vergelijken in Eindhoven — Qurb</title>
 
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "WebApplication",
     "name": "Qurb",
-    "url": "https://www.qurb.nl/den-haag",
-    "description": "Vergelijk parkeer-apps in Den Haag. Qurb toont wat je écht betaalt inclusief servicekosten — van centrum tot Scheveningen. Gratis, geen account.",
+    "url": "https://www.qurb.nl/eindhoven",
+    "description": "Vergelijk parkeer-apps in Eindhoven. Qurb toont wat je écht betaalt inclusief servicekosten — van centrum tot Strijp-S. Gratis, geen account.",
     "applicationCategory": "UtilitiesApplication",
     "operatingSystem": "Web",
     "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
-    "areaServed": "Den Haag"
+    "areaServed": "Eindhoven"
   }
   </script>
 
@@ -194,6 +194,11 @@
     .row__link { color: var(--results-link); text-decoration: none; font-size: 14px; }
     .row__link:hover { text-decoration: underline; }
     .tag { background: var(--tag-bg); color: var(--tag-ink); font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; padding: 2px 8px; border-radius: var(--radius-pill); line-height: 1.6; }
+    .avail { display: inline-flex; align-items: center; gap: 5px; font-size: 13px; color: var(--results-muted); }
+    .avail__dot { inline-size: 6px; block-size: 6px; border-radius: 50%; }
+    .avail__dot--green  { background: #30d158; }
+    .avail__dot--yellow { background: #ffd60a; }
+    .avail__dot--red    { background: #ff453a; }
     .info { background: var(--results-info-bg); border-radius: var(--radius-md); padding: 18px 22px; font-size: 14px; color: var(--results-muted); line-height: 1.6; margin-block-start: 14px; }
     .info strong { color: var(--results-text); }
     .report { margin-block-start: 16px; }
@@ -284,7 +289,7 @@
           <div class="field field--addr">
             <label class="field__label" for="addr">Bestemming</label>
             <input class="field__input" id="addr" name="addr" type="text"
-                   placeholder="Bijv. Coolsingel 40 Rotterdam"
+                   placeholder="Bijv. 18 Septemberplein 1 Eindhoven"
                    role="combobox" aria-expanded="false" aria-controls="suggest"
                    aria-autocomplete="list" aria-describedby="addr-help">
             <ul class="suggest" id="suggest" role="listbox" aria-label="Adressuggesties"></ul>
@@ -310,10 +315,10 @@
     </section>
 
     <section class="hero">
-      <p class="hero__kicker">qurb · Den Haag</p>
-      <p class="hero__eyebrow">Parkeervergelijker · Den Haag</p>
-      <h1 class="hero__title">Parkeren in Den Haag: wat betaal je écht?</h1>
-      <p class="hero__sub">Den Haag heeft een uitgebreid betaald parkeergebied met sterk variërende tarieven per buurt. Van het Centrum tot Scheveningen — elke zone heeft zijn eigen regels. Qurb vergelijkt alle apps op jouw locatie.</p>
+      <p class="hero__kicker">qurb · Eindhoven</p>
+      <p class="hero__eyebrow">Parkeervergelijker · Eindhoven</p>
+      <h1 class="hero__title">Parkeren in Eindhoven: wat betaal je écht?</h1>
+      <p class="hero__sub">Eindhoven groeit snel en de parkeerdruk in het centrum neemt toe. Met meerdere betaalde zones en wisselende tarieven per buurt loont het om apps te vergelijken. Qurb doet dat automatisch op jouw locatie.</p>
     </section>
 
     <div class="status" id="error" role="alert" aria-live="assertive"></div>
@@ -359,8 +364,8 @@
     <section class="band">
       <div class="section">
         <p class="eyebrow">Lokale tarieven</p>
-        <h2 class="title">Parkeertarieven in Den Haag</h2>
-        <p class="lede">Parkeren in Den Haag centrum kost gemiddeld €3,50–€5,00/uur. In Scheveningen en rond het Centraal Station kunnen tarieven hoger uitvallen. Verschillende parkeer-apps zijn niet overal even goed gedekt in Den Haag — Qurb toont alleen wat beschikbaar is op jouw locatie.</p>
+        <h2 class="title">Parkeertarieven in Eindhoven</h2>
+        <p class="lede">Straatparkeren in Eindhoven centrum kost gemiddeld €2,80–€3,20/uur. Rondom het station en de 18 Septemberplein zijn de tarieven het hoogst. In wijken als Strijp-S liggen de tarieven iets lager. Qurb vergelijkt alle beschikbare apps live.</p>
         <p style="margin-block-start: 16px; font-size: 14px; color: var(--muted-soft);">Welke app is generiek het goedkoopst? <a href="/goedkoopste-parkeerapp" style="color: var(--brand-strong); font-weight: 600;">Bekijk de volledige parkeer-app vergelijking →</a></p>
       </div>
     </section>
@@ -372,7 +377,11 @@
         <li><a class="chip" href="/amsterdam"><span class="chip__dot" style="background:var(--brand)"></span>Amsterdam</a></li>
         <li><a class="chip" href="/rotterdam"><span class="chip__dot" style="background:var(--brand)"></span>Rotterdam</a></li>
         <li><a class="chip" href="/utrecht"><span class="chip__dot" style="background:var(--brand)"></span>Utrecht</a></li>
-        <li class="chip" aria-current="page"><span class="chip__dot" style="background:var(--brand)"></span>Den Haag</li>
+        <li><a class="chip" href="/den-haag"><span class="chip__dot" style="background:var(--brand)"></span>Den Haag</a></li>
+        <li><a class="chip" href="/haarlem"><span class="chip__dot" style="background:var(--brand)"></span>Haarlem</a></li>
+        <li><a class="chip" href="/leiden"><span class="chip__dot" style="background:var(--brand)"></span>Leiden</a></li>
+        <li class="chip" aria-current="page"><span class="chip__dot" style="background:var(--brand)"></span>Eindhoven</li>
+        <li><a class="chip" href="/groningen"><span class="chip__dot" style="background:var(--brand)"></span>Groningen</a></li>
       </ul>
     </section>
 

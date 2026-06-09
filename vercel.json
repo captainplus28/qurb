@@ -4,6 +4,10 @@
     { "source": "/amsterdam", "destination": "/amsterdam.html" },
     { "source": "/rotterdam", "destination": "/rotterdam.html" },
     { "source": "/utrecht", "destination": "/utrecht.html" },
-    { "source": "/den-haag", "destination": "/den-haag.html" }
+    { "source": "/den-haag", "destination": "/den-haag.html" },
+    { "source": "/haarlem", "destination": "/haarlem.html" },
+    { "source": "/leiden", "destination": "/leiden.html" },
+    { "source": "/eindhoven", "destination": "/eindhoven.html" },
+    { "source": "/groningen", "destination": "/groningen.html" }
   ]
 }
