@@ -1,5 +1,6 @@
 {
   "rewrites": [
+    { "source": "/over-ons", "destination": "/over.html" },
     { "source": "/amsterdam", "destination": "/amsterdam.html" },
     { "source": "/rotterdam", "destination": "/rotterdam.html" },
     { "source": "/utrecht", "destination": "/utrecht.html" },
