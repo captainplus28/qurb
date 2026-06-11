@@ -631,7 +631,7 @@
     const s = Math.sin(dLat / 2) ** 2 + Math.cos(rad(a.lat)) * Math.cos(rad(b.lat)) * Math.sin(dLon / 2) ** 2;
     return Math.round(R * 2 * Math.atan2(Math.sqrt(s), Math.sqrt(1 - s)));
   }
-  const gmapsWalkHref = (from, to) => `https://www.google.com/maps/dir/?api=1&origin=${from.lat},${from.lon}&destination=${to.lat},${to.lon}&travelmode=walking`;
+  const gmapsWalkHref = (_from, to) => `https://www.google.com/maps/dir/?api=1&destination=${to.lat},${to.lon}&travelmode=walking`;
   function pointInPolygon(pt, poly) {
     let inside = false;
     for (let i = 0, j = poly.length - 1; i < poly.length; j = i++) {
@@ -820,7 +820,7 @@
     const priced = shown.filter((g) => g.cost != null).map((g) => g.cost);
     const cheapest = priced.length ? Math.min(...priced) : null;
     const rows = shown.map((g, i) => { const best = g.cost != null && g.cost === cheapest; const dist = g.distance != null ? `${formatDistance(g.distance)} · ` : ''; const sub = (g.kind ? `${g.kind} · ` : '') + (g.cost != null ? `${eur.format(g.hourly)}/uur, max ${eur.format(g.dayMax)}/dag` : 'tarief bij exploitant'); const safeUrl = g.url ? safeHttps(g.url) : null;
-      const origin = state.place?.coord; const route = origin && g.lat != null && g.lon != null ? html`<p class="row__route"><a href="${gmapsWalkHref(origin, g)}" target="_blank" rel="noopener">Routebeschrijving →</a></p>` : '';
+      const route = g.lat != null && g.lon != null ? html`<p class="row__route"><a href="${gmapsWalkHref(null, g)}" target="_blank" rel="noopener">Routebeschrijving →</a></p>` : '';
        const right = g.cost != null ? eur.format(g.cost) : safeUrl ? raw(html`<a class="row__link" href="${safeUrl}" target="_blank" rel="noopener">tarief →</a>`) : '—'; return html`<li class="row anim" style="animation-delay:${(0.05 * (Math.min(i, 12) + 1)).toFixed(2)}s"><div><p class="row__name">${g.name}${best ? raw('<span class="tag">goedkoopst</span>') : ''}</p><p class="row__sub">${g.operator} · ${raw(dist)}${sub}</p>${raw(route)}</div><div class="row__right"><p class="row__total">${right}</p><p class="row__delta">${g.capacity ? `${g.capacity} plaatsen` : ''}</p></div></li>`; });
     const hidden = totalCount - shown.length;
     return html`<ul class="rows">${rows}</ul><p class="info anim" style="animation-delay:.4s">Dichtstbijzijnde ${shown.length} garages${hidden > 0 ? ` (${hidden} verder weg niet getoond)` : ''}. Live locaties en tarieven uit de open parkeerdata van de RDW (CC-0). Garages zonder gepubliceerd tarief (o.a. Q-Park) tonen we met een link naar de exploitant.</p>`;
