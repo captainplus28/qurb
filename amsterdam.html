@@ -442,6 +442,14 @@
       .row__right { text-align: start; }
       .summary { gap: 24px; }
     }
+      .tip { background: rgba(124,199,154,.12); border: 1px solid rgba(124,199,154,.45); border-radius: var(--radius-md, 12px); padding: 16px 20px; margin-block-end: 28px; }
+    .tip__title { font-size: 13px; font-weight: 700; letter-spacing: .3px; text-transform: uppercase; color: var(--results-link, #7cc79a); margin: 0 0 6px; }
+    .tip__body { font-size: 14px; line-height: 1.6; color: var(--results-text, #fff); margin: 0 0 10px; }
+    .tip__link { font-size: 14px; font-weight: 600; color: var(--results-link, #7cc79a); text-decoration: none; }
+    .tip__link:hover { text-decoration: underline; }
+    .row__route { margin-block-start: 4px; font-size: 13px; }
+    .row__route a { color: var(--results-link, #7cc79a); text-decoration: none; }
+    .row__route a:hover { text-decoration: underline; }
   </style>
 </head>
 
@@ -822,6 +830,7 @@
     const s = Math.sin(dLat / 2) ** 2 + Math.cos(rad(a.lat)) * Math.cos(rad(b.lat)) * Math.sin(dLon / 2) ** 2;
     return Math.round(R * 2 * Math.atan2(Math.sqrt(s), Math.sqrt(1 - s)));
   }
+  const gmapsWalkHref = (from, to) => `https://www.google.com/maps/dir/?api=1&origin=${from.lat},${from.lon}&destination=${to.lat},${to.lon}&travelmode=walking`;
   function pointInPolygon(pt, poly) {
     let inside = false;
     for (let i = 0, j = poly.length - 1; i < poly.length; j = i++) {
@@ -897,13 +906,46 @@
         const dayMax = priced ? (g.dagmax ?? round2(g.uur * 24)) : null;
         return {
           name: g.naam, operator: g.operator || '—', capacity: g.capaciteit, url: g.url,
-          kind: GARAGE_TYPE[g.type] ?? null,
+          kind: GARAGE_TYPE[g.type] ?? null, lat: g.lat ?? null, lon: g.lon ?? null,
           distance: coord ? haversineMeters(coord, g) : null,
           hourly: g.uur, dayMax,
           cost: priced ? round2(Math.min(g.uur * hours, dayMax)) : null,
         };
       })
       .sort((a, b) => (a.distance ?? Infinity) - (b.distance ?? Infinity) || (a.cost ?? Infinity) - (b.cost ?? Infinity));
+  }
+
+  /* ── "Goedkoper verderop": goedkoopste zone binnen 500 m van de bestemming ── */
+  const NEARBY_TIP = { maxMeters: 500, minSavingEur: 0.5, minSavingPct: 0.15 };
+  function zoneRateAt(zone, start) {
+    const weekday = start.getDay() === 0 ? 7 : start.getDay();
+    const minutes = start.getHours() * 60 + start.getMinutes();
+    let rate = 0;
+    for (const w of zone.vensters ?? []) if (w.days.includes(weekday) && minutes >= w.from && minutes <= w.to && w.eur > rate) rate = w.eur;
+    return rate;
+  }
+  function nearestZonePoint(coord, zone) {
+    let best = null;
+    for (const poly of zone.polys ?? []) for (const [lon, lat] of poly) {
+      const distance = haversineMeters(coord, { lat, lon });
+      if (!best || distance < best.distance) best = { distance, lat, lon };
+    }
+    return best;
+  }
+  async function findCheaperNearby(areaId, coord, currentRate, start) {
+    if (!areaId || !coord || !(currentRate > 0)) return null;
+    const zones = await loadStreetZones(areaId);
+    let best = null;
+    for (const zone of zones) {
+      if (inAnyPolygon(coord, zone)) continue;
+      const near = nearestZonePoint(coord, zone);
+      if (!near || near.distance > NEARBY_TIP.maxMeters) continue;
+      const rate = zoneRateAt(zone, start);
+      const saving = round2(currentRate - rate);
+      if (saving < NEARBY_TIP.minSavingEur || saving < round2(currentRate * NEARBY_TIP.minSavingPct)) continue;
+      if (!best || rate < best.rate || (rate === best.rate && near.distance < best.distance)) best = { areaid: zone.areaid, naam: zone.naam, rate, saving, ...near };
+    }
+    return best;
   }
 
   const state = { place: null };
@@ -1163,10 +1205,12 @@
       const dist = g.distance != null ? `${formatDistance(g.distance)} · ` : '';
       const sub = (g.kind ? `${g.kind} · ` : '') + (g.cost != null ? `${eur.format(g.hourly)}/uur, max ${eur.format(g.dayMax)}/dag` : 'tarief bij exploitant');
       const safeUrl = g.url ? safeHttps(g.url) : null;
+      const origin = state.place?.coord; const route = origin && g.lat != null && g.lon != null ? html`<p class="row__route"><a href="${gmapsWalkHref(origin, g)}" target="_blank" rel="noopener">Routebeschrijving →</a></p>` : '';
+      
       const right = g.cost != null ? eur.format(g.cost)
         : safeUrl ? raw(html`<a class="row__link" href="${safeUrl}" target="_blank" rel="noopener">tarief →</a>`) : '—';
       return html`<li class="row anim" style="animation-delay:${(0.05 * (Math.min(i, 12) + 1)).toFixed(2)}s">
-        <div><p class="row__name">${g.name}${best ? raw('<span class="tag">goedkoopst</span>') : ''}</p><p class="row__sub">${g.operator} · ${raw(dist)}${sub}</p></div>
+        <div><p class="row__name">${g.name}${best ? raw('<span class="tag">goedkoopst</span>') : ''}</p><p class="row__sub">${g.operator} · ${raw(dist)}${sub}</p>${raw(route)}</div>
         <div class="row__right"><p class="row__total">${right}</p><p class="row__delta">${g.capacity ? `${g.capacity} plaatsen` : ''}</p></div>
       </li>`;
     });
@@ -1195,7 +1239,8 @@
 
   const FLAG = raw('<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>');
 
-  function renderResults({ street, durationMin, base, hours, garages, start, end }) {
+  function renderResults({ street, durationMin, base, hours, garages, start, end, tip }) {
+    const tipHtml = tip ? html`<div class="tip anim" role="note"><p class="tip__title">Goedkoper verderop</p><p class="tip__body"><strong>${eur.format(tip.saving)}/uur goedkoper</strong>${tip.rate === 0 ? ' (op dit tijdstip gratis)' : ''} in zone ${tip.areaid} · ${tip.naam} — ${formatDistance(tip.distance)} lopen vanaf je bestemming.</p><a class="tip__link" href="${gmapsWalkHref(state.place.coord, tip)}" target="_blank" rel="noopener">Bekijk looproute in Google Maps →</a></div>` : '';
     const summaryRight = street.kind === 'permit' ? '—'
       : street.kind === 'uncertain' || street.kind === 'unsupported' ? '?'
       : (street.kind === 'free' || street.kind === 'nodata') ? 'Gratis'
@@ -1211,7 +1256,7 @@
 
     el.results.innerHTML = html`
       <section class="results" aria-label="Resultaten">
-        <div class="results__inner">
+        <div class="results__inner">${raw(tipHtml)}
           <div class="summary anim">
             <div><p class="summary__label">Duur</p><p class="summary__value">${formatDuration(durationMin)}</p></div>
             <div><p class="summary__label">${['permit', 'uncertain', 'unsupported'].includes(street.kind) ? 'Straat' : 'Basisprijs'}</p><p class="summary__value">${summaryRight}</p><p class="summary__sub">${summarySub}</p></div>
@@ -1243,12 +1288,13 @@
       const hours = ms / 3_600_000;
       const street = await resolveStreet(state.place, start);
       const base = round2(street.rate * hours);
+      const tip = street.kind === 'paid' ? await findCheaperNearby(state.place.areaId, state.place.coord, street.rate, start) : null;
       let garages = null;
       if (state.place.areaId) {
         const list = await loadGarages(state.place.areaId);
         if (list.length) garages = { ranked: rankGarages(list, state.place.coord, hours), total: list.length };
       }
-      renderResults({ street, durationMin: Math.round(ms / 60000), base, hours, garages, start, end });
+      renderResults({ street, durationMin: Math.round(ms / 60000), base, hours, garages, start, end, tip });
     } catch {
       showError('Er ging iets mis bij het ophalen van de parkeerdata. Probeer het zo nog eens.');
     } finally {
