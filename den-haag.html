@@ -286,7 +286,9 @@
       .row__right { text-align: start; }
       .summary { gap: 24px; }
     }
-      .tip { background: rgba(124,199,154,.12); border: 1px solid rgba(124,199,154,.45); border-radius: var(--radius-md, 12px); padding: 16px 20px; margin-block-end: 28px; }
+      .zone__route { font-size: 12px; color: var(--results-link, #7cc79a); text-decoration: none; white-space: nowrap; }
+    .zone__route:hover { text-decoration: underline; }
+    .tip { background: rgba(124,199,154,.12); border: 1px solid rgba(124,199,154,.45); border-radius: var(--radius-md, 12px); padding: 16px 20px; margin-block-end: 28px; }
     .tip__title { font-size: 13px; font-weight: 700; letter-spacing: .3px; text-transform: uppercase; color: var(--results-link, #7cc79a); margin: 0 0 6px; }
     .tip__body { font-size: 14px; line-height: 1.6; color: var(--results-text, #fff); margin: 0 0 10px; }
     .tip__link { font-size: 14px; font-weight: 600; color: var(--results-link, #7cc79a); text-decoration: none; }
@@ -616,6 +618,7 @@
   const loadPermitZones = (id) => loadJson(`data/${id}/vergunning.json`, (d) => d.zones ?? []).then((z) => z ?? []);
   const loadGarages     = (id) => loadJson(`data/${id}/garages.json`, (d) => d.garages ?? []).then((g) => g ?? []);
 
+  const zoneCentroid = (zone) => { const pts = (zone.polys ?? []).flat(); if (!pts.length) return null; return { lat: pts.reduce((s,[,y])=>s+y,0)/pts.length, lon: pts.reduce((s,[x])=>s+x,0)/pts.length }; };
   function haversineMeters(a, b) {
     const R = 6371000, rad = (x) => x * Math.PI / 180;
     const dLat = rad(b.lat - a.lat), dLon = rad(b.lon - a.lon);
@@ -648,7 +651,8 @@
         if (w.days.includes(weekday) && minutes >= w.from && minutes <= w.to && (rate === null || w.eur > rate)) { rate = w.eur; label = zone.naam; }
       }
     }
-    return rate === null ? { rate: 0, label: hits[0].naam, free: true } : { rate, label };
+    const matchZone = rate !== null ? (hits.find(z => z.naam === label) ?? hits[0]) : hits[0];
+    return rate === null ? { rate: 0, label: matchZone.naam, areaid: matchZone.areaid, zoneCoord: zoneCentroid(matchZone), free: true } : { rate, label, areaid: matchZone.areaid, zoneCoord: zoneCentroid(matchZone) };
   }
   const inPermitZone = async (areaId, coord) => (await loadPermitZones(areaId)).some((z) => inAnyPolygon(coord, z));
 
@@ -658,8 +662,8 @@
     const tier = await reliabilityTier(place.areaId);
     if (tier === 'onvoldoende') return { kind: 'unsupported', tier, rate: 0, label: 'Straattarief niet betrouwbaar beschikbaar' };
     const street = await streetRateAt(place.areaId, place.coord, start);
-    if (street && street.rate > 0) return { kind: 'paid', tier, rate: street.rate, label: street.label };
-    if (street) return { kind: 'free', tier, rate: 0, label: `Gratis op dit tijdstip · ${street.label}` };
+    if (street && street.rate > 0) return { kind: 'paid', tier, rate: street.rate, label: street.label, areaid: street.areaid, zoneCoord: street.zoneCoord };
+    if (street) return { kind: 'free', tier, rate: 0, label: `Gratis op dit tijdstip · ${street.label}`, areaid: street.areaid, zoneCoord: street.zoneCoord };
     if (await inPermitZone(place.areaId, place.coord)) return { kind: 'permit', tier, rate: 0, label: 'Vergunninghoudersgebied' };
     const coverage = await getCoverageMap();
     if ((coverage[place.areaId] ?? 0) > 0) return { kind: 'uncertain', tier, rate: 0, label: 'Zone niet te bepalen' };
@@ -828,10 +832,12 @@
   function renderResults({ street, durationMin, base, hours, garages, start, end, tip }) {
     const tipHtml = tip ? html`<div class="tip anim" role="note"><p class="tip__title">Goedkoper verderop</p><p class="tip__body"><strong>${eur.format(tip.saving)}/uur goedkoper</strong>${tip.rate === 0 ? ' (op dit tijdstip gratis)' : ''} in zone ${tip.areaid} · ${tip.naam} — ${formatDistance(tip.distance)} lopen vanaf je bestemming.</p><a class="tip__link" href="${gmapsWalkHref(state.place.coord, tip)}" target="_blank" rel="noopener">Bekijk looproute in Google Maps →</a></div>` : '';
     const summaryRight = street.kind === 'permit' ? '—' : street.kind === 'uncertain' || street.kind === 'unsupported' ? '?' : (street.kind === 'free' || street.kind === 'nodata') ? 'Gratis' : eur.format(base);
-    const summarySub = street.label ? `${street.label}${['paid', 'indicative'].includes(street.kind) ? ` · ${eur.format(street.rate)}/uur` : ''}` : 'Gelijk voor alle apps';
+    const zoneCode = street.areaid ? ` · zone ${street.areaid}` : '';
+    const zoneLink = street.zoneCoord ? html`<a class="zone__route" href="${gmapsWalkHref(null, street.zoneCoord)}" target="_blank" rel="noopener">Routebeschrijving →</a>` : '';
+    const summarySub = street.label ? `${street.label}${zoneCode}${['paid', 'indicative'].includes(street.kind) ? ` · ${eur.format(street.rate)}/uur` : ''}` : 'Gelijk voor alle apps';
     const cityLabel = state.place?.municipality ? ` in ${displayCity(state.place.municipality)}` : '';
     const garagesHtml = garages == null ? html`<p class="info anim">Geen garagedata voor ${displayCity(state.place?.municipality) || 'deze plaats'}. In de volledige versie komen alle garages live uit de open parkeerdata van de RDW.</p>` : renderGarages(garages.ranked, garages.total);
-    el.results.innerHTML = html`<section class="results" aria-label="Resultaten"><div class="results__inner">${raw(tipHtml)}<div class="summary anim"><div><p class="summary__label">Duur</p><p class="summary__value">${formatDuration(durationMin)}</p></div><div><p class="summary__label">${['permit', 'uncertain', 'unsupported'].includes(street.kind) ? 'Straat' : 'Basisprijs'}</p><p class="summary__value">${summaryRight}</p><p class="summary__sub">${summarySub}</p></div></div><div class="group"><h2 class="group__label">Op straat</h2>${raw(renderStreet(street, base, hours))}<p class="report"><a class="report__btn" href="${reportHref(street, start, end)}">${FLAG} Deze data klopt niet</a></p></div><div class="group"><h2 class="group__label">Garages &amp; terreinen${cityLabel}</h2>${raw(garagesHtml)}</div></div></section>`;
+    el.results.innerHTML = html`<section class="results" aria-label="Resultaten"><div class="results__inner">${raw(tipHtml)}<div class="summary anim"><div><p class="summary__label">Duur</p><p class="summary__value">${formatDuration(durationMin)}</p></div><div><p class="summary__label">${['permit', 'uncertain', 'unsupported'].includes(street.kind) ? 'Straat' : 'Basisprijs'}</p><p class="summary__value">${summaryRight}</p><p class="summary__sub">${summarySub} ${raw(zoneLink)}</p></div></div><div class="group"><h2 class="group__label">Op straat</h2>${raw(renderStreet(street, base, hours))}<p class="report"><a class="report__btn" href="${reportHref(street, start, end)}">${FLAG} Deze data klopt niet</a></p></div><div class="group"><h2 class="group__label">Garages &amp; terreinen${cityLabel}</h2>${raw(garagesHtml)}</div></div></section>`;
     el.results.querySelector('.results')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 
