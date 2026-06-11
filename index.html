@@ -1357,15 +1357,15 @@
   const FLAG = raw('<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>');
 
   function renderResults({ street, durationMin, base, hours, garages, start, end, tip }) {
-    const tipHtml = tip ? html`<div class="tip anim" role="note"><p class="tip__title">Goedkoper verderop</p><p class="tip__body"><strong>${eur.format(tip.saving)}/uur goedkoper</strong>${tip.rate === 0 ? ' (op dit tijdstip gratis)' : ''} in zone ${tip.areaid} · ${tip.naam} — ${formatDistance(tip.distance)} lopen vanaf je bestemming.</p><a class="tip__link" href="${gmapsWalkHref(state.place.coord, tip)}" target="_blank" rel="noopener">Bekijk looproute in Google Maps →</a></div>` : '';
+    const tipHtml = tip ? html`<div class="tip anim" role="note"><p class="tip__title">Goedkoper verderop</p><p class="tip__body"><strong>${eur.format(tip.saving)}/uur goedkoper</strong>${tip.rate === 0 ? ' (op dit tijdstip gratis)' : ''} ${formatDistance(tip.distance)} lopen vanaf je bestemming (${tip.naam}).</p><a class="tip__link" href="${gmapsWalkHref(state.place.coord, tip)}" target="_blank" rel="noopener">Bekijk looproute in Google Maps →</a></div>` : '';
     const summaryRight = street.kind === 'permit' ? '—'
       : street.kind === 'uncertain' || street.kind === 'unsupported' ? '?'
       : (street.kind === 'free' || street.kind === 'nodata') ? 'Gratis'
       : eur.format(base);
-    const zoneCode = street.areaid ? ` · zone ${street.areaid}` : '';
     const zoneLink = street.zoneCoord ? html`<a class="zone__route" href="${gmapsWalkHref(null, street.zoneCoord)}" target="_blank" rel="noopener">Routebeschrijving →</a>` : '';
-    const summarySub = street.label
-      ? `${street.label}${zoneCode}${['paid', 'indicative'].includes(street.kind) ? ` · ${eur.format(street.rate)}/uur` : ''}`
+    const streetName = state.place?.label ? state.place.label.split(',')[0].trim() : null;
+    const summarySub = streetName
+      ? `${streetName}${['paid', 'indicative'].includes(street.kind) ? ` · ${eur.format(street.rate)}/uur` : ''}`
       : 'Gelijk voor alle apps';
     const cityLabel = state.place?.municipality ? ` in ${displayCity(state.place.municipality)}` : '';
 
