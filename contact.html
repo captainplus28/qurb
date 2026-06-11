@@ -120,9 +120,10 @@
     .submit-btn:disabled { opacity: .6; cursor: not-allowed; }
 
     /* Success / error states */
-    .form-status { display: none; border-radius: var(--radius-sm); padding: 16px 20px; font-size: 15px; font-weight: 500; }
-    .form-status--ok { display: block; background: #edfaf2; border: 1px solid #a3dbb7; color: #1a6635; }
-    .form-status--err { display: block; background: #fff0f0; border: 1px solid #f5b8b8; color: #9b2020; }
+    .form-status { border-radius: var(--radius-sm); padding: 16px 20px; font-size: 15px; font-weight: 500; }
+    .form-status[hidden] { display: none; }
+    .form-status--ok { background: #edfaf2; border: 1px solid #a3dbb7; color: #1a6635; }
+    .form-status--err { background: #fff0f0; border: 1px solid #f5b8b8; color: #9b2020; }
 
     /* CTA band */
     .cta { background: var(--brand-strong); text-align: center; padding: 64px 24px; }
