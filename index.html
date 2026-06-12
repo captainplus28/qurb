@@ -736,6 +736,7 @@
     pdok: {
       suggest: 'https://api.pdok.nl/bzk/locatieserver/search/v3_1/suggest',
       lookup:  'https://api.pdok.nl/bzk/locatieserver/search/v3_1/lookup',
+      reverse: 'https://api.pdok.nl/bzk/locatieserver/search/v3_1/free',
     },
     debounceMs:   250,
     minQuery:     3,
@@ -861,6 +862,19 @@
     const result = { lon: parseFloat(match[1]), lat: parseFloat(match[2]), municipality: doc.gemeentenaam ?? '' };
     sessionCache.set(cacheKey, result);
     return result;
+  }
+
+  async function reverseGeocode({ lon, lat }) {
+    const cacheKey = `pdok:rev:${lon.toFixed(4)},${lat.toFixed(4)}`;
+    if (sessionCache.has(cacheKey)) return sessionCache.get(cacheKey);
+    try {
+      const url = `${CONFIG.pdok.reverse}?lon=${lon}&lat=${lat}&fq=type:weg&rows=1`;
+      const data = await fetchJson(url);
+      const doc = data?.response?.docs?.[0];
+      const street = doc?.straatnaam ?? null;
+      sessionCache.set(cacheKey, street);
+      return street;
+    } catch { return null; }
   }
 
   /* ════════════════════════════ Per-municipality data (lazy, in-memory) ════════════════════════════ */
@@ -1041,6 +1055,10 @@
       const saving = round2(currentRate - rate);
       if (saving < NEARBY_TIP.minSavingEur || saving < round2(currentRate * NEARBY_TIP.minSavingPct)) continue;
       if (!best || rate < best.rate || (rate === best.rate && near.distance < best.distance)) best = { areaid: zone.areaid, naam: zone.naam, rate, saving, ...near };
+    }
+    if (best) {
+      const centroid = zoneCentroid(zones.find(z => z.areaid === best.areaid) ?? {});
+      best.straatnaam = centroid ? (await reverseGeocode(centroid)) : null;
     }
     return best;
   }
@@ -1357,7 +1375,7 @@
   const FLAG = raw('<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>');
 
   function renderResults({ street, durationMin, base, hours, garages, start, end, tip }) {
-    const tipHtml = tip ? html`<div class="tip anim" role="note"><p class="tip__title">Goedkoper verderop</p><p class="tip__body"><strong>${eur.format(tip.saving)}/uur goedkoper</strong>${tip.rate === 0 ? ' (op dit tijdstip gratis)' : ''} ${formatDistance(tip.distance)} lopen vanaf je bestemming (${tip.naam}).</p><a class="tip__link" href="${gmapsWalkHref(state.place.coord, tip)}" target="_blank" rel="noopener">Bekijk looproute in Google Maps →</a></div>` : '';
+    const tipHtml = tip ? html`<div class="tip anim" role="note"><p class="tip__title">Goedkoper verderop</p><p class="tip__body"><strong>${eur.format(tip.saving)}/uur goedkoper</strong>${tip.rate === 0 ? ' (op dit tijdstip gratis)' : ''} ${tip.straatnaam ?? tip.naam} · ${eur.format(tip.rate)}/uur · ${formatDistance(tip.distance)} lopen vanaf je bestemming.</p><a class="tip__link" href="${gmapsWalkHref(state.place.coord, tip)}" target="_blank" rel="noopener">Bekijk looproute in Google Maps →</a></div>` : '';
     const summaryRight = street.kind === 'permit' ? '—'
       : street.kind === 'uncertain' || street.kind === 'unsupported' ? '?'
       : (street.kind === 'free' || street.kind === 'nodata') ? 'Gratis'
