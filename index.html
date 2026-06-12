@@ -1057,8 +1057,7 @@
       if (!best || rate < best.rate || (rate === best.rate && near.distance < best.distance)) best = { areaid: zone.areaid, naam: zone.naam, rate, saving, ...near };
     }
     if (best) {
-      const centroid = zoneCentroid(zones.find(z => z.areaid === best.areaid) ?? {});
-      best.straatnaam = centroid ? (await reverseGeocode(centroid)) : null;
+      best.centroid = zoneCentroid(zones.find(z => z.areaid === best.areaid) ?? {});
     }
     return best;
   }
@@ -1375,7 +1374,8 @@
   const FLAG = raw('<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>');
 
   function renderResults({ street, durationMin, base, hours, garages, start, end, tip }) {
-    const tipHtml = tip ? html`<div class="tip anim" role="note"><p class="tip__title">Goedkoper verderop</p><p class="tip__body"><strong>${eur.format(tip.saving)}/uur goedkoper</strong>${tip.rate === 0 ? ' (op dit tijdstip gratis)' : ''} ${tip.straatnaam ?? tip.naam} · ${eur.format(tip.rate)}/uur · ${formatDistance(tip.distance)} lopen vanaf je bestemming.</p><a class="tip__link" href="${gmapsWalkHref(state.place.coord, tip)}" target="_blank" rel="noopener">Bekijk looproute in Google Maps →</a></div>` : '';
+    const tipLocatie = tip ? (tip.naam) : '';
+    const tipHtml = tip ? html`<div class="tip anim" role="note" id="tip-block"><p class="tip__title">Goedkoper verderop</p><p class="tip__body"><strong>${eur.format(tip.saving)}/uur goedkoper</strong>${tip.rate === 0 ? ' (op dit tijdstip gratis)' : ''} — <span id="tip-locatie">${tipLocatie}</span> · ${eur.format(tip.rate)}/uur · ${formatDistance(tip.distance)} lopen vanaf je bestemming.</p><a class="tip__link" href="${gmapsWalkHref(state.place.coord, tip)}" target="_blank" rel="noopener">Bekijk looproute in Google Maps →</a></div>` : '';
     const summaryRight = street.kind === 'permit' ? '—'
       : street.kind === 'uncertain' || street.kind === 'unsupported' ? '?'
       : (street.kind === 'free' || street.kind === 'nodata') ? 'Gratis'
@@ -1434,6 +1434,12 @@
         if (list.length) garages = { ranked: rankGarages(list, state.place.coord, hours), total: list.length };
       }
       renderResults({ street, durationMin: Math.round(ms / 60000), base, hours, garages, start, end, tip });
+      if (tip?.centroid) {
+        reverseGeocode(tip.centroid).then((straat) => {
+          const el = document.getElementById('tip-locatie');
+          if (el && straat) el.textContent = straat;
+        });
+      }
     } catch {
       showError('Er ging iets mis bij het ophalen van de parkeerdata. Probeer het zo nog eens.');
     } finally {
