@@ -75,7 +75,7 @@
   }
   </script>
   <!-- Baseline CSP (also enforced at hosting level via _headers). -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://www.google-analytics.com https://www.googletagmanager.com; connect-src 'self' https://api.pdok.nl https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; base-uri 'self'; form-action 'self'; frame-ancestors 'none'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://www.google-analytics.com https://www.googletagmanager.com; connect-src 'self' https://api.pdok.nl https://api.data.amsterdam.nl https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; base-uri 'self'; form-action 'self'; frame-ancestors 'none'">
   <title>Qurb — Weet wat je écht betaalt aan parkeren</title>
 
   <!-- Google tag (gtag.js) -->
@@ -518,6 +518,9 @@
     .park-loc__body { font-size: 14px; font-weight: 600; line-height: 1.4; color: var(--results-text, #fff); }
     .park-loc__link { flex-shrink: 0; font-size: 13px; font-weight: 600; color: var(--results-muted); text-decoration: none; border: 1px solid var(--results-divider); border-radius: var(--radius-sm, 8px); padding: 8px 14px; transition: border-color .15s, color .15s; }
     .park-loc__link:hover { color: var(--results-text); border-color: var(--results-muted); }
+    .warn { background: rgba(217,164,65,.12); border: 1px solid rgba(217,164,65,.45); border-radius: var(--radius-md, 12px); padding: 16px 20px; margin-block-end: 28px; }
+    .warn__title { font-size: 13px; font-weight: 700; letter-spacing: .3px; text-transform: uppercase; color: #d9a441; margin: 0 0 6px; }
+    .warn__body { font-size: 14px; line-height: 1.6; color: var(--results-text, #fff); margin: 0; }
     .row__route { margin-block-start: 4px; font-size: 13px; }
     .row__route a { color: var(--results-link, #7cc79a); text-decoration: none; }
     .row__route a:hover { text-decoration: underline; }
@@ -826,10 +829,10 @@
 
   /* ════════════════════════════ Network ════════════════════════════ */
   /** fetch JSON with a hard timeout and optional external abort signal. */
-  async function fetchJson(url, { signal } = {}) {
+  async function fetchJson(url, { signal, accept = 'application/json' } = {}) {
     const timeout = AbortSignal.timeout(CONFIG.requestMs);
     const composed = signal ? AbortSignal.any([signal, timeout]) : timeout;
-    const res = await fetch(url, { signal: composed, headers: { Accept: 'application/json' } });
+    const res = await fetch(url, { signal: composed, headers: { Accept: accept } });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     return res.json();
   }
@@ -899,14 +902,37 @@
     const cached = sessionCache.get(cacheKey);
     if (cached) return cached;
 
-    const url = `${CONFIG.pdok.lookup}?fl=centroide_ll,gemeentenaam&id=${encodeURIComponent(id)}`;
+    const url = `${CONFIG.pdok.lookup}?fl=centroide_ll,gemeentenaam,straatnaam&id=${encodeURIComponent(id)}`;
     const data = await fetchJson(url);
     const doc = data?.response?.docs?.[0];
     const match = doc?.centroide_ll?.match(/POINT\(([-\d.]+) ([-\d.]+)\)/);
     if (!match) return null;
-    const result = { lon: parseFloat(match[1]), lat: parseFloat(match[2]), municipality: doc.gemeentenaam ?? '' };
+    const result = { lon: parseFloat(match[1]), lat: parseFloat(match[2]), municipality: doc.gemeentenaam ?? '', street: doc.straatnaam ?? null };
     sessionCache.set(cacheKey, result);
     return result;
+  }
+
+  /* ════════════════════════════ Parking bay (parkeervakken) verification ════════════════════════════ */
+  // Tariff-zone polygons cover whole neighbourhoods and don't tell us whether a
+  // specific street actually has parking bays. Amsterdam publishes a free,
+  // CORS-enabled, per-street dataset of physical parking bays — use it to flag
+  // streets (e.g. pedestrian areas) where the tariff is moot because you simply
+  // can't park there. Not yet available for other cities.
+  const PARKING_BAY_CITIES = { amsterdam: 'https://api.data.amsterdam.nl/v1/parkeervakken/parkeervakken/' };
+  async function checkParkingBays(municipality, street) {
+    const endpoint = municipality ? PARKING_BAY_CITIES[municipality.toLowerCase()] : null;
+    if (!endpoint || !street) return null; // unsupported city — no verdict
+    const cacheKey = `pvak:${municipality.toLowerCase()}:${street.toLowerCase()}`;
+    const cached = sessionCache.get(cacheKey);
+    if (cached) return cached;
+    try {
+      const url = `${endpoint}?straatnaam=${encodeURIComponent(street)}&_format=json`;
+      const data = await fetchJson(url, { accept: '*/*' }); // this API 406s on a strict application/json Accept header
+      const count = data?._embedded?.parkeervakken?.length ?? 0;
+      const result = { found: count > 0, count };
+      sessionCache.set(cacheKey, result);
+      return result;
+    } catch { return null; } // request failed — stay silent, don't falsely warn
   }
 
   async function reverseGeocode({ lon, lat }) {
@@ -1282,6 +1308,7 @@
           const areaId = (await resolveAreaId(place.municipality)) ?? (await resolveAreaId(guessedCity));
           setPlace({
             label: option.label,
+            street: place.street,
             municipality: place.municipality || guessedCity,
             ...rateFor(place.municipality || guessedCity),
             coord: { lon: place.lon, lat: place.lat },
@@ -1451,7 +1478,7 @@
 
   const FLAG = raw('<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>');
 
-  function renderResults({ street, durationMin, base, hours, garages, start, end, tip }) {
+  function renderResults({ street, durationMin, base, hours, garages, start, end, tip, parkingBays }) {
     const tipLocatie = tip ? (tip.naam) : '';
     const tipHtml = tip ? html`<div class="tip anim" role="note" id="tip-block"><p class="tip__title">Goedkoper verderop</p><p class="tip__body"><strong>${eur.format(tip.saving)}/uur goedkoper</strong>${tip.rate === 0 ? ' (op dit tijdstip gratis)' : ''} — <span id="tip-locatie">${tipLocatie}</span> · ${eur.format(tip.rate)}/uur · ${formatDistance(tip.distance)} lopen vanaf je bestemming.</p><a class="tip__link" href="${gmapsWalkHref(state.place.coord, tip)}" target="_blank" rel="noopener">Bekijk looproute in Google Maps →</a></div>` : '';
     const summaryRight = street.kind === 'permit' ? '—'
@@ -1469,10 +1496,11 @@
       : renderGarages(garages.ranked, garages.total);
 
     const parkLocationHtml = street.zoneCoord ? html`<div class="park-loc anim"><div class="park-loc__text"><span class="park-loc__title">Parkeerlocatie</span><span class="park-loc__body">${streetName ?? street.label ?? 'Parkeerzone'}${state.place?.placeName ? ` — bij ${state.place.placeName}` : ''}</span></div><a class="park-loc__link" href="${gmapsWalkHref(null, street.zoneCoord)}" target="_blank" rel="noopener">Route →</a></div>` : '';
+    const noBaysHtml = parkingBays?.found === false ? html`<div class="warn anim" role="note"><p class="warn__title">Waarschijnlijk geen parkeerplek hier</p><p class="warn__body">Op ${streetName ?? 'deze straat'} zijn geen parkeervakken gevonden — het is mogelijk een voetgangersgebied of een straat zonder parkeerplaatsen. ${tip ? 'Bekijk het alternatief hierboven, of c' : 'C'}ontroleer ter plekke voordat je hier parkeert.</p></div>` : '';
 
     el.results.innerHTML = html`
       <section class="results" aria-label="Resultaten">
-        <div class="results__inner">${raw(tipHtml)}
+        <div class="results__inner">${raw(noBaysHtml)}${raw(tipHtml)}
           <div class="summary anim">
             <div><p class="summary__label">Duur</p><p class="summary__value">${formatDuration(durationMin)}</p></div>
             <div><p class="summary__label">${['permit', 'uncertain', 'unsupported'].includes(street.kind) ? 'Straat' : 'Basisprijs'}</p><p class="summary__value">${summaryRight}</p><p class="summary__sub">${summarySub}</p></div>
@@ -1507,13 +1535,16 @@
       const street = await resolveStreet(state.place, start);
       const base = round2(street.rate * hours);
       const tip = street.kind === 'paid' ? await findCheaperNearby(state.place.areaId, state.place.coord, street.rate, start) : null;
+      const parkingBays = ['paid', 'free'].includes(street.kind)
+        ? await checkParkingBays(state.place.municipality, state.place.street)
+        : null;
 
       let garages = null;
       if (state.place.areaId) {
         const list = await loadGarages(state.place.areaId);
         if (list.length) garages = { ranked: rankGarages(list, state.place.coord, hours), total: list.length };
       }
-      renderResults({ street, durationMin: Math.round(ms / 60000), base, hours, garages, start, end, tip });
+      renderResults({ street, durationMin: Math.round(ms / 60000), base, hours, garages, start, end, tip, parkingBays });
       if (tip?.centroid) {
         reverseGeocode(tip.centroid).then((straat) => {
           const el = document.getElementById('tip-locatie');
