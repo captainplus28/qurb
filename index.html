@@ -512,11 +512,12 @@
     .tip__body { font-size: 14px; line-height: 1.6; color: var(--results-text, #fff); margin: 0 0 10px; }
     .tip__link { font-size: 14px; font-weight: 600; color: var(--results-link, #7cc79a); text-decoration: none; }
     .tip__link:hover { text-decoration: underline; }
-    .park-loc { background: rgba(124,199,154,.08); border: 1px solid var(--results-divider); border-radius: var(--radius-md, 12px); padding: 16px 20px; margin-block-end: 28px; }
-    .park-loc__title { font-size: 13px; font-weight: 700; letter-spacing: .3px; text-transform: uppercase; color: var(--results-muted); margin: 0 0 6px; }
-    .park-loc__body { font-size: 15px; font-weight: 600; line-height: 1.5; color: var(--results-text, #fff); margin: 0 0 10px; }
-    .park-loc__link { font-size: 14px; font-weight: 600; color: var(--results-link, #7cc79a); text-decoration: none; }
-    .park-loc__link:hover { text-decoration: underline; }
+    .park-loc { background: var(--results-info-bg); border-radius: var(--radius-md, 12px); padding: 16px 20px; margin-block-end: 28px; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+    .park-loc__text { display: flex; flex-direction: column; gap: 2px; }
+    .park-loc__title { font-size: 12px; font-weight: 600; letter-spacing: .3px; text-transform: uppercase; color: var(--results-muted); }
+    .park-loc__body { font-size: 14px; font-weight: 600; line-height: 1.4; color: var(--results-text, #fff); }
+    .park-loc__link { flex-shrink: 0; font-size: 13px; font-weight: 600; color: var(--results-muted); text-decoration: none; border: 1px solid var(--results-divider); border-radius: var(--radius-sm, 8px); padding: 8px 14px; transition: border-color .15s, color .15s; }
+    .park-loc__link:hover { color: var(--results-text); border-color: var(--results-muted); }
     .row__route { margin-block-start: 4px; font-size: 13px; }
     .row__route a { color: var(--results-link, #7cc79a); text-decoration: none; }
     .row__route a:hover { text-decoration: underline; }
@@ -1467,7 +1468,7 @@
       ? html`<p class="info anim">Geen garagedata voor ${displayCity(state.place?.municipality) || 'deze plaats'}. In de volledige versie komen alle garages live uit de open parkeerdata van de RDW.</p>`
       : renderGarages(garages.ranked, garages.total);
 
-    const parkLocationHtml = street.zoneCoord ? html`<div class="park-loc anim"><p class="park-loc__title">Parkeerlocatie</p><p class="park-loc__body">${streetName ?? street.label ?? 'Parkeerzone'}${state.place?.placeName ? ` — bij ${state.place.placeName}` : ''}</p><a class="park-loc__link" href="${gmapsWalkHref(null, street.zoneCoord)}" target="_blank" rel="noopener">Bekijk route in Google Maps →</a></div>` : '';
+    const parkLocationHtml = street.zoneCoord ? html`<div class="park-loc anim"><div class="park-loc__text"><span class="park-loc__title">Parkeerlocatie</span><span class="park-loc__body">${streetName ?? street.label ?? 'Parkeerzone'}${state.place?.placeName ? ` — bij ${state.place.placeName}` : ''}</span></div><a class="park-loc__link" href="${gmapsWalkHref(null, street.zoneCoord)}" target="_blank" rel="noopener">Route →</a></div>` : '';
 
     el.results.innerHTML = html`
       <section class="results" aria-label="Resultaten">
