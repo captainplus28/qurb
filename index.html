@@ -75,7 +75,7 @@
   }
   </script>
   <!-- Baseline CSP (also enforced at hosting level via _headers). -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://www.google-analytics.com https://www.googletagmanager.com; connect-src 'self' https://api.pdok.nl https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; base-uri 'self'; form-action 'self'; frame-ancestors 'none'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://www.google-analytics.com https://www.googletagmanager.com; connect-src 'self' https://api.pdok.nl https://nominatim.openstreetmap.org https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; base-uri 'self'; form-action 'self'; frame-ancestors 'none'">
   <title>Qurb — Weet wat je écht betaalt aan parkeren</title>
 
   <!-- Google tag (gtag.js) -->
@@ -738,9 +738,13 @@
       lookup:  'https://api.pdok.nl/bzk/locatieserver/search/v3_1/lookup',
       reverse: 'https://api.pdok.nl/bzk/locatieserver/search/v3_1/free',
     },
+    nominatim: {
+      search: 'https://nominatim.openstreetmap.org/search',
+    },
     debounceMs:   250,
     minQuery:     3,
     suggestRows:  6,
+    suggestPlaceRows: 4,
     requestMs:    8000,   // per-request timeout
     maxGarages:   18,
     fallbackRate: 3.00,   // €/uur — landelijk gemiddelde wanneer geen stadcijfer bekend is
@@ -844,7 +848,32 @@
     const docs = data?.response?.docs ?? [];
     const items = docs
       .filter((d) => d && typeof d.weergavenaam === 'string')
-      .map((d) => ({ id: String(d.id ?? ''), label: d.weergavenaam }));
+      .map((d) => ({ id: String(d.id ?? ''), label: d.weergavenaam, source: 'pdok' }));
+    sessionCache.set(cacheKey, items);
+    return items;
+  }
+
+  /* ════════════════════════════ Nominatim place search (POIs, restaurants, etc.) ════════════════════════════ */
+  async function suggestPlaces(query, signal) {
+    const cacheKey = `osm:s:${query.toLowerCase()}`;
+    const cached = sessionCache.get(cacheKey);
+    if (cached) return cached;
+
+    const url = `${CONFIG.nominatim.search}?q=${encodeURIComponent(query)}&format=jsonv2&addressdetails=1&countrycodes=nl&limit=${CONFIG.suggestPlaceRows}`;
+    let docs = [];
+    try {
+      docs = await fetchJson(url, { signal }) ?? [];
+    } catch { docs = []; }
+    const items = docs
+      .filter((d) => d && d.display_name && d.lat && d.lon)
+      .map((d) => ({
+        id: `osm:${d.osm_type}:${d.osm_id}`,
+        label: d.display_name,
+        source: 'osm',
+        lat: parseFloat(d.lat),
+        lon: parseFloat(d.lon),
+        municipality: d.address?.city || d.address?.town || d.address?.village || d.address?.municipality || '',
+      }));
     sessionCache.set(cacheKey, items);
     return items;
   }
@@ -1195,6 +1224,24 @@
     async function choose(option) {
       el.addr.value = option.label;
       close();
+
+      if (option.source === 'osm') {
+        // Nominatim already gives us the coordinate + municipality directly.
+        const municipality = option.municipality || cityFromLabel(option.label);
+        setPlace({ label: option.label, municipality, ...rateFor(municipality), coord: null, areaId: null });
+        try {
+          const areaId = await resolveAreaId(municipality);
+          setPlace({
+            label: option.label,
+            municipality,
+            ...rateFor(municipality),
+            coord: { lon: option.lon, lat: option.lat },
+            areaId,
+          });
+        } catch { /* keep the indicative estimate; comparison still works */ }
+        return;
+      }
+
       // Optimistic: indicative municipal rate from the address text…
       const guessedCity = cityFromLabel(option.label);
       setPlace({ label: option.label, municipality: guessedCity, ...rateFor(guessedCity), coord: null, areaId: null });
@@ -1221,10 +1268,14 @@
       inflight?.abort();
       inflight = new AbortController();
       try {
-        options = await suggestAddresses(query, inflight.signal);
+        const [addresses, places] = await Promise.all([
+          suggestAddresses(query, inflight.signal).catch(() => []),
+          suggestPlaces(query, inflight.signal).catch(() => []),
+        ]);
+        options = [...addresses, ...places];
         activeIndex = -1;
         if (options.length) render();
-        else renderEmpty('Geen adres gevonden');
+        else renderEmpty('Geen adres of locatie gevonden');
       } catch (err) {
         if (err?.name !== 'AbortError') close();
       }
