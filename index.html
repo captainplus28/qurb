@@ -75,7 +75,7 @@
   }
   </script>
   <!-- Baseline CSP (also enforced at hosting level via _headers). -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://www.google-analytics.com https://www.googletagmanager.com; connect-src 'self' https://api.pdok.nl https://nominatim.openstreetmap.org https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; base-uri 'self'; form-action 'self'; frame-ancestors 'none'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://www.google-analytics.com https://www.googletagmanager.com; connect-src 'self' https://api.pdok.nl https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; base-uri 'self'; form-action 'self'; frame-ancestors 'none'">
   <title>Qurb — Weet wat je écht betaalt aan parkeren</title>
 
   <!-- Google tag (gtag.js) -->
@@ -739,7 +739,7 @@
       reverse: 'https://api.pdok.nl/bzk/locatieserver/search/v3_1/free',
     },
     nominatim: {
-      search: 'https://nominatim.openstreetmap.org/search',
+      search: '/api/places',
     },
     debounceMs:   250,
     minQuery:     3,
