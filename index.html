@@ -1249,11 +1249,13 @@
       if (option.source === 'osm') {
         // Nominatim already gives us the coordinate + municipality directly.
         const municipality = option.municipality || cityFromLabel(option.label);
-        setPlace({ label: option.label, municipality, ...rateFor(municipality), coord: null, areaId: null });
+        setPlace({ label: option.label, placeName: option.name, street: option.street, municipality, ...rateFor(municipality), coord: null, areaId: null });
         try {
           const areaId = await resolveAreaId(municipality);
           setPlace({
             label: option.label,
+            placeName: option.name,
+            street: option.street,
             municipality,
             ...rateFor(municipality),
             coord: { lon: option.lon, lat: option.lat },
@@ -1453,9 +1455,10 @@
       : (street.kind === 'free' || street.kind === 'nodata') ? 'Gratis'
       : eur.format(base);
     const zoneLink = street.zoneCoord ? html`<a class="zone__route" href="${gmapsWalkHref(null, street.zoneCoord)}" target="_blank" rel="noopener">Routebeschrijving →</a>` : '';
-    const streetName = state.place?.label ? state.place.label.split(',')[0].trim() : null;
+    const streetName = state.place?.street || (state.place?.label ? state.place.label.split(',')[0].trim() : null);
+    const placeContext = state.place?.placeName ? ` (bij ${state.place.placeName})` : '';
     const summarySub = streetName
-      ? `${streetName}${['paid', 'indicative'].includes(street.kind) ? ` · ${eur.format(street.rate)}/uur` : ''}`
+      ? `${streetName}${placeContext}${['paid', 'indicative'].includes(street.kind) ? ` · ${eur.format(street.rate)}/uur` : ''}`
       : 'Gelijk voor alle apps';
     const cityLabel = state.place?.municipality ? ` in ${displayCity(state.place.municipality)}` : '';
 
