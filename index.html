@@ -75,7 +75,7 @@
   }
   </script>
   <!-- Baseline CSP (also enforced at hosting level via _headers). -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://www.google-analytics.com https://www.googletagmanager.com; connect-src 'self' https://api.pdok.nl https://api.data.amsterdam.nl https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; base-uri 'self'; form-action 'self'; frame-ancestors 'none'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://www.google-analytics.com https://www.googletagmanager.com; connect-src 'self' https://api.pdok.nl https://api.data.amsterdam.nl https://formspree.io https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; base-uri 'self'; form-action 'self' https://formspree.io; frame-ancestors 'none'">
   <title>Qurb — Weet wat je écht betaalt aan parkeren</title>
 
   <!-- Google tag (gtag.js) -->
@@ -448,7 +448,7 @@
     .report { margin-block-start: 16px; }
     .report__btn {
       display: inline-flex; align-items: center; gap: 7px;
-      font-size: 13px; color: var(--results-muted); text-decoration: none;
+      font-size: 13px; color: var(--results-muted); text-decoration: none; cursor: pointer;
       background: transparent; border: 1px solid var(--results-divider);
       border-radius: var(--radius-pill); padding: 7px 14px;
       transition: color .15s, border-color .15s;
@@ -456,6 +456,51 @@
     .report__btn:hover { color: var(--results-text); border-color: var(--results-muted); }
     .report__btn svg { flex: none; }
     .report__done { font-size: 13px; color: var(--results-link); }
+
+    /* ── Meld-modal ── */
+    .meld-overlay {
+      display: none; position: fixed; inset: 0; z-index: 9000;
+      background: rgba(0,0,0,.55); backdrop-filter: blur(3px);
+      align-items: center; justify-content: center; padding: 24px;
+    }
+    .meld-overlay.open { display: flex; }
+    .meld-modal {
+      background: var(--canvas); border-radius: 18px; padding: 32px 28px;
+      max-width: 480px; width: 100%; box-shadow: 0 24px 64px rgba(0,0,0,.3);
+      animation: meldIn .2s ease;
+    }
+    @keyframes meldIn { from { transform: translateY(10px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+    .meld-modal h2 { font-size: 18px; font-weight: 700; margin: 0 0 6px; color: var(--ink); }
+    .meld-modal p  { font-size: 14px; color: var(--ink-muted-48); margin: 0 0 20px; line-height: 1.5; }
+    .meld-modal label { display: block; font-size: 13px; font-weight: 600; color: var(--ink); margin-bottom: 5px; }
+    .meld-modal select,
+    .meld-modal textarea {
+      width: 100%; box-sizing: border-box;
+      background: var(--canvas-parchment); border: 1px solid rgba(0,0,0,.12);
+      border-radius: 10px; padding: 10px 12px; font-size: 14px; color: var(--ink);
+      margin-bottom: 14px; font-family: inherit; resize: vertical;
+    }
+    .meld-modal textarea { min-height: 90px; }
+    .meld-modal select:focus,
+    .meld-modal textarea:focus { outline: 2px solid var(--brand); outline-offset: 1px; }
+    .meld-actions { display: flex; gap: 10px; justify-content: flex-end; margin-top: 4px; }
+    .meld-cancel {
+      background: transparent; border: 1px solid rgba(0,0,0,.15);
+      border-radius: var(--radius-pill); padding: 9px 18px;
+      font-size: 14px; cursor: pointer; color: var(--ink-muted-48);
+    }
+    .meld-submit {
+      background: var(--brand); color: #fff; border: none;
+      border-radius: var(--radius-pill); padding: 9px 22px;
+      font-size: 14px; font-weight: 600; cursor: pointer;
+      transition: filter .15s;
+    }
+    .meld-submit:hover { filter: brightness(1.08); }
+    .meld-submit:disabled { opacity: .5; cursor: default; }
+    .meld-bedankt { text-align: center; padding: 12px 0 4px; }
+    .meld-bedankt svg { color: var(--brand); margin-bottom: 12px; }
+    .meld-bedankt h2 { margin-bottom: 8px; }
+    .meld-bedankt p  { margin-bottom: 20px; }
 
     @keyframes rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
     .anim { animation: rise .4s cubic-bezier(.2,.7,.2,1) both; }
@@ -1456,24 +1501,19 @@
       <p class="info anim" style="animation-delay:.4s">Dichtstbijzijnde ${shown.length} garages${hidden > 0 ? ` (${hidden} verder weg niet getoond)` : ''}. Live locaties en tarieven uit de open parkeerdata van de RDW (CC-0). Garages zonder gepubliceerd tarief (o.a. Q-Park) tonen we met een link naar de exploitant.</p>`;
   }
 
-  /** Prefilled mailto report — opens the visitor's mail app with full context.
-   *  CONFIG.reportEmail is the (later configurable) destination address. */
-  function reportHref(street, start, end) {
+  /** Knop die de meld-modal opent met vooraf ingevulde context. */
+  function reportBtn(street, start, end) {
     const p = state.place;
-    const body = [
-      'Ik denk dat deze parkeerdata niet klopt.',
-      '',
+    const ctx = [
       `Adres: ${p?.label ?? '-'}`,
       `Gemeente: ${p?.municipality ?? '-'}`,
       `Straat-status: ${street.label ?? street.kind}`,
       `Gedetecteerd tarief: ${street.rate ? `${eur.format(street.rate)}/uur` : 'geen'}`,
       `Betrouwbaarheid: ${street.tier ?? 'n.v.t.'}`,
       `Tijdvak: ${start.toLocaleString('nl-NL')} – ${end.toLocaleString('nl-NL')}`,
-      '',
-      'Wat klopt er volgens jou niet?',
-      '',
     ].join('\n');
-    return `mailto:${CONFIG.reportEmail}?subject=${encodeURIComponent(`Qurb datamelding — ${p?.municipality ?? 'onbekend'}`)}&body=${encodeURIComponent(body)}`;
+    // data-attrib wordt door de click-handler opgepakt
+    return `data-report="${escapeHtml(ctx)}"`;
   }
 
   const FLAG = raw('<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>');
@@ -1509,7 +1549,7 @@
           <div class="group">
             <h2 class="group__label">Op straat</h2>
             ${raw(renderStreet(street, base, hours))}
-            <p class="report"><a class="report__btn" href="${reportHref(street, start, end)}">${FLAG} Deze data klopt niet</a></p>
+            <p class="report"><button class="report__btn" type="button" ${reportBtn(street, start, end)}>${FLAG} Deze data klopt niet</button></p>
           </div>
           <div class="group">
             <h2 class="group__label">Garages &amp; terreinen${cityLabel}</h2>
@@ -1558,15 +1598,92 @@
     }
   }
 
+  /* ════════════════════════════ Meld-modal ════════════════════════════ */
+  const meldOverlay = document.getElementById('meld-overlay');
+  const meldForm    = document.getElementById('meld-form');
+  let   meldContext = {};   // vastgelegd bij openen
+
+  function openMeldModal(context) {
+    meldContext = context;
+    document.getElementById('meld-context').value = context.tekst ?? '';
+    meldOverlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    meldForm.reset();
+    meldOverlay.querySelector('.meld-modal-inner').style.display = '';
+    meldOverlay.querySelector('.meld-bedankt').style.display = 'none';
+  }
+
+  function closeMeldModal() {
+    meldOverlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.getElementById('meld-cancel').addEventListener('click', closeMeldModal);
+  meldOverlay.addEventListener('click', (e) => { if (e.target === meldOverlay) closeMeldModal(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMeldModal(); });
+
+  meldForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = meldForm.querySelector('.meld-submit');
+    btn.disabled = true; btn.textContent = 'Versturen…';
+    try {
+      const data = new FormData(meldForm);
+      data.set('context', meldContext.tekst ?? '');
+      await fetch('https://formspree.io/f/xwvjzylg', {
+        method: 'POST', body: data, headers: { Accept: 'application/json' }
+      });
+      meldOverlay.querySelector('.meld-modal-inner').style.display = 'none';
+      meldOverlay.querySelector('.meld-bedankt').style.display = '';
+    } catch {
+      btn.disabled = false; btn.textContent = 'Verstuur melding';
+      alert('Er ging iets mis. Probeer het opnieuw.');
+    }
+  });
+
   /* ════════════════════════════ Boot ════════════════════════════ */
   initWhenDuration();
   el.form.addEventListener('submit', (e) => { e.preventDefault(); compare(); });
-  // After a report-click the mailto opens; confirm inline (delegated, results re-render safe).
   el.results.addEventListener('click', (e) => {
     const btn = e.target.closest('.report__btn');
     if (!btn) return;
-    btn.closest('.report').innerHTML = html`<span class="report__done">Bedankt — je mailprogramma opent met je melding.</span>`;
+    openMeldModal({ tekst: btn.dataset.report ?? '' });
   });
   </script>
+
+<!-- ── Meld-modal ── -->
+<div id="meld-overlay" class="meld-overlay" role="dialog" aria-modal="true" aria-labelledby="meld-titel">
+  <div class="meld-modal">
+    <div class="meld-modal-inner">
+      <h2 id="meld-titel">Data klopt niet?</h2>
+      <p>Laat het ons weten — we verbeteren de data zo snel mogelijk.</p>
+      <form id="meld-form">
+        <input type="hidden" name="context" id="meld-context">
+        <label for="meld-soort">Wat klopt er niet?</label>
+        <select name="soort" id="meld-soort" required>
+          <option value="">— kies een optie —</option>
+          <option value="prijs">Tarief / prijs klopt niet</option>
+          <option value="locatie">Locatie bestaat niet of is verkeerd</option>
+          <option value="zone">Zone of vergunningsgebied klopt niet</option>
+          <option value="garage">Garage-informatie klopt niet</option>
+          <option value="anders">Anders</option>
+        </select>
+        <label for="meld-toelichting">Toelichting (optioneel)</label>
+        <textarea name="toelichting" id="meld-toelichting" placeholder="Wat is er volgens jou het juiste tarief of de juiste situatie?"></textarea>
+        <div class="meld-actions">
+          <button type="button" id="meld-cancel" class="meld-cancel">Annuleren</button>
+          <button type="submit" class="meld-submit">Verstuur melding</button>
+        </div>
+      </form>
+    </div>
+    <div class="meld-bedankt" style="display:none">
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      <h2>Bedankt!</h2>
+      <p>Je melding is ontvangen. We kijken ernaar zo snel als we kunnen.</p>
+      <div class="meld-actions" style="justify-content:center">
+        <button type="button" id="meld-cancel2" class="meld-submit" onclick="document.getElementById('meld-overlay').classList.remove('open');document.body.style.overflow=''">Sluiten</button>
+      </div>
+    </div>
+  </div>
+</div>
 </body>
 </html>
