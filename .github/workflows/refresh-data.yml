@@ -1,12 +1,11 @@
 name: Parkeerdata verversen
 
-# Ontdekt automatisch alle gemeenten met betaald straatparkeren en bouwt hun data.
-# Commit incrementeel zodat voortgang behouden blijft, ook bij een timeout.
-# Netlify deployt automatisch bij elke push.
+# UITGESCHAKELD: deze workflow hoorde bij de oude statische site (scripts/*.py
+# + data/ map). Die zijn vervangen door de Next.js-rebuild (public/data/).
+# Schedule staat uit zodat de Action niet meer faalt. Zet 'm pas weer aan
+# zodra er een ververs-pipeline is die met public/data/ werkt.
 
 on:
-  schedule:
-    - cron: "0 2 * * 1"          # elke maandag 02:00 UTC
   workflow_dispatch:
 
 permissions:
@@ -19,44 +18,10 @@ concurrency:
 jobs:
   refresh:
     runs-on: ubuntu-latest
-    timeout-minutes: 350
+    timeout-minutes: 5
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
-
-      - name: Alle gemeenten verversen
+      - name: Uitgeschakeld na Next.js-rebuild
         run: |
-          set -u
-          git config user.name  "qurb-bot"
-          git config user.email "actions@users.noreply.github.com"
-
-          commit_push () {
-            git add data/ || true
-            git commit -m "Data: automatische verversing RDW-parkeerdata ($(date -u +%F))" || return 0
-            git pull --rebase --autostash || true
-            git push || true
-          }
-
-          python3 scripts/build_gemeentenmap.py
-          commit_push
-
-          python3 scripts/steden_lijst.py > /tmp/steden.tsv
-          n=0
-          while IFS=$'\t' read -r id naam; do
-            case "$id" in ""|\#*) continue ;; esac
-            echo "::group::Gemeente $id ($naam)"
-            python3 scripts/build_street.py  "$id"        || echo "straat $id overgeslagen"
-            python3 scripts/build_permit.py  "$id"        || echo "vergunning $id overgeslagen"
-            python3 scripts/build_garages.py "$id" "$naam" || echo "garages $id overgeslagen"
-            echo "::endgroup::"
-            n=$((n + 1))
-            [ $((n % 10)) -eq 0 ] && commit_push
-          done < /tmp/steden.tsv
-
-          # Herc-classificeer betrouwbaarheid op basis van de zojuist gebouwde data.
-          python3 scripts/build_dekking.py        || echo "dekking overgeslagen"
-          python3 scripts/build_betrouwbaarheid.py
-          commit_push
-          echo "Klaar: $n gemeenten verwerkt."
+          echo "Deze workflow is uitgeschakeld: scripts/ en data/ bestaan niet meer sinds de Next.js-rebuild (data zit nu in public/data/)."
+          echo "Bouw eerst een nieuwe ververs-pipeline voor public/data/ voordat je dit weer aanzet."
+          exit 0
